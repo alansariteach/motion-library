@@ -131,7 +131,14 @@ html[dir="rtl"] .en{text-align:right}
 .nchip.nf{border-color:var(--acc2);color:var(--acc2)}
 .nchip.nt{border-color:var(--acc);color:var(--acc)}
 .nchip.n0{color:var(--muted);font-weight:500}
-.acts{display:flex;gap:6px;margin-top:6px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.acts button.exb{order:3;flex:1 1 100%;background:transparent;border-color:var(--acc2);color:var(--acc2)}
+.exm{position:fixed;inset:0;z-index:90;background:rgba(8,20,22,.82);display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.exm[hidden]{display:none!important}
+.exbox{position:relative;width:min(92vw,calc((100dvh - 170px)*9/16));display:flex;flex-direction:column;gap:10px}
+.exbox video{width:100%;aspect-ratio:9/16;object-fit:contain;background:#000;border-radius:18px;display:block}
+.exx{align-self:flex-end;min-width:44px;min-height:44px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;font-size:18px}
+.exc{color:#FBF7F0;font-size:13.5px;line-height:1.6;text-align:center;min-height:22px}
 .acts button{flex:1;white-space:nowrap;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:6px 4px;font-weight:600;font-size:12.5px;min-height:38px}
 .acts button+button{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
 .acts button.done{border-color:var(--ok);color:var(--ok);background:transparent}
@@ -906,6 +913,8 @@ button,a,input,label{touch-action:manipulation}
   <div class="mono madeby"><span data-i="made">صنع بواسطة</span> <a href="https://alansari.tech" target="_blank" rel="noopener">alansari.tech</a></div>
 </footer>
 </div>
+
+<div class="exm" id="exm" hidden role="dialog" aria-modal="true"><div class="exbox"><button class="exx" id="exx" type="button" aria-label="Close">✕</button><video id="exv" playsinline muted loop controls preload="none"></video><div class="exc" id="exc"></div></div></div>
 
 <script>
 var STAR='<svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 4l7 31 27-17-17 27 31 5-31 5 17 27-27-17-7 31-7-31-27 17 17-27-31-5 31-5-17-27 27 17z"/></svg>';
@@ -1917,7 +1926,7 @@ var UI={
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
   fileT:'ملف المكتبة',fileD:'ملف فيه شرح كامل لكل الـ 1000 حركة، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">هذا الملف فيه شرح كل الـ 1000 حركة. انت ما تحتاج تفتحه أو تقراه، هو للذكاء الاصطناعي. بس سوّ كذا:</p><ol class="fsteps"><li><b>حمّل ملف المكتبة</b> من زر «تحميل الملف»، وخله بجهازك.</li><li><b>افتح Claude</b> وسوّ <b>Project</b> جديد (مثلاً سمّه «مونتاج»)، وارفع الملف داخل <b>Project knowledge</b>. هذي مرة وحدة بس.</li><li><b>داخل المشروع</b> افتح محادثة جديدة، وارفع فيديوك، واكتب الحركات بالرقم:<span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">ما عندك Project؟ ارفع الملف مع الفيديو بنفس المحادثة، ويشتغل نفس الشي.</p>',dl1:'تحميل الملف',dl2:'نسخة JSON',
   types:'الأنواع',bonly:'الأساسية بس (بدون النسخ)',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
-  cn:'⧉ الاسم',cp:'⧉ البرومبت',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
+  cn:'⧉ الاسم',cp:'⧉ البرومبت',demo:'▶ شوف مثال حقيقي',demoV:function(b){return 'هذا مثال الحركة الأصلية '+b+'. النسخة نفس الحركة بتغيير بسيط.'},demoErr:'ما قدرت أحمّل المثال. تأكد من الاتصال وجرّب مرة ثانية.',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
   dlNo:'التحميل مو متاح هني، فنسخت لك محتوى الملف. الصقه في ملف نصي واحفظه باسم ',dlOk:'تم ✓ احفظ الملف وارفعه لـ Claude.',dlDecl:'ألغيت التحميل.',dlBusy:'فيه تحميل مفتوح، كمّله أول.',dlErr:'ما قدرت أحمّل الملف هني. جرّب مرة ثانية.',
   pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa+needPr(m,'ar');}},
  en:{h1:'Motion Library',lede:'Watch every motion play and learn its name. When you edit a video with AI, just tell it the motion number and it applies it.',s1:'motions',s2:'categories',s3:'Reels',
@@ -1925,7 +1934,7 @@ var UI={
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
   fileT:'Library file',fileD:'One file with a full spec for all 1000 motions, ready for the AI.',howD:'<p class="fintro">This file describes all 1000 motions. You do not need to open or read it; it is for the AI. Just do this:</p><ol class="fsteps"><li><b>Download the library file</b> with the “Download file” button.</li><li><b>Open Claude</b>, create a new <b>Project</b> (for example “Editing”) and upload the file to <b>Project knowledge</b>. You only do this once.</li><li><b>Inside the project</b>, start a new chat, upload your video and name the motions by number:<span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">No Project? Attach the file together with your video in the same chat and it works the same way.</p>',dl1:'Download file',dl2:'JSON version',
   types:'Categories',bonly:'Base motions only (no variants)',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
-  cn:'⧉ Name',cp:'⧉ Prompt',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
+  cn:'⧉ Name',cp:'⧉ Prompt',demo:'▶ See real example',demoV:function(b){return 'This is the example of the original motion '+b+'. The variant is the same motion with a small change.'},demoErr:'Could not load the example. Check your connection and try again.',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
   dlNo:'Downloads are not available here, so the file content was copied. Paste it into a text file and save it as ',dlOk:'Done ✓ Save the file and upload it to Claude.',dlDecl:'Download cancelled.',dlBusy:'A download prompt is already open. Finish it first.',dlErr:'Could not download the file here. Try again.',
   pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec+needPr(m,'en');}}
 };
@@ -1945,7 +1954,7 @@ var PV_EN={"المونتاج صار أسهل": "Editing just got easier", "مك�
 function toEn(html){var d=document.createElement('div');d.innerHTML=html;var w=document.createTreeWalker(d,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
   list.forEach(function(n){var t=n.textContent.trim();if(PV_EN[t])n.textContent=n.textContent.replace(t,PV_EN[t]);});
   d.querySelectorAll('[data-t]').forEach(function(e){if(PV_EN[e.dataset.t])e.dataset.t=PV_EN[e.dataset.t];});return d.innerHTML;}
-function stageHTML(m){if(!m._ar)m._ar=m.h();if(lang==='en'){if(!m._en)m._en=toEn(m._ar);return m._en;}return m._ar;}
+function stageHTML(m){if(!m._ar)m._ar=m.h().replace(/@alansari\.tech/g,'<bdi dir="ltr">@alansari.tech</bdi>');if(lang==='en'){if(!m._en)m._en=toEn(m._ar);return m._en;}return m._ar;}
 function paint(o){var st=o.el.querySelector('.st');if(st.dataset.l===lang)return;st.innerHTML=stageHTML(o.m)+(o.m.vlab?'<span class="vtag">'+o.m.vlab+'</span>':'')+'<i class="ph"></i>';st.dataset.l=lang;}
 
 /* content needs: what the client must provide per motion */
@@ -1987,6 +1996,14 @@ function needChips(m){var a=needOf(m);
 function needMD(m,l){var a=needOf(m);
   if(!a.length)return needNone(m,l);
   return a.map(function(k){var n=NK[k];return (n[0]==='f'?(l==='ar'?'ملف: ':'file: '):(l==='ar'?'نص: ':'text: '))+(l==='ar'?n[1]:n[2]);}).join(l==='ar'?'، ':'; ');}
+/* real examples (videos in /examples) */
+var EXS={};["M-001", "M-002", "M-003", "M-004", "M-005", "M-041", "M-042", "M-043", "M-044", "M-045", "M-046", "M-047", "M-048", "M-049", "M-050", "M-051", "M-052", "M-053", "M-054", "M-055", "M-056", "M-057", "M-058", "M-059", "M-060", "M-006", "M-007", "M-008", "M-009", "M-010", "M-061", "M-062", "M-063", "M-064", "M-065", "M-066", "M-067", "M-068", "M-069", "M-070", "M-071", "M-072", "M-073", "M-074", "M-075", "M-076", "M-077", "M-078", "M-079", "M-080", "M-031", "M-032", "M-033", "M-034", "M-035", "M-161", "M-162", "M-163", "M-164", "M-165", "M-166", "M-167", "M-168", "M-169", "M-170", "M-171", "M-172", "M-173", "M-174", "M-175", "M-176", "M-177", "M-178", "M-179", "M-180", "M-036", "M-037", "M-038", "M-039", "M-040", "M-181", "M-182", "M-183", "M-184", "M-185", "M-186", "M-187", "M-188", "M-189", "M-190", "M-191", "M-192", "M-193", "M-194", "M-195", "M-196", "M-197", "M-198", "M-199", "M-200"].forEach(function(k){EXS[k]=1;});
+var exm=document.getElementById('exm'),exv=document.getElementById('exv'),exc=document.getElementById('exc'),exBack=null;
+function openDemo(m,btn){exBack=btn;var b=m.base||m.id;exc.textContent=m.base?T('demoV')(b):'';exv.onerror=function(){exc.textContent=T('demoErr');};
+  exv.src='examples/'+b+'.mp4';exm.hidden=false;document.getElementById('exx').focus({preventScroll:true});var pr=exv.play();if(pr&&pr.catch)pr.catch(function(){});}
+function closeDemo(){if(exm.hidden)return;exv.pause();exv.removeAttribute('src');exv.load();exm.hidden=true;if(exBack)exBack.focus({preventScroll:true});}
+document.getElementById('exx').addEventListener('click',closeDemo);exm.addEventListener('click',function(e){if(e.target===exm)closeDemo();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDemo();});
 /* cards */
 var cards=[];
 M.forEach(function(m){
@@ -1994,9 +2011,10 @@ M.forEach(function(m){
   el.innerHTML='<div class="st'+(m.vcls?' '+m.vcls:'')+'" style="--d:'+(m.d||'2.8s')+'" aria-hidden="true"></div>'+
    '<div class="meta"><div class="idrow"><b>'+m.id+'</b>'+(m.base?'<span class="vof">'+m.base+'</span>':'')+'<span class="lp"></span></div>'+
    '<div class="en">'+m.en+'</div><div class="ar"></div><div class="use"></div><div class="need"></div>'+
-   '<div class="acts"><button type="button" data-a="n"></button><button type="button" data-a="p"></button></div></div>';
+   '<div class="acts"><button type="button" data-a="n"></button><button type="button" data-a="p"></button>'+(EXS[m.base||m.id]?'<button type="button" class="exb" data-a="v"></button>':'')+'</div></div>';
   el.querySelector('[data-a="n"]').addEventListener('click',function(e){copyText(m.id+' '+m.en,e.currentTarget,T('cn'));});
   el.querySelector('[data-a="p"]').addEventListener('click',function(e){copyText(T('pr')(m),e.currentTarget,T('cp'));});
+  var vb=el.querySelector('[data-a="v"]');if(vb)vb.addEventListener('click',function(e){openDemo(m,e.currentTarget);});
   grid.appendChild(el);cards.push({m:m,el:el});
 });
 /* categories */
@@ -2032,7 +2050,7 @@ function applyLang(){
     e.querySelector('.need').innerHTML=needChips(m);
     e.querySelector('.lp').textContent=m.c+' · '+(m.d||'2.8s')+' '+T('loop');
     if(e.querySelector('.st').dataset.l)paint(o);
-    e.querySelector('[data-a="n"]').innerHTML=T('cn');e.querySelector('[data-a="p"]').innerHTML=T('cp');});
+    e.querySelector('[data-a="n"]').innerHTML=T('cn');e.querySelector('[data-a="p"]').innerHTML=T('cp');var vb=e.querySelector('[data-a="v"]');if(vb)vb.textContent=T('demo');});
     catBtns.forEach(function(b){b.querySelector('.ctx').textContent=catName(b.dataset.k);});
   render();
 }
