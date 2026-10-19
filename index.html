@@ -1880,6 +1880,15 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
    mint:{en:'Mint',ar:'نعناعي',cls:'vs-mint',se:'Variant: color the text mint #8DEBD3.',sa:'نسخة: لوّن النص نعناعي #8DEBD3.'},
    shd:{en:'Hard Shadow',ar:'ظل صلب',cls:'vs-shd',se:'Variant: add a solid coral drop shadow offset down-right, no blur.',sa:'نسخة: زد ظل مرجاني صلب منزاح لتحت يمين بدون ضبابية.'}
   };
+  var ACC=/accent|coral|mint|#[0-9A-Fa-f]{6}|brand color|gradient|glow|highlight|underline|ring|bar\b|box|stroke|line/i;
+  var GOLD={
+   TRN:{se:'Variant: add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.',sa:'نسخة: زد خط ضوء ذهبي #FFC857 رفيع (حوالي 1.2% عرض) يمر على الشاشة لحظة الانتقال.'},
+   CAM:{se:'Variant: apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.',sa:'نسخة: حط تدرج ذهبي دافي #FFC857 (حوالي 8% شفافية) على الفيديو طول الحركة.'},
+   FX:{se:'Variant: color the effect elements (particles, flare, dust) gold #FFC857 instead of white.',sa:'نسخة: لوّن عناصر المؤثر (الجزيئات، الفلير، الغبار) بالذهبي #FFC857 بدل الأبيض.'},
+   SOC:{se:'Variant: draw the icon highlights and badge details in gold #FFC857 instead of the default colors.',sa:'نسخة: خل لمسات الأيقونة والشارة بالذهبي #FFC857 بدل ألوانها الأصلية.'},
+   LGO:{se:'Variant: add a soft gold #FFC857 glow (about 1.5% blur) and a thin gold edge around the logo.',sa:'نسخة: زد توهج ذهبي #FFC857 ناعم (حوالي 1.5% ضبابية) وحد ذهبي رفيع حول الشعار.'}
+  };
+  var GOLD_DEF={se:'Variant: add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.',sa:'نسخة: زد حد ذهبي #FFC857 رفيع (حوالي 0.5% عرض) وتوهج ذهبي ناعم حول العنصر الرئيسي في الحركة.'};
   var bases=M.slice(), target=1000, n=bases.length, out=[];
   var byCat={};bases.forEach(function(m){(byCat[m.c]=byCat[m.c]||[]).push(m);});
   var order=[],maxL=0;CATS.forEach(function(c){if(byCat[c.k])maxL=Math.max(maxL,byCat[c.k].length);});
@@ -1889,6 +1898,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
   for(var r=0;r<8&&n+out.length<target;r++){
     for(var j=0;j<order.length&&n+out.length<target;j++){
       var b=order[j],ks=kinds(b);if(!ks[r])continue;var k=K[ks[r]];
+      if(ks[r]==='gold'&&!ACC.test(b.spec)){var g=GOLD[b.c]||GOLD_DEF;k={en:k.en,ar:k.ar,cls:k.cls,se:g.se,sa:g.sa};}
       var d=b.d||'2.8s';if(k.f)d=(parseFloat(d)*k.f).toFixed(2)+'s';
       out.push({base:b.id,vk:ks[r],c:b.c,en:b.en+' · '+k.en,ar:b.ar+' · '+k.ar,use:b.use,ue:(TX[b.id]||b).ue||b.ue,
         dur:b.dur+(k.f?' × '+k.f:''),ez:b.ez,spec:b.spec+' '+k.se,sa:((TX[b.id]||{}).sa||b.sa)+' '+k.sa,h:b.h,d:d,vcls:k.cls||'',vlab:k.en});
@@ -1957,7 +1967,7 @@ var NOV={'M-226':['ti','sr'],'M-227':['sr'],'M-228':['rc'],'M-229':['ur','sr'],'
  'M-031':['hd'],'M-032':['kw'],'M-034':['ti','tx'],'M-164':['av'],'M-165':['tx'],'M-166':['qs','li'],'M-168':['ms'],'M-170':['no'],'M-171':['av','nm','hd'],'M-172':['ur'],'M-174':['qs'],'M-175':['hd'],'M-176':['nm'],'M-177':['ms'],'M-178':['no'],'M-180':['tx'],
  'M-036':['lg'],'M-037':['lg'],'M-038':['ti','st'],'M-039':['nm','st'],'M-040':['no'],'M-181':['lg'],'M-182':['lg'],'M-183':['lg'],'M-184':['lg'],'M-185':['lg'],'M-186':['lg'],'M-187':['lg','hd'],'M-188':['lg'],'M-189':['tx'],'M-190':['ti','st'],'M-191':['ti'],'M-192':['tx'],'M-193':['no'],'M-194':['li'],'M-195':['li'],'M-196':['qu'],'M-197':['da'],'M-198':['no'],'M-199':['pl'],'M-200':['sg'],
  'M-201':['ti'],'M-223':['av','ti'],
- 'M-249':['tx'],'M-250':['tx'],'M-252':['tx'],'M-253':['lg'],'M-254':['im'],'M-255':['im'],'M-256':['im'],'M-257':['im'],'M-258':['lg'],
+ 'M-251':['im'],'M-216':['av'],'M-220':['av'],'M-249':['tx'],'M-250':['tx'],'M-252':['tx'],'M-253':['lg'],'M-254':['im'],'M-255':['im'],'M-256':['im'],'M-257':['im'],'M-258':['lg'],
  'M-241':['ob','tx'],'M-242':['ob'],'M-244':['ob','tx'],'M-245':['sr'],'M-246':['ob'],'M-247':['ob','sk'],'M-248':['ob'],'M-263':['tx'],
  'M-157':['tx'],'M-135':['tx'],'M-025':['im'],'M-097':['nm']};
 function needOf(m){var b=m.base||m.id;return NOV[b]||NDEF[m.c]||[];}
