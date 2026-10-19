@@ -1954,7 +1954,7 @@ var PV_EN={"المونتاج صار أسهل": "Editing just got easier", "مك�
 function toEn(html){var d=document.createElement('div');d.innerHTML=html;var w=document.createTreeWalker(d,NodeFilter.SHOW_TEXT),n,list=[];while(n=w.nextNode())list.push(n);
   list.forEach(function(n){var t=n.textContent.trim();if(PV_EN[t])n.textContent=n.textContent.replace(t,PV_EN[t]);});
   d.querySelectorAll('[data-t]').forEach(function(e){if(PV_EN[e.dataset.t])e.dataset.t=PV_EN[e.dataset.t];});return d.innerHTML;}
-function stageHTML(m){if(!m._ar)m._ar=m.h().replace(/@alansari\.tech/g,'<bdi dir="ltr">@alansari.tech</bdi>');if(lang==='en'){if(!m._en)m._en=toEn(m._ar);return m._en;}return m._ar;}
+function stageHTML(m){if(!m._ar)m._ar=m.h().replace(/@alansari\.tech/g,'<bdi dir="ltr">@alansari.tech</bdi>');if(lang==='en'){if(!m._en)m._en=toEn(m._ar);return m._en;}if(!m._arx)m._arx=arFix(m._ar,m.base||m.id);return m._arx;}
 function paint(o){var st=o.el.querySelector('.st');if(st.dataset.l===lang)return;st.innerHTML=stageHTML(o.m)+(o.m.vlab?'<span class="vtag">'+o.m.vlab+'</span>':'')+'<i class="ph"></i>';st.dataset.l=lang;}
 
 /* content needs: what the client must provide per motion */
@@ -1990,9 +1990,9 @@ function needPr(m,l){var a=needOf(m);
     if(l==='ar')return n[0]==='f'?'ارفع '+n[1]:n[1].split(' (')[0]+': "[اكتبه هنا]"';
     return n[0]==='f'?'Upload '+n[2]:n[2].charAt(0).toUpperCase()+n[2].slice(1).split(' (')[0]+': "[type it here]"';});
   return l==='ar'?' المطلوب منك: '+parts.join('، ')+'. وحدد متى يبدأ.':' What you provide: '+parts.join('; ')+'. Also say when it starts.';}
-function needChips(m){var a=needOf(m);
-  if(!a.length)return '<span class="nchip n0">'+(lang==='ar'?'بدون ملفات':'Nothing to provide')+'</span>';
-  return a.map(function(k){var n=NK[k];return '<span class="nchip n'+n[0]+'">'+(n[0]==='f'?'⬆ ':'✎ ')+(lang==='ar'?n[1]:n[2]).split(' (')[0]+'</span>';}).join('');}
+function needChips(m){var a=needOf(m),nt=(lang==='ar'&&LATN[m.base||m.id])?'<span class="nchip n0">ⓘ أحرف إنجليزية: الحرف العربي ما ينفصل</span>':'';
+  if(!a.length)return '<span class="nchip n0">'+(lang==='ar'?'بدون ملفات':'Nothing to provide')+'</span>'+nt;
+  return nt+a.map(function(k){var n=NK[k];return '<span class="nchip n'+n[0]+'">'+(n[0]==='f'?'⬆ ':'✎ ')+(lang==='ar'?n[1]:n[2]).split(' (')[0]+'</span>';}).join('');}
 function needMD(m,l){var a=needOf(m);
   if(!a.length)return needNone(m,l);
   return a.map(function(k){var n=NK[k];return (n[0]==='f'?(l==='ar'?'ملف: ':'file: '):(l==='ar'?'نص: ':'text: '))+(l==='ar'?n[1]:n[2]);}).join(l==='ar'?'، ':'; ');}
@@ -2004,6 +2004,21 @@ function openDemo(m,btn){exBack=btn;var b=m.base||m.id;exc.textContent=m.base?T(
 function closeDemo(){if(exm.hidden)return;exv.pause();exv.removeAttribute('src');exv.load();exm.hidden=true;if(exBack)exBack.focus({preventScroll:true});}
 document.getElementById('exx').addEventListener('click',closeDemo);exm.addEventListener('click',function(e){if(e.target===exm)closeDemo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDemo();});
+
+/* Arabic mode: swap English demo text inside previews for Arabic (letter-split ones stay Latin) */
+var ARFIX={
+ 'M-002':[['<div class="tw" style="--d:3.2s">HELLO, AI</div>','<div class="tw" style="--d:3.2s;direction:rtl;font-family:var(--f-ar);font-weight:700">أهلاً بالذكاء</div>']],
+ 'M-051':[['class="T Tm scr"','class="T scr"'],['DECODE','فك الشفرة']],'M-010':[['class="T Tm gl"','class="T gl"'],['AI MODE','وضع الذكاء']],
+ 'M-080':[['class="T Tm a" style="--k:k80','class="T a" style="--k:k80'],['>RGB<','>ألوان<']],
+ 'M-135':[['FREEZE','تجميد']],'M-151':[['class="T Tm"','class="T"'],['RETRO','ريترو']],'M-201':[['<div>AI</div>','<div>ذكاء</div>']],'M-038':[['Your Title','العنوان الرئيسي']],
+ 'M-226':[['Motion Library','مكتبة الموشن'],['1000 motions','1000 حركة'],['14 categories','14 نوع']],
+ 'M-229':[['Motion Library','مكتبة الموشن']],
+ 'M-232':[['Settings','الإعدادات'],['Theme','المظهر'],['Gulf Sand','رمل الخليج'],['Language','اللغة']],
+ 'M-238':[['Tabs','التبويبات'],['Home','الرئيسية'],['Library','المكتبة'],['Files','الملفات'],['1000 motions','1000 حركة']],
+ 'M-239':[['Sign up','تسجيل'],['>Name<','>الاسم<'],['Ali Alansari','علي الأنصاري'],['>Handle<','>اليوزر<']]};
+var LATN={'M-003':1,'M-052':1,'M-060':1,'M-075':1};
+function arFix(h,id){var a=ARFIX[id];if(!a)return h;a.forEach(function(r){h=h.split(r[0]).join(r[1]);});return h;}
+window.arFix=arFix;
 /* cards */
 var cards=[];
 M.forEach(function(m){
@@ -2071,7 +2086,7 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 var cnts=document.getElementsByClassName('cnt'),t0=performance.now();
 var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var scrs=document.getElementsByClassName('scr'),SC='ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#%&@';
-function tick(now){Array.prototype.forEach.call(scrs,function(e){var card=e.closest('.card');if(card.classList.contains('off')||card.hidden)return;var t=e.dataset.t,p=((now-t0)/3000)%1,k=Math.max(0,Math.min(1,(p-.08)/.4)),n=Math.floor(k*t.length),o='';if(rm&&!card.matches(':hover')){e.textContent=t;return;}for(var i=0;i<t.length;i++)o+=i<n?t[i]:SC[Math.floor(Math.random()*SC.length)];if(p>.92)o=t.replace(/./g,function(){return SC[Math.floor(Math.random()*SC.length)];});e.textContent=o;});
+function tick(now){Array.prototype.forEach.call(scrs,function(e){var card=e.closest('.card');if(card.classList.contains('off')||card.hidden)return;var t=e.dataset.t,p=((now-t0)/3000)%1,k=Math.max(0,Math.min(1,(p-.08)/.4)),n=Math.floor(k*t.length),o='';if(rm&&!card.matches(':hover')){e.textContent=t;return;}var S=/[\u0600-\u06FF]/.test(t)?'ابتثجحخدذرزسشصضطظعغفقكلمنهوي':SC;for(var i=0;i<t.length;i++)o+=i<n?t[i]:S[Math.floor(Math.random()*S.length)];if(p>.92)o=t.replace(/./g,function(){return SC[Math.floor(Math.random()*SC.length)];});e.textContent=o;});
   Array.prototype.forEach.call(cnts,function(c){var card=c.closest('.card');if(card.classList.contains('off')||card.hidden)return;
   if(rm&&!card.matches(':hover')){c.textContent=c.dataset.to;return;}
   var p=((now-t0)/3000)%1,k=Math.min(1,p/.4),v=k>=1?1:1-Math.pow(2,-10*k);if(p>.9)v=0;c.textContent=Math.round(v*c.dataset.to);});
