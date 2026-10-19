@@ -126,6 +126,11 @@ code{font-family:var(--f-mono);font-size:13px;background:var(--panel2);padding:1
 html[dir="rtl"] .en{text-align:right}
 .ar{font-weight:700;font-size:15.5px;line-height:1.45}
 .use{font-size:13px;color:var(--muted);line-height:1.6}
+.need{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.nchip{font-size:11.5px;line-height:1.4;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--fg);background:var(--bg);font-weight:600}
+.nchip.nf{border-color:var(--acc2);color:var(--acc2)}
+.nchip.nt{border-color:var(--acc);color:var(--acc)}
+.nchip.n0{color:var(--muted);font-weight:500}
 .acts{display:flex;gap:6px;margin-top:6px}
 .acts button{flex:1;white-space:nowrap;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:6px 4px;font-weight:600;font-size:12.5px;min-height:38px}
 .acts button+button{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
@@ -1904,7 +1909,7 @@ var UI={
   types:'الأنواع',bonly:'الأساسية بس (بدون النسخ)',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
   cn:'⧉ الاسم',cp:'⧉ البرومبت',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
   dlNo:'التحميل مو متاح هني، فنسخت لك محتوى الملف. الصقه في ملف نصي واحفظه باسم ',dlOk:'تم ✓ احفظ الملف وارفعه لـ Claude.',dlDecl:'ألغيت التحميل.',dlBusy:'فيه تحميل مفتوح، كمّله أول.',dlErr:'ما قدرت أحمّل الملف هني. جرّب مرة ثانية.',
-  pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa;}},
+  pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa+needPr(m,'ar');}},
  en:{h1:'Motion Library',lede:'Watch every motion play and learn its name. When you edit a video with AI, just tell it the motion number and it applies it.',s1:'motions',s2:'categories',s3:'Reels',
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
@@ -1912,7 +1917,7 @@ var UI={
   types:'Categories',bonly:'Base motions only (no variants)',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
   cn:'⧉ Name',cp:'⧉ Prompt',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
   dlNo:'Downloads are not available here, so the file content was copied. Paste it into a text file and save it as ',dlOk:'Done ✓ Save the file and upload it to Claude.',dlDecl:'Download cancelled.',dlBusy:'A download prompt is already open. Finish it first.',dlErr:'Could not download the file here. Try again.',
-  pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec;}}
+  pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec+needPr(m,'en');}}
 };
 
 var lang='ar';try{var sv=localStorage.getItem('ml-lang');if(sv==='en'||sv==='ar')lang=sv;}catch(e){}
@@ -1932,13 +1937,53 @@ function toEn(html){var d=document.createElement('div');d.innerHTML=html;var w=d
   d.querySelectorAll('[data-t]').forEach(function(e){if(PV_EN[e.dataset.t])e.dataset.t=PV_EN[e.dataset.t];});return d.innerHTML;}
 function stageHTML(m){if(!m._ar)m._ar=m.h();if(lang==='en'){if(!m._en)m._en=toEn(m._ar);return m._en;}return m._ar;}
 function paint(o){var st=o.el.querySelector('.st');if(st.dataset.l===lang)return;st.innerHTML=stageHTML(o.m)+(o.m.vlab?'<span class="vtag">'+o.m.vlab+'</span>':'')+'<i class="ph"></i>';st.dataset.l=lang;}
+
+/* content needs: what the client must provide per motion */
+var NK={
+ tx:['t','النص اللي يطلع','the text to show'],ti:['t','العنوان','the title'],st:['t','العنوان الفرعي','the subtitle'],
+ nm:['t','الاسم والمسمى','the name and role'],no:['t','الرقم والوصف','the number and its label'],
+ sr:['f','لقطة الشاشة أو تسجيلها (يطلع داخل الإطار)','a screenshot or screen recording (it appears inside the frame)'],
+ rc:['f','تسجيل الشاشة','your screen recording'],im:['f','الصورة أو الصور','the image(s)'],
+ lg:['f','شعارك (PNG بدون خلفية)','your logo (transparent PNG)'],hd:['t','اليوزر (@)','the @handle'],ur:['t','الرابط','the link'],
+ av:['f','الصورة الشخصية','the profile picture'],li:['t','العناصر (افصل بينها بفاصلة)','the items (comma-separated)'],
+ qu:['t','الاقتباس واسم قائله','the quote and who said it'],da:['t','القيم أو النسب','the values or percentages'],
+ pl:['t','اسم المكان','the place name'],sk:['f','الستيكر أو الإيموجي','the sticker or emoji image'],
+ ob:['t','وصف الشيء اللي يتتبعه (مثل: الكوب الأحمر)','what to track (e.g. the red cup)'],sg:['f','صورة توقيعك','your signature image'],
+ kw:['t','الكلمة المفتاحية','the keyword'],qs:['t','السؤال','the question'],ms:['t','الرسائل (كل وحدة في سطر)','the messages (one per line)'],
+ wd:['t','الكلمة أو الكلمات اللي تبي تبرزها','the word(s) to emphasize'],bt:['t','الزر أو المكان اللي يضغط عليه','the button or spot to click'],
+ kb:['t','الأزرار (مثل Ctrl + C)','the keys (e.g. Ctrl + C)'],fd:['t','الحقول وقيمها','the fields and their values'],fn:['t','اسم الملف','the file name']};
+var NDEF={TXT:['tx'],EMP:['wd']};
+var NOV={'M-226':['ti','sr'],'M-227':['sr'],'M-228':['rc'],'M-229':['ur','sr'],'M-230':['sr'],'M-231':['bt'],'M-233':['ti','tx'],'M-234':['tx'],'M-236':['ms'],'M-237':['kb'],'M-238':['li'],'M-239':['fd'],'M-240':['fn'],
+ 'M-031':['hd'],'M-032':['kw'],'M-034':['ti','tx'],'M-164':['av'],'M-165':['tx'],'M-166':['qs','li'],'M-168':['ms'],'M-170':['no'],'M-171':['av','nm','hd'],'M-172':['ur'],'M-174':['qs'],'M-175':['hd'],'M-176':['nm'],'M-177':['ms'],'M-178':['no'],'M-180':['tx'],
+ 'M-036':['lg'],'M-037':['lg'],'M-038':['ti','st'],'M-039':['nm','st'],'M-040':['no'],'M-181':['lg'],'M-182':['lg'],'M-183':['lg'],'M-184':['lg'],'M-185':['lg'],'M-186':['lg'],'M-187':['lg','hd'],'M-188':['lg'],'M-189':['tx'],'M-190':['ti','st'],'M-191':['ti'],'M-192':['tx'],'M-193':['no'],'M-194':['li'],'M-195':['li'],'M-196':['qu'],'M-197':['da'],'M-198':['no'],'M-199':['pl'],'M-200':['sg'],
+ 'M-201':['ti'],'M-223':['av','ti'],
+ 'M-249':['tx'],'M-250':['tx'],'M-252':['tx'],'M-253':['lg'],'M-254':['im'],'M-255':['im'],'M-256':['im'],'M-257':['im'],'M-258':['lg'],
+ 'M-241':['ob','tx'],'M-242':['ob'],'M-244':['ob','tx'],'M-245':['sr'],'M-246':['ob'],'M-247':['ob','sk'],'M-248':['ob'],'M-263':['tx'],
+ 'M-157':['tx'],'M-135':['tx'],'M-025':['im'],'M-097':['nm']};
+function needOf(m){var b=m.base||m.id;return NOV[b]||NDEF[m.c]||[];}
+function needNone(m,l){var c=m.c;
+  if(c==='CAP')return l==='ar'?'يطلع من صوتك تلقائياً، ما تحتاج تكتب شي.':'It comes from your voice automatically, so you type nothing.';
+  if(c==='AUD')return l==='ar'?'يشتغل على صوت أو موسيقى الفيديو نفسه، ما تحتاج ترفع شي.':'It runs on the video’s own voice or music, so you upload nothing.';
+  return l==='ar'?'ما يحتاج منك محتوى.':'No content needed from you.';}
+function needPr(m,l){var a=needOf(m);
+  if(!a.length)return ' ('+needNone(m,l)+(l==='ar'?' بس حدد متى يبدأ.':' Just say when it starts.')+')';
+  var parts=a.map(function(k){var n=NK[k];
+    if(l==='ar')return n[0]==='f'?'ارفع '+n[1]:n[1].split(' (')[0]+': "[اكتبه هنا]"';
+    return n[0]==='f'?'Upload '+n[2]:n[2].charAt(0).toUpperCase()+n[2].slice(1).split(' (')[0]+': "[type it here]"';});
+  return l==='ar'?' المطلوب منك: '+parts.join('، ')+'. وحدد متى يبدأ.':' What you provide: '+parts.join('; ')+'. Also say when it starts.';}
+function needChips(m){var a=needOf(m);
+  if(!a.length)return '<span class="nchip n0">'+(lang==='ar'?'بدون ملفات':'Nothing to provide')+'</span>';
+  return a.map(function(k){var n=NK[k];return '<span class="nchip n'+n[0]+'">'+(n[0]==='f'?'⬆ ':'✎ ')+(lang==='ar'?n[1]:n[2]).split(' (')[0]+'</span>';}).join('');}
+function needMD(m,l){var a=needOf(m);
+  if(!a.length)return needNone(m,l);
+  return a.map(function(k){var n=NK[k];return (n[0]==='f'?(l==='ar'?'ملف: ':'file: '):(l==='ar'?'نص: ':'text: '))+(l==='ar'?n[1]:n[2]);}).join(l==='ar'?'، ':'; ');}
 /* cards */
 var cards=[];
 M.forEach(function(m){
   var el=document.createElement('article');el.className='card';el.dataset.c=m.c;
   el.innerHTML='<div class="st'+(m.vcls?' '+m.vcls:'')+'" style="--d:'+(m.d||'2.8s')+'" aria-hidden="true"></div>'+
    '<div class="meta"><div class="idrow"><b>'+m.id+'</b>'+(m.base?'<span class="vof">'+m.base+'</span>':'')+'<span class="lp"></span></div>'+
-   '<div class="en">'+m.en+'</div><div class="ar"></div><div class="use"></div>'+
+   '<div class="en">'+m.en+'</div><div class="ar"></div><div class="use"></div><div class="need"></div>'+
    '<div class="acts"><button type="button" data-a="n"></button><button type="button" data-a="p"></button></div></div>';
   el.querySelector('[data-a="n"]').addEventListener('click',function(e){copyText(m.id+' '+m.en,e.currentTarget,T('cn'));});
   el.querySelector('[data-a="p"]').addEventListener('click',function(e){copyText(T('pr')(m),e.currentTarget,T('cp'));});
@@ -1974,6 +2019,7 @@ function applyLang(){
   cards.forEach(function(o){var m=o.m,e=o.el;
     e.querySelector('.ar').textContent=lang==='ar'?m.ar:catName(m.c);
     e.querySelector('.use').textContent=lang==='ar'?m.use:TX[m.id].ue;
+    e.querySelector('.need').innerHTML=needChips(m);
     e.querySelector('.lp').textContent=m.c+' · '+(m.d||'2.8s')+' '+T('loop');
     if(e.querySelector('.st').dataset.l)paint(o);
     e.querySelector('[data-a="n"]').innerHTML=T('cn');e.querySelector('[data-a="p"]').innerHTML=T('cp');});
@@ -2019,9 +2065,11 @@ function buildMD(){
   '- "Behind the person" means a layer under the person, using a video matte (e.g. Robust Video Matting).',
   '- Suggested pipeline: draw motions in an HTML page with render(t), render frame by frame with Playwright, composite over the video with ffmpeg. Add a light matching sound effect under the voice for each motion.',
   '- Before the final render, export stills of each motion moment and check timing, overlaps and the safe zone.',
-  '- Motions can be chained, e.g. "M-016 then M-038".',''];
+  '- Motions can be chained, e.g. "M-016 then M-038".',
+  '- Each motion has a "Content the user must provide" line. If the user did not supply that content (text, image, screen recording, logo, handle…), ASK for it before rendering. Never invent screenshots, logos, faces or screen recordings, and never leave placeholder text in the final video.',
+  '- Variants (Fast, Slow, Gold, Boxed…) need the same content as the motion they come from.',''];
   CATS.forEach(function(c){L.push('## '+c.k+' — '+CAT_EN[c.k],'');
-    M.filter(function(m){return m.c===c.k;}).forEach(function(m){if(m.base){L.push('### '+m.id+' · '+m.en,'- Variant of '+m.base+'. '+K_EN(m),'');return;}L.push('### '+m.id+' · '+m.en,'- **When to use:** '+TX[m.id].ue,'- **Duration:** '+m.dur,'- **Easing:** '+m.ez,'- **Spec:** '+m.spec,'');});});
+    M.filter(function(m){return m.c===c.k;}).forEach(function(m){if(m.base){L.push('### '+m.id+' · '+m.en,'- Variant of '+m.base+'. '+K_EN(m),'- **Content the user must provide:** same as '+m.base,'');return;}L.push('### '+m.id+' · '+m.en,'- **When to use:** '+TX[m.id].ue,'- **Content the user must provide:** '+needMD(m,'en'),'- **Duration:** '+m.dur,'- **Easing:** '+m.ez,'- **Spec:** '+m.spec,'');});});
   L.push('---','@alansari.tech · Instagram: instagram.com/alansari.tech · Telegram: t.me/alansari_tech');
   return L.join('\n');}
   var A=['# مكتبة الموشن من Alansari.Tech · الإصدار 2.0','',M.length+' حركة موشن بأسماء ثابتة، للمونتاج بالذكاء الاصطناعي (ريلز إنستغرام، تيك توك، شورتس).','',
@@ -2035,16 +2083,18 @@ function buildMD(){
   '- الطريقة المقترحة: ارسم الحركات بصفحة HTML فيها render(t)، ورندرها فريم فريم بـ Playwright، وادمجها مع الفيديو بـ ffmpeg. وحط مع كل حركة مؤثر صوتي خفيف يناسبها تحت الصوت.',
   '- قبل الرندر النهائي، طلّع صور من لحظة كل حركة وتأكد من التوقيت والتداخل والمنطقة الآمنة.',
   '- تقدر تربط الحركات ورا بعض، مثل "M-016 وبعدها M-038".',
+  '- كل حركة فيها سطر «المحتوى المطلوب من المستخدم». إذا المستخدم ما عطاك هالمحتوى (نص، صورة، تسجيل شاشة، شعار، يوزر…) اسأله عنه قبل الرندر. لا تخترع لقطات شاشة ولا شعارات ولا وجوه ولا تسجيلات، ولا تخلي نص تجريبي في الفيديو النهائي.',
+  '- النسخ (Fast, Slow, Gold, Boxed…) تحتاج نفس محتوى الحركة اللي طالعة منها.',
   '- أسماء الحركات بالإنجليزي ثابتة، استخدمها مثل ما هي.',''];
   CATS.forEach(function(c){A.push('## '+c.ar+' ('+c.k+')','');
-    M.filter(function(m){return m.c===c.k;}).forEach(function(m){if(m.base){A.push('### '+m.id+' · '+m.en+' ('+m.ar+')','- نسخة من '+m.base+'. '+K_AR(m),'');return;}A.push('### '+m.id+' · '+m.en+' ('+m.ar+')','- **متى تستخدمها:** '+m.use,'- **المدة:** '+m.dur,'- **الـ Easing:** '+m.ez,'- **الوصف:** '+TX[m.id].sa,'');});});
+    M.filter(function(m){return m.c===c.k;}).forEach(function(m){if(m.base){A.push('### '+m.id+' · '+m.en+' ('+m.ar+')','- نسخة من '+m.base+'. '+K_AR(m),'- **المحتوى المطلوب من المستخدم:** نفس '+m.base,'');return;}A.push('### '+m.id+' · '+m.en+' ('+m.ar+')','- **متى تستخدمها:** '+m.use,'- **المحتوى المطلوب من المستخدم:** '+needMD(m,'ar'),'- **المدة:** '+m.dur,'- **الـ Easing:** '+m.ez,'- **الوصف:** '+TX[m.id].sa,'');});});
   A.push('---','@alansari.tech · إنستغرام: instagram.com/alansari.tech · تلغرام: t.me/alansari_tech');
   return A.join('\n');
 }
 function buildJSON(){return JSON.stringify({name:'Alansari.Tech Motion Library',version:'1.0',canvas:{width:1080,height:1920,fps:30},safeZone:{top:300,bottom:1550},
   brand:{accent:'#E3643F',secondary:'#0F5B66'},
   categories:CATS.map(function(c){return {id:c.k,name_ar:c.ar,name_en:CAT_EN[c.k]};}),
-  motions:M.map(function(m){return {id:m.id,category:m.c,name_en:m.en,name_ar:m.ar,when_to_use_ar:m.use,when_to_use_en:TX[m.id].ue,duration:m.dur,easing:m.ez,spec_ar:TX[m.id].sa,spec_en:m.spec,variant_of:m.base||null};})},null,2);}
+  motions:M.map(function(m){return {id:m.id,category:m.c,name_en:m.en,name_ar:m.ar,when_to_use_ar:m.use,when_to_use_en:TX[m.id].ue,duration:m.dur,easing:m.ez,spec_ar:TX[m.id].sa,spec_en:m.spec,variant_of:m.base||null,content_needed:needOf(m).map(function(k){return {type:NK[k][0]==='f'?'file':'text',ar:NK[k][1],en:NK[k][2]};})};})},null,2);}
 window.buildMD=buildMD;window.buildJSON=buildJSON;window.setLang=function(l){lang=l;applyLang();};
 var msg=document.getElementById('msg'),dlP=window.claude&&window.claude.use?window.claude.use('downloads'):Promise.resolve(null);
 function offer(name,data,btn){
