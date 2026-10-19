@@ -57,6 +57,8 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .soc svg{width:20px;height:20px;flex:0 0 auto}
 .soc.ig svg{color:#C2456F}
 .soc.tg svg{color:#2A9BD6}
+.soc.tt svg{color:var(--fg)}
+.madeby a{color:inherit;text-decoration:none;font-weight:700}
 .hcta{display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:999px;background:var(--fg);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px}
 .lang{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel);height:42px}
 .lang button{border:0;background:transparent;padding:0 14px;font-weight:700;font-size:14px}
@@ -889,9 +891,9 @@ button,a,input,label{touch-action:manipulation}
   <div class="row">
     <a class="soc ig" href="https://instagram.com/alansari.tech" target="_blank" rel="noopener" aria-label="Instagram @alansari.tech"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@alansari.tech</a>
     <a class="soc tg" href="https://t.me/alansari_tech" target="_blank" rel="noopener" aria-label="Telegram @alansari_tech"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 4.2 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM8.6 14l9.2-5.8c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2L8.6 14z"/></svg>@alansari_tech</a>
+    <a class="soc tt" href="https://www.tiktok.com/@alansari.tech" target="_blank" rel="noopener" aria-label="TikTok @alansari.tech"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.6 1.5V6.8a4.7 4.7 0 0 1-4.6-4.8z"/></svg>@alansari.tech</a>
   </div>
-  <button class="replay" type="button" onclick="replayIntro()">↻ شوف الدخول مرة ثانية</button>
-  <div class="mono">ALANSARI.TECH · MOTION LIBRARY v2 · 1000 MOTIONS</div>
+  <div class="mono madeby"><span data-i="made">صنع بواسطة</span> <a href="https://alansari.tech" target="_blank" rel="noopener">alansari.tech</a></div>
 </footer>
 </div>
 <div class="scrim" id="scrim" hidden></div>
@@ -1895,7 +1897,7 @@ var UI={
   howT:'شلون تستخدمها',how1:'حمّل ملف المكتبة. فيه شرح كامل لكل حركة.',how2:'ارفعه مرة وحدة في Project على Claude، أو ارفعه مع الفيديو.',how3:'قل له رقم الحركة ومتى تبيها، وهو يطبقها.',
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
   fileT:'ملف المكتبة',fileD:'ملف فيه شرح كامل لكل الـ 1000 حركة، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">هذا الملف فيه شرح كل الـ 1000 حركة. انت ما تحتاج تفتحه أو تقراه، هو للذكاء الاصطناعي. بس سوّ كذا:</p><ol class="fsteps"><li><b>حمّل ملف المكتبة</b> من زر «تحميل الملف»، وخله بجهازك.</li><li><b>افتح Claude</b> وسوّ <b>Project</b> جديد (مثلاً سمّه «مونتاج»)، وارفع الملف داخل <b>Project knowledge</b>. هذي مرة وحدة بس.</li><li><b>داخل المشروع</b> افتح محادثة جديدة، وارفع فيديوك، واكتب الحركات بالرقم:<span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">ما عندك Project؟ ارفع الملف مع الفيديو بنفس المحادثة، ويشتغل نفس الشي.</p>',dl1:'تحميل الملف',dl2:'نسخة JSON',
-  types:'الأنواع',bonly:'الأساسية بس (بدون النسخ)',soon:'1000 حركة · 275 أساسية و725 نسخة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
+  types:'الأنواع',bonly:'الأساسية بس (بدون النسخ)',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
   cn:'⧉ الاسم',cp:'⧉ البرومبت',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
   dlNo:'التحميل مو متاح هني، فنسخت لك محتوى الملف. الصقه في ملف نصي واحفظه باسم ',dlOk:'تم ✓ احفظ الملف وارفعه لـ Claude.',dlDecl:'ألغيت التحميل.',dlBusy:'فيه تحميل مفتوح، كمّله أول.',dlErr:'ما قدرت أحمّل الملف هني. جرّب مرة ثانية.',
   pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa;}},
@@ -1903,7 +1905,7 @@ var UI={
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
   fileT:'Library file',fileD:'One file with a full spec for all 1000 motions, ready for the AI.',howD:'<p class="fintro">This file describes all 1000 motions. You do not need to open or read it; it is for the AI. Just do this:</p><ol class="fsteps"><li><b>Download the library file</b> with the “Download file” button.</li><li><b>Open Claude</b>, create a new <b>Project</b> (for example “Editing”) and upload the file to <b>Project knowledge</b>. You only do this once.</li><li><b>Inside the project</b>, start a new chat, upload your video and name the motions by number:<span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">No Project? Attach the file together with your video in the same chat and it works the same way.</p>',dl1:'Download file',dl2:'JSON version',
-  types:'Categories',bonly:'Base motions only (no variants)',soon:'1000 motions · 275 base and 725 variants',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
+  types:'Categories',bonly:'Base motions only (no variants)',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
   cn:'⧉ Name',cp:'⧉ Prompt',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
   dlNo:'Downloads are not available here, so the file content was copied. Paste it into a text file and save it as ',dlOk:'Done ✓ Save the file and upload it to Claude.',dlDecl:'Download cancelled.',dlBusy:'A download prompt is already open. Finish it first.',dlErr:'Could not download the file here. Try again.',
   pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec;}}
