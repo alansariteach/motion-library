@@ -782,11 +782,12 @@ footer .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 /* variant styles */
 .vs-mint .T,.vs-mint .cap,.vs-mint .ow span{color:#8DEBD3}
 .vs-gold .T,.vs-gold .cap,.vs-gold .ow span{color:#FFC857}
-.vs-box .T,.vs-box .cap>*{background:rgba(240,122,80,.92);color:var(--ink-on);padding:0 .25em;border-radius:.18em}
+.vs-box .T,.vs-box .cap>*{background:rgba(16,46,51,.94);color:#fff;padding:.08em .35em;border-radius:.22em;box-shadow:0 0 0 .3cqw rgba(255,255,255,.16)}
 .vs-out .T,.vs-out .cap,.vs-out .ow span{color:transparent;-webkit-text-stroke:.35cqw var(--mon-fg)}
 .vs-glow .T,.vs-glow .cap,.vs-glow .ow span{text-shadow:0 0 1.5cqw var(--coral),0 0 5cqw var(--coral)}
 .vs-shd .T,.vs-shd .cap,.vs-shd .ow span{text-shadow:1.2cqw 1.2cqw 0 var(--coral)}
 .vc-gold{--coral:#FFC857;--mint:#FFC857}
+.st.vg-glow>*:not(.ph):not(.vtag){filter:drop-shadow(0 0 1.6cqw rgba(255,200,87,.95))}
 .vtag{position:absolute;top:2.5cqw;left:2.5cqw;z-index:8;font-family:var(--f-mono);font-size:4cqw;font-weight:700;background:rgba(0,0,0,.45);color:#fff;padding:.3cqw 2cqw;border-radius:2cqw;direction:ltr}
 
 .bonly{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:6px 8px 4px;cursor:pointer}
@@ -1883,7 +1884,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
    fast:{en:'Fast',ar:'سريع',f:.6,se:'Variant: the same motion 40% faster (multiply every duration by 0.6).',sa:'نسخة: نفس الحركة بس أسرع بـ 40% (اضرب كل المدد في 0.6).'},
    slow:{en:'Slow',ar:'بطيء',f:1.6,se:'Variant: the same motion 60% slower and smoother (multiply every duration by 1.6).',sa:'نسخة: نفس الحركة بس أبطأ بـ 60% وأنعم (اضرب كل المدد في 1.6).'},
    gold:{en:'Gold',ar:'ذهبي',cls:'vc-gold vs-gold',se:'Variant: use gold #FFC857 instead of the coral accent.',sa:'نسخة: استخدم الذهبي #FFC857 بدل اللون المرجاني.'},
-   box:{en:'Boxed',ar:'بمربع',cls:'vs-box',se:'Variant: put the text inside a solid coral box with rounded corners and dark text.',sa:'نسخة: حط النص داخل مربع مرجاني بزوايا دائرية والنص غامق.'},
+   box:{en:'Boxed',ar:'بمربع',cls:'vs-box',se:'Variant: put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.',sa:'نسخة: حط النص داخل مربع أزرق غامق #102E33 بزوايا دائرية والنص أبيض. وتأثير اللون المرجاني حق الحركة يبقى فوقه.'},
    glow:{en:'Glow',ar:'متوهج',cls:'vs-glow',se:'Variant: add a soft coral glow around the text.',sa:'نسخة: زد توهج مرجاني ناعم حول النص.'},
    out:{en:'Outline',ar:'حدود',cls:'vs-out',se:'Variant: show the text as a white outline only, no fill.',sa:'نسخة: خل النص حدود بيضا بس بدون تعبئة.'},
    mint:{en:'Mint',ar:'نعناعي',cls:'vs-mint',se:'Variant: color the text mint #8DEBD3.',sa:'نسخة: لوّن النص نعناعي #8DEBD3.'},
@@ -1894,8 +1895,10 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
    TRN:{se:'Variant: add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.',sa:'نسخة: زد خط ضوء ذهبي #FFC857 رفيع (حوالي 1.2% عرض) يمر على الشاشة لحظة الانتقال.'},
    CAM:{se:'Variant: apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.',sa:'نسخة: حط تدرج ذهبي دافي #FFC857 (حوالي 8% شفافية) على الفيديو طول الحركة.'},
    FX:{se:'Variant: color the effect elements (particles, flare, dust) gold #FFC857 instead of white.',sa:'نسخة: لوّن عناصر المؤثر (الجزيئات، الفلير، الغبار) بالذهبي #FFC857 بدل الأبيض.'},
-   SOC:{se:'Variant: draw the icon highlights and badge details in gold #FFC857 instead of the default colors.',sa:'نسخة: خل لمسات الأيقونة والشارة بالذهبي #FFC857 بدل ألوانها الأصلية.'},
-   LGO:{se:'Variant: add a soft gold #FFC857 glow (about 1.5% blur) and a thin gold edge around the logo.',sa:'نسخة: زد توهج ذهبي #FFC857 ناعم (حوالي 1.5% ضبابية) وحد ذهبي رفيع حول الشعار.'}
+   SOC:{se:'Variant: add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.',sa:'نسخة: زد توهج ذهبي #FFC857 ناعم (حوالي 1.5% ضبابية) حول الأيقونة أو البطاقة الرئيسية.',glow:1},
+   LGO:{se:'Variant: add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.',sa:'نسخة: زد توهج ذهبي #FFC857 ناعم (حوالي 1.5% ضبابية) حول الشعار أو العنصر الرئيسي.',glow:1},
+   TXT:{se:'Variant: color the text gold #FFC857 instead of white.',sa:'نسخة: لوّن النص بالذهبي #FFC857 بدل الأبيض.'},
+   EMP:{se:'Variant: color the emphasized word gold #FFC857 instead of the coral accent or white.',sa:'نسخة: لوّن الكلمة المبرزة بالذهبي #FFC857 بدل المرجاني أو الأبيض.'}
   };
   var GOLD_DEF={se:'Variant: add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.',sa:'نسخة: زد حد ذهبي #FFC857 رفيع (حوالي 0.5% عرض) وتوهج ذهبي ناعم حول العنصر الرئيسي في الحركة.'};
   var bases=M.slice(), target=1000, n=bases.length, out=[];
@@ -1907,7 +1910,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
   for(var r=0;r<8&&n+out.length<target;r++){
     for(var j=0;j<order.length&&n+out.length<target;j++){
       var b=order[j],ks=kinds(b);if(!ks[r])continue;var k=K[ks[r]];
-      if(ks[r]==='gold'&&!ACC.test(b.spec)){var g=GOLD[b.c]||GOLD_DEF;k={en:k.en,ar:k.ar,cls:k.cls,se:g.se,sa:g.sa};}
+      if(ks[r]==='gold'&&!ACC.test(b.spec)){var g=GOLD[b.c]||GOLD_DEF;k={en:k.en,ar:k.ar,cls:k.cls+(g.glow?' vg-glow':''),se:g.se,sa:g.sa};}
       var d=b.d||'2.8s';if(k.f)d=(parseFloat(d)*k.f).toFixed(2)+'s';
       out.push({base:b.id,vk:ks[r],c:b.c,en:b.en+' · '+k.en,ar:b.ar+' · '+k.ar,use:b.use,ue:(TX[b.id]||b).ue||b.ue,
         dur:b.dur+(k.f?' × '+k.f:''),ez:b.ez,spec:b.spec+' '+k.se,sa:((TX[b.id]||{}).sa||b.sa)+' '+k.sa,h:b.h,d:d,vcls:k.cls||'',vlab:k.en});
@@ -1997,9 +2000,9 @@ function needMD(m,l){var a=needOf(m);
   if(!a.length)return needNone(m,l);
   return a.map(function(k){var n=NK[k];return (n[0]==='f'?(l==='ar'?'ملف: ':'file: '):(l==='ar'?'نص: ':'text: '))+(l==='ar'?n[1]:n[2]);}).join(l==='ar'?'، ':'; ');}
 /* real examples (videos in /examples) */
-var EXS={};["M-001", "M-002", "M-003", "M-004", "M-005", "M-041", "M-042", "M-043", "M-044", "M-045", "M-046", "M-047", "M-048", "M-049", "M-050", "M-051", "M-052", "M-053", "M-054", "M-055", "M-056", "M-057", "M-058", "M-059", "M-060", "M-006", "M-007", "M-008", "M-009", "M-010", "M-061", "M-062", "M-063", "M-064", "M-065", "M-066", "M-067", "M-068", "M-069", "M-070", "M-071", "M-072", "M-073", "M-074", "M-075", "M-076", "M-077", "M-078", "M-079", "M-080", "M-031", "M-032", "M-033", "M-034", "M-035", "M-161", "M-162", "M-163", "M-164", "M-165", "M-166", "M-167", "M-168", "M-169", "M-170", "M-171", "M-172", "M-173", "M-174", "M-175", "M-176", "M-177", "M-178", "M-179", "M-180", "M-036", "M-037", "M-038", "M-039", "M-040", "M-181", "M-182", "M-183", "M-184", "M-185", "M-186", "M-187", "M-188", "M-189", "M-190", "M-191", "M-192", "M-193", "M-194", "M-195", "M-196", "M-197", "M-198", "M-199", "M-200"].forEach(function(k){EXS[k]=1;});
+var EXC={TXT:1,EMP:1,SOC:1,LGO:1};
 var exm=document.getElementById('exm'),exv=document.getElementById('exv'),exc=document.getElementById('exc'),exBack=null;
-function openDemo(m,btn){exBack=btn;var b=m.base||m.id;exc.textContent=m.base?T('demoV')(b):'';exv.onerror=function(){exc.textContent=T('demoErr');};
+function openDemo(m,btn){exBack=btn;var b=m.id;exc.textContent=m.id+' · '+m.en;exv.onerror=function(){exc.textContent=T('demoErr');};
   exv.src='examples/'+b+'.mp4';exm.hidden=false;document.getElementById('exx').focus({preventScroll:true});var pr=exv.play();if(pr&&pr.catch)pr.catch(function(){});}
 function closeDemo(){if(exm.hidden)return;exv.pause();exv.removeAttribute('src');exv.load();exm.hidden=true;if(exBack)exBack.focus({preventScroll:true});}
 document.getElementById('exx').addEventListener('click',closeDemo);exm.addEventListener('click',function(e){if(e.target===exm)closeDemo();});
@@ -2026,7 +2029,7 @@ M.forEach(function(m){
   el.innerHTML='<div class="st'+(m.vcls?' '+m.vcls:'')+'" style="--d:'+(m.d||'2.8s')+'" aria-hidden="true"></div>'+
    '<div class="meta"><div class="idrow"><b>'+m.id+'</b>'+(m.base?'<span class="vof">'+m.base+'</span>':'')+'<span class="lp"></span></div>'+
    '<div class="en">'+m.en+'</div><div class="ar"></div><div class="use"></div><div class="need"></div>'+
-   '<div class="acts"><button type="button" data-a="n"></button><button type="button" data-a="p"></button>'+(EXS[m.base||m.id]?'<button type="button" class="exb" data-a="v"></button>':'')+'</div></div>';
+   '<div class="acts"><button type="button" data-a="n"></button><button type="button" data-a="p"></button>'+(EXC[m.c]?'<button type="button" class="exb" data-a="v"></button>':'')+'</div></div>';
   el.querySelector('[data-a="n"]').addEventListener('click',function(e){copyText(m.id+' '+m.en,e.currentTarget,T('cn'));});
   el.querySelector('[data-a="p"]').addEventListener('click',function(e){copyText(T('pr')(m),e.currentTarget,T('cp'));});
   var vb=el.querySelector('[data-a="v"]');if(vb)vb.addEventListener('click',function(e){openDemo(m,e.currentTarget);});
