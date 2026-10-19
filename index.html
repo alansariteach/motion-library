@@ -897,7 +897,6 @@ button,a,input,label{touch-action:manipulation}
   <aside class="side" id="side" aria-label="الأنواع">
     <button class="x" type="button" id="closeSide" aria-label="إغلاق">✕</button>
     <input id="q" type="search" placeholder="ابحث: زوم، glitch، M-021" aria-label="بحث">
-    <label class="bonly"><input type="checkbox" id="bonly"> <span data-i="bonly">الأساسية بس (بدون النسخ)</span></label>
     <h3 data-i="types">الأنواع</h3>
     <div id="cats" role="group"></div>
     <p class="soon" data-i="soon">1000 حركة · 275 أساسية و725 نسخة</p>
@@ -1936,7 +1935,7 @@ var UI={
   howT:'شلون تستخدمها',how1:'حمّل ملف المكتبة. فيه شرح كامل لكل حركة.',how2:'ارفعه مرة وحدة في Project على Claude، أو ارفعه مع الفيديو.',how3:'قل له رقم الحركة ومتى تبيها، وهو يطبقها.',
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
   fileT:'ملف المكتبة',fileD:'ملف فيه شرح كامل لكل الـ 1000 حركة، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">هذا الملف فيه شرح كل الـ 1000 حركة. انت ما تحتاج تفتحه أو تقراه، هو للذكاء الاصطناعي. بس سوّ كذا:</p><ol class="fsteps"><li><b>حمّل ملف المكتبة</b> من زر «تحميل الملف»، وخله بجهازك.</li><li><b>افتح Claude</b> وسوّ <b>Project</b> جديد (مثلاً سمّه «مونتاج»)، وارفع الملف داخل <b>Project knowledge</b>. هذي مرة وحدة بس.</li><li><b>داخل المشروع</b> افتح محادثة جديدة، وارفع فيديوك، واكتب الحركات بالرقم:<span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">ما عندك Project؟ ارفع الملف مع الفيديو بنفس المحادثة، ويشتغل نفس الشي.</p>',dl1:'تحميل الملف',dl2:'نسخة JSON',
-  types:'الأنواع',bonly:'الأساسية بس (بدون النسخ)',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
+  types:'الأنواع',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
   cn:'⧉ الاسم',cp:'⧉ البرومبت',demo:'▶ شوف مثال حقيقي',demoV:function(b){return 'هذا مثال الحركة الأصلية '+b+'. النسخة نفس الحركة بتغيير بسيط.'},demoErr:'ما قدرت أحمّل المثال. تأكد من الاتصال وجرّب مرة ثانية.',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
   dlNo:'التحميل مو متاح هني، فنسخت لك محتوى الملف. الصقه في ملف نصي واحفظه باسم ',dlOk:'تم ✓ احفظ الملف وارفعه لـ Claude.',dlDecl:'ألغيت التحميل.',dlBusy:'فيه تحميل مفتوح، كمّله أول.',dlErr:'ما قدرت أحمّل الملف هني. جرّب مرة ثانية.',
   pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa+needPr(m,'ar');}},
@@ -1944,7 +1943,7 @@ var UI={
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
   fileT:'Library file',fileD:'One file with a full spec for all 1000 motions, ready for the AI.',howD:'<p class="fintro">This file describes all 1000 motions. You do not need to open or read it; it is for the AI. Just do this:</p><ol class="fsteps"><li><b>Download the library file</b> with the “Download file” button.</li><li><b>Open Claude</b>, create a new <b>Project</b> (for example “Editing”) and upload the file to <b>Project knowledge</b>. You only do this once.</li><li><b>Inside the project</b>, start a new chat, upload your video and name the motions by number:<span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">No Project? Attach the file together with your video in the same chat and it works the same way.</p>',dl1:'Download file',dl2:'JSON version',
-  types:'Categories',bonly:'Base motions only (no variants)',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
+  types:'Categories',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
   cn:'⧉ Name',cp:'⧉ Prompt',demo:'▶ See real example',demoV:function(b){return 'This is the example of the original motion '+b+'. The variant is the same motion with a small change.'},demoErr:'Could not load the example. Check your connection and try again.',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
   dlNo:'Downloads are not available here, so the file content was copied. Paste it into a text file and save it as ',dlOk:'Done ✓ Save the file and upload it to Claude.',dlDecl:'Download cancelled.',dlBusy:'A download prompt is already open. Finish it first.',dlErr:'Could not download the file here. Try again.',
   pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec+needPr(m,'en');}}
@@ -2056,7 +2055,7 @@ function catName(k){if(k==='ALL')return T('all');if(lang==='en')return CAT_EN[k]
 function render(){
   var t=q.value.trim().toLowerCase(),n=0;
   cards.forEach(function(o){var m=o.m,s=(m.id+' '+m.en+' '+m.ar+' '+m.use+' '+TX[m.id].ue+' '+catName(m.c)+' '+CAT_EN[m.c]).toLowerCase();
-    var ok=(cur==='ALL'||m.c===cur)&&(!t||s.indexOf(t)>-1)&&!(bOnly&&m.base);o.el.hidden=!ok;if(ok)n++;});
+    var ok=(cur==='ALL'||m.c===cur)&&(!t||s.indexOf(t)>-1);o.el.hidden=!ok;if(ok)n++;});
   catBtns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===cur);});
   document.getElementById('catTitle').textContent=catName(cur);
   document.getElementById('catCount').textContent=n+' / '+M.length;
@@ -2082,7 +2081,7 @@ function applyLang(){
 }
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('ml-lang',lang);}catch(e){}applyLang();});});
 q.addEventListener('input',render);
-var bOnly=false;document.getElementById('bonly').addEventListener('change',function(e){bOnly=e.target.checked;render();});
+
 /* drawer */
 function openSide(){side.classList.add('open');scrim.hidden=false;openB.setAttribute('aria-expanded','true');if(!matchMedia('(pointer:coarse)').matches)q.focus({preventScroll:true});}
 function closeSide(){if(!side.classList.contains('open'))return;side.classList.remove('open');scrim.hidden=true;openB.setAttribute('aria-expanded','false');openB.focus({preventScroll:true});}
