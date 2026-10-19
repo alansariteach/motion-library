@@ -782,8 +782,11 @@ footer .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 /* variant styles */
 .vs-mint .T,.vs-mint .cap,.vs-mint .ow span{color:#8DEBD3}
 .vs-gold .T,.vs-gold .cap,.vs-gold .ow span{color:#FFC857}
-.vs-boxL .T,.vs-boxL .cap>*{background:#F3E9D2!important;color:#102E33!important;box-shadow:0 0 0 .3cqw rgba(16,46,51,.25)!important}
-.vs-box .T,.vs-box .cap>*{background:rgba(16,46,51,.94);color:#fff;padding:.08em .35em;border-radius:.22em;box-shadow:0 0 0 .3cqw rgba(255,255,255,.16)}
+.vs-boxL .T{background:#F3E9D2!important;color:#102E33!important;box-shadow:0 0 0 .3cqw rgba(16,46,51,.25)!important}
+.vs-box .T{background:rgba(16,46,51,.94);color:#fff;padding:.08em .35em;border-radius:.22em;box-shadow:0 0 0 .3cqw rgba(255,255,255,.16)}
+.vs-box .cap{inset-inline:auto;left:50%;right:auto;translate:-50% 0;width:max-content;max-width:88cqw;background:rgba(16,46,51,.94);color:#fff;padding:.28em .6em;border-radius:.35em;box-shadow:0 0 0 .3cqw rgba(255,255,255,.16);text-shadow:none}
+.vs-box .tpath text{fill:#fff;paint-order:stroke;stroke:rgba(16,46,51,.96);stroke-width:3.2px;stroke-linejoin:round}
+.vs-box .fsk{inset:10cqw 6cqw;border-radius:5cqw;overflow:hidden;box-shadow:0 0 0 .8cqw rgba(16,46,51,.94)}
 .vs-out .T,.vs-out .cap,.vs-out .ow span{color:transparent;-webkit-text-stroke:.35cqw var(--mon-fg)}
 .vs-glow .T,.vs-glow .cap,.vs-glow .ow span{text-shadow:0 0 1.5cqw var(--coral),0 0 5cqw var(--coral)}
 .vs-shd .T,.vs-shd .cap,.vs-shd .ow span{text-shadow:1.2cqw 1.2cqw 0 var(--coral)}
@@ -1902,6 +1905,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
    EMP:{se:'Variant: color the emphasized word gold #FFC857 instead of the coral accent or white.',sa:'نسخة: لوّن الكلمة المبرزة بالذهبي #FFC857 بدل المرجاني أو الأبيض.'}
   };
   var GOLD_DEF={se:'Variant: add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.',sa:'نسخة: زد حد ذهبي #FFC857 رفيع (حوالي 0.5% عرض) وتوهج ذهبي ناعم حول العنصر الرئيسي في الحركة.'};
+  var BOXSP={'M-273':['Variant: put a thick solid dark teal #102E33 backing stroke (about 1.2% of the frame width, rounded joins) around the letters so the white text sits on a dark teal shape.','نسخة: حط حد أزرق غامق #102E33 سميك (حوالي 1.2% من عرض الشاشة وزواياه مدورة) حوالين الحروف فالنص الأبيض يكون على شكل أزرق غامق.'],'M-274':['Variant: inset the full-screen card about 6% from the frame edges with rounded corners (about 5% radius) and a dark teal #102E33 outer border, instead of filling the whole frame.','نسخة: صغّر البطاقة الكاملة وخلها بعيدة حوالي 6% عن حواف الشاشة بزوايا مدورة (حوالي 5%) وحد خارجي أزرق غامق #102E33 بدل ما تملا الشاشة كلها.']};
   var LIGHTB={'M-049':1,'M-053':1,'M-054':1,'M-055':1,'M-058':1};
   var bases=M.slice(), target=1000, n=bases.length, out=[];
   var byCat={};bases.forEach(function(m){(byCat[m.c]=byCat[m.c]||[]).push(m);});
@@ -1913,6 +1917,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
     for(var j=0;j<order.length&&n+out.length<target;j++){
       var b=order[j],ks=kinds(b);if(!ks[r])continue;var k=K[ks[r]];
       if(ks[r]==='box'&&LIGHTB[b.id]){k={en:k.en,ar:k.ar,cls:'vs-box vs-boxL',se:'Variant: put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.',sa:'نسخة: حط النص داخل مربع كريمي فاتح #F3E9D2 بزوايا دائرية والنص أزرق غامق #102E33 (المربع فاتح هني لأن ألوان تأثير الحركة نفسها كانت بتختفي على مربع غامق). وتأثير الحركة يبقى فوقه.'};}
+      if(ks[r]==='box'&&BOXSP[b.id]){k={en:k.en,ar:k.ar,cls:k.cls,se:BOXSP[b.id][0],sa:BOXSP[b.id][1]};}
       if(ks[r]==='gold'&&!ACC.test(b.spec)){var g=GOLD[b.c]||GOLD_DEF;k={en:k.en,ar:k.ar,cls:k.cls+(g.glow?' vg-glow':''),se:g.se,sa:g.sa};}
       var d=b.d||'2.8s';if(k.f)d=(parseFloat(d)*k.f).toFixed(2)+'s';
       out.push({base:b.id,vk:ks[r],c:b.c,en:b.en+' · '+k.en,ar:b.ar+' · '+k.ar,use:b.use,ue:(TX[b.id]||b).ue||b.ue,
