@@ -2008,7 +2008,7 @@ function needMD(m,l){var a=needOf(m);
   if(!a.length)return needNone(m,l);
   return a.map(function(k){var n=NK[k];return (n[0]==='f'?(l==='ar'?'ملف: ':'file: '):(l==='ar'?'نص: ':'text: '))+(l==='ar'?n[1]:n[2]);}).join(l==='ar'?'، ':'; ');}
 /* real examples (videos in /examples) */
-var EXC={TXT:1,EMP:1,SOC:1,LGO:1,CAP:1,SCR:1,AUD:1,TIM:1,TRK:1};
+var EXC={TXT:1,EMP:1,SOC:1,LGO:1,CAP:1,SCR:1,AUD:1,TIM:1,TRK:1,FX:1,D3:1,PER:1,CAM:1,TRN:1};
 var exm=document.getElementById('exm'),exv=document.getElementById('exv'),exc=document.getElementById('exc'),exBack=null;
 function openDemo(m,btn){exBack=btn;var b=m.id;exc.textContent=m.id+' · '+m.en;exv.onerror=function(){exc.textContent=T('demoErr');};
   exv.src='examples/'+b+'.mp4';exm.hidden=false;document.getElementById('exx').focus({preventScroll:true});var pr=exv.play();if(pr&&pr.catch)pr.catch(function(){});}
