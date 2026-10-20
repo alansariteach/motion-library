@@ -3,7 +3,7 @@
 Owner: Ali Alansari (Alansari.Tech). Language: Gulf Arabic. Standing rule: review your own work and fix errors immediately without asking.
 
 ## What it is
-Single-file site of 1000 named motions (M-001..M-1000; 275 base + 725 variants Fast/Slow/Gold/Boxed) and 123 fonts (FA-xx Arabic, FE-xx English). AR/EN toggle, example video per motion, library file for AI, Fonts tab.
+Single-file site of 1000 named motions (M-001..M-1000; 275 base + 725 variants Fast/Slow/Gold/Boxed) and 123 fonts (FA-xx Arabic, FE-xx English). AR/EN toggle, example video per motion, Fonts tab (with all-fonts zip download). The library file for AI is distributed through the plugin only: the site has no download buttons for it (removed 2026-10-20, the page box now explains the plugin install).
 
 ## Where things live
 - Site repo: github.com/alansariteach/motion-library (GitHub Pages: https://alansariteach.github.io/motion-library/). `index.html` is the source of truth. `examples/M-xxx.mp4` (1000 videos), `fonts/` (arabic/, english/, alansari-fonts.zip), `lib/` (per-category library files + INDEX.md, generated), `alansari-motion-library*.md/.json` (generated), `tools/` (renderer and scripts).
@@ -18,6 +18,7 @@ Single-file site of 1000 named motions (M-001..M-1000; 275 base + 725 variants F
 5. Commit trailer: Co-Authored-By + Claude-Session lines. Pages takes 2-5 min to update.
 
 ## Gotchas
+- Keep `buildMD()` / `buildJSON()` in `index.html`: `tools/build_lib.py` calls them through Playwright to generate the library files, even though the site no longer offers them as downloads.
 - Class names collide easily in index.html (e.g. `.fcard` is a card-flip motion; fonts use `.fnt`). Grep before adding CSS.
 - The live library file is large; fetch tools truncate it. Always read `lib/INDEX.md` then one small category file.
 - Python string edits (not sed) for index.html. Google Fonts is blocked in the sandbox, so fonts are installed locally.

@@ -96,7 +96,6 @@ code{font-family:var(--f-mono);font-size:13px;background:var(--panel2);padding:1
 .btn{border:0;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;background:var(--acc);color:var(--acc-ink);display:inline-flex;align-items:center;gap:8px;min-height:44px}
 .btn.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line)}
 .btn small{font-family:var(--f-mono);font-size:12px;opacity:.8}
-.msg{font-size:14px;color:var(--muted);min-height:1.4em;margin:0}
 /* bin: sidebar + grid */
 .bin{display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px;align-items:start}
 .side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:14px;display:flex;flex-direction:column;gap:6px;max-height:calc(100vh - 24px);overflow:auto}
@@ -910,11 +909,6 @@ button,a,input,label{touch-action:manipulation}
   <section class="box" id="dlbox">
     <h2 data-i="fileT">ملف المكتبة</h2>
     <div data-i="fileD"></div>
-    <div class="dl">
-      <button class="btn" id="dlMd" type="button"><span data-i="dl1">تحميل الملف</span> <small>.md</small></button>
-      <button class="btn ghost" id="dlJson" type="button"><span data-i="dl2">نسخة JSON</span> <small>.json</small></button>
-    </div>
-    <p class="msg" id="msg" role="status"></p>
     <div class="live"><p data-i="plD"></p><ol class="plst" data-i="plSt"></ol><button class="btn ghost" id="plCp" type="button" data-i="plB">⧉ alansariteach/alansari-plugins</button></div>
   </section>
 </div>
@@ -1981,26 +1975,24 @@ var UI={
  ar:{h1:'مكتبة الموشن',lede:'شوف كل حركة وهي تشتغل واعرف اسمها. ولمن تمنتج فيديو بالذكاء الاصطناعي، قل له رقم الحركة بس وهو يطبقها.',s1:'حركة',s2:'أنواع',s3:'ريلز',
   howT:'شلون تستخدمها',how1:'حمّل ملف المكتبة. فيه شرح كامل لكل حركة.',how2:'ارفعه مرة وحدة في Project على Claude، أو ارفعه مع الفيديو.',how3:'قل له رقم الحركة ومتى تبيها، وهو يطبقها.',
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
-  fileT:'ملف المكتبة',fileD:'ملف فيه شرح كامل لكل الـ 1000 حركة وقائمة الخطوط، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">هذا الملف فيه شرح كل الـ 1000 حركة. انت ما تحتاج تفتحه أو تقراه، هو للذكاء الاصطناعي. بس سوّ كذا:</p><ol class="fsteps"><li><b>حمّل ملف المكتبة</b> من زر «تحميل الملف»، وخله بجهازك.</li><li><b>افتح Claude</b> وسوّ <b>Project</b> جديد (مثلاً سمّه «مونتاج»)، وارفع الملف داخل <b>Project knowledge</b>. هذي مرة وحدة بس.</li><li><b>داخل المشروع</b> افتح محادثة جديدة، وارفع فيديوك، واكتب الحركات بالرقم:<span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">ما عندك Project؟ ارفع الملف مع الفيديو بنفس المحادثة، ويشتغل نفس الشي.</p>',dl1:'تحميل الملف',dl2:'نسخة JSON',
+  fileT:'ثبّتها بالـ Plugin',fileD:'الـ Plugin فيه شرح كامل لكل الـ 1000 حركة وقائمة الخطوط، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">المكتبة فيها شرح كل الـ 1000 حركة وكل الخطوط، وهي للذكاء الاصطناعي. انت ما تحتاج تفتحها أو تقراها. بس سوّ كذا:</p><ol class="fsteps"><li><b>ضيف الـ Plugin</b> داخل Claude مرة وحدة (الطريقة بالمربع الثاني)، وكل تحديث يوصلك لحاله.</li><li><b>افتح محادثة جديدة</b> في Claude وارفع فيديوك.</li><li><b>اكتب الحركات بالرقم:</b><span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">الخطوط نفس الشي: اكتب رقم الخط مثل FA-02 وClaude يطبقه.</p>',
   tabM:'الحركات',tabF:'الخطوط',fontsT:'الخطوط',fontsD:'خطوط عربية وإنجليزية مجانية (ترخيص مفتوح). اختر الخط، انسخ اسمه أو البرومبت، وقله للذكاء الاصطناعي مثل الحركات بالضبط.',fzip:'تحميل كل الخطوط',secAr:'الخطوط العربية',secEn:'Fonts · الإنجليزية',fempty:'ما فيه خط بهالاسم. جرّب كلمة ثانية.',fq:'ابحث: Cairo، كوفي، FA-02',fAll:'الكل',fAr:'عربي',fEn:'English',fsAr:'شلون أسوي فيديو يوقّف الناس',fsEn:'The quick brown fox 123',fcn:'⧉ الاسم',fcp:'⧉ البرومبت',fdl:'⬇ تحميل',fnf:function(n){return n+' ملف';},
   
   
-  plD:'الأفضل: ضيفها مرة وحدة كـ Plugin داخل Claude، وكل تحديث يوصلك لحاله. بعدها اكتب رقم الحركة أو الخط، مثل M-016 أو FA-02، وخل Claude يطبقها.',plSt:'<li>افتح claude.ai بالمتصفح ← Customize ← Plugins</li><li>Add ← Add marketplace ← Add from a repository</li><li>اختر <b>alansari-plugins</b> (أو الصق الاسم تحت) وثبّت <b>alansari-motion</b></li><li>فعّل Sync automatically</li>',plB:'⧉ alansariteach/alansari-plugins',plS:'alansariteach/alansari-plugins',
+  plD:'ضيفها مرة وحدة كـ Plugin داخل Claude، وكل تحديث يوصلك لحاله. بعدها اكتب رقم الحركة أو الخط، مثل M-016 أو FA-02، وخل Claude يطبقها.',plSt:'<li>افتح claude.ai بالمتصفح ← Customize ← Plugins</li><li>Add ← Add marketplace ← Add from a repository</li><li>اختر <b>alansari-plugins</b> (أو الصق الاسم تحت) وثبّت <b>alansari-motion</b></li><li>فعّل Sync automatically</li>',plB:'⧉ alansariteach/alansari-plugins',plS:'alansariteach/alansari-plugins',
   types:'الأنواع',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
   cn:'⧉ الاسم',cp:'⧉ البرومبت',demo:'▶ شوف مثال حقيقي',demoV:function(b){return 'هذا مثال الحركة الأصلية '+b+'. النسخة نفس الحركة بتغيير بسيط.'},demoErr:'ما قدرت أحمّل المثال. تأكد من الاتصال وجرّب مرة ثانية.',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
-  dlNo:'التحميل مو متاح هني، فنسخت لك محتوى الملف. الصقه في ملف نصي واحفظه باسم ',dlOk:'تم ✓ احفظ الملف وارفعه لـ Claude.',dlDecl:'ألغيت التحميل.',dlBusy:'فيه تحميل مفتوح، كمّله أول.',dlErr:'ما قدرت أحمّل الملف هني. جرّب مرة ثانية.',
   pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa+needPr(m,'ar');}},
  en:{h1:'Motion Library',lede:'Watch every motion play and learn its name. When you edit a video with AI, just tell it the motion number and it applies it.',s1:'motions',s2:'categories',s3:'Reels',
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
-  fileT:'Library file',fileD:'One file with a full spec for all 1000 motions plus the font list, ready for the AI.',howD:'<p class="fintro">This file describes all 1000 motions. You do not need to open or read it; it is for the AI. Just do this:</p><ol class="fsteps"><li><b>Download the library file</b> with the “Download file” button.</li><li><b>Open Claude</b>, create a new <b>Project</b> (for example “Editing”) and upload the file to <b>Project knowledge</b>. You only do this once.</li><li><b>Inside the project</b>, start a new chat, upload your video and name the motions by number:<span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">No Project? Attach the file together with your video in the same chat and it works the same way.</p>',dl1:'Download file',dl2:'JSON version',
+  fileT:'Install the Plugin',fileD:'The Plugin carries a full spec for all 1000 motions plus the font list, ready for the AI.',howD:'<p class="fintro">The library describes all 1000 motions and every font. It is for the AI, so you do not need to open or read it. Just do this:</p><ol class="fsteps"><li><b>Add the Plugin</b> to Claude once (steps are in the second box) and every update reaches you automatically.</li><li><b>Start a new chat</b> in Claude and upload your video.</li><li><b>Name the motions by number:</b><span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">Fonts work the same way: type a font ID like FA-02 and Claude applies it.</p>',
   tabM:'Motions',tabF:'Fonts',fontsT:'Fonts',fontsD:'Free Arabic and English fonts (open licence). Pick a font, copy its name or prompt, and tell the AI just like a motion.',fzip:'Download all fonts',secAr:'Arabic fonts',secEn:'English fonts',fempty:'No font matches that. Try another word.',fq:'Search: Cairo, kufi, FA-02',fAll:'All',fAr:'Arabic',fEn:'English',fsAr:'شلون أسوي فيديو يوقّف الناس',fsEn:'The quick brown fox 123',fcn:'⧉ Name',fcp:'⧉ Prompt',fdl:'⬇ Download',fnf:function(n){return n+' file'+(n>1?'s':'');},
   
   
-  plD:'Best: add it as a Claude Plugin once and every update reaches you automatically. Then just type a motion or font ID (M-016 or FA-02) and Claude applies it.',plSt:'<li>Open claude.ai in a browser, Customize, Plugins</li><li>Add, Add marketplace, Add from a repository</li><li>Pick <b>alansari-plugins</b> (or paste the name below) and install <b>alansari-motion</b></li><li>Turn on Sync automatically</li>',plB:'⧉ alansariteach/alansari-plugins',plS:'alansariteach/alansari-plugins',
+  plD:'Add it as a Claude Plugin once and every update reaches you automatically. Then just type a motion or font ID (M-016 or FA-02) and Claude applies it.',plSt:'<li>Open claude.ai in a browser, Customize, Plugins</li><li>Add, Add marketplace, Add from a repository</li><li>Pick <b>alansari-plugins</b> (or paste the name below) and install <b>alansari-motion</b></li><li>Turn on Sync automatically</li>',plB:'⧉ alansariteach/alansari-plugins',plS:'alansariteach/alansari-plugins',
   types:'Categories',soon:'1000 motions · 275 base and 725 variants',made:'Made by',empty:'No motion matches that. Try another word.',all:'All',q:'Search: zoom, glitch, M-021',close:'Close',
   cn:'⧉ Name',cp:'⧉ Prompt',demo:'▶ See real example',demoV:function(b){return 'This is the example of the original motion '+b+'. The variant is the same motion with a small change.'},demoErr:'Could not load the example. Check your connection and try again.',copied:'Copied ✓',nocopy:'Copy failed',loop:'loop',
-  dlNo:'Downloads are not available here, so the file content was copied. Paste it into a text file and save it as ',dlOk:'Done ✓ Save the file and upload it to Claude.',dlDecl:'Download cancelled.',dlBusy:'A download prompt is already open. Finish it first.',dlErr:'Could not download the file here. Try again.',
   pr:function(m){return 'When I say "[line]", apply '+m.id+' '+m.en+': '+m.spec+needPr(m,'en');}}
 };
 
@@ -2277,17 +2269,6 @@ buildMD=function(){var m=buildMD0(),i=m.lastIndexOf('\n---\n');return i<0?m+'\n'
 buildJSON=function(){var o=JSON.parse(buildJSON0());o.fonts=FONTS.map(function(f){return {id:f.id,name:f.n,language:f.k==='ar'?'arabic':'english',category:f.c,weights:f.v?{variable:true,min:f.w[0],max:f.w[1]}:{variable:false,list:f.w},google_fonts:fGF(f),file:BASE_URL+fUrl(f)};});return JSON.stringify(o,null,2);};
 window.buildMD=buildMD;window.buildJSON=buildJSON;
 
-var msg=document.getElementById('msg'),dlP=window.claude&&window.claude.use?window.claude.use('downloads'):Promise.resolve(null);
-function offer(name,data,btn){
-  dlP.then(function(dl){
-    var lbl=btn.innerHTML;
-    if(!dl){try{var bl=new Blob([data],{type:name.endsWith('.json')?'application/json':'text/markdown'}),u=URL.createObjectURL(bl),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove();},800);msg.textContent=T('dlOk');}catch(e){copyText(data,btn,lbl);msg.textContent=T('dlNo')+name;}return;}
-    dl.save({filename:name,data:data}).then(function(){msg.textContent=T('dlOk');},function(e){
-      msg.textContent=e&&e.code==='declined'?T('dlDecl'):(e&&e.code==='rate_limited'?T('dlBusy'):T('dlErr'));});
-  });
-}
-document.getElementById('dlMd').addEventListener('click',function(e){offer(lang==='ar'?'alansari-motion-library-ar.md':'alansari-motion-library.md',buildMD(),e.currentTarget);});
-document.getElementById('dlJson').addEventListener('click',function(e){offer('alansari-motion-library.json',buildJSON(),e.currentTarget);});
 applyLang();
 </script>
 
