@@ -17,6 +17,9 @@ Single-file site of 1000 named motions (M-001..M-1000; 275 base + 725 variants F
 4. Check with `tools/sheet.py` (contact sheets) and `tools/audit.py` (static-video check). Known intentionally near-static: Face Blur, Halftone, Watermark Corner, Label Follow, Callout Line.
 5. Commit trailer: Co-Authored-By + Claude-Session lines. Pages takes 2-5 min to update.
 
+## Analytics
+GoatCounter (cookieless, no consent banner): https://alansari-tech.goatcounter.com. Script is in `<head>` of `index.html`. A click on the plugin-name copy button (`#plCp`) is counted as the event `plugin-copy` (intent to install, not a confirmed install). Real installs can't be measured; GitHub Traffic on `alansari-plugins` is a rough second signal.
+
 ## Gotchas
 - Keep `buildMD()` / `buildJSON()` in `index.html`: `tools/build_lib.py` calls them through Playwright to generate the library files, even though the site no longer offers them as downloads.
 - Class names collide easily in index.html (e.g. `.fcard` is a card-flip motion; fonts use `.fnt`). Grep before adding CSS.

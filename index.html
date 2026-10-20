@@ -10,6 +10,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230F5B66'/%3E%3Cpath fill='%23E3643F' d='M50 14l5 24 21-13-13 21 24 5-24 5 13 21-21-13-5 24-5-24-21 13 13-21-24-5 24-5-13-21 21 13z'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script data-goatcounter="https://alansari-tech.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <title>مكتبة الموشن</title>
@@ -2247,7 +2248,7 @@ function fRender(){
   document.getElementById('fempty').hidden=(nA+nE)>0;
 }
 document.getElementById('fq').addEventListener('input',fRender);
-document.getElementById('plCp').addEventListener('click',function(e){copyText(T('plS'),e.currentTarget,T('plB'));});
+document.getElementById('plCp').addEventListener('click',function(e){copyText(T('plS'),e.currentTarget,T('plB'));try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'plugin-copy',title:'Plugin name copied',event:true});}catch(_){}});
 function showTab(t){var f=t==='F';document.getElementById('fontsView').hidden=!f;document.getElementById('motionsView').hidden=f;
   document.getElementById('tabM').setAttribute('aria-pressed',!f);document.getElementById('tabF').setAttribute('aria-pressed',f);
   try{history.replaceState(null,'',f?'#fonts':'#motions');}catch(e){}if(f)window.scrollTo({top:document.querySelector('.tabs').offsetTop-8});}
