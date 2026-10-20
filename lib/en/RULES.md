@@ -1,0 +1,12 @@
+## Instructions for the AI editor
+- When the user names a motion by ID (e.g. `M-016`) or by name, implement it exactly as specified below.
+- Default canvas: 1080x1920, 30fps. Pixel values are for a 1080-wide frame; scale proportionally for other sizes.
+- Start every motion on the exact frame of the word or action the user names (use word-level transcript timestamps).
+- Keep text and UI inside the Reels safe zone: y between 300 and 1550 px, x between 60 and 1020 px.
+- Accent colour: #E3643F (Sunset Coral) with #0F5B66 (Gulf Teal), unless the user gives other colours. Text: bold Arabic display font (e.g. Alexandria 800), white with a soft shadow.
+- "Behind the person" means a layer under the person, using a video matte (e.g. Robust Video Matting).
+- Suggested pipeline: draw motions in an HTML page with render(t), render frame by frame with Playwright, composite over the video with ffmpeg. Add a light matching sound effect under the voice for each motion.
+- Before the final render, export stills of each motion moment and check timing, overlaps and the safe zone.
+- Motions can be chained, e.g. "M-016 then M-038".
+- Each motion has a "Content the user must provide" line. If the user did not supply that content (text, image, screen recording, logo, handle…), ASK for it before rendering. Never invent screenshots, logos, faces or screen recordings, and never leave placeholder text in the final video.
+- Variants (Fast, Slow, Gold, Boxed…) need the same content as the motion they come from.
