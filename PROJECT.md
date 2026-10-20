@@ -20,6 +20,9 @@ Single-file site of 1000 named motions (M-001..M-1000; 275 base + 725 variants F
 ## Analytics
 GoatCounter (cookieless, no consent banner): https://alansari-tech.goatcounter.com. Script is in `<head>` of `index.html`. A click on the plugin-name copy button (`#plCp`) is counted as the event `plugin-copy` (intent to install, not a confirmed install). Real installs can't be measured; GitHub Traffic on `alansari-plugins` is a rough second signal.
 
+## Plugin install path (verified 2026-10-20 on the real claude.ai UI)
+Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste `alansariteach/alansari-plugins` > Sync. Then Discover tab > search the plugin > `+`. Auto-updates: Add > Manage marketplaces > ⋮ > Sync automatically. Plugins need a paid plan (Pro or higher). Install-video source is the HTML timeline `walk2.html` (kept outside the repo).
+
 ## Gotchas
 - Keep `buildMD()` / `buildJSON()` in `index.html`: `tools/build_lib.py` calls them through Playwright to generate the library files, even though the site no longer offers them as downloads.
 - Class names collide easily in index.html (e.g. `.fcard` is a card-flip motion; fonts use `.fnt`). Grep before adding CSS.
