@@ -1,0 +1,1 @@
+Renderer and audit tools for the example videos. See ../PROJECT.md. Paths inside the scripts assume the original sandbox layout (/home/claude/demo, /home/claude/site); adjust or recreate those folders.
