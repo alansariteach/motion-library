@@ -78,6 +78,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .stats span{font-size:13px;color:var(--hero-dim)}
 .hero .logo-big{display:block;width:100%;height:auto;max-width:100%;padding:28px 28px 28px 8px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.25))}
 /* how + download */
+.vidbox{margin-top:16px}.vidbox video{width:100%;height:auto;aspect-ratio:16/9;border-radius:16px;background:#000;display:block}
 .top2{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
 .box{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .box h2{margin:0;font-size:19px;font-weight:800}
@@ -913,7 +914,10 @@ button,a,input,label{touch-action:manipulation}
     <div class="live"><p data-i="plD"></p><ol class="plst" data-i="plSt"></ol><button class="btn ghost" id="plCp" type="button" data-i="plB">⧉ alansariteach/alansari-plugins</button></div>
   </section>
 </div>
-
+<section class="box vidbox" id="vidbox">
+  <h2 data-i="vidT">شاهد الطريقة بفيديو</h2>
+  <video id="howVid" controls playsinline preload="none" width="1280" height="720"></video>
+</section>
 
 <div class="tabs" role="tablist"><button type="button" id="tabM" aria-pressed="true"><span data-i="tabM">الحركات</span> <small>1000</small></button><button type="button" id="tabF" aria-pressed="false"><span data-i="tabF">الخطوط</span> <small id="fcount"></small></button></div>
 
@@ -1976,7 +1980,7 @@ var UI={
  ar:{h1:'مكتبة الموشن',lede:'شوف كل حركة وهي تشتغل واعرف اسمها. ولمن تمنتج فيديو بالذكاء الاصطناعي، قل له رقم الحركة بس وهو يطبقها.',s1:'حركة',s2:'أنواع',s3:'ريلز',
   howT:'شلون تستخدمها',how1:'حمّل ملف المكتبة. فيه شرح كامل لكل حركة.',how2:'ارفعه مرة وحدة في Project على Claude، أو ارفعه مع الفيديو.',how3:'قل له رقم الحركة ومتى تبيها، وهو يطبقها.',
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
-  fileT:'ثبّتها بالـ Plugin',fileD:'الـ Plugin فيه شرح كامل لكل الـ 1000 حركة وقائمة الخطوط، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">المكتبة فيها شرح كل الـ 1000 حركة وكل الخطوط، وهي للذكاء الاصطناعي. انت ما تحتاج تفتحها أو تقراها. بس سوّ كذا:</p><ol class="fsteps"><li><b>ضيف الـ Plugin</b> داخل Claude مرة وحدة (الطريقة بالمربع الثاني)، وكل تحديث يوصلك لحاله.</li><li><b>افتح محادثة جديدة</b> في Claude وارفع فيديوك.</li><li><b>اكتب الحركات بالرقم:</b><span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">الخطوط نفس الشي: اكتب رقم الخط مثل FA-02 وClaude يطبقه.</p>',
+  vidT:'شاهد الطريقة بفيديو',fileT:'ثبّتها بالـ Plugin',fileD:'الـ Plugin فيه شرح كامل لكل الـ 1000 حركة وقائمة الخطوط، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">المكتبة فيها شرح كل الـ 1000 حركة وكل الخطوط، وهي للذكاء الاصطناعي. انت ما تحتاج تفتحها أو تقراها. بس سوّ كذا:</p><ol class="fsteps"><li><b>ضيف الـ Plugin</b> داخل Claude مرة وحدة (الطريقة بالمربع الثاني)، وكل تحديث يوصلك لحاله.</li><li><b>افتح محادثة جديدة</b> في Claude وارفع فيديوك.</li><li><b>اكتب الحركات بالرقم:</b><span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">الخطوط نفس الشي: اكتب رقم الخط مثل FA-02 وClaude يطبقه.</p>',
   tabM:'الحركات',tabF:'الخطوط',fontsT:'الخطوط',fontsD:'خطوط عربية وإنجليزية مجانية (ترخيص مفتوح). اختر الخط، انسخ اسمه أو البرومبت، وقله للذكاء الاصطناعي مثل الحركات بالضبط.',fzip:'تحميل كل الخطوط',secAr:'الخطوط العربية',secEn:'Fonts · الإنجليزية',fempty:'ما فيه خط بهالاسم. جرّب كلمة ثانية.',fq:'ابحث: Cairo، كوفي، FA-02',fAll:'الكل',fAr:'عربي',fEn:'English',fsAr:'شلون أسوي فيديو يوقّف الناس',fsEn:'The quick brown fox 123',fcn:'⧉ الاسم',fcp:'⧉ البرومبت',fdl:'⬇ تحميل',fnf:function(n){return n+' ملف';},
   
   
@@ -1987,7 +1991,7 @@ var UI={
  en:{h1:'Motion Library',lede:'Watch every motion play and learn its name. When you edit a video with AI, just tell it the motion number and it applies it.',s1:'motions',s2:'categories',s3:'Reels',
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
-  fileT:'Install the Plugin',fileD:'The Plugin carries a full spec for all 1000 motions plus the font list, ready for the AI.',howD:'<p class="fintro">The library describes all 1000 motions and every font. It is for the AI, so you do not need to open or read it. Just do this:</p><ol class="fsteps"><li><b>Add the Plugin</b> to Claude once (steps are in the second box) and every update reaches you automatically.</li><li><b>Start a new chat</b> in Claude and upload your video.</li><li><b>Name the motions by number:</b><span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">Fonts work the same way: type a font ID like FA-02 and Claude applies it.</p>',
+  vidT:'Watch how it works',fileT:'Install the Plugin',fileD:'The Plugin carries a full spec for all 1000 motions plus the font list, ready for the AI.',howD:'<p class="fintro">The library describes all 1000 motions and every font. It is for the AI, so you do not need to open or read it. Just do this:</p><ol class="fsteps"><li><b>Add the Plugin</b> to Claude once (steps are in the second box) and every update reaches you automatically.</li><li><b>Start a new chat</b> in Claude and upload your video.</li><li><b>Name the motions by number:</b><span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">Fonts work the same way: type a font ID like FA-02 and Claude applies it.</p>',
   tabM:'Motions',tabF:'Fonts',fontsT:'Fonts',fontsD:'Free Arabic and English fonts (open licence). Pick a font, copy its name or prompt, and tell the AI just like a motion.',fzip:'Download all fonts',secAr:'Arabic fonts',secEn:'English fonts',fempty:'No font matches that. Try another word.',fq:'Search: Cairo, kufi, FA-02',fAll:'All',fAr:'Arabic',fEn:'English',fsAr:'شلون أسوي فيديو يوقّف الناس',fsEn:'The quick brown fox 123',fcn:'⧉ Name',fcp:'⧉ Prompt',fdl:'⬇ Download',fnf:function(n){return n+' file'+(n>1?'s':'');},
   
   
@@ -2115,6 +2119,7 @@ function applyLang(){
   document.getElementById('app').dir=h.dir;
   document.querySelectorAll('[data-i]').forEach(function(e){var v=T(e.dataset.i);if(typeof v==='string')e.innerHTML=v;});
   document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===lang);});
+  var hv=document.getElementById('howVid'),vs='video/install-'+lang+'.mp4';if(hv&&hv.getAttribute('src')!==vs){hv.pause();hv.setAttribute('poster','video/poster-'+lang+'.jpg');hv.setAttribute('src',vs);hv.setAttribute('aria-label',T('vidT'));}
   q.placeholder=T('q');q.setAttribute('aria-label',T('q'));side.setAttribute('aria-label',T('types'));document.getElementById('closeSide').setAttribute('aria-label',T('close'));
   document.title=T('h1');
   cards.forEach(function(o){var m=o.m,e=o.el;

@@ -28,3 +28,7 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - Class names collide easily in index.html (e.g. `.fcard` is a card-flip motion; fonts use `.fnt`). Grep before adding CSS.
 - The live library file is large; fetch tools truncate it. Always read `lib/INDEX.md` then one small category file.
 - Python string edits (not sed) for index.html. Google Fonts is blocked in the sandbox, so fonts are installed locally.
+
+## Install video (added 2026-10-20)
+- Section `#vidbox` sits between the two top boxes and the tabs; one `<video id="howVid">` whose src/poster switch with the AR/EN toggle inside `applyLang()` (`video/install-<lang>.mp4`, `video/poster-<lang>.jpg`; `preload=none`).
+- Narration is AI voiceover (vidIQ/ElevenLabs voice Eric); video is an HTML timeline rendered frame by frame with Playwright + ffmpeg. Source (`walk3.html`, `build.py`) is kept outside the repo; if the real claude.ai install UI changes, the video must be re-rendered.
