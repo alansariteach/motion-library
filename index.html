@@ -664,7 +664,8 @@ footer .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .pp.neo::before,.pp.neo::after{background:transparent;box-shadow:inset 0 0 0 .8cqw var(--mint)}
 .hole{position:absolute;inset:-60%;z-index:4;background:radial-gradient(circle 26cqw at 50% 45%,transparent 60%,rgba(0,0,0,.85) 100%)}
 @keyframes k211{0%,100%{transform:translate(-10%,0)}50%{transform:translate(10%,2%)}}
-.htn{position:absolute;inset:0;z-index:3;background-image:radial-gradient(rgba(240,122,80,.85) 32%,transparent 34%);background-size:3.2cqw 3.2cqw;mix-blend-mode:multiply;-webkit-mask:radial-gradient(ellipse 34% 48% at 50% 70%,#000 60%,transparent 62%);mask:radial-gradient(ellipse 34% 48% at 50% 70%,#000 60%,transparent 62%)}
+.htn{position:absolute;left:50%;bottom:0;width:58cqw;height:80cqw;translate:-50% 0;z-index:3;--hd:radial-gradient(rgba(227,100,63,.95) 36%,transparent 40%)}.htn::before,.htn::after{content:"";position:absolute;mix-blend-mode:multiply;background-image:var(--hd);animation:khtn 1.8s var(--ez,ease-out) infinite}.htn::before{left:0;right:0;bottom:0;height:42cqw;border-radius:24cqw 24cqw 0 0;background-size:3.4cqw 3.4cqw}.htn::after{left:50%;top:6cqw;width:26cqw;height:31cqw;translate:-50% 0;border-radius:46% 46% 44% 44%;background-size:2.2cqw 2.2cqw}
+@keyframes khtn{0%{opacity:0;transform:scale(.6)}30%,75%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
 @keyframes k213{0%,24%{background:#E3643F}25%,49%{background:#0F5B66}50%,74%{background:#FFC857}75%,100%{background:#7FE0C8}}
 /* AUD */
 .wf{display:flex;align-items:center;gap:.8cqw;height:40cqw}
@@ -1676,7 +1677,7 @@ N(['M-211','PER','Spotlight Follow','ضوء يتبع الشخص','كل شي غا
  'غمّق الشاشة تقريباً 85% إلا دائرة ناعمة حول الشخص، والدائرة تتبع مكان الراس كل فريم.',function(){return '<div class="L a" style="--k:k211">'+BG()+P()+'</div><i class="hole a" style="--k:k211"></i>';},'3s']),
 N(['M-212','PER','Halftone Person','الشخص بنقاط','الشخص يتحول لنقاط مثل الطباعة القديمة.','The person rendered in halftone dots like old print.','0.4s','easeOutQuad',
  'Inside the person matte, overlay an accent halftone dot pattern (dot size tied to brightness) with a multiply blend.',
- 'داخل قناع الشخص، حط نقش نقاط بلون الهوية (حجم النقطة على حسب الإضاءة) بدمج multiply.',function(){return BG()+P()+'<i class="htn"></i>';}]),
+ 'داخل قناع الشخص، حط نقش نقاط بلون الهوية (حجم النقطة على حسب الإضاءة) بدمج multiply.',function(){return BG()+P()+'<i class="htn"></i>';},'1.8s']),
 N(['M-213','PER','Background Flash Swap','الخلفية تتبدل على الإيقاع','لون الخلفية يتبدل مع كل ضربة والشخص ثابت.','The background color flips on every beat while you stay.','per beat','cut',
  'Using the person matte, replace the background with a solid color that changes on every beat (cycle 3–4 brand colors).',
  'باستخدام قناع الشخص، بدّل الخلفية بلون واحد يتغير مع كل ضربة إيقاع (لف على 3 إلى 4 ألوان من الهوية).',function(){return '<div class="scene a" style="--k:k213;--ez:steps(1)"></div>'+P();},'2s']),
