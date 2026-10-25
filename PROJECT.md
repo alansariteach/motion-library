@@ -32,3 +32,7 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 ## Install video (added 2026-10-20)
 - Section `#vidbox` sits between the two top boxes and the tabs; one `<video id="howVid">` whose src/poster switch with the AR/EN toggle inside `applyLang()` (`video/install-<lang>.mp4`, `video/poster-<lang>.jpg`; `preload=none`).
 - Narration is AI voiceover (vidIQ/ElevenLabs voice Eric); video is an HTML timeline rendered frame by frame with Playwright + ffmpeg. Source (`walk3.html`, `build.py`) is kept outside the repo; if the real claude.ai install UI changes, the video must be re-rendered.
+
+## Logo (updated 2026-10-26)
+- Brand logo is the chip mark ("ALANSARI-TECH_lines", from the owner's 10-colour set), recoloured to the site palette: chip pins/trace and the dot = coral #E3643F (`--acc2`), A and tagline = gold #FFC857, wordmark = cream #F6EFE2, chip body = #0E1B1D.
+- Embedded as base64 SVG: full logo in the hero (`.logo-big`), chip mark in the header `.brand` (text hidden under 560px) and as the favicon. The old 3D webp logo was removed.
