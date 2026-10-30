@@ -133,4 +133,4 @@
 | FE-62 | Work Sans | إنجليزي | سانس | 100–900 (variable) | https://fonts.google.com/specimen/Work+Sans |
 
 ---
-@alansari.tech · إنستغرام: instagram.com/alansari.tech · تلغرام: t.me/alansari_tech
+@alansari.tech · إنستغرام: instagram.com/alansari.tech · تلغرام: t.me/Alansaritech · الإيميل: info@alansaritech.com

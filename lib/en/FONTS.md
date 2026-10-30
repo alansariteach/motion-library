@@ -133,4 +133,4 @@
 | FE-62 | Work Sans | English | Sans | 100–900 (variable) | https://fonts.google.com/specimen/Work+Sans |
 
 ---
-@alansari.tech · Instagram: instagram.com/alansari.tech · Telegram: t.me/alansari_tech
+@alansari.tech · Instagram: instagram.com/alansari.tech · Telegram: t.me/Alansaritech · Email: info@alansaritech.com
