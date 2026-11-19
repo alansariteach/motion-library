@@ -21298,6 +21298,402 @@
       ]
     }
   ],
+  "hooks": [
+    {
+      "id": "H-01",
+      "type": "Question",
+      "ar": "تدري ليش فيديوهاتك ما تنتشر؟",
+      "en": "Do you know why your videos don’t spread?",
+      "motion": "M-131",
+      "sound": "SX-17"
+    },
+    {
+      "id": "H-02",
+      "type": "Question",
+      "ar": "لو عندك 10 ثواني بس، شنو بتقول؟",
+      "en": "If you had only 10 seconds, what would you say?",
+      "motion": "M-002",
+      "sound": "SX-25"
+    },
+    {
+      "id": "H-03",
+      "type": "Question",
+      "ar": "منو قال إن المونتاج صعب؟",
+      "en": "Who said editing is hard?",
+      "motion": "M-008",
+      "sound": "SX-09"
+    },
+    {
+      "id": "H-04",
+      "type": "Question",
+      "ar": "تبي تعرف السر؟ كمّل للنهاية",
+      "en": "Want the secret? Watch till the end",
+      "motion": "M-051",
+      "sound": "SX-27"
+    },
+    {
+      "id": "H-05",
+      "type": "Question",
+      "ar": "شلون تسوي هذا بدقيقة وحدة؟",
+      "en": "How do you do this in one minute?",
+      "motion": "M-129",
+      "sound": "SX-02"
+    },
+    {
+      "id": "H-06",
+      "type": "Number",
+      "ar": "3 أشياء ما أحد قالك عنها",
+      "en": "3 things nobody told you",
+      "motion": "M-059",
+      "sound": "SX-17"
+    },
+    {
+      "id": "H-07",
+      "type": "Number",
+      "ar": "5 أدوات بتغير شغلك",
+      "en": "5 tools that will change your work",
+      "motion": "M-060",
+      "sound": "SX-12"
+    },
+    {
+      "id": "H-08",
+      "type": "Number",
+      "ar": "99% من الناس يغلطون بهالشي",
+      "en": "99% of people get this wrong",
+      "motion": "M-040",
+      "sound": "SX-12"
+    },
+    {
+      "id": "H-09",
+      "type": "Number",
+      "ar": "سويتها بـ 0 دينار",
+      "en": "I did it for $0",
+      "motion": "M-040",
+      "sound": "SX-15"
+    },
+    {
+      "id": "H-10",
+      "type": "Number",
+      "ar": "خطوة وحدة غيرت كل شي",
+      "en": "One step changed everything",
+      "motion": "M-195",
+      "sound": "SX-17"
+    },
+    {
+      "id": "H-11",
+      "type": "Warning",
+      "ar": "لا تسوي هالغلط أبد",
+      "en": "Never make this mistake",
+      "motion": "M-010",
+      "sound": "SX-23"
+    },
+    {
+      "id": "H-12",
+      "type": "Warning",
+      "ar": "وقف! قبل لا تنشر الفيديو",
+      "en": "Stop! Before you post the video",
+      "motion": "M-135",
+      "sound": "SX-18"
+    },
+    {
+      "id": "H-13",
+      "type": "Warning",
+      "ar": "إذا تسوي هذا، انت تخسر متابعين",
+      "en": "If you do this, you are losing followers",
+      "motion": "M-009",
+      "sound": "SX-19"
+    },
+    {
+      "id": "H-14",
+      "type": "Warning",
+      "ar": "حسابك ممكن ينسرق بهالطريقة",
+      "en": "Your account can be stolen this way",
+      "motion": "M-110",
+      "sound": "SX-06"
+    },
+    {
+      "id": "H-15",
+      "type": "Warning",
+      "ar": "هذا الإعداد لازم تطفيه الحين",
+      "en": "Turn this setting off right now",
+      "motion": "M-234",
+      "sound": "SX-08"
+    },
+    {
+      "id": "H-16",
+      "type": "Secret",
+      "ar": "الطريقة اللي يستخدمها المحترفين",
+      "en": "The trick the pros use",
+      "motion": "M-157",
+      "sound": "SX-16"
+    },
+    {
+      "id": "H-17",
+      "type": "Secret",
+      "ar": "هذي الميزة مخفية بجوالك",
+      "en": "This feature is hidden in your phone",
+      "motion": "M-074",
+      "sound": "SX-20"
+    },
+    {
+      "id": "H-18",
+      "type": "Secret",
+      "ar": "ما كنت أدري عنها لين أمس",
+      "en": "I didn’t know this until yesterday",
+      "motion": "M-001",
+      "sound": "SX-11"
+    },
+    {
+      "id": "H-19",
+      "type": "Secret",
+      "ar": "الذكاء الاصطناعي يسويها عنك",
+      "en": "AI does it for you",
+      "motion": "M-146",
+      "sound": "SX-28"
+    },
+    {
+      "id": "H-20",
+      "type": "Secret",
+      "ar": "أسهل طريقة ممكن تشوفها",
+      "en": "The easiest way you will ever see",
+      "motion": "M-049",
+      "sound": "SX-09"
+    },
+    {
+      "id": "H-21",
+      "type": "Story",
+      "ar": "صار معي موقف ما أنساه",
+      "en": "Something happened I’ll never forget",
+      "motion": "M-135",
+      "sound": "SX-18"
+    },
+    {
+      "id": "H-22",
+      "type": "Story",
+      "ar": "قبل سنة كنت ما أعرف شي",
+      "en": "A year ago I knew nothing",
+      "motion": "M-264",
+      "sound": "SX-21"
+    },
+    {
+      "id": "H-23",
+      "type": "Story",
+      "ar": "كنت بأوقف، بس صار هذا",
+      "en": "I was about to quit, then this happened",
+      "motion": "M-136",
+      "sound": "SX-21"
+    },
+    {
+      "id": "H-24",
+      "type": "Story",
+      "ar": "أول مرة أقول هالشي",
+      "en": "First time I’m saying this",
+      "motion": "M-022",
+      "sound": "SX-20"
+    },
+    {
+      "id": "H-25",
+      "type": "Story",
+      "ar": "خلني أقولك شنو صار",
+      "en": "Let me tell you what happened",
+      "motion": "M-048",
+      "sound": "SX-11"
+    },
+    {
+      "id": "H-26",
+      "type": "Result",
+      "ar": "شوف الفرق بنفسك",
+      "en": "See the difference yourself",
+      "motion": "M-132",
+      "sound": "SX-04"
+    },
+    {
+      "id": "H-27",
+      "type": "Result",
+      "ar": "من 100 متابع لـ 10 آلاف",
+      "en": "From 100 followers to 10K",
+      "motion": "M-040",
+      "sound": "SX-12"
+    },
+    {
+      "id": "H-28",
+      "type": "Result",
+      "ar": "هذا اللي صار بعد أسبوع",
+      "en": "This is what happened after a week",
+      "motion": "M-264",
+      "sound": "SX-21"
+    },
+    {
+      "id": "H-29",
+      "type": "Result",
+      "ar": "النتيجة صدمتني",
+      "en": "The result shocked me",
+      "motion": "M-129",
+      "sound": "SX-19"
+    },
+    {
+      "id": "H-30",
+      "type": "Result",
+      "ar": "قبل وبعد بدقيقة وحدة",
+      "en": "Before and after in one minute",
+      "motion": "M-016",
+      "sound": "SX-01"
+    }
+  ],
+  "luts": [
+    {
+      "id": "LT-01",
+      "name_en": "Warm Gulf",
+      "name_ar": "دافي خليجي",
+      "use_en": "Warm skin, golden light. Talking videos indoors.",
+      "use_ar": "بشرة دافية وإضاءة ذهبية. لفيديوهات الكلام داخل البيت.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-01.cube"
+    },
+    {
+      "id": "LT-02",
+      "name_en": "Cool Tech",
+      "name_ar": "بارد تقني",
+      "use_en": "Cool blue cast for tech and cyber content.",
+      "use_ar": "لمسة زرقا باردة للتقنية والأمن السيبراني.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-02.cube"
+    },
+    {
+      "id": "LT-03",
+      "name_en": "Teal & Orange",
+      "name_ar": "سينمائي",
+      "use_en": "Cinema look: teal shadows, warm skin.",
+      "use_ar": "شكل سينمائي: ظلال زرقا وبشرة دافية.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-03.cube"
+    },
+    {
+      "id": "LT-04",
+      "name_en": "Vintage Film",
+      "name_ar": "فيلم قديم",
+      "use_en": "Faded blacks and soft warm tones.",
+      "use_ar": "أسود باهت وألوان دافية ناعمة.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-04.cube"
+    },
+    {
+      "id": "LT-05",
+      "name_en": "Mono Contrast",
+      "name_ar": "أبيض وأسود",
+      "use_en": "Punchy black and white for serious talk.",
+      "use_ar": "أبيض وأسود قوي للكلام الجدي.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-05.cube"
+    },
+    {
+      "id": "LT-06",
+      "name_en": "Desert Gold",
+      "name_ar": "ذهبي صحراوي",
+      "use_en": "Golden-hour sand tones.",
+      "use_ar": "ألوان رمل وقت الغروب.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-06.cube"
+    },
+    {
+      "id": "LT-07",
+      "name_en": "Matte Soft",
+      "name_ar": "مات ناعم",
+      "use_en": "Low contrast, calm lifestyle look.",
+      "use_ar": "تباين خفيف وشكل هادي للايف ستايل.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-07.cube"
+    },
+    {
+      "id": "LT-08",
+      "name_en": "Vivid Pop",
+      "name_ar": "حيوي",
+      "use_en": "Strong colour for products and food.",
+      "use_ar": "ألوان قوية للمنتجات والأكل.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-08.cube"
+    },
+    {
+      "id": "LT-09",
+      "name_en": "Night Neon",
+      "name_ar": "ليلي نيون",
+      "use_en": "Purple-cyan night mood.",
+      "use_ar": "جو ليلي بنفسجي وسماوي.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-09.cube"
+    },
+    {
+      "id": "LT-10",
+      "name_en": "Clean Bright",
+      "name_ar": "فاتح نظيف",
+      "use_en": "Brighter, cleaner image for dim rooms.",
+      "use_ar": "صورة أفتح وأنظف للغرف المعتمة.",
+      "url": "https://alansariteach.github.io/motion-library/lut/LT-10.cube"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "BG-01",
+      "name_en": "Soft Gradient",
+      "name_ar": "تدرج ناعم",
+      "spec_en": "A slow-moving two-colour gradient (accent to background), 8 s loop.",
+      "spec_ar": "تدرج لونين يتحرك ببطء (لون الهوية للخلفية)، يتكرر كل 8 ثواني."
+    },
+    {
+      "id": "BG-02",
+      "name_en": "Glow Blobs",
+      "name_ar": "بقع ضوء",
+      "spec_en": "Three large blurred accent blobs drifting slowly behind the content.",
+      "spec_ar": "ثلاث بقع ضوء كبيرة ضبابية بلون الهوية تتحرك ببطء ورا المحتوى."
+    },
+    {
+      "id": "BG-03",
+      "name_en": "Tech Grid",
+      "name_ar": "شبكة تقنية",
+      "spec_en": "A thin accent grid in perspective scrolling forward, with a soft glow line.",
+      "spec_ar": "شبكة رفيعة بلون الهوية بمنظور تتحرك لقدام، مع خط توهج ناعم."
+    },
+    {
+      "id": "BG-04",
+      "name_en": "Dot Matrix",
+      "name_ar": "نقاط",
+      "spec_en": "A field of small dots pulsing in a diagonal wave.",
+      "spec_ar": "نقاط صغيرة تنبض بموجة مايلة."
+    },
+    {
+      "id": "BG-05",
+      "name_en": "Light Rays",
+      "name_ar": "أشعة ضوء",
+      "spec_en": "Soft light rays rotating slowly from the top centre.",
+      "spec_ar": "أشعة ضوء ناعمة تدور ببطء من فوق بالنص."
+    },
+    {
+      "id": "BG-06",
+      "name_en": "Floating Particles",
+      "name_ar": "جزيئات طايرة",
+      "spec_en": "Small particles floating upward at different speeds.",
+      "spec_ar": "جزيئات صغيرة تطلع لفوق بسرعات مختلفة."
+    },
+    {
+      "id": "BG-07",
+      "name_en": "Waves",
+      "name_ar": "أمواج",
+      "spec_en": "Layered soft waves at the bottom moving sideways.",
+      "spec_ar": "أمواج ناعمة متراكبة تحت تتحرك للجنب."
+    },
+    {
+      "id": "BG-08",
+      "name_en": "Diagonal Stripes",
+      "name_ar": "خطوط مايلة",
+      "spec_en": "Diagonal stripes sliding slowly, 10% contrast.",
+      "spec_ar": "خطوط مايلة تتحرك ببطء، تباين 10%."
+    },
+    {
+      "id": "BG-09",
+      "name_en": "Noise Grain",
+      "name_ar": "حبيبات",
+      "spec_en": "A flat colour with animated film grain and a vignette.",
+      "spec_ar": "لون واحد مع حبيبات فيلم متحركة وتظليل بالأطراف."
+    },
+    {
+      "id": "BG-10",
+      "name_en": "Spotlight",
+      "name_ar": "بقعة ضوء",
+      "spec_en": "A dark background with one soft spotlight that drifts.",
+      "spec_ar": "خلفية غامقة فيها بقعة ضوء ناعمة تتحرك."
+    }
+  ],
   "sounds": [
     {
       "id": "SX-01",

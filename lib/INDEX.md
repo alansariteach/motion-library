@@ -24,6 +24,9 @@ Find the motion or font ID below, then read ONLY the matching small file. Do not
 | EL-01..EL-18 (ready elements) | ELEMENTS | https://alansariteach.github.io/motion-library/lib/ar/ELEMENTS.md | https://alansariteach.github.io/motion-library/lib/en/ELEMENTS.md |
 | R-01..R-12 (full Reel recipes) | RECIPES | https://alansariteach.github.io/motion-library/lib/ar/RECIPES.md | https://alansariteach.github.io/motion-library/lib/en/RECIPES.md |
 | SX-01..SX-28 (sound effects, CC0) | SOUNDS | https://alansariteach.github.io/motion-library/lib/ar/SOUNDS.md | https://alansariteach.github.io/motion-library/lib/en/SOUNDS.md |
+| H-01..H-30 (opening hook lines) | HOOKS | https://alansariteach.github.io/motion-library/lib/ar/HOOKS.md | https://alansariteach.github.io/motion-library/lib/en/HOOKS.md |
+| LT-01..LT-10 (colour LUTs, .cube) | LUTS | https://alansariteach.github.io/motion-library/lib/ar/LUTS.md | https://alansariteach.github.io/motion-library/lib/en/LUTS.md |
+| BG-01..BG-10 (animated backgrounds) | BACKGROUNDS | https://alansariteach.github.io/motion-library/lib/ar/BACKGROUNDS.md | https://alansariteach.github.io/motion-library/lib/en/BACKGROUNDS.md |
 
 Rules for applying motions: https://alansariteach.github.io/motion-library/lib/ar/RULES.md (Arabic) or https://alansariteach.github.io/motion-library/lib/en/RULES.md (English).
 Visual examples: https://alansariteach.github.io/motion-library/

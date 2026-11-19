@@ -15,7 +15,7 @@
 - Each motion has a "Content the user must provide" line. If the user did not supply that content (text, image, screen recording, logo, handle…), ASK for it before rendering. Never invent screenshots, logos, faces or screen recordings, and never leave placeholder text in the final video.
 - Variants (Fast, Slow, Gold, Boxed…) need the same content as the motion they come from.
 
-- Besides motions there are: colour palettes CP-xx, caption styles CS-xx, elements EL-xx, recipes R-xx and sounds SX-xx. Each has a section below.
+- Besides motions there are: colour palettes CP-xx, caption styles CS-xx, elements EL-xx, recipes R-xx, sounds SX-xx, hooks H-xx, LUTs LT-xx and backgrounds BG-xx. Each has a section below.
 - Every motion has a "Suggested sound". Add it with the motion unless the user says no sound.
 
 ## TXT — Text In
@@ -6224,6 +6224,94 @@
 - every 4–6 s: Punch-in to keep attention (M-131, SX-02)
 - keywords: Captions and scale punch on key words (CS-01, M-008)
 - end: Name lower third and follow button (M-039, EL-01)
+
+## HOOKS — Opening lines
+
+- H-xx is a line for the first 3 seconds: show it as big centred text with the listed motion and sound.
+
+| ID | Type | Line | Motion | Sound |
+|---|---|---|---|---|
+| H-01 | Question | Do you know why your videos don’t spread? | M-131 | SX-17 |
+| H-02 | Question | If you had only 10 seconds, what would you say? | M-002 | SX-25 |
+| H-03 | Question | Who said editing is hard? | M-008 | SX-09 |
+| H-04 | Question | Want the secret? Watch till the end | M-051 | SX-27 |
+| H-05 | Question | How do you do this in one minute? | M-129 | SX-02 |
+| H-06 | Number | 3 things nobody told you | M-059 | SX-17 |
+| H-07 | Number | 5 tools that will change your work | M-060 | SX-12 |
+| H-08 | Number | 99% of people get this wrong | M-040 | SX-12 |
+| H-09 | Number | I did it for $0 | M-040 | SX-15 |
+| H-10 | Number | One step changed everything | M-195 | SX-17 |
+| H-11 | Warning | Never make this mistake | M-010 | SX-23 |
+| H-12 | Warning | Stop! Before you post the video | M-135 | SX-18 |
+| H-13 | Warning | If you do this, you are losing followers | M-009 | SX-19 |
+| H-14 | Warning | Your account can be stolen this way | M-110 | SX-06 |
+| H-15 | Warning | Turn this setting off right now | M-234 | SX-08 |
+| H-16 | Secret | The trick the pros use | M-157 | SX-16 |
+| H-17 | Secret | This feature is hidden in your phone | M-074 | SX-20 |
+| H-18 | Secret | I didn’t know this until yesterday | M-001 | SX-11 |
+| H-19 | Secret | AI does it for you | M-146 | SX-28 |
+| H-20 | Secret | The easiest way you will ever see | M-049 | SX-09 |
+| H-21 | Story | Something happened I’ll never forget | M-135 | SX-18 |
+| H-22 | Story | A year ago I knew nothing | M-264 | SX-21 |
+| H-23 | Story | I was about to quit, then this happened | M-136 | SX-21 |
+| H-24 | Story | First time I’m saying this | M-022 | SX-20 |
+| H-25 | Story | Let me tell you what happened | M-048 | SX-11 |
+| H-26 | Result | See the difference yourself | M-132 | SX-04 |
+| H-27 | Result | From 100 followers to 10K | M-040 | SX-12 |
+| H-28 | Result | This is what happened after a week | M-264 | SX-21 |
+| H-29 | Result | The result shocked me | M-129 | SX-19 |
+| H-30 | Result | Before and after in one minute | M-016 | SX-01 |
+
+## LUTS — Colour grading
+
+- LT-xx is a .cube LUT (33x33x33). Apply it to the whole video before text and motions (ffmpeg: -vf lut3d=file.cube).
+
+| ID | Name | Use | URL |
+|---|---|---|---|
+| LT-01 | Warm Gulf (دافي خليجي) | Warm skin, golden light. Talking videos indoors. | https://alansariteach.github.io/motion-library/lut/LT-01.cube |
+| LT-02 | Cool Tech (بارد تقني) | Cool blue cast for tech and cyber content. | https://alansariteach.github.io/motion-library/lut/LT-02.cube |
+| LT-03 | Teal & Orange (سينمائي) | Cinema look: teal shadows, warm skin. | https://alansariteach.github.io/motion-library/lut/LT-03.cube |
+| LT-04 | Vintage Film (فيلم قديم) | Faded blacks and soft warm tones. | https://alansariteach.github.io/motion-library/lut/LT-04.cube |
+| LT-05 | Mono Contrast (أبيض وأسود) | Punchy black and white for serious talk. | https://alansariteach.github.io/motion-library/lut/LT-05.cube |
+| LT-06 | Desert Gold (ذهبي صحراوي) | Golden-hour sand tones. | https://alansariteach.github.io/motion-library/lut/LT-06.cube |
+| LT-07 | Matte Soft (مات ناعم) | Low contrast, calm lifestyle look. | https://alansariteach.github.io/motion-library/lut/LT-07.cube |
+| LT-08 | Vivid Pop (حيوي) | Strong colour for products and food. | https://alansariteach.github.io/motion-library/lut/LT-08.cube |
+| LT-09 | Night Neon (ليلي نيون) | Purple-cyan night mood. | https://alansariteach.github.io/motion-library/lut/LT-09.cube |
+| LT-10 | Clean Bright (فاتح نظيف) | Brighter, cleaner image for dim rooms. | https://alansariteach.github.io/motion-library/lut/LT-10.cube |
+
+## BACKGROUNDS — Animated backgrounds
+
+- BG-xx is a looping animated background. Draw it in the user colours (or CP-01) and keep it subtle behind the content.
+
+### BG-01 · Soft Gradient (تدرج ناعم)
+- A slow-moving two-colour gradient (accent to background), 8 s loop.
+
+### BG-02 · Glow Blobs (بقع ضوء)
+- Three large blurred accent blobs drifting slowly behind the content.
+
+### BG-03 · Tech Grid (شبكة تقنية)
+- A thin accent grid in perspective scrolling forward, with a soft glow line.
+
+### BG-04 · Dot Matrix (نقاط)
+- A field of small dots pulsing in a diagonal wave.
+
+### BG-05 · Light Rays (أشعة ضوء)
+- Soft light rays rotating slowly from the top centre.
+
+### BG-06 · Floating Particles (جزيئات طايرة)
+- Small particles floating upward at different speeds.
+
+### BG-07 · Waves (أمواج)
+- Layered soft waves at the bottom moving sideways.
+
+### BG-08 · Diagonal Stripes (خطوط مايلة)
+- Diagonal stripes sliding slowly, 10% contrast.
+
+### BG-09 · Noise Grain (حبيبات)
+- A flat colour with animated film grain and a vignette.
+
+### BG-10 · Spotlight (بقعة ضوء)
+- A dark background with one soft spotlight that drifts.
 
 ## SOUNDS — Sound effects
 

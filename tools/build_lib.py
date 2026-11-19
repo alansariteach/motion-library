@@ -32,7 +32,7 @@ def runs(ns):
         out.append((s,q));s=q=n
     out.append((s,q));return ', '.join(f'M-{a:03d}' if a==b else f'M-{a:03d}..M-{b:03d}' for a,b in out)
 order=['TXT','EMP','CAP','TRN','CAM','FX','SOC','LGO','PER','AUD','SCR','TRK','D3','TIM']
-extra=[('CP-01..CP-24 (colour palettes)','PALETTES'),('CS-01..CS-16 (caption styles)','CAPSTYLES'),('EL-01..EL-18 (ready elements)','ELEMENTS'),('R-01..R-12 (full Reel recipes)','RECIPES'),('SX-01..SX-28 (sound effects, CC0)','SOUNDS')]
+extra=[('CP-01..CP-24 (colour palettes)','PALETTES'),('CS-01..CS-16 (caption styles)','CAPSTYLES'),('EL-01..EL-18 (ready elements)','ELEMENTS'),('R-01..R-12 (full Reel recipes)','RECIPES'),('SX-01..SX-28 (sound effects, CC0)','SOUNDS'),('H-01..H-30 (opening hook lines)','HOOKS'),('LT-01..LT-10 (colour LUTs, .cube)','LUTS'),('BG-01..BG-10 (animated backgrounds)','BACKGROUNDS')]
 rows=[f"| {runs([int(x) for x in re.findall(r'^### M-(\d+)',open(S+f'lib/ar/{c}.md').read(),re.M)])} | {c} | {base}ar/{c}.md | {base}en/{c}.md |" for c in order]
 idx=['# Alansari.Tech Motion Library: index','','Find the motion or font ID below, then read ONLY the matching small file. Do not read the whole library.','','| IDs | Category | Arabic file | English file |','|---|---|---|---|']+rows+[f'| FA-01..FA-61 and FE-01..FE-62 (fonts) | FONTS | {base}ar/FONTS.md | {base}en/FONTS.md |']+[f'| {a} | {c} | {base}ar/{c}.md | {base}en/{c}.md |' for a,c in extra]+['','Rules for applying motions: '+base+'ar/RULES.md (Arabic) or '+base+'en/RULES.md (English).','Visual examples: https://alansariteach.github.io/motion-library/','']
 open(S+'lib/INDEX.md','w').write('\n'.join(idx))

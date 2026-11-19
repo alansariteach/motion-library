@@ -44,3 +44,11 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - PWA: `manifest.webmanifest`, `sw.js` (network-first page, caches fonts/sounds/icons, never mp4), icons `icon-192/512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`.
 - Source of these extras: `tools/extras/x.css`, `x-data.js`, `x-ui.js`. Edit there, then run `python3 tools/assemble_extras.py` (inlines them into `index.html` between `/*XCSS-START*/` and `<script id="xjs">` markers; safe to re-run). Then `tools/build_lib.py` as usual (library files now include PALETTES, CAPSTYLES, ELEMENTS, RECIPES, SOUNDS sections and lib files).
 - Prefix new CSS classes with `x`: the old stylesheet already uses `.ov` and `.box`.
+
+## Round 2 (added 2026-11-19)
+- Header button «هويتي / My brand» (`ml-brand` in localStorage): colours, font, name, handle, logo flag. When on, every prompt copy gets a brand line (wrapper around `copyText`), and backgrounds, cover maker and lab can use it.
+- Tabs: Hooks `H-01..30` (opening lines + motion + sound, ✎ opens the lab with the line), LUTs `LT-01..10` (`lut/*.cube` 33³ + preview jpgs, made by `tools/make_luts.py`), Backgrounds `BG-01..10` (CSS loops), Tools (script-to-edit generator with rules `GENR`, Reel cover maker on canvas 1080×1920 with templates `CV-01..06`, BPM detector: WebAudio autocorrelation or tap).
+- Smart search (`nrm` Arabic normalisation + `SYN` synonyms) for motions, fonts and all extra tabs.
+- Platform overlay select (Instagram, Instagram RTL, TikTok, YouTube Shorts) draws the app UI over previews (`ml-ui`).
+- Basket share link: `#b=ID,ID,...` merges into the visitor's basket.
+- Popular: each prompt copy sends GoatCounter event `copy/<ID>`; `tools/popular.py` (needs GOATCOUNTER_TOKEN) writes `popular.json`; badges + "Most used" filter appear only when the list is not empty.

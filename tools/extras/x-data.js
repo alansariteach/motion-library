@@ -192,3 +192,98 @@ var USES=[
 var _ut={};
 function usesOf(m){var b=m.base||m.id;if(_ut[b])return _ut[b];var bm=null;for(var i=0;i<M.length;i++)if(M[i].id===b){bm=M[i];break;}var n=(bm||m).en,o=[];
   USES.forEach(function(u){if(u[3].test(n))o.push(u[0]);});if(m.c==='AUD'&&o.indexOf('pod')<0)o.push('pod');if(m.c==='SCR'&&o.indexOf('tut')<0)o.push('tut');_ut[b]=o;return o;}
+
+/* ===== Round 2 data: hooks, LUTs, backgrounds, covers, generator rules, search synonyms ===== */
+var HKC={q:['Question','سؤال'],n:['Number','رقم'],w:['Warning','تحذير'],s:['Secret','سر'],st:['Story','قصة'],r:['Result','نتيجة']};
+var HOOKS=[
+ ['H-01','q','تدري ليش فيديوهاتك ما تنتشر؟','Do you know why your videos don’t spread?','M-131','SX-17'],
+ ['H-02','q','لو عندك 10 ثواني بس، شنو بتقول؟','If you had only 10 seconds, what would you say?','M-002','SX-25'],
+ ['H-03','q','منو قال إن المونتاج صعب؟','Who said editing is hard?','M-008','SX-09'],
+ ['H-04','q','تبي تعرف السر؟ كمّل للنهاية','Want the secret? Watch till the end','M-051','SX-27'],
+ ['H-05','q','شلون تسوي هذا بدقيقة وحدة؟','How do you do this in one minute?','M-129','SX-02'],
+ ['H-06','n','3 أشياء ما أحد قالك عنها','3 things nobody told you','M-059','SX-17'],
+ ['H-07','n','5 أدوات بتغير شغلك','5 tools that will change your work','M-060','SX-12'],
+ ['H-08','n','99% من الناس يغلطون بهالشي','99% of people get this wrong','M-040','SX-12'],
+ ['H-09','n','سويتها بـ 0 دينار','I did it for $0','M-040','SX-15'],
+ ['H-10','n','خطوة وحدة غيرت كل شي','One step changed everything','M-195','SX-17'],
+ ['H-11','w','لا تسوي هالغلط أبد','Never make this mistake','M-010','SX-23'],
+ ['H-12','w','وقف! قبل لا تنشر الفيديو','Stop! Before you post the video','M-135','SX-18'],
+ ['H-13','w','إذا تسوي هذا، انت تخسر متابعين','If you do this, you are losing followers','M-009','SX-19'],
+ ['H-14','w','حسابك ممكن ينسرق بهالطريقة','Your account can be stolen this way','M-110','SX-06'],
+ ['H-15','w','هذا الإعداد لازم تطفيه الحين','Turn this setting off right now','M-234','SX-08'],
+ ['H-16','s','الطريقة اللي يستخدمها المحترفين','The trick the pros use','M-157','SX-16'],
+ ['H-17','s','هذي الميزة مخفية بجوالك','This feature is hidden in your phone','M-074','SX-20'],
+ ['H-18','s','ما كنت أدري عنها لين أمس','I didn’t know this until yesterday','M-001','SX-11'],
+ ['H-19','s','الذكاء الاصطناعي يسويها عنك','AI does it for you','M-146','SX-28'],
+ ['H-20','s','أسهل طريقة ممكن تشوفها','The easiest way you will ever see','M-049','SX-09'],
+ ['H-21','st','صار معي موقف ما أنساه','Something happened I’ll never forget','M-135','SX-18'],
+ ['H-22','st','قبل سنة كنت ما أعرف شي','A year ago I knew nothing','M-264','SX-21'],
+ ['H-23','st','كنت بأوقف، بس صار هذا','I was about to quit, then this happened','M-136','SX-21'],
+ ['H-24','st','أول مرة أقول هالشي','First time I’m saying this','M-022','SX-20'],
+ ['H-25','st','خلني أقولك شنو صار','Let me tell you what happened','M-048','SX-11'],
+ ['H-26','r','شوف الفرق بنفسك','See the difference yourself','M-132','SX-04'],
+ ['H-27','r','من 100 متابع لـ 10 آلاف','From 100 followers to 10K','M-040','SX-12'],
+ ['H-28','r','هذا اللي صار بعد أسبوع','This is what happened after a week','M-264','SX-21'],
+ ['H-29','r','النتيجة صدمتني','The result shocked me','M-129','SX-19'],
+ ['H-30','r','قبل وبعد بدقيقة وحدة','Before and after in one minute','M-016','SX-01']
+].map(function(a){return {id:a[0],c:a[1],ar:a[2],en:a[3],m:a[4],sx:a[5]};});
+
+var LTS=[
+ ['LT-01','Warm Gulf','دافي خليجي','Warm skin, golden light. Talking videos indoors.','بشرة دافية وإضاءة ذهبية. لفيديوهات الكلام داخل البيت.'],
+ ['LT-02','Cool Tech','بارد تقني','Cool blue cast for tech and cyber content.','لمسة زرقا باردة للتقنية والأمن السيبراني.'],
+ ['LT-03','Teal & Orange','سينمائي','Cinema look: teal shadows, warm skin.','شكل سينمائي: ظلال زرقا وبشرة دافية.'],
+ ['LT-04','Vintage Film','فيلم قديم','Faded blacks and soft warm tones.','أسود باهت وألوان دافية ناعمة.'],
+ ['LT-05','Mono Contrast','أبيض وأسود','Punchy black and white for serious talk.','أبيض وأسود قوي للكلام الجدي.'],
+ ['LT-06','Desert Gold','ذهبي صحراوي','Golden-hour sand tones.','ألوان رمل وقت الغروب.'],
+ ['LT-07','Matte Soft','مات ناعم','Low contrast, calm lifestyle look.','تباين خفيف وشكل هادي للايف ستايل.'],
+ ['LT-08','Vivid Pop','حيوي','Strong colour for products and food.','ألوان قوية للمنتجات والأكل.'],
+ ['LT-09','Night Neon','ليلي نيون','Purple-cyan night mood.','جو ليلي بنفسجي وسماوي.'],
+ ['LT-10','Clean Bright','فاتح نظيف','Brighter, cleaner image for dim rooms.','صورة أفتح وأنظف للغرف المعتمة.']
+].map(function(a){return {id:a[0],en:a[1],ar:a[2],ue:a[3],ua:a[4]};});
+
+var BGS=[
+ ['BG-01','Soft Gradient','تدرج ناعم','grad','A slow-moving two-colour gradient (accent to background), 8 s loop.','تدرج لونين يتحرك ببطء (لون الهوية للخلفية)، يتكرر كل 8 ثواني.'],
+ ['BG-02','Glow Blobs','بقع ضوء','blob','Three large blurred accent blobs drifting slowly behind the content.','ثلاث بقع ضوء كبيرة ضبابية بلون الهوية تتحرك ببطء ورا المحتوى.'],
+ ['BG-03','Tech Grid','شبكة تقنية','grid','A thin accent grid in perspective scrolling forward, with a soft glow line.','شبكة رفيعة بلون الهوية بمنظور تتحرك لقدام، مع خط توهج ناعم.'],
+ ['BG-04','Dot Matrix','نقاط','dots','A field of small dots pulsing in a diagonal wave.','نقاط صغيرة تنبض بموجة مايلة.'],
+ ['BG-05','Light Rays','أشعة ضوء','rays','Soft light rays rotating slowly from the top centre.','أشعة ضوء ناعمة تدور ببطء من فوق بالنص.'],
+ ['BG-06','Floating Particles','جزيئات طايرة','parts','Small particles floating upward at different speeds.','جزيئات صغيرة تطلع لفوق بسرعات مختلفة.'],
+ ['BG-07','Waves','أمواج','wave','Layered soft waves at the bottom moving sideways.','أمواج ناعمة متراكبة تحت تتحرك للجنب.'],
+ ['BG-08','Diagonal Stripes','خطوط مايلة','stripe','Diagonal stripes sliding slowly, 10% contrast.','خطوط مايلة تتحرك ببطء، تباين 10%.'],
+ ['BG-09','Noise Grain','حبيبات','grain','A flat colour with animated film grain and a vignette.','لون واحد مع حبيبات فيلم متحركة وتظليل بالأطراف.'],
+ ['BG-10','Spotlight','بقعة ضوء','spot','A dark background with one soft spotlight that drifts.','خلفية غامقة فيها بقعة ضوء ناعمة تتحرك.']
+].map(function(a){return {id:a[0],en:a[1],ar:a[2],pv:a[3],se:a[4],sa:a[5]};});
+
+var CVS=[['CV-01','Big Title','عنوان كبير'],['CV-02','Photo + Title','صورة وعنوان'],['CV-03','Number List','رقم وقائمة'],['CV-04','Question','سؤال'],['CV-05','Split','نصين'],['CV-06','Minimal','بسيط']].map(function(a){return {id:a[0],en:a[1],ar:a[2]};});
+
+/* script generator: [regex, motion, sound] first match wins */
+var GENR=[
+ [/[؟?]/,'M-131','SX-17'],
+ [/\d|٪|%|ألف|مليون|مليار|دينار|ريال|درهم|percent|million|thousand/i,'M-040','SX-12'],
+ [/تابع|فولو|follow|اشترك|subscribe/i,'M-031','SX-08'],
+ [/لايك|like|قلب/i,'M-033','SX-09'],
+ [/علّق|علق|تعليق|comment|اكتب/i,'EL-04','SX-25'],
+ [/احفظ|save|حفظ/i,'M-163','SX-15'],
+ [/رابط|link|بايو|bio/i,'EL-03','SX-09'],
+ [/لا تسوي|غلط|خطأ|انتبه|تحذير|خطر|وقف|stop|never|mistake|warning|danger/i,'M-010','SX-23'],
+ [/سر|مخفي|ما أحد|secret|hidden|nobody/i,'M-051','SX-27'],
+ [/أول|ثاني|ثالث|خطوة|رقم واحد|first|second|third|step/i,'M-195','SX-12'],
+ [/قبل وبعد|الفرق|before|after|difference/i,'M-132','SX-04'],
+ [/سعر|خصم|عرض|price|sale|discount|offer/i,'M-192','SX-15'],
+ [/موقع|تطبيق|برنامج|اضغط|افتح|website|app|click|open/i,'M-231','SX-07'],
+ [/ذكاء|AI|تقنية|tech|هاكر|اختراق|hack|cyber/i,'M-146','SX-28'],
+ [/مكان|محل|فرع|place|location|shop/i,'M-199','SX-10'],
+ [/قصة|صار|موقف|story|happened/i,'M-135','SX-18'],
+ [/شعار|لوقو|logo|براند|brand/i,'M-185','SX-16'],
+ [/!|واو|wow|صدمة|shock|crazy|مجنون/i,'M-129','SX-19'],
+ [/جديد|new|إطلاق|launch/i,'EL-10','SX-17'],
+ [/سؤال|question/i,'M-174','SX-14']];
+var GENDEF=[['M-008','SX-09'],['M-006','SX-05'],['M-021','SX-02'],['M-044','SX-11'],['M-048','SX-11']];
+
+/* search: Arabic normalisation + synonyms */
+var SYN=[['زوم','تكبير','تقريب','zoom','punch','بنش'],['اهتزاز','هزه','رجه','shake','wiggle'],['ظهور','دخول','يطلع','fade','appear','in'],['كتابه','تايب','typewriter','typing','type'],
+ ['قلتش','تشويش','خربطه','glitch','vhs'],['انتقال','ترانزيشن','transition','wipe'],['شعار','لوقو','لوجو','logo'],['كابشن','ترجمه','سب','caption','subtitle','subtitles'],
+ ['عداد','ارقام','رقم','counter','number','count'],['تابعني','متابعه','فولو','follow'],['لايك','قلب','اعجاب','like','heart'],['سهم','arrow'],['دايره','دائره','circle'],
+ ['ضوء','اضاءه','لمعه','light','flare','shine','glow'],['ثلاثي','3d','ثري دي'],['بطيء','slow'],['سريع','fast'],['ذهبي','gold'],['شاشه','واجهه','screen','ui','app'],
+ ['صوت','ايقاع','بيت','audio','beat','music'],['خلفيه','background','bg'],['نص','كلام','text','title','عنوان'],['مربع','بوكس','box','boxed'],['كاميرا','camera','cam'],
+ ['جزيئات','particles','particle'],['دوران','لف','spin','rotate'],['تظليل','هايلايت','highlight','marker'],['شخص','person','وجه','face']];
