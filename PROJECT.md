@@ -52,3 +52,9 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - Platform overlay select (Instagram, Instagram RTL, TikTok, YouTube Shorts) draws the app UI over previews (`ml-ui`).
 - Basket share link: `#b=ID,ID,...` merges into the visitor's basket.
 - Popular: each prompt copy sends GoatCounter event `copy/<ID>`; `tools/popular.py` (needs GOATCOUNTER_TOKEN) writes `popular.json`; badges + "Most used" filter appear only when the list is not empty.
+
+## Round 3 (added 2026-11-19)
+- «🎲 ألهمني / Inspire me» button (in the What's new strip): random full combo (hook, caption style, palette, emphasis, transition, ending, LUT) with shuffle, one prompt, add all to basket.
+- Compare: ⇄ button on every motion card (max 4), floating "Compare (n)" pill, modal with the motions side by side.
+- Tools tab: "Post caption & hashtags" generator (templates by tone, CTA, AR/EN/both with optional English topic, topic-matched hashtags `HTG`, platform tags `HPL`, optional Kuwait/Gulf tags; max 5 for IG/TikTok, 3 YouTube, 2 X; 8 when both languages).
+- Nothing pushed yet at the owner's request: local commits wait in both repos.
