@@ -131,6 +131,3 @@
 | FE-60 | Unbounded | English | Sans | 200–900 (variable) | https://fonts.google.com/specimen/Unbounded |
 | FE-61 | Urbanist | English | Sans | 100–900 (variable) | https://fonts.google.com/specimen/Urbanist |
 | FE-62 | Work Sans | English | Sans | 100–900 (variable) | https://fonts.google.com/specimen/Work+Sans |
-
----
-@alansari.tech · Instagram: instagram.com/alansari.tech · Telegram: t.me/Alansaritech · Email: info@alansaritech.com

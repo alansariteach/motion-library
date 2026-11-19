@@ -19,6 +19,11 @@ Find the motion or font ID below, then read ONLY the matching small file. Do not
 | M-249..M-258, M-288, M-302, M-316, M-330, M-344, M-358, M-372, M-386, M-399, M-411, M-563, M-577, M-591, M-605, M-619, M-633, M-647, M-661, M-674, M-686, M-838, M-852, M-866, M-880, M-894, M-908, M-922, M-936, M-949, M-961 | D3 | https://alansariteach.github.io/motion-library/lib/ar/D3.md | https://alansariteach.github.io/motion-library/lib/en/D3.md |
 | M-259..M-266, M-289, M-303, M-317, M-331, M-345, M-359, M-373, M-387, M-564, M-578, M-592, M-606, M-620, M-634, M-648, M-662, M-839, M-853, M-867, M-881, M-895, M-909, M-923, M-937 | TIM | https://alansariteach.github.io/motion-library/lib/ar/TIM.md | https://alansariteach.github.io/motion-library/lib/en/TIM.md |
 | FA-01..FA-61 and FE-01..FE-62 (fonts) | FONTS | https://alansariteach.github.io/motion-library/lib/ar/FONTS.md | https://alansariteach.github.io/motion-library/lib/en/FONTS.md |
+| CP-01..CP-24 (colour palettes) | PALETTES | https://alansariteach.github.io/motion-library/lib/ar/PALETTES.md | https://alansariteach.github.io/motion-library/lib/en/PALETTES.md |
+| CS-01..CS-16 (caption styles) | CAPSTYLES | https://alansariteach.github.io/motion-library/lib/ar/CAPSTYLES.md | https://alansariteach.github.io/motion-library/lib/en/CAPSTYLES.md |
+| EL-01..EL-18 (ready elements) | ELEMENTS | https://alansariteach.github.io/motion-library/lib/ar/ELEMENTS.md | https://alansariteach.github.io/motion-library/lib/en/ELEMENTS.md |
+| R-01..R-12 (full Reel recipes) | RECIPES | https://alansariteach.github.io/motion-library/lib/ar/RECIPES.md | https://alansariteach.github.io/motion-library/lib/en/RECIPES.md |
+| SX-01..SX-28 (sound effects, CC0) | SOUNDS | https://alansariteach.github.io/motion-library/lib/ar/SOUNDS.md | https://alansariteach.github.io/motion-library/lib/en/SOUNDS.md |
 
 Rules for applying motions: https://alansariteach.github.io/motion-library/lib/ar/RULES.md (Arabic) or https://alansariteach.github.io/motion-library/lib/en/RULES.md (English).
 Visual examples: https://alansariteach.github.io/motion-library/

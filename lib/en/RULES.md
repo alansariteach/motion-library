@@ -10,3 +10,6 @@
 - Motions can be chained, e.g. "M-016 then M-038".
 - Each motion has a "Content the user must provide" line. If the user did not supply that content (text, image, screen recording, logo, handle…), ASK for it before rendering. Never invent screenshots, logos, faces or screen recordings, and never leave placeholder text in the final video.
 - Variants (Fast, Slow, Gold, Boxed…) need the same content as the motion they come from.
+
+- Besides motions there are: colour palettes CP-xx, caption styles CS-xx, elements EL-xx, recipes R-xx and sounds SX-xx. Each has a section below.
+- Every motion has a "Suggested sound". Add it with the motion unless the user says no sound.

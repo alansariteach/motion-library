@@ -59,6 +59,7 @@
 - **Content the user must provide:** same as M-216
 
 ### M-217 · Beat Flash
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A light flash on every beat of the music.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.15s
@@ -66,18 +67,22 @@
 - **Spec:** Detect beats in the music track; on each beat flash a white overlay to about 40–85% and fade it out over 0.15s.
 
 ### M-327 · Beat Flash · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-217
 
 ### M-602 · Beat Flash · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-217
 
 ### M-877 · Beat Flash · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-217
 
 ### M-218 · Beat Zoom
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** The frame pulses a zoom on every beat.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.2s
@@ -85,18 +90,22 @@
 - **Spec:** On each detected beat, jump the frame scale to 112% and ease back to 100% over about 0.2s.
 
 ### M-341 · Beat Zoom · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-218
 
 ### M-616 · Beat Zoom · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-218
 
 ### M-891 · Beat Zoom · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-218
 
 ### M-219 · Beat Shake
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A short shake on every heavy beat.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.15s
@@ -104,14 +113,17 @@
 - **Spec:** On each strong beat (kick), shake the overscaled frame (106%) with 2–3 quick offsets of ±2% over 0.15s.
 
 ### M-355 · Beat Shake · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-219
 
 ### M-630 · Beat Shake · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-219
 
 ### M-905 · Beat Shake · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-219
 

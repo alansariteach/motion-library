@@ -131,6 +131,3 @@
 | FE-60 | Unbounded | إنجليزي | سانس | 200–900 (variable) | https://fonts.google.com/specimen/Unbounded |
 | FE-61 | Urbanist | إنجليزي | سانس | 100–900 (variable) | https://fonts.google.com/specimen/Urbanist |
 | FE-62 | Work Sans | إنجليزي | سانس | 100–900 (variable) | https://fonts.google.com/specimen/Work+Sans |
-
----
-@alansari.tech · إنستغرام: instagram.com/alansari.tech · تلغرام: t.me/Alansaritech · الإيميل: info@alansaritech.com

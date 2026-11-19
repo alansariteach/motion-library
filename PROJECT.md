@@ -36,3 +36,11 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 ## Logo (updated 2026-10-26)
 - Brand logo is the chip mark ("ALANSARI-TECH_lines", from the owner's 10-colour set), recoloured to the site palette: chip pins/trace and the dot = coral #E3643F (`--acc2`), A and tagline = gold #FFC857, wordmark = cream #F6EFE2, chip body = #0E1B1D.
 - Embedded as base64 SVG: full logo in the hero (`.logo-big`), chip mark in the header `.brand` (text hidden under 560px) and as the favicon. The old 3D webp logo was removed.
+
+## Extras (added 2026-11-19)
+- New tabs beside Motions/Fonts: Colors `CP-01..24`, Captions `CS-01..16` (caption styles = CAP motion + font + palette + position), Elements `EL-01..18` (CSS-animated previews), Recipes `R-01..12` (full Reel plans referencing M/CS/EL/SX IDs), Sounds `SX-01..28` (CC0 MP3s in `sfx/`, credits in `sfx/CREDITS.md`).
+- Every motion has a suggested sound (`sxOf(m)`, rules by name/category); it shows as a chip on the card, goes into the copied prompt and into the library files.
+- Prompt basket (＋ on any card, bar at the bottom, one combined prompt, stored in localStorage `ml-basket`), favourites (♥, `ml-fav`), use-case filter chips on Motions (hook, ending, numbers, products, tutorials, podcast, stories; `usesOf(m)`), and the "Try with your text" lab (✎ on motion cards: live preview with the user's text, any font and palette).
+- PWA: `manifest.webmanifest`, `sw.js` (network-first page, caches fonts/sounds/icons, never mp4), icons `icon-192/512.png`, `icon-maskable-512.png`, `apple-touch-icon.png`.
+- Source of these extras: `tools/extras/x.css`, `x-data.js`, `x-ui.js`. Edit there, then run `python3 tools/assemble_extras.py` (inlines them into `index.html` between `/*XCSS-START*/` and `<script id="xjs">` markers; safe to re-run). Then `tools/build_lib.py` as usual (library files now include PALETTES, CAPSTYLES, ELEMENTS, RECIPES, SOUNDS sections and lib files).
+- Prefix new CSS classes with `x`: the old stylesheet already uses `.ov` and `.box`.

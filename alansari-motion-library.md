@@ -15,9 +15,13 @@
 - Each motion has a "Content the user must provide" line. If the user did not supply that content (text, image, screen recording, logo, handle…), ASK for it before rendering. Never invent screenshots, logos, faces or screen recordings, and never leave placeholder text in the final video.
 - Variants (Fast, Slow, Gold, Boxed…) need the same content as the motion they come from.
 
+- Besides motions there are: colour palettes CP-xx, caption styles CS-xx, elements EL-xx, recipes R-xx and sounds SX-xx. Each has a section below.
+- Every motion has a "Suggested sound". Add it with the motion unless the user says no sound.
+
 ## TXT — Text In
 
 ### M-001 · Fade Up
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** The simplest entrance for any title or line.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.45s in · 0.3s out
@@ -25,18 +29,22 @@
 - **Spec:** Text starts 40px below its final position at opacity 0, rises into place while fading to 1 over 0.45s (easeOutCubic). Holds. Exit: fade to 0 while drifting up 12px over 0.3s.
 
 ### M-276 · Fade Up · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-001. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-001
 
 ### M-551 · Fade Up · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-001. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-001
 
 ### M-826 · Fade Up · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-001. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-001
 
 ### M-002 · Typewriter
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** When text should type out letter by letter, like code or a prompt.
 - **Content the user must provide:** text: the text to show
 - **Duration:** ~0.07s per character
@@ -44,18 +52,22 @@
 - **Spec:** Characters appear one at a time at a constant rate (about 14 chars/sec), with a blinking caret (0.6s blink) at the writing edge. For Arabic, reveal right-to-left by word or by clipping from the left. Hold, then erase or cut.
 
 ### M-290 · Typewriter · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-002. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-002
 
 ### M-565 · Typewriter · Boxed
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-002. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-002
 
 ### M-840 · Typewriter · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-002. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-002
 
 ### M-003 · Letter Cascade
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A short English word that should grab attention.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s per letter · 0.07s stagger
@@ -63,18 +75,22 @@
 - **Spec:** Each letter drops from 60px above with a -14° rotation and opacity 0, landing in place over 0.5s (easeOutBack). Letters are staggered 0.07s apart. Use on Latin words; for Arabic use word-level stagger to keep letters joined.
 
 ### M-304 · Letter Cascade · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-003. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-003
 
 ### M-579 · Letter Cascade · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-003. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-003
 
 ### M-854 · Letter Cascade · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-003. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-003
 
 ### M-004 · Mask Slide
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** Elegant, cinematic titles.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.55s in · 0.45s out
@@ -82,18 +98,22 @@
 - **Spec:** The text sits inside an invisible box with overflow hidden. It slides up from 110% below the box edge into place over 0.55s, holds, then continues upward out of the box over 0.45s. No fading.
 
 ### M-318 · Mask Slide · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-004. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-004
 
 ### M-593 · Mask Slide · Boxed
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-004. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-004
 
 ### M-868 · Mask Slide · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-004. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-004
 
 ### M-005 · Blur In
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** Calm lines or the opening of a video.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.7s in · 0.5s out
@@ -101,18 +121,22 @@
 - **Spec:** Text starts at scale 1.3, blur 30px, opacity 0 and settles to scale 1, blur 0, opacity 1 over 0.7s. Exit by blurring to 20px while fading out over 0.5s.
 
 ### M-332 · Blur In · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-005. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-005
 
 ### M-607 · Blur In · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-005. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-005
 
 ### M-882 · Blur In · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-005. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-005
 
 ### M-041 · Slide In Right
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A quick title entrance from the right.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.4s in · 0.3s out
@@ -120,18 +144,22 @@
 - **Spec:** Text enters from 70% of its width to the right, fading 0 to 1 over 0.4s, holds, then exits to the left with a fade over 0.3s.
 
 ### M-346 · Slide In Right · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-041. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-041
 
 ### M-621 · Slide In Right · Boxed
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-041. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-041
 
 ### M-896 · Slide In Right · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-041. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-041
 
 ### M-042 · Slide In Left
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** An entrance from the left, good for English text or lists.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.4s in · 0.3s out
@@ -139,18 +167,22 @@
 - **Spec:** Text enters from 70% of its width to the left, fading in over 0.4s, holds, then exits to the right with a fade over 0.3s.
 
 ### M-360 · Slide In Left · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-042. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-042
 
 ### M-635 · Slide In Left · Boxed
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-042. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-042
 
 ### M-910 · Slide In Left · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-042. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-042
 
 ### M-043 · Drop In
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A title falls from above and bounces, playful.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s
@@ -158,18 +190,22 @@
 - **Spec:** Text drops from 160% above its place, overshoots 8% down, bounces back 4% up and settles over 0.5s. Exit by fading out.
 
 ### M-374 · Drop In · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-043. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-043
 
 ### M-649 · Drop In · Boxed
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-043. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-043
 
 ### M-924 · Drop In · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-043. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-043
 
 ### M-044 · Zoom In Text
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A word grows from a dot to full size.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s
@@ -177,18 +213,22 @@
 - **Spec:** Text scales from 20% to 100% while fading in over 0.5s (easeOutExpo). Exit by scaling to 110% and fading out.
 
 ### M-388 · Zoom In Text · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-044. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-044
 
 ### M-663 · Zoom In Text · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-044. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-044
 
 ### M-938 · Zoom In Text · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-044. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-044
 
 ### M-045 · Zoom Out Text
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A strong word slams onto the screen.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.45s
@@ -196,18 +236,22 @@
 - **Spec:** Text starts at 240% scale and opacity 0 and shrinks to 100% while fading in over 0.45s, like it lands on the screen. Pair with a low "boom".
 
 ### M-400 · Zoom Out Text · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-045. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-045
 
 ### M-675 · Zoom Out Text · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-045. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-045
 
 ### M-950 · Zoom Out Text · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-045. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-045
 
 ### M-046 · Flip In
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A title flips in on the horizontal axis like a sign.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s in · 0.4s out
@@ -215,18 +259,22 @@
 - **Spec:** Text rotates from 90° to 0° around the X axis with perspective while fading in over 0.5s. Exit by rotating to -90°.
 
 ### M-412 · Flip In · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-046. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-046
 
 ### M-687 · Flip In · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-046. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-046
 
 ### M-962 · Flip In · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-046. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-046
 
 ### M-047 · Rotate In
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A word spins in, good for "turnaround" moments.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s
@@ -234,18 +282,22 @@
 - **Spec:** Text rotates from -90° and 60% scale to 0° and 100% while fading in over 0.5s. Exit with a small 30° turn and fade.
 
 ### M-423 · Rotate In · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-047. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-047
 
 ### M-698 · Rotate In · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-047. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-047
 
 ### M-973 · Rotate In · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-047. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-047
 
 ### M-048 · Word Stagger
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A short line where each word follows the one before.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.45s per word · 0.2s stagger
@@ -253,18 +305,22 @@
 - **Spec:** Each word rises 40px and fades in over 0.45s, starting 0.2s after the previous word. Hold the full line, then fade all out together.
 
 ### M-434 · Word Stagger · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-048. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-048
 
 ### M-709 · Word Stagger · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-048. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-048
 
 ### M-984 · Word Stagger · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-048. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-048
 
 ### M-049 · Elastic Pop
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word pops with a rubbery squash and stretch.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.6s
@@ -272,18 +328,22 @@
 - **Spec:** Text scales from 0 to a squash (130% wide, 80% tall), then a stretch (85% wide, 115% tall), then settles at 100% over about 0.6s.
 
 ### M-444 · Elastic Pop · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-049. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-049
 
 ### M-719 · Elastic Pop · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-049. put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-049
 
 ### M-994 · Elastic Pop · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-049. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-049
 
 ### M-050 · Split Reveal
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A title split in two halves that meet in the middle.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s
@@ -291,14 +351,17 @@
 - **Spec:** The top half of the text slides down from 70% above and the bottom half slides up from 70% below, meeting at the line over 0.5s.
 
 ### M-453 · Split Reveal · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-050. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-050
 
 ### M-728 · Split Reveal · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-050. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-050
 
 ### M-051 · Scramble Decode
+- **Suggested sound:** SX-27 Data Reveal
 - **When to use:** English text resolves from random characters, great for cyber topics.
 - **Content the user must provide:** text: the text to show
 - **Duration:** ~1s decode
@@ -306,14 +369,17 @@
 - **Spec:** Each character cycles through random symbols (A–Z, 0–9, #%&) every 2 frames, then locks to its final letter from left to right over about 1s.
 
 ### M-462 · Scramble Decode · Fast
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-051. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-051
 
 ### M-737 · Scramble Decode · Boxed
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-051. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-051
 
 ### M-052 · Wave Text
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** English letters ripple in a wave.
 - **Content the user must provide:** text: the text to show
 - **Duration:** loop · 0.08s stagger
@@ -321,14 +387,17 @@
 - **Spec:** Each letter moves up 28% and back in a smooth wave, each starting 0.08s after the previous one, so a ripple runs across the word.
 
 ### M-470 · Wave Text · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-052. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-052
 
 ### M-745 · Wave Text · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-052. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-052
 
 ### M-053 · Outline to Fill
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A title draws as an outline, then fills in.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.8s outline · 0.4s fill
@@ -336,14 +405,17 @@
 - **Spec:** The text first appears as an accent outline only, revealed from the reading-start side over 0.8s, then the fill color fades in over 0.4s.
 
 ### M-478 · Outline to Fill · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-053. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-053
 
 ### M-753 · Outline to Fill · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-053. put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-053
 
 ### M-054 · Spotlight Reveal
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** Hidden text revealed by a passing spotlight.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 1.4s sweep
@@ -351,14 +423,17 @@
 - **Spec:** The text sits at 12% opacity. A soft circular spotlight (radius about 13% of the width) sweeps across it and shows the text at full brightness where it passes.
 
 ### M-486 · Spotlight Reveal · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-054. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-054
 
 ### M-761 · Spotlight Reveal · Boxed
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-054. put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-054
 
 ### M-055 · Gradient Wipe Text
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A word changes color with a soft wipe.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.8s
@@ -366,14 +441,17 @@
 - **Spec:** A two-color gradient (accent and white) is clipped to the text and slides across it over 0.8s, so the word changes color with a soft edge.
 
 ### M-494 · Gradient Wipe Text · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-055. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-055
 
 ### M-769 · Gradient Wipe Text · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-055. put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-055
 
 ### M-056 · Neon Flicker
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A neon sign title that flickers on.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.8s flicker
@@ -381,14 +459,17 @@
 - **Spec:** The text has a white core and an accent glow (two text shadows). It turns on with 3–4 quick flickers (opacity 12% to 100%) in the first 0.8s, then stays lit.
 
 ### M-502 · Neon Flicker · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-056. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-056
 
 ### M-777 · Neon Flicker · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-056. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-056
 
 ### M-057 · Stretch In
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A wide, fast entrance with energy.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.4s
@@ -396,14 +477,17 @@
 - **Spec:** Text starts squashed to 300% width and 20% height at opacity 0 and snaps to normal over 0.4s. Exit by stretching tall and thin.
 
 ### M-510 · Stretch In · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-057. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-057
 
 ### M-785 · Stretch In · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-057. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-057
 
 ### M-058 · Skew Slide
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A fast slanted slide, like it is flying in.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s
@@ -411,14 +495,17 @@
 - **Spec:** Text slides in from 60% to the right with a -30° skew, overshoots to +10° skew and straightens over 0.5s. Exit to the left skewing the other way.
 
 ### M-518 · Skew Slide · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-058. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-058
 
 ### M-793 · Skew Slide · Boxed
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-058. put the text inside a solid light cream #F3E9D2 box with rounded corners and dark teal #102E33 text (a light box is used here because the motion own effect colors would disappear on a dark box). Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-058
 
 ### M-059 · Kinetic Stack
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A three-word line stacking up in different sizes.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.5s per word · 0.3s stagger
@@ -426,14 +513,17 @@
 - **Spec:** Each word drops in from above (M-043 style) one under the other, 0.3s apart, each in a different size and weight, forming a tight stacked block.
 
 ### M-526 · Kinetic Stack · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-059. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-059
 
 ### M-801 · Kinetic Stack · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-059. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-059
 
 ### M-060 · Slot Machine
+- **Suggested sound:** SX-27 Data Reveal
 - **When to use:** Letters spin like a slot machine and land on the word.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.9s · 0.15s stagger
@@ -441,16 +531,19 @@
 - **Spec:** Each letter sits in a one-row window and scrolls through a column of 5 random letters before landing on its final letter over 0.9s. Letters stop 0.15s apart from left to right.
 
 ### M-534 · Slot Machine · Fast
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-060. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-060
 
 ### M-809 · Slot Machine · Boxed
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-060. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-060
 
 ## EMP — Emphasis
 
 ### M-006 · Highlight Sweep
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** Highlights a key word like a marker pen.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.5s sweep
@@ -458,18 +551,22 @@
 - **Spec:** A solid accent-colored box grows behind the word from 0% to 100% width over 0.5s (from the reading-start side: right for Arabic). The word color switches to dark for contrast. The box shrinks back on exit.
 
 ### M-277 · Highlight Sweep · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-006. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-006
 
 ### M-552 · Highlight Sweep · Boxed
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-006. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-006
 
 ### M-827 · Highlight Sweep · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-006. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-006
 
 ### M-007 · Underline Draw
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A quiet emphasis on one word.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s draw
@@ -477,18 +574,22 @@
 - **Spec:** A rounded accent line (about 8% of the font size thick) draws under the word from the reading-start side to the end over 0.6s, holds, then retracts toward the far side.
 
 ### M-291 · Underline Draw · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-007. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-007
 
 ### M-566 · Underline Draw · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-007. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-007
 
 ### M-841 · Underline Draw · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-007. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-007
 
 ### M-008 · Scale Punch
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A strong word that needs a hit on the beat or a sound effect.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.15s punch · 0.25s settle
@@ -496,18 +597,22 @@
 - **Spec:** On the exact spoken frame the word jumps to 150% scale in 0.15s and turns accent color, then settles to 125% over 0.25s and holds. Return to 100% at the end. Pair it with a short "boom" or "pop" sound effect.
 
 ### M-305 · Scale Punch · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-008. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-008
 
 ### M-580 · Scale Punch · Boxed
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-008. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-008
 
 ### M-855 · Scale Punch · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-008. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-008
 
 ### M-009 · Word Shake
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** Surprise, anger or a warning.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s shake
@@ -515,18 +620,22 @@
 - **Spec:** The word shakes horizontally with ±6% offsets and ±4° rotation, alternating every 0.04–0.05s for about 0.6s, with the amplitude damping toward zero.
 
 ### M-319 · Word Shake · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-009. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-009
 
 ### M-594 · Word Shake · Boxed
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-009. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-009
 
 ### M-869 · Word Shake · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-009. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-009
 
 ### M-010 · Glitch Text
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** Tech, AI and hacking topics.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s glitch burst
@@ -534,18 +643,22 @@
 - **Spec:** For about 0.6s, two copies of the text (cyan #3FE0FF and red #FF3F6C) jitter ±5% offset and show through random horizontal slice masks, changing every 2–3 frames, while the main text skews ±8°. Then everything snaps back clean.
 
 ### M-333 · Glitch Text · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-010. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-010
 
 ### M-608 · Glitch Text · Boxed
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-010. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-010
 
 ### M-883 · Glitch Text · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-010. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-010
 
 ### M-061 · Circle Around
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** Circles a key word as if drawn with a pen.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s draw
@@ -553,18 +666,22 @@
 - **Spec:** A hand-drawn accent ellipse strokes around the word over 0.6s (animated stroke), holds, then erases. Slightly uneven so it feels hand-made.
 
 ### M-347 · Circle Around · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-061. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-061
 
 ### M-622 · Circle Around · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-061. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-061
 
 ### M-897 · Circle Around · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-061. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-061
 
 ### M-062 · Strike Through
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** Crosses out a wrong or old word before the right one.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.5s
@@ -572,18 +689,22 @@
 - **Spec:** An accent line draws through the middle of the word from the reading-start side over 0.5s, holds, then retracts.
 
 ### M-361 · Strike Through · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-062. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-062
 
 ### M-636 · Strike Through · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-062. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-062
 
 ### M-911 · Strike Through · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-062. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-062
 
 ### M-063 · Box Outline Draw
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** Frames a word inside a drawn box.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s draw
@@ -591,18 +712,22 @@
 - **Spec:** A rounded accent rectangle strokes itself around the word, starting from the top-right corner, over 0.6s. Holds, then erases.
 
 ### M-375 · Box Outline Draw · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-063. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-063
 
 ### M-650 · Box Outline Draw · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-063. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-063
 
 ### M-925 · Box Outline Draw · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-063. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-063
 
 ### M-064 · Color Pulse
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A word gently pulses between two colors.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** loop · 1.6s
@@ -610,18 +735,22 @@
 - **Spec:** The word color eases from white to the accent color and back in a 1.6s loop while it is on screen.
 
 ### M-389 · Color Pulse · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-064. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-064
 
 ### M-664 · Color Pulse · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-064. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-064
 
 ### M-939 · Color Pulse · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-064. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-064
 
 ### M-065 · Glow Pulse
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A word breathes with a soft glow.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** loop · 1.6s
@@ -629,18 +758,22 @@
 - **Spec:** An accent glow (text shadow, blur up to 6% of the width) grows and fades around the word in a 1.6s loop.
 
 ### M-401 · Glow Pulse · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-065. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-065
 
 ### M-676 · Glow Pulse · Boxed
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-065. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-065
 
 ### M-951 · Glow Pulse · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-065. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-065
 
 ### M-066 · Wiggle
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A word wiggles to grab attention.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.8s
@@ -648,18 +781,22 @@
 - **Spec:** The word rotates quickly ±8° and back several times with decreasing angle over about 0.8s, then rests.
 
 ### M-413 · Wiggle · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-066. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-066
 
 ### M-688 · Wiggle · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-066. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-066
 
 ### M-963 · Wiggle · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-066. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-066
 
 ### M-067 · Bounce Word
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word hops twice, light and fun.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s
@@ -667,18 +804,22 @@
 - **Spec:** The word jumps up 35% of its height and lands, then a second smaller jump of 14%, over about 0.6s.
 
 ### M-424 · Bounce Word · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-067. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-067
 
 ### M-699 · Bounce Word · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-067. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-067
 
 ### M-974 · Bounce Word · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-067. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-067
 
 ### M-068 · Arrow Point
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** An arrow points at a word or an object on screen.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** loop · 1s
@@ -686,18 +827,22 @@
 - **Spec:** An accent arrow sits beside the target and nudges toward it by 30% of its length and back in a 1s loop.
 
 ### M-435 · Arrow Point · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-068. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-068
 
 ### M-710 · Arrow Point · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-068. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-068
 
 ### M-985 · Arrow Point · Slow
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-068. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-068
 
 ### M-069 · Zoom Blur Word
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A fast zoom hit on a single word.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.3s
@@ -705,18 +850,22 @@
 - **Spec:** The word jumps to 160% with a 1.5% blur in 0.2s, then settles at 120% sharp over 0.3s. Return to 100% at the end.
 
 ### M-445 · Zoom Blur Word · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-069. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-069
 
 ### M-720 · Zoom Blur Word · Boxed
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-069. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-069
 
 ### M-995 · Zoom Blur Word · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-069. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-069
 
 ### M-070 · Rubber Band
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word squashes and stretches like rubber.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.7s
@@ -724,14 +873,17 @@
 - **Spec:** The word scales to 125%×75%, then 75%×125%, then smaller swings until it settles at 100% over 0.7s.
 
 ### M-454 · Rubber Band · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-070. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-070
 
 ### M-729 · Rubber Band · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-070. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-070
 
 ### M-071 · Jello
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word wobbles like jelly.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.9s
@@ -739,14 +891,17 @@
 - **Spec:** The word skews on both axes by -12°, then +6°, -3°, +1.5° and settles over 0.9s.
 
 ### M-463 · Jello · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-071. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-071
 
 ### M-738 · Jello · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-071. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-071
 
 ### M-072 · Heartbeat
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word pulses like a heartbeat.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** loop · 1.4s
@@ -754,14 +909,17 @@
 - **Spec:** Two quick pulses to 130% scale and back (like a heartbeat), then a pause, in a 1.4s loop.
 
 ### M-471 · Heartbeat · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-072. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-072
 
 ### M-746 · Heartbeat · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-072. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-072
 
 ### M-073 · Marker Scribble
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A zigzag scribble under a word like a marker.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.6s draw
@@ -769,14 +927,17 @@
 - **Spec:** A loose zigzag accent stroke draws under the word from the reading-start side over 0.6s, holds, then erases.
 
 ### M-479 · Marker Scribble · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-073. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-073
 
 ### M-754 · Marker Scribble · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-073. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-073
 
 ### M-074 · Spotlight Dim
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** Everything dims except the word or face.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.5s in
@@ -784,14 +945,17 @@
 - **Spec:** A dark overlay (about 80% black) fades in over 0.5s with a soft circular hole around the subject, so only the subject stays lit. Fade out to release.
 
 ### M-487 · Spotlight Dim · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-074. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-074
 
 ### M-762 · Spotlight Dim · Boxed
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-074. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-074
 
 ### M-075 · Letter Spacing
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** An English word spreads its letters for a premium feel.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.8s
@@ -799,14 +963,17 @@
 - **Spec:** The letter spacing grows smoothly from 0 to 0.35em over 0.8s while the word stays centered. Reverse at exit.
 
 ### M-495 · Letter Spacing · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-075. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-075
 
 ### M-770 · Letter Spacing · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-075. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-075
 
 ### M-076 · Flash Hit
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A quick white flash on a strong word or cut.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.15s
@@ -814,14 +981,17 @@
 - **Spec:** A full-screen white flash rises to 90% opacity in 1–2 frames and fades out over 0.15s, exactly on the beat or word.
 
 ### M-503 · Flash Hit · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-076. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-076
 
 ### M-778 · Flash Hit · Boxed
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-076. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-076
 
 ### M-077 · Sparkle Stars
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** Sparkles around a word or product for a "fresh" feel.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** loop · 1.2s
@@ -829,14 +999,17 @@
 - **Spec:** Three to five small four-point stars pop in around the word at random spots, scale 0 to 100% while rotating 90°, then shrink away, staggered by 0.3s.
 
 ### M-511 · Sparkle Stars · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-077. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-077
 
 ### M-786 · Sparkle Stars · Boxed
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-077. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-077
 
 ### M-078 · Swing
+- **Suggested sound:** SX-11 Pop In
 - **When to use:** A hanging word swings like a sign.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 1s
@@ -844,14 +1017,17 @@
 - **Spec:** The word swings from its top edge: +16°, -11°, +7°, -4°, +2° and settles over about 1s.
 
 ### M-519 · Swing · Fast
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-078. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-078
 
 ### M-794 · Swing · Boxed
+- **Suggested sound:** SX-11 Pop In
 - Variant of M-078. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-078
 
 ### M-079 · Tilt Pop
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A word grows with a small tilt, sticker style.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.3s
@@ -859,14 +1035,17 @@
 - **Spec:** The word scales to 130% while rotating -8° in 0.3s, settles at 120% and -5°, holds, then returns.
 
 ### M-527 · Tilt Pop · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-079. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-079
 
 ### M-802 · Tilt Pop · Boxed
+- **Suggested sound:** SX-09 Pop
 - Variant of M-079. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-079
 
 ### M-080 · Chromatic Split
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** A word splits into red and cyan channels, tech style.
 - **Content the user must provide:** text: the word(s) to emphasize
 - **Duration:** 0.5s
@@ -874,10 +1053,12 @@
 - **Spec:** Red and cyan copies of the word slide out sideways by 1.5% of the width and back in over 0.5s, like an RGB lens split.
 
 ### M-535 · Chromatic Split · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-080. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-080
 
 ### M-810 · Chromatic Split · Boxed
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-080. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-080
 
@@ -903,6 +1084,7 @@
 - **Content the user must provide:** same as M-011
 
 ### M-012 · Word Pop
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A fast, lively caption, word by word.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.18s per word
@@ -910,18 +1092,22 @@
 - **Spec:** Each word appears at its spoken timestamp, scaling from 30% to 118% and settling to 100% in 0.18s. Earlier words stay. Clear the line when the sentence ends.
 
 ### M-292 · Word Pop · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-012
 
 ### M-567 · Word Pop · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-012
 
 ### M-842 · Word Pop · Slow
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-012
 
 ### M-013 · Bounce Caption
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A whole line drops in at once with a playful move.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.55s in
@@ -929,14 +1115,17 @@
 - **Spec:** The whole caption line enters from 130% below with a spring: overshoot to -14%, rebound to +6%, settle at 0 over about 0.55s. Fade out on exit.
 
 ### M-306 · Bounce Caption · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-013
 
 ### M-581 · Bounce Caption · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-013
 
 ### M-856 · Bounce Caption · Slow
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-013
 
@@ -1165,6 +1354,7 @@
 - **Content the user must provide:** same as M-090
 
 ### M-091 · Shadow Pop
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A caption with a solid colored drop shadow that pops, pop-art style.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.3s
@@ -1172,10 +1362,12 @@
 - **Spec:** A solid accent shadow (no blur) grows to 1.2% offset down-right while the text moves 1% up-left, so it looks lifted. Reverse at exit.
 
 ### M-464 · Shadow Pop · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-091. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-091
 
 ### M-739 · Shadow Pop · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-091. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-091
 
@@ -1195,6 +1387,7 @@
 - **Content the user must provide:** same as M-092
 
 ### M-093 · Drop Words
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** Each word drops from above with a small bounce.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.25s per word
@@ -1202,10 +1395,12 @@
 - **Spec:** Each word drops from 80% above its line, overshoots 10% and settles over 0.25s at its spoken timestamp.
 
 ### M-480 · Drop Words · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-093. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-093
 
 ### M-755 · Drop Words · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-093. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-093
 
@@ -1285,6 +1480,7 @@
 - **Content the user must provide:** same as M-098
 
 ### M-099 · Glitch Caption
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** A tech caption that glitches as it lands.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.4s glitch
@@ -1292,10 +1488,12 @@
 - **Spec:** The caption enters with a 0.4s glitch burst: red and cyan copies jitter through random slice masks, then the line snaps clean (see M-010).
 
 ### M-528 · Glitch Caption · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-099. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-099
 
 ### M-803 · Glitch Caption · Boxed
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-099. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-099
 
@@ -1377,6 +1575,7 @@
 ## TRN — Transitions
 
 ### M-016 · Circle Reveal
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** Swap the background or scene from a point, like your finger or face.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1384,18 +1583,22 @@
 - **Spec:** The new scene is revealed through a circular mask that grows from a chosen point (e.g. a fingertip) from radius 0 to full-frame diagonal over 0.6s, with a 30px soft edge. A thin accent ring expands just ahead of the edge and fades out.
 
 ### M-279 · Circle Reveal · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-016. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-016
 
 ### M-554 · Circle Reveal · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-016. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-016
 
 ### M-829 · Circle Reveal · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-016. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-016
 
 ### M-017 · Linear Wipe
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A clear transition between two clips or places.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1403,18 +1606,22 @@
 - **Spec:** The new scene wipes in across the frame behind a moving vertical edge over 0.5s. The edge has a white 4px line with an accent glow.
 
 ### M-293 · Linear Wipe · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-017. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-017
 
 ### M-568 · Linear Wipe · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-017. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-017
 
 ### M-843 · Linear Wipe · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-017. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-017
 
 ### M-018 · Light Sweep
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A magic change, like "look how it changed".
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.7s
@@ -1422,18 +1629,22 @@
 - **Spec:** A bright warm diagonal light band (about 15% of the frame wide, angled 105°) sweeps across the frame over 0.7s. The scene swaps to the new one exactly as the band passes the center.
 
 ### M-307 · Light Sweep · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-018. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-018
 
 ### M-582 · Light Sweep · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-018. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-018
 
 ### M-857 · Light Sweep · Gold
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-018. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-018
 
 ### M-019 · Zoom Blur
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A fast, punchy cut between two clips.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s out · 0.4s in
@@ -1441,18 +1652,22 @@
 - **Spec:** The outgoing clip scales to 170% with a radial blur of about 10px and fades out over 0.4s (easeInExpo). The incoming clip starts at 160% blurred and settles to 100% sharp over 0.4s (easeOutExpo).
 
 ### M-321 · Zoom Blur · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-019. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-019
 
 ### M-596 · Zoom Blur · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-019. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-019
 
 ### M-871 · Zoom Blur · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-019. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-019
 
 ### M-020 · Whip Pan
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** Cut between two shots as if the camera spun.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.35s
@@ -1460,18 +1675,22 @@
 - **Spec:** The outgoing clip slides out to one side with heavy horizontal motion blur, and the incoming clip slides in from the opposite side over 0.35s total. Add a fast "whoosh" sound.
 
 ### M-335 · Whip Pan · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-020. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-020
 
 ### M-610 · Whip Pan · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-020. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-020
 
 ### M-885 · Whip Pan · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-020. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-020
 
 ### M-101 · Fade Through Black
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A calm transition through a moment of black.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3s out · 0.3s in
@@ -1479,18 +1698,22 @@
 - **Spec:** The outgoing clip fades to full black over 0.3s, holds black for 2–4 frames, then the new clip fades in from black over 0.3s.
 
 ### M-349 · Fade Through Black · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-101. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-101
 
 ### M-624 · Fade Through Black · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-101. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-101
 
 ### M-899 · Fade Through Black · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-101. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-101
 
 ### M-102 · Cross Dissolve
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The classic soft blend from one shot into the next.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1498,18 +1721,22 @@
 - **Spec:** The new clip fades in on top of the old one from 0 to 100% over 0.5s while both play.
 
 ### M-363 · Cross Dissolve · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-102. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-102
 
 ### M-638 · Cross Dissolve · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-102. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-102
 
 ### M-913 · Cross Dissolve · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-102. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-102
 
 ### M-103 · Slide Push
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** The new shot pushes the old one off screen.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.45s
@@ -1517,18 +1744,22 @@
 - **Spec:** The new clip slides in from the right edge while pushing the old clip out to the left at the same speed over 0.45s.
 
 ### M-377 · Slide Push · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-103. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-103
 
 ### M-652 · Slide Push · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-103. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-103
 
 ### M-927 · Slide Push · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-103. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-103
 
 ### M-104 · Diagonal Wipe
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A slanted wipe, livelier than a straight one.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1536,18 +1767,22 @@
 - **Spec:** The new clip is revealed behind a soft-edged diagonal line (135°) that travels from the top-left corner to the bottom-right over 0.5s.
 
 ### M-391 · Diagonal Wipe · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-104. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-104
 
 ### M-666 · Diagonal Wipe · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-104. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-104
 
 ### M-941 · Diagonal Wipe · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-104. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-104
 
 ### M-105 · Iris Close/Open
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A circle closes on one shot and opens on the next, old-film style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s close · 0.4s open
@@ -1555,18 +1790,22 @@
 - **Spec:** A circular mask shrinks to zero on the face of the outgoing clip (0.4s), then the new clip opens from the same point with a growing circle (0.4s). Black between.
 
 ### M-403 · Iris Close/Open · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-105. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-105
 
 ### M-678 · Iris Close/Open · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-105. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-105
 
 ### M-953 · Iris Close/Open · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-105. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-105
 
 ### M-106 · Clock Wipe
+- **Suggested sound:** SX-12 Tick
 - **When to use:** The new shot sweeps in like a clock hand.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1574,18 +1813,22 @@
 - **Spec:** The new clip is revealed by a radial sweep around the center, starting at 12 o clock and going clockwise a full 360° over 0.6s.
 
 ### M-415 · Clock Wipe · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-106. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-106
 
 ### M-690 · Clock Wipe · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-106. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-106
 
 ### M-965 · Clock Wipe · Gold
+- **Suggested sound:** SX-12 Tick
 - Variant of M-106. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-106
 
 ### M-107 · Blinds
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The new shot opens through vertical blinds.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1593,18 +1836,22 @@
 - **Spec:** The frame is split into 6 vertical strips. Each strip reveals the new clip by growing from its right edge to full width over 0.5s.
 
 ### M-426 · Blinds · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-107. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-107
 
 ### M-701 · Blinds · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-107. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-107
 
 ### M-976 · Blinds · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-107. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-107
 
 ### M-108 · Split Doors
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The shot splits in half and opens like doors.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1612,18 +1859,22 @@
 - **Spec:** The outgoing clip is cut down the middle; the two halves slide apart to the left and right over 0.6s, revealing the new clip behind them.
 
 ### M-437 · Split Doors · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-108. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-108
 
 ### M-712 · Split Doors · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-108. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-108
 
 ### M-987 · Split Doors · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-108. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-108
 
 ### M-109 · Diamond Reveal
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The new shot opens from a growing diamond.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1631,18 +1882,22 @@
 - **Spec:** The new clip is revealed through a diamond-shaped mask that grows from the face point until it covers the frame over 0.6s.
 
 ### M-447 · Diamond Reveal · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-109. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-109
 
 ### M-722 · Diamond Reveal · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-109. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-109
 
 ### M-997 · Diamond Reveal · Gold
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-109. add a thin gold #FFC857 light streak (about 1.2% wide) that sweeps across the frame at the moment of the transition.
 - **Content the user must provide:** same as M-109
 
 ### M-110 · Glitch Transition
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** A glitchy cut, great for cyber content.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s
@@ -1650,14 +1905,17 @@
 - **Spec:** For 0.4s the new clip flashes in through random horizontal slices with ±8% offsets, changing every 2 frames, then locks in clean. Add a digital noise sound.
 
 ### M-456 · Glitch Transition · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-110. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-110
 
 ### M-731 · Glitch Transition · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-110. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-110
 
 ### M-111 · Spin Transition
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** The old shot spins out, the new one spins in.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1665,14 +1923,17 @@
 - **Spec:** The outgoing clip rotates 180° while shrinking to 20% and fading out; the new clip rotates in from -180° and 20% to full size over 0.5s.
 
 ### M-465 · Spin Transition · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-111. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-111
 
 ### M-740 · Spin Transition · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-111. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-111
 
 ### M-112 · Flash White
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A cut hidden in a white flash, bold and sudden.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.25s
@@ -1680,14 +1941,17 @@
 - **Spec:** A full white flash peaks in 2 frames exactly on the cut, then fades over 0.25s to reveal the new clip.
 
 ### M-473 · Flash White · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-112. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-112
 
 ### M-748 · Flash White · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-112. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-112
 
 ### M-113 · Color Flash
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A cut hidden in a brand-color flash.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3s
@@ -1695,14 +1959,17 @@
 - **Spec:** Same as M-112 but the flash is the brand accent color at 90% opacity.
 
 ### M-481 · Color Flash · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-113. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-113
 
 ### M-756 · Color Flash · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-113. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-113
 
 ### M-114 · Corner Reveal
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The new shot grows in from a corner.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1710,14 +1977,17 @@
 - **Spec:** The new clip is revealed through a circle that grows from the bottom-left corner until it covers the frame over 0.6s.
 
 ### M-489 · Corner Reveal · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-114. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-114
 
 ### M-764 · Corner Reveal · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-114. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-114
 
 ### M-115 · Cube Rotate
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The two shots act as faces of a rotating cube.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1725,14 +1995,17 @@
 - **Spec:** With 3D perspective, the outgoing clip rotates 90° away on its left edge while the new clip rotates in from -90° on its right edge, like a turning cube, over 0.6s.
 
 ### M-497 · Cube Rotate · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-115. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-115
 
 ### M-772 · Cube Rotate · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-115. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-115
 
 ### M-116 · Zoom Through
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** The camera dives into one shot and comes out in the next.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1740,14 +2013,17 @@
 - **Spec:** The outgoing clip scales to 400% and fades out quickly (0.3s); the new clip grows from 60% to 100% while fading in (0.3s), overlapping slightly.
 
 ### M-505 · Zoom Through · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-116. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-116
 
 ### M-780 · Zoom Through · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-116. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-116
 
 ### M-117 · Strip Slide
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** The new shot slides in as horizontal strips, one after another.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s · 0.06s stagger
@@ -1755,14 +2031,17 @@
 - **Spec:** The new clip is cut into 5 horizontal strips; each strip slides in from the right over 0.5s, starting 0.06s after the one above it.
 
 ### M-513 · Strip Slide · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-117. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-117
 
 ### M-788 · Strip Slide · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-117. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-117
 
 ### M-118 · Light Leak
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A warm light leak washes over the cut, film style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -1770,14 +2049,17 @@
 - **Spec:** Warm orange and red light blobs (screen blend) drift across the frame over 0.8s; the cut to the new clip happens at the brightest moment.
 
 ### M-521 · Light Leak · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-118. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-118
 
 ### M-796 · Light Leak · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-118. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-118
 
 ### M-119 · Smooth Cut
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A cut between similar shots that hides the jump.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3s
@@ -1785,14 +2067,17 @@
 - **Spec:** The new clip fades in over 0.3s while scaling from 105% to 100%, which hides small position jumps between two similar takes.
 
 ### M-529 · Smooth Cut · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-119. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-119
 
 ### M-804 · Smooth Cut · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-119. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-119
 
 ### M-120 · Swipe Up
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Like swiping a story up to the next clip.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s
@@ -1800,14 +2085,17 @@
 - **Spec:** The outgoing clip slides up out of the top edge while the new clip slides up from the bottom edge at the same speed over 0.4s.
 
 ### M-537 · Swipe Up · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-120. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-120
 
 ### M-812 · Swipe Up · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-120. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-120
 
 ### M-267 · Shape Morph
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A shape morphs smoothly into another.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -1815,14 +2103,17 @@
 - **Spec:** Interpolate between shapes (circle → rounded square → leaf) by animating corner radii and rotation, or by morphing matching SVG paths.
 
 ### M-543 · Shape Morph · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-267. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-267
 
 ### M-818 · Shape Morph · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-267. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-267
 
 ### M-268 · Liquid Reveal
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A liquid blob grows to cover the cut.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.7s
@@ -1830,14 +2121,17 @@
 - **Spec:** An organic blob shape in the accent color grows from the center while its border radius wobbles, covers the frame, then fades to reveal the new clip.
 
 ### M-545 · Liquid Reveal · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-268. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-268
 
 ### M-820 · Liquid Reveal · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-268. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-268
 
 ### M-269 · Ink Splash Reveal
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** The new shot appears through growing ink splashes.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.7s
@@ -1845,14 +2139,17 @@
 - **Spec:** Reveal the new clip through a mask of several overlapping circles (ink splash shape) that scales up from the center to cover the frame.
 
 ### M-547 · Ink Splash Reveal · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-269. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-269
 
 ### M-822 · Ink Splash Reveal · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-269. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-269
 
 ### M-270 · Film Burn
+- **Suggested sound:** SX-01 Whoosh
 - **When to use:** A hot film-burn flare hides the cut.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -1860,14 +2157,17 @@
 - **Spec:** A bright white-yellow-orange burn blob expands from one corner (screen blend), peaks at full brightness on the cut, then fades.
 
 ### M-549 · Film Burn · Fast
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-270. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-270
 
 ### M-824 · Film Burn · Slow
+- **Suggested sound:** SX-01 Whoosh
 - Variant of M-270. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-270
 
 ### M-271 · Match Cut Slide
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A movement in one shot continues in the next.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -1875,16 +2175,19 @@
 - **Spec:** Cut on the motion: the outgoing clip moves out in the direction of the action and the incoming clip continues the same direction and speed.
 
 ### M-550 · Match Cut Slide · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-271. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-271
 
 ### M-825 · Match Cut Slide · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-271. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-271
 
 ## CAM — Camera
 
 ### M-021 · Punch-In
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** Hides cuts between lines, or stresses a line.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** instant (1 frame)
@@ -1892,18 +2195,22 @@
 - **Spec:** The frame jumps instantly from 100% to 125% scale, centered on the face, on a cut or a key word. Hold, then jump back to 100% on the next cut. No easing.
 
 ### M-280 · Punch-In · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-021. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-021
 
 ### M-555 · Punch-In · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-021. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-021
 
 ### M-830 · Punch-In · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-021. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-021
 
 ### M-022 · Slow Push-In
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A serious moment or a story.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** whole shot (3–6s)
@@ -1911,18 +2218,22 @@
 - **Spec:** The frame scales smoothly from 100% to about 116% across the whole shot, centered slightly above the face.
 
 ### M-294 · Slow Push-In · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-022. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-022
 
 ### M-569 · Slow Push-In · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-022. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-022
 
 ### M-844 · Slow Push-In · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-022. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-022
 
 ### M-023 · Camera Shake
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** With a hit, an explosion or a strong word.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3–1s
@@ -1930,18 +2241,22 @@
 - **Spec:** Overscale the frame to 108% to hide the edges, then shift it with random ±1.5% offsets and ±0.8° rotation, changing every 2–3 frames. Damp the shake toward the end.
 
 ### M-308 · Camera Shake · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-023. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-023
 
 ### M-583 · Camera Shake · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-023. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-023
 
 ### M-858 · Camera Shake · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-023. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-023
 
 ### M-024 · Zoom-Out Card
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Like "zoom out", or to show something next to the video.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s out · 0.5s back
@@ -1949,18 +2264,22 @@
 - **Spec:** The whole video shrinks to 60% scale with -3° tilt, about 48px rounded corners and a deep drop shadow over a dark patterned backdrop (0.6s). Hold, then it returns to full frame with a small 104% overshoot (0.5s).
 
 ### M-322 · Zoom-Out Card · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-024. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-024
 
 ### M-597 · Zoom-Out Card · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-024. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-024
 
 ### M-872 · Zoom-Out Card · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-024. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-024
 
 ### M-025 · Ken Burns
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Bring a still photo to life.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** whole shot (4–8s)
@@ -1968,18 +2287,22 @@
 - **Spec:** A still image slowly scales from 112% to 132% while panning diagonally by about 10% of the frame across the whole duration.
 
 ### M-336 · Ken Burns · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-025. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-025
 
 ### M-611 · Ken Burns · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-025. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-025
 
 ### M-886 · Ken Burns · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-025. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-025
 
 ### M-121 · Dolly Zoom
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** The background stretches while you stay put, a shock or realization.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1–2s
@@ -1987,18 +2310,22 @@
 - **Spec:** Using the person matte, scale the background layer from 100% to about 150% while scaling the person layer from 100% to about 86% from the bottom center, so the subject seems fixed while the room warps.
 
 ### M-350 · Dolly Zoom · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-121. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-121
 
 ### M-625 · Dolly Zoom · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-121. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-121
 
 ### M-900 · Dolly Zoom · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-121. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-121
 
 ### M-122 · Pan
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** Moves the frame left and right across a shot or photo.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 2–4s
@@ -2006,18 +2333,22 @@
 - **Spec:** Overscale the frame to 125% and move it horizontally from +8% to -8% of the width across the shot.
 
 ### M-364 · Pan · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-122. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-122
 
 ### M-639 · Pan · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-122. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-122
 
 ### M-914 · Pan · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-122. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-122
 
 ### M-123 · Tilt Up
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** The frame moves bottom to top, like revealing a person or building.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 2–4s
@@ -2025,18 +2356,22 @@
 - **Spec:** Overscale the frame to 125% and move it vertically from +9% to -7% of the height across the shot.
 
 ### M-378 · Tilt Up · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-123. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-123
 
 ### M-653 · Tilt Up · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-123. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-123
 
 ### M-928 · Tilt Up · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-123. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-123
 
 ### M-124 · Rack Focus
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Focus shifts between the person and the background.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -2044,18 +2379,22 @@
 - **Spec:** Using the person matte, blur the background from 0 to about 1.2% while the person goes from 1.2% blur to sharp over 0.6s, or the reverse.
 
 ### M-392 · Rack Focus · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-124. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-124
 
 ### M-667 · Rack Focus · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-124. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-124
 
 ### M-942 · Rack Focus · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-124. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-124
 
 ### M-125 · Whip Zoom
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A quick zoom with motion blur onto the face.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.25s
@@ -2063,18 +2402,22 @@
 - **Spec:** Scale the frame to 150% with about 1.2% motion blur in 0.15s, then settle to 130% and sharp over 0.2s. Pair with a short whoosh.
 
 ### M-404 · Whip Zoom · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-125. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-125
 
 ### M-679 · Whip Zoom · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-125. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-125
 
 ### M-954 · Whip Zoom · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-125. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-125
 
 ### M-126 · Handheld Drift
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Makes a locked-off shot feel handheld.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 4s
@@ -2082,18 +2425,22 @@
 - **Spec:** Overscale to 108% and drift the frame slowly with small offsets (±1.2%) and rotation (±0.5°) on a smooth 4s path.
 
 ### M-416 · Handheld Drift · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-126. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-126
 
 ### M-691 · Handheld Drift · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-126. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-126
 
 ### M-966 · Handheld Drift · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-126. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-126
 
 ### M-127 · Dutch Tilt
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Tilting the frame adds tension or unease.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -2101,18 +2448,22 @@
 - **Spec:** Rotate the frame to -9° while scaling to 120% to hide the corners over 0.5s, hold, then return.
 
 ### M-427 · Dutch Tilt · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-127. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-127
 
 ### M-702 · Dutch Tilt · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-127. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-127
 
 ### M-977 · Dutch Tilt · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-127. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-127
 
 ### M-128 · Snap Zoom Out
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Starts close then snaps wide to show the whole scene.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.2s
@@ -2120,18 +2471,22 @@
 - **Spec:** Start at 150% on a detail, then snap out to 100% in about 0.2s on a beat or word.
 
 ### M-438 · Snap Zoom Out · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-128. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-128
 
 ### M-713 · Snap Zoom Out · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-128. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-128
 
 ### M-988 · Snap Zoom Out · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-128. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-128
 
 ### M-129 · Crash Zoom
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A hard zoom onto the face with a shake, for surprise.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.2s + 0.3s shake
@@ -2139,18 +2494,22 @@
 - **Spec:** Snap the frame to about 190% centered on the face in 0.15s, add a short horizontal shake (±1.5%), then hold. Pair with a dramatic hit.
 
 ### M-448 · Crash Zoom · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-129. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-129
 
 ### M-723 · Crash Zoom · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-129. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-129
 
 ### M-998 · Crash Zoom · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-129. apply a warm gold #FFC857 color tint (about 8% opacity, soft-light) on the footage for the length of the move.
 - **Content the user must provide:** same as M-129
 
 ### M-130 · Orbit
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Feels like the camera is circling you slightly.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 4s
@@ -2158,14 +2517,17 @@
 - **Spec:** Apply a 3D Y-axis rotation of ±14° with perspective and a 112% scale, swinging smoothly every 4s.
 
 ### M-457 · Orbit · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-130. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-130
 
 ### M-732 · Orbit · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-130. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-130
 
 ### M-131 · Double Punch
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** Two punch-ins in a row for strong emphasis.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 2 cuts
@@ -2173,14 +2535,17 @@
 - **Spec:** Jump to 115% on the first beat and to 132% on the second, with no easing, then cut back to 100%.
 
 ### M-466 · Double Punch · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-131. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-131
 
 ### M-741 · Double Punch · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-131. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-131
 
 ### M-132 · Split Screen
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Shows two shots side by side, like a comparison.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s in
@@ -2188,14 +2553,17 @@
 - **Spec:** Two clips slide in from the left and right edges into each half of the frame over 0.5s, with a thin gap between them.
 
 ### M-474 · Split Screen · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-132. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-132
 
 ### M-749 · Split Screen · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-132. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-132
 
 ### M-133 · Picture in Picture
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** A small video in the corner, like a reaction cam.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s in
@@ -2203,14 +2571,17 @@
 - **Spec:** A rounded window with a white border and shadow (about 38% of the width) pops into the top corner from scale 0 over 0.4s and plays the second clip.
 
 ### M-482 · Picture in Picture · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-133. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-133
 
 ### M-757 · Picture in Picture · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-133. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-133
 
 ### M-134 · Mirror Flip
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** The frame flips horizontally, like "the opposite is true".
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -2218,14 +2589,17 @@
 - **Spec:** Flip the frame horizontally (scaleX from 1 to -1) over 0.5s, hold, then flip back.
 
 ### M-490 · Mirror Flip · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-134. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-134
 
 ### M-765 · Mirror Flip · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-134. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-134
 
 ### M-135 · Freeze Frame
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** The shot freezes with muted color and a tag.
 - **Content the user must provide:** text: the text to show
 - **Duration:** hold 1–2s
@@ -2233,14 +2607,17 @@
 - **Spec:** On the chosen frame, hold the image, desaturate it about 85% with a little more contrast, and pop a small label tag. Resume playback after the hold.
 
 ### M-498 · Freeze Frame · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-135. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-135
 
 ### M-773 · Freeze Frame · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-135. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-135
 
 ### M-136 · Slow Motion
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** An important moment slows down so viewers catch it.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** ramp 0.2s
@@ -2248,14 +2625,17 @@
 - **Spec:** Ramp the clip speed from 100% down to about 25% over 0.2s at the key moment (use frame blending or interpolation), hold, then ramp back.
 
 ### M-506 · Slow Motion · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-136. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-136
 
 ### M-781 · Slow Motion · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-136. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-136
 
 ### M-137 · Speed Ramp
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** Motion slows then speeds up suddenly, action style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -2263,14 +2643,17 @@
 - **Spec:** Combine a slow push (100% to 104%) with a sudden fast push to 130% in about 0.15s, then ease into a slow drift. Time the fast part to the beat.
 
 ### M-514 · Speed Ramp · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-137. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-137
 
 ### M-789 · Speed Ramp · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-137. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-137
 
 ### M-138 · Letterbox Bars
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Black bars top and bottom for a film look.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s in
@@ -2278,14 +2661,17 @@
 - **Spec:** Two black bars slide in from the top and bottom edges over 0.5s, each about 16% of the width tall, and stay during the cinematic part.
 
 ### M-522 · Letterbox Bars · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-138. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-138
 
 ### M-797 · Letterbox Bars · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-138. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-138
 
 ### M-139 · Vignette Focus
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** The edges darken so the eye goes to the face.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s in
@@ -2293,14 +2679,17 @@
 - **Spec:** Fade in an elliptical dark vignette (transparent center, about 90% black at the edges) over 0.6s around the face.
 
 ### M-530 · Vignette Focus · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-139. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-139
 
 ### M-805 · Vignette Focus · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-139. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-139
 
 ### M-140 · Bounce Zoom
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A zoom that bounces a little before settling.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -2308,16 +2697,19 @@
 - **Spec:** Zoom to 132%, bounce back to 116%, then 124%, and settle at 122% over about 0.5s.
 
 ### M-538 · Bounce Zoom · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-140. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-140
 
 ### M-813 · Bounce Zoom · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-140. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-140
 
 ## FX — Effects
 
 ### M-026 · Particle Dissolve
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A logo or object breaks apart and vanishes, like a finger snap.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1.2s
@@ -2325,18 +2717,22 @@
 - **Spec:** The object breaks into 150–400 small particles sampled from its own pixels. Each particle flies outward on a random vector (60–250px) with slight upward drift, shrinks and fades out over 1.2s. The original disappears in the first 0.1s.
 
 ### M-281 · Particle Dissolve · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-026. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-026
 
 ### M-556 · Particle Dissolve · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-026. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-026
 
 ### M-831 · Particle Dissolve · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-026. color the effect elements (particles, flare, dust) gold #FFC857 instead of white.
 - **Content the user must provide:** same as M-026
 
 ### M-027 · Shockwave
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** With a finger snap or a tap.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -2344,18 +2740,22 @@
 - **Spec:** From the tap point, a white flash dot pops in and out (0.25s), then two accent rings expand from 0 to about 3.5x and fade, 0.12s apart. Optionally add a slight refraction on the video under the rings.
 
 ### M-295 · Shockwave · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-027. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-027
 
 ### M-570 · Shockwave · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-027. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-027
 
 ### M-845 · Shockwave · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-027. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-027
 
 ### M-028 · Pulse Rings
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Behind your head when you talk about something important.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1s per ring
@@ -2363,18 +2763,22 @@
 - **Spec:** Concentric accent rings spawn behind the person (on the background layer, masked by the person matte) every 1/3 of the loop, expanding from 50% to 300% and fading to 0.
 
 ### M-309 · Pulse Rings · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-028. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-028
 
 ### M-584 · Pulse Rings · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-028. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-028
 
 ### M-859 · Pulse Rings · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-028. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-028
 
 ### M-029 · Light Rays
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A "wow" moment or a new announcement.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 8s per turn
@@ -2382,18 +2786,22 @@
 - **Spec:** Soft accent-colored rays (conic gradient, 6° rays every 22°) rotate slowly behind the person. A radial mask fades them out at about 45% radius. Place them on the layer behind the person matte.
 
 ### M-323 · Light Rays · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-029. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-029
 
 ### M-598 · Light Rays · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-029. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-029
 
 ### M-873 · Light Rays · Gold
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-029. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-029
 
 ### M-030 · Confetti Burst
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A celebration, an achievement or a big number.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1.5s
@@ -2401,18 +2809,22 @@
 - **Spec:** 40–80 small rectangles in 4 brand colors burst from a point with random velocity (mostly upward, ±60°), spin randomly, then fall with gravity and fade out over 1.5s.
 
 ### M-337 · Confetti Burst · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-030. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-030
 
 ### M-612 · Confetti Burst · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-030. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-030
 
 ### M-887 · Confetti Burst · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-030. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-030
 
 ### M-141 · Sparkle Trail
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A glowing point travels and leaves a trail.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1s
@@ -2420,18 +2832,22 @@
 - **Spec:** A bright warm point moves along a curved path; 10–20 copies follow it with 0.05s delays, each shrinking and fading, forming a sparkle trail.
 
 ### M-351 · Sparkle Trail · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-141. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-141
 
 ### M-626 · Sparkle Trail · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-141. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-141
 
 ### M-901 · Sparkle Trail · Gold
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-141. color the effect elements (particles, flare, dust) gold #FFC857 instead of white.
 - **Content the user must provide:** same as M-141
 
 ### M-142 · Dust Burst
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Dust puffs out when something lands.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1s
@@ -2439,18 +2855,22 @@
 - **Spec:** From the impact point, 15–30 soft blurred puffs in sand tones spread out and slightly up, growing to 160% and fading over 1s.
 
 ### M-365 · Dust Burst · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-142. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-142
 
 ### M-640 · Dust Burst · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-142. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-142
 
 ### M-915 · Dust Burst · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-142. color the effect elements (particles, flare, dust) gold #FFC857 instead of white.
 - **Content the user must provide:** same as M-142
 
 ### M-143 · Lens Flare
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A sun flare drifts across the frame for warmth.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1.5s
@@ -2458,18 +2878,22 @@
 - **Spec:** A bright warm core with a soft halo and 3 small colored ghost circles moves diagonally across the frame (screen blend) over about 1.5s.
 
 ### M-379 · Lens Flare · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-143. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-143
 
 ### M-654 · Lens Flare · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-143. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-143
 
 ### M-929 · Lens Flare · Gold
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-143. color the effect elements (particles, flare, dust) gold #FFC857 instead of white.
 - **Content the user must provide:** same as M-143
 
 ### M-144 · Scan Line
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A light line scans the frame like a scanner, techy.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1.2s
@@ -2477,18 +2901,22 @@
 - **Spec:** A bright mint horizontal line with a wide glow travels from the top to the bottom of the frame over 1.2s.
 
 ### M-393 · Scan Line · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-144. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-144
 
 ### M-668 · Scan Line · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-144. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-144
 
 ### M-943 · Scan Line · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-144. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-144
 
 ### M-145 · Code Rain
+- **Suggested sound:** SX-27 Data Reveal
 - **When to use:** Falling code characters, perfect for cyber topics.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2496,18 +2924,22 @@
 - **Spec:** Columns of mint monospace characters fall at different speeds behind the person (background layer), each column fading at its tail.
 
 ### M-405 · Code Rain · Fast
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-145. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-145
 
 ### M-680 · Code Rain · Slow
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-145. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-145
 
 ### M-955 · Code Rain · Gold
+- **Suggested sound:** SX-27 Data Reveal
 - Variant of M-145. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-145
 
 ### M-146 · Hologram
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** The person looks like a futuristic hologram.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2515,18 +2947,22 @@
 - **Spec:** Tint the person cyan, add moving horizontal scanlines over them (screen blend) and a subtle opacity flicker every couple of seconds.
 
 ### M-417 · Hologram · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-146. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-146
 
 ### M-692 · Hologram · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-146. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-146
 
 ### M-967 · Hologram · Gold
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-146. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-146
 
 ### M-147 · Electric Arc
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A flickering electric arc for energy moments.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -2534,18 +2970,22 @@
 - **Spec:** A jagged light-blue zigzag line with a glow flickers on and off 2–3 times between two points; redraw the zigzag randomly each flicker.
 
 ### M-428 · Electric Arc · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-147. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-147
 
 ### M-703 · Electric Arc · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-147. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-147
 
 ### M-978 · Electric Arc · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-147. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-147
 
 ### M-148 · Heat Glow
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A warm pulsing aura behind the person.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 2s
@@ -2553,18 +2993,22 @@
 - **Spec:** A large orange radial glow sits behind the person (background layer) and pulses between 90% and 108% scale every 2s.
 
 ### M-439 · Heat Glow · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-148. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-148
 
 ### M-714 · Heat Glow · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-148. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-148
 
 ### M-989 · Heat Glow · Gold
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-148. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-148
 
 ### M-149 · Floating Particles
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Small light specks float upward for a calm mood.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2572,18 +3016,22 @@
 - **Spec:** Spawn 12–25 small warm glowing dots at random x positions near the bottom; each drifts upward with slight sideways drift over 3–5s and fades.
 
 ### M-449 · Floating Particles · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-149. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-149
 
 ### M-724 · Floating Particles · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-149. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-149
 
 ### M-999 · Floating Particles · Gold
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-149. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-149
 
 ### M-150 · Radial Ripple
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Rings spread from a point like touching water.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1.5s
@@ -2591,14 +3039,17 @@
 - **Spec:** Thin mint rings spawn at a point every 0.5s, expanding from 30% to 450% and fading out.
 
 ### M-458 · Radial Ripple · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-150. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-150
 
 ### M-733 · Radial Ripple · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-150. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-150
 
 ### M-151 · Grid Floor
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A moving 3D grid floor, retro-tech style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1s
@@ -2606,14 +3057,17 @@
 - **Spec:** Draw a mint line grid on a plane tilted 60° in perspective at the bottom of the frame, scrolling toward the viewer one cell per second.
 
 ### M-467 · Grid Floor · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-151. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-151
 
 ### M-742 · Grid Floor · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-151. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-151
 
 ### M-152 · Spark Burst
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Spark streaks shoot out from a point on a hit or idea.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -2621,14 +3075,17 @@
 - **Spec:** Twelve thin warm streaks shoot radially outward from a point, stretching as they go and fading over 0.5s.
 
 ### M-475 · Spark Burst · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-152. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-152
 
 ### M-750 · Spark Burst · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-152. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-152
 
 ### M-153 · Orbit Dots
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Dots orbit around a logo or word.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 3s
@@ -2636,14 +3093,17 @@
 - **Spec:** Three accent dots travel around a dashed circle centered on the subject, evenly spaced, one full turn every 3s.
 
 ### M-483 · Orbit Dots · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-153. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-153
 
 ### M-758 · Orbit Dots · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-153. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-153
 
 ### M-154 · Glow Outline
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A glowing edge around the person makes them pop.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 2s
@@ -2651,14 +3111,17 @@
 - **Spec:** Using the person matte, add an accent outer glow (drop shadow on the matte edge) that pulses from 0 to about 2.5% blur every 2s.
 
 ### M-491 · Glow Outline · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-154. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-154
 
 ### M-766 · Glow Outline · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-154. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-154
 
 ### M-155 · VHS Glitch
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** Old videotape look for nostalgia.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2666,14 +3129,17 @@
 - **Spec:** Add short horizontal frame jumps (±3%), brief color shifts, and a soft bright noise band that rolls up the frame every couple of seconds.
 
 ### M-499 · VHS Glitch · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-155. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-155
 
 ### M-774 · VHS Glitch · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-155. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-155
 
 ### M-156 · Film Grain
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Grain and light flicker for a film feel.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2681,14 +3147,17 @@
 - **Spec:** Overlay fine moving noise at about 35% opacity, jumping position every frame, plus a tiny brightness flicker (±10%).
 
 ### M-507 · Film Grain · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-156. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-156
 
 ### M-782 · Film Grain · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-156. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-156
 
 ### M-157 · Shine Sweep
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** A shine passes over a word or logo like metal.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.8s
@@ -2696,14 +3165,17 @@
 - **Spec:** A narrow bright diagonal band clipped to the text or logo sweeps across it from one side to the other over 0.8s.
 
 ### M-515 · Shine Sweep · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-157. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-157
 
 ### M-790 · Shine Sweep · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-157. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-157
 
 ### M-158 · Bokeh Lights
+- **Suggested sound:** SX-16 Triangle Shine
 - **When to use:** Soft out-of-focus light circles behind the person.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 4s
@@ -2711,14 +3183,17 @@
 - **Spec:** Place 6–10 blurred warm circles of different sizes on the background layer; each drifts a little and gently grows and fades on a 4s loop.
 
 ### M-523 · Bokeh Lights · Fast
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-158. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-158
 
 ### M-798 · Bokeh Lights · Slow
+- **Suggested sound:** SX-16 Triangle Shine
 - Variant of M-158. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-158
 
 ### M-159 · Speed Lines
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** Manga speed lines around the face for shock or hype.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 0.4s
@@ -2726,14 +3201,17 @@
 - **Spec:** Draw thin white radial lines around the subject with a clear center, jittering in angle and scale every few frames.
 
 ### M-531 · Speed Lines · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-159. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-159
 
 ### M-806 · Speed Lines · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-159. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-159
 
 ### M-160 · Face Tracking Box
+- **Suggested sound:** SX-28 Digital Blip
 - **When to use:** A box that tracks the face with a score, AI style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -2741,16 +3219,19 @@
 - **Spec:** Detect the face and draw four mint corner brackets around it that follow it smoothly, with a small mono label above like "FACE 98%".
 
 ### M-539 · Face Tracking Box · Fast
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-160. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-160
 
 ### M-814 · Face Tracking Box · Slow
+- **Suggested sound:** SX-28 Digital Blip
 - Variant of M-160. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-160
 
 ## SOC — Social
 
 ### M-031 · Follow Tap
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** When you say "follow me".
 - **Content the user must provide:** text: the @handle
 - **Duration:** 1.4s
@@ -2758,18 +3239,22 @@
 - **Spec:** A finger tap indicator (white circle with soft halo) glides onto a Follow button, presses it (button scales to 88%), and the button flips from accent "متابعة" to gray "تتابعه ✓". Add a soft click sound.
 
 ### M-282 · Follow Tap · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-031. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-031
 
 ### M-557 · Follow Tap · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-031. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-031
 
 ### M-832 · Follow Tap · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-031. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-031
 
 ### M-032 · Comment Typing
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** When you say "write it in the comments".
 - **Content the user must provide:** text: the keyword
 - **Duration:** 1.5s typing
@@ -2777,18 +3262,22 @@
 - **Spec:** An Instagram-style comment field shows placeholder text, then the keyword types in letter by letter (right-to-left for Arabic) and the blue send button pulses (scale 75% to 115% to 100%). Follow with M-035 or M-034.
 
 ### M-296 · Comment Typing · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-032. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-032
 
 ### M-571 · Comment Typing · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-032. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-032
 
 ### M-846 · Comment Typing · Gold
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-032. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-032
 
 ### M-033 · Like Burst
+- **Suggested sound:** SX-09 Pop
 - **When to use:** Asking for a like, or a sweet moment.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -2796,18 +3285,22 @@
 - **Spec:** A red heart pops from 0 to 135% and settles at 100% (0.35s). At the same time 8 small dots shoot radially outward 27% of the frame and fade. Optionally show a "+1" floating up.
 
 ### M-310 · Like Burst · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-033. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-033
 
 ### M-585 · Like Burst · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-033. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-033
 
 ### M-860 · Like Burst · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-033. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-033
 
 ### M-034 · DM Notification
+- **Suggested sound:** SX-14 Notification Bell
 - **When to use:** "The prompt will reach you in DMs".
 - **Content the user must provide:** text: the title; text: the text to show
 - **Duration:** 0.5s in · 2s hold
@@ -2815,18 +3308,22 @@
 - **Spec:** A phone-style notification card (app icon, bold title, one-line preview) drops from above the top edge with a spring (overshoot about 10%), holds about 2s, then slides back up. Add a soft notification chime.
 
 ### M-324 · DM Notification · Fast
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-034. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-034
 
 ### M-599 · DM Notification · Slow
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-034. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-034
 
 ### M-874 · DM Notification · Gold
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-034. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-034
 
 ### M-035 · Paper Plane
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Sending a message or a comment.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1.2s
@@ -2834,18 +3331,22 @@
 - **Spec:** A paper-plane icon flies along a curved path from the lower left to the upper right, rotating to follow the path and shrinking at the end, leaving a dashed trail that draws behind it.
 
 ### M-338 · Paper Plane · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-035. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-035
 
 ### M-613 · Paper Plane · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-035. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-035
 
 ### M-888 · Paper Plane · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-035. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-035
 
 ### M-161 · Bell Ring
+- **Suggested sound:** SX-14 Notification Bell
 - **When to use:** When you say "turn on notifications".
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -2853,18 +3354,22 @@
 - **Spec:** A bell icon swings from its top: +22°, -20°, +14°, -10°, +5° over 0.8s, then a red count badge pops on its corner. Add a soft ding.
 
 ### M-352 · Bell Ring · Fast
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-161. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-161
 
 ### M-627 · Bell Ring · Slow
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-161. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-161
 
 ### M-902 · Bell Ring · Gold
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-161. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-161
 
 ### M-162 · Share Tap
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** When you say "share it with your friends".
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -2872,18 +3377,22 @@
 - **Spec:** A tap indicator presses the share (paper plane) icon; the icon squashes to 80% then pops to 120% and settles, with a small burst of dots.
 
 ### M-366 · Share Tap · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-162. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-162
 
 ### M-641 · Share Tap · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-162. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-162
 
 ### M-916 · Share Tap · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-162. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-162
 
 ### M-163 · Save Bookmark
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** When you say "save this for later".
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -2891,18 +3400,22 @@
 - **Spec:** A bookmark outline icon fills up from bottom to top with white over 0.5s, then pops to 120% and settles.
 
 ### M-380 · Save Bookmark · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-163. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-163
 
 ### M-655 · Save Bookmark · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-163. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-163
 
 ### M-930 · Save Bookmark · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-163. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-163
 
 ### M-164 · Story Ring
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** A profile photo with a rotating colorful story ring.
 - **Content the user must provide:** file: the profile picture
 - **Duration:** loop · 3s
@@ -2910,18 +3423,22 @@
 - **Spec:** A circular avatar sits inside a gradient ring (brand colors) that rotates one full turn every 3s, like an unseen story.
 
 ### M-394 · Story Ring · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-164. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-164
 
 ### M-669 · Story Ring · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-164. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-164
 
 ### M-944 · Story Ring · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-164. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-164
 
 ### M-165 · Swipe Up Arrow
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** When you want viewers to swipe up or tap the link.
 - **Content the user must provide:** text: the text to show
 - **Duration:** loop · 1.2s
@@ -2929,18 +3446,22 @@
 - **Spec:** Two stacked chevrons move up 40% and fade, repeating every 1.2s, above a short label such as "اسحب".
 
 ### M-406 · Swipe Up Arrow · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-165. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-165
 
 ### M-681 · Swipe Up Arrow · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-165. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-165
 
 ### M-956 · Swipe Up Arrow · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-165. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-165
 
 ### M-166 · Poll Sticker
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A two-option poll whose results fill up.
 - **Content the user must provide:** text: the question; text: the items (comma-separated)
 - **Duration:** 0.8s fill
@@ -2948,18 +3469,22 @@
 - **Spec:** A light card with a question and two option rows. Accent bars fill each row to its percentage over 0.8s, with the percentages shown.
 
 ### M-418 · Poll Sticker · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-166. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-166
 
 ### M-693 · Poll Sticker · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-166. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-166
 
 ### M-968 · Poll Sticker · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-166. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-166
 
 ### M-167 · Typing Dots
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** A chat "typing…" bubble.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1s
@@ -2967,18 +3492,22 @@
 - **Spec:** A chat bubble with three dots; each dot rises and brightens in turn, 0.15s apart, looping every second.
 
 ### M-429 · Typing Dots · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-167. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-167
 
 ### M-704 · Typing Dots · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-167. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-167
 
 ### M-979 · Typing Dots · Gold
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-167. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-167
 
 ### M-168 · Chat Bubbles
+- **Suggested sound:** SX-14 Notification Bell
 - **When to use:** A conversation appearing message by message.
 - **Content the user must provide:** text: the messages (one per line)
 - **Duration:** 0.25s per bubble
@@ -2986,18 +3515,22 @@
 - **Spec:** Message bubbles pop in one at a time from their tail corner (scale 0 to 105% to 100% over 0.25s), alternating sides like a real chat.
 
 ### M-440 · Chat Bubbles · Fast
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-168. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-168
 
 ### M-715 · Chat Bubbles · Slow
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-168. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-168
 
 ### M-990 · Chat Bubbles · Gold
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-168. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-168
 
 ### M-169 · Floating Hearts
+- **Suggested sound:** SX-09 Pop
 - **When to use:** Hearts float upward like a live stream.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -3005,18 +3538,22 @@
 - **Spec:** Small hearts spawn near the bottom corner every 0.2–0.4s and float up about 90% of the frame with a gentle sideways sway, growing slightly and fading.
 
 ### M-450 · Floating Hearts · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-169. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-169
 
 ### M-725 · Floating Hearts · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-169. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-169
 
 ### M-1000 · Floating Hearts · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-169. add a soft gold #FFC857 glow (about 1.5% blur) around the main icon or card.
 - **Content the user must provide:** same as M-169
 
 ### M-170 · View Counter
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A view count ticking up.
 - **Content the user must provide:** text: the number and its label
 - **Duration:** 1.2s count
@@ -3024,14 +3561,17 @@
 - **Spec:** An eye icon with a number counting up from 0 to the target (see M-040), in tabular mono digits.
 
 ### M-459 · View Counter · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-170. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-170
 
 ### M-734 · View Counter · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-170. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-170
 
 ### M-171 · Profile Card
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Introduces your account with a card rising from below.
 - **Content the user must provide:** file: the profile picture; text: the name and role; text: the @handle
 - **Duration:** 0.5s in
@@ -3039,14 +3579,17 @@
 - **Spec:** A light rounded card with avatar, name, handle and a follow button slides up from below the frame with a spring and a 4% overshoot, holds, then slides back.
 
 ### M-468 · Profile Card · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-171. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-171
 
 ### M-743 · Profile Card · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-171. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-171
 
 ### M-172 · Link Sticker
+- **Suggested sound:** SX-09 Pop
 - **When to use:** When you say "link in bio".
 - **Content the user must provide:** text: the link
 - **Duration:** 0.4s + wiggle
@@ -3054,14 +3597,17 @@
 - **Spec:** A white pill sticker with a link icon and the URL pops in (0.4s), then wiggles gently every couple of seconds to invite a tap.
 
 ### M-476 · Link Sticker · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-172. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-172
 
 ### M-751 · Link Sticker · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-172. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-172
 
 ### M-173 · Countdown
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A 3-2-1 countdown before a big moment.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 1s per number
@@ -3069,14 +3615,17 @@
 - **Spec:** Big mono digits 3, 2, 1 replace each other every second, each popping from 60% to 110% to 100% and fading out. Add a tick sound per number.
 
 ### M-484 · Countdown · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-173. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-173
 
 ### M-759 · Countdown · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-173. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-173
 
 ### M-174 · Question Sticker
+- **Suggested sound:** SX-09 Pop
 - **When to use:** An "ask me a question" box like Stories.
 - **Content the user must provide:** text: the question
 - **Duration:** 0.4s in
@@ -3084,14 +3633,17 @@
 - **Spec:** A light card with an accent header "اسألني سؤال" and a text field pops in, then a short question types into the field.
 
 ### M-492 · Question Sticker · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-174. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-174
 
 ### M-767 · Question Sticker · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-174. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-174
 
 ### M-175 · Mention Tag
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** An account tag pops onto a person or object.
 - **Content the user must provide:** text: the @handle
 - **Duration:** 0.3s
@@ -3099,14 +3651,17 @@
 - **Spec:** A dark rounded tag with a small pointer and the @handle pops from the tagged point (scale 0 to 110% to 100% over 0.3s).
 
 ### M-500 · Mention Tag · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-175. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-175
 
 ### M-775 · Mention Tag · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-175. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-175
 
 ### M-176 · Verified Badge
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A blue verified check next to your name.
 - **Content the user must provide:** text: the name and role
 - **Duration:** 0.4s
@@ -3114,14 +3669,17 @@
 - **Spec:** A blue circular check badge spins in from -180° and 0 scale to a 130% pop and settles next to the name over 0.4s.
 
 ### M-508 · Verified Badge · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-176. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-176
 
 ### M-783 · Verified Badge · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-176. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-176
 
 ### M-177 · Comment Stack
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Comments pile up one after another, like audience reactions.
 - **Content the user must provide:** text: the messages (one per line)
 - **Duration:** 0.3s per comment
@@ -3129,14 +3687,17 @@
 - **Spec:** Comment rows (avatar dot + short text) slide up and fade in one by one, 0.5s apart, stacking into a list.
 
 ### M-516 · Comment Stack · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-177. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-177
 
 ### M-791 · Comment Stack · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-177. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-177
 
 ### M-178 · Notification Badge
+- **Suggested sound:** SX-14 Notification Bell
 - **When to use:** A red count badge bounces onto an icon.
 - **Content the user must provide:** text: the number and its label
 - **Duration:** 0.3s
@@ -3144,14 +3705,17 @@
 - **Spec:** A red rounded badge with a number pops onto the top corner of an icon (0 to 130% to 100% over 0.3s), then the icon gives a small pop.
 
 ### M-524 · Notification Badge · Fast
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-178. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-178
 
 ### M-799 · Notification Badge · Slow
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-178. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-178
 
 ### M-179 · Sound On
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** When you want viewers to turn the sound on.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1.2s
@@ -3159,14 +3723,17 @@
 - **Spec:** A speaker icon with three sound waves that light up one after another, 0.2s apart, looping every 1.2s.
 
 ### M-532 · Sound On · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-179. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-179
 
 ### M-807 · Sound On · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-179. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-179
 
 ### M-180 · Search Typing
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** When you say "search for…".
 - **Content the user must provide:** text: the text to show
 - **Duration:** 1.2s typing
@@ -3174,16 +3741,19 @@
 - **Spec:** A light rounded search bar with a magnifier icon; the query types in letter by letter from the reading-start side.
 
 ### M-540 · Search Typing · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-180. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-180
 
 ### M-815 · Search Typing · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-180. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-180
 
 ## LGO — Logos & Titles
 
 ### M-036 · Logo Float
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A logo floating gently behind you.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** loop · 3s
@@ -3191,18 +3761,22 @@
 - **Spec:** The logo hovers behind the person (background layer, under the person matte) with a gentle ±9% vertical bob on a 3s sine loop and a soft glow.
 
 ### M-283 · Logo Float · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-036. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-036
 
 ### M-558 · Logo Float · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-036. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-036
 
 ### M-833 · Logo Float · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-036. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-036
 
 ### M-037 · Logo Spin-In
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** Opening or closing a video.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.7s
@@ -3210,18 +3784,22 @@
 - **Spec:** The logo spins in from -220° and scale 0 to 0° and 112%, then settles at 100% over 0.7s total. Exit: shrink to 0 with a 90° turn.
 
 ### M-297 · Logo Spin-In · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-037. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-037
 
 ### M-572 · Logo Spin-In · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-037. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-037
 
 ### M-847 · Logo Spin-In · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-037. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-037
 
 ### M-038 · Title Card Drop
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** The tool or topic name, like a "Claude Opus 5.5" card.
 - **Content the user must provide:** text: the title; text: the subtitle
 - **Duration:** 0.55s in
@@ -3229,18 +3807,22 @@
 - **Spec:** A dark rounded card with an accent border, an icon on one side and a two-line title (bold mono title plus an accent subtitle) drops from above the frame with a spring and about a 10% overshoot. Holds, then slides back up.
 
 ### M-311 · Title Card Drop · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-038. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-038
 
 ### M-586 · Title Card Drop · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-038. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-038
 
 ### M-861 · Title Card Drop · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-038. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-038
 
 ### M-039 · Lower Third
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** Introduce your name or handle.
 - **Content the user must provide:** text: the name and role; text: the subtitle
 - **Duration:** 0.4s bar · 0.3s text
@@ -3248,18 +3830,22 @@
 - **Spec:** An accent bar grows in from the right edge (0.4s), then the name and the subtitle slide in 12% and fade in inside it (0.3s, 0.08s stagger). Holds, then the text fades and the bar retracts.
 
 ### M-325 · Lower Third · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-039. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-039
 
 ### M-600 · Lower Third · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-039. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-039
 
 ### M-875 · Lower Third · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-039. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-039
 
 ### M-040 · Number Counter
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A stat or big number counting up.
 - **Content the user must provide:** text: the number and its label
 - **Duration:** 1.2s count
@@ -3267,18 +3853,22 @@
 - **Spec:** A number counts up from 0 to the target value over 1.2s (easeOutExpo, fast at first, then slowing), in tabular monospaced digits with an accent color, and a label beneath. Optionally scale-punch the final value (M-008).
 
 ### M-339 · Number Counter · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-040. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-040
 
 ### M-614 · Number Counter · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-040. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-040
 
 ### M-889 · Number Counter · Gold
+- **Suggested sound:** SX-12 Tick
 - Variant of M-040. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-040
 
 ### M-181 · Logo Mask Reveal
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A logo rises from behind an invisible line, premium style.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.6s
@@ -3286,18 +3876,22 @@
 - **Spec:** The logo sits inside a box with hidden overflow and slides up from below its edge into place over 0.6s (see M-004).
 
 ### M-353 · Logo Mask Reveal · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-181. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-181
 
 ### M-628 · Logo Mask Reveal · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-181. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-181
 
 ### M-903 · Logo Mask Reveal · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-181. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-181
 
 ### M-182 · Logo Stroke Draw
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** The logo draws its outline, then fills.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 1s draw · 0.4s fill
@@ -3305,18 +3899,22 @@
 - **Spec:** Animate the logo vector outline stroke from 0 to full length over 1s, then fade in the fill over 0.4s.
 
 ### M-367 · Logo Stroke Draw · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-182. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-182
 
 ### M-642 · Logo Stroke Draw · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-182. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-182
 
 ### M-917 · Logo Stroke Draw · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-182. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-182
 
 ### M-183 · Logo Glitch
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** The logo glitches with split colors, techy.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.4s burst
@@ -3324,18 +3922,22 @@
 - **Spec:** For about 0.4s the logo jumps a few percent in random directions with red and cyan offset copies, then snaps back clean.
 
 ### M-381 · Logo Glitch · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-183. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-183
 
 ### M-656 · Logo Glitch · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-183. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-183
 
 ### M-931 · Logo Glitch · Gold
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-183. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-183
 
 ### M-184 · Logo Bounce
+- **Suggested sound:** SX-09 Pop
 - **When to use:** The logo drops in and bounces twice.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.8s
@@ -3343,18 +3945,22 @@
 - **Spec:** The logo falls from above the frame, lands, bounces up 30% then 10% and settles over about 0.8s.
 
 ### M-395 · Logo Bounce · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-184. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-184
 
 ### M-670 · Logo Bounce · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-184. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-184
 
 ### M-945 · Logo Bounce · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-184. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-184
 
 ### M-185 · Logo Shine
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A shine passes over a logo badge.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.8s
@@ -3362,18 +3968,22 @@
 - **Spec:** A bright diagonal band sweeps across the logo badge from one side to the other over 0.8s, clipped to the badge shape.
 
 ### M-407 · Logo Shine · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-185. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-185
 
 ### M-682 · Logo Shine · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-185. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-185
 
 ### M-957 · Logo Shine · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-185. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-185
 
 ### M-186 · Logo Assemble
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** Particles gather into the logo, the reverse of M-026.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 1s
@@ -3381,18 +3991,22 @@
 - **Spec:** Hundreds of particles start scattered and fly inward to their positions in the logo over 1s; when they arrive, the solid logo fades in and the particles disappear.
 
 ### M-419 · Logo Assemble · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-186. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-186
 
 ### M-694 · Logo Assemble · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-186. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-186
 
 ### M-969 · Logo Assemble · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-186. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-186
 
 ### M-187 · End Card
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** The closing card: logo, handle and a follow prompt.
 - **Content the user must provide:** file: your logo (transparent PNG); text: the @handle
 - **Duration:** 0.6s in
@@ -3400,18 +4014,22 @@
 - **Spec:** The logo scales in, then the handle and a "تابعني" line fade up under it 0.15s apart. Hold until the end of the video.
 
 ### M-430 · End Card · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-187. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-187
 
 ### M-705 · End Card · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-187. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-187
 
 ### M-980 · End Card · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-187. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-187
 
 ### M-188 · Watermark Corner
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** Your logo small in the corner for the whole video.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 0.6s in
@@ -3419,18 +4037,22 @@
 - **Spec:** The logo flies from the center to a top corner while shrinking, then stays there at about 55% opacity and 12% of the width for the rest of the video.
 
 ### M-441 · Watermark Corner · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-188. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-188
 
 ### M-716 · Watermark Corner · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-188. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-188
 
 ### M-991 · Watermark Corner · Gold
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-188. add a soft gold #FFC857 glow (about 1.5% blur) around the logo or main element.
 - **Content the user must provide:** same as M-188
 
 ### M-189 · Badge Stamp
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A stamp hits the screen, like "approved" or "free".
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.3s
@@ -3438,14 +4060,17 @@
 - **Spec:** A circular stamp with bold text drops from 240% scale to about 92% and settles at 100% in 0.3s, tilted -14°, with a small screen shake on impact.
 
 ### M-451 · Badge Stamp · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-189. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-189
 
 ### M-726 · Badge Stamp · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-189. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-189
 
 ### M-190 · Title Underline Card
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A big title, an underline drawing in, and a subtitle.
 - **Content the user must provide:** text: the title; text: the subtitle
 - **Duration:** 0.9s total
@@ -3453,14 +4078,17 @@
 - **Spec:** The title fades up (0.4s), an accent underline draws under it (0.4s), then the subtitle fades in (0.3s).
 
 ### M-460 · Title Underline Card · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-190. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-190
 
 ### M-735 · Title Underline Card · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-190. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-190
 
 ### M-191 · Chapter Title
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A big number and title for each part of the video.
 - **Content the user must provide:** text: the title
 - **Duration:** 0.6s
@@ -3468,14 +4096,17 @@
 - **Spec:** A large accent mono number (01, 02…) slides in, then the chapter title fades up beside or under it 0.15s later.
 
 ### M-469 · Chapter Title · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-191. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-191
 
 ### M-744 · Chapter Title · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-191. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-191
 
 ### M-192 · Price Tag
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A price or discount tag swings in.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.6s
@@ -3483,14 +4114,17 @@
 - **Spec:** A yellow tag-shaped label swings in from its hole side, from -90° to +12°, -6° and settles over 0.6s.
 
 ### M-477 · Price Tag · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-192. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-192
 
 ### M-752 · Price Tag · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-192. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-192
 
 ### M-193 · Progress Bar
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A bar fills with a percentage, like loading or progress.
 - **Content the user must provide:** text: the number and its label
 - **Duration:** 1.2s
@@ -3498,14 +4132,17 @@
 - **Spec:** A rounded track fills with an accent gradient from the reading-start side over 1.2s while a percentage counts up above it.
 
 ### M-485 · Progress Bar · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-193. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-193
 
 ### M-760 · Progress Bar · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-193. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-193
 
 ### M-194 · Checklist Tick
+- **Suggested sound:** SX-15 Confirm Ding
 - **When to use:** Items get ticked one by one, like steps.
 - **Content the user must provide:** text: the items (comma-separated)
 - **Duration:** 0.3s per tick · 0.5s stagger
@@ -3513,14 +4150,17 @@
 - **Spec:** Each list item has a box; a mint check mark draws inside it (0.3s), items ticking 0.5s apart.
 
 ### M-493 · Checklist Tick · Fast
+- **Suggested sound:** SX-15 Confirm Ding
 - Variant of M-194. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-194
 
 ### M-768 · Checklist Tick · Slow
+- **Suggested sound:** SX-15 Confirm Ding
 - Variant of M-194. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-194
 
 ### M-195 · Step Numbers
+- **Suggested sound:** SX-12 Tick
 - **When to use:** Numbers 1, 2, 3 pop in with a connecting line.
 - **Content the user must provide:** text: the items (comma-separated)
 - **Duration:** 0.25s per step
@@ -3528,14 +4168,17 @@
 - **Spec:** Circular accent number badges pop in one by one, 0.4s apart, while a line draws behind them connecting each step.
 
 ### M-501 · Step Numbers · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-195. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-195
 
 ### M-776 · Step Numbers · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-195. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-195
 
 ### M-196 · Quote Card
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** A quote or key line with its author.
 - **Content the user must provide:** text: the quote and who said it
 - **Duration:** 0.8s
@@ -3543,14 +4186,17 @@
 - **Spec:** A large accent quote mark scales in, then the quote text fades up line by line, then the author name fades in, each 0.2s apart.
 
 ### M-509 · Quote Card · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-196. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-196
 
 ### M-784 · Quote Card · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-196. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-196
 
 ### M-197 · Stat Bars
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A bar chart grows in, for numbers and comparisons.
 - **Content the user must provide:** text: the values or percentages
 - **Duration:** 0.6s · 0.1s stagger
@@ -3558,14 +4204,17 @@
 - **Spec:** Vertical bars grow from the baseline to their values over 0.6s, each starting 0.1s after the previous one, with alternating brand colors.
 
 ### M-517 · Stat Bars · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-197. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-197
 
 ### M-792 · Stat Bars · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-197. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-197
 
 ### M-198 · Pie Fill
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A ring fills to a percentage.
 - **Content the user must provide:** text: the number and its label
 - **Duration:** 1s
@@ -3573,14 +4222,17 @@
 - **Spec:** A thick ring fills clockwise with the accent color from 0 to the target percentage over 1s, with the number in the middle.
 
 ### M-525 · Pie Fill · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-198. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-198
 
 ### M-800 · Pie Fill · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-198. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-198
 
 ### M-199 · Map Pin Drop
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A location pin drops onto a place, like "Kuwait".
 - **Content the user must provide:** text: the place name
 - **Duration:** 0.5s
@@ -3588,14 +4240,17 @@
 - **Spec:** A pin falls from above, lands with a small bounce, and a ripple ring spreads under it on impact, with the place name fading in below.
 
 ### M-533 · Map Pin Drop · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-199. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-199
 
 ### M-808 · Map Pin Drop · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-199. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-199
 
 ### M-200 · Signature Write
+- **Suggested sound:** SX-18 Cinematic Impact
 - **When to use:** Your signature writes itself at the end of the video.
 - **Content the user must provide:** file: your signature image
 - **Duration:** 1.5s
@@ -3603,16 +4258,19 @@
 - **Spec:** Animate a handwritten signature path stroke from start to end over about 1.5s with a slight ease, as if written live. Hold, then fade.
 
 ### M-541 · Signature Write · Fast
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-200. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-200
 
 ### M-816 · Signature Write · Slow
+- **Suggested sound:** SX-18 Cinematic Impact
 - Variant of M-200. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-200
 
 ## PER — Person FX
 
 ### M-201 · Text Behind Person
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** A huge title behind your head with you in front, a top trend.
 - **Content the user must provide:** text: the title
 - **Duration:** 0.6s in
@@ -3620,18 +4278,22 @@
 - **Spec:** Place a very large bold title on a layer between the background and the person (use the person matte), so the head overlaps the letters. The title rises in with M-004 style.
 
 ### M-284 · Text Behind Person · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-201. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-201
 
 ### M-559 · Text Behind Person · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-201. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-201
 
 ### M-834 · Text Behind Person · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-201. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-201
 
 ### M-202 · Color Pop
+- **Suggested sound:** SX-09 Pop
 - **When to use:** The background goes black and white while you stay in color.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s
@@ -3639,18 +4301,22 @@
 - **Spec:** Using the person matte, desaturate only the background to 0% and darken it slightly over 0.4s; the person keeps full color.
 
 ### M-298 · Color Pop · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-202. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-202
 
 ### M-573 · Color Pop · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-202. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-202
 
 ### M-848 · Color Pop · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-202. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-202
 
 ### M-203 · Echo Trail
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** Transparent copies of you trail behind your movement.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -3658,18 +4324,22 @@
 - **Spec:** Duplicate the person layer 2–4 times, each delayed by 3–5 frames and at decreasing opacity (30%, 15%…), so movement leaves an echo trail.
 
 ### M-312 · Echo Trail · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-203. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-203
 
 ### M-587 · Echo Trail · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-203. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-203
 
 ### M-862 · Echo Trail · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-203. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-203
 
 ### M-204 · Clone Trio
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** Multiple copies of you in the same shot.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3s per clone
@@ -3677,18 +4347,22 @@
 - **Spec:** Composite 2–3 mattes of the person from different takes side by side; each clone pops in (scale 90% to 100% with fade) 0.3s apart.
 
 ### M-326 · Clone Trio · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-204. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-204
 
 ### M-601 · Clone Trio · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-204. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-204
 
 ### M-876 · Clone Trio · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-204. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-204
 
 ### M-205 · Doodle Outline
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** Animated hand-drawn doodles around the person.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s draw
@@ -3696,18 +4370,22 @@
 - **Spec:** Draw loose white hand-drawn strokes (a crown, sparks, an outline arc) around the head that write on over 0.8s and wiggle slightly while held.
 
 ### M-340 · Doodle Outline · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-205. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-205
 
 ### M-615 · Doodle Outline · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-205. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-205
 
 ### M-890 · Doodle Outline · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-205. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-205
 
 ### M-206 · Sticker Cutout
+- **Suggested sound:** SX-09 Pop
 - **When to use:** The person becomes a white-bordered sticker that pops.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s
@@ -3715,18 +4393,22 @@
 - **Spec:** Using the person matte, add a thick white outline (about 1% of the width) and a soft drop shadow, then pop the sticker in with a slight tilt (scale 0 to 108% to 100%).
 
 ### M-354 · Sticker Cutout · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-206. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-206
 
 ### M-629 · Sticker Cutout · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-206. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-206
 
 ### M-904 · Sticker Cutout · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-206. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-206
 
 ### M-207 · Pop-Out Frame
+- **Suggested sound:** SX-09 Pop
 - **When to use:** The person breaks out of a frame, a 3D feel.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -3734,18 +4416,22 @@
 - **Spec:** A rounded frame shows the background; the person matte is layered above it so the head sticks out over the top edge of the frame. The frame scales in first.
 
 ### M-368 · Pop-Out Frame · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-207. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-207
 
 ### M-643 · Pop-Out Frame · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-207. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-207
 
 ### M-918 · Pop-Out Frame · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-207. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-207
 
 ### M-208 · Portrait Mode
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** A blurred background with the person sharp, like a phone portrait.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.5s
@@ -3753,18 +4439,22 @@
 - **Spec:** Using the person matte, blur only the background to about 1.5% over 0.5s while the person stays sharp.
 
 ### M-382 · Portrait Mode · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-208. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-208
 
 ### M-657 · Portrait Mode · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-208. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-208
 
 ### M-932 · Portrait Mode · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-208. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-208
 
 ### M-209 · Silhouette Fill
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** The person turns into a solid brand-color silhouette, poster style.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.3s
@@ -3772,18 +4462,22 @@
 - **Spec:** Using the person matte, fill the person with a flat accent color (keep the matte edge soft) and fade it in over 0.3s on a beat.
 
 ### M-396 · Silhouette Fill · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-209. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-209
 
 ### M-671 · Silhouette Fill · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-209. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-209
 
 ### M-946 · Silhouette Fill · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-209. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-209
 
 ### M-210 · Neon Outline
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** A glowing neon edge traced around the person.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop flicker
@@ -3791,18 +4485,22 @@
 - **Spec:** Trace the person matte edge with a 0.8% mint line plus a wide glow, and flicker it on like neon (see M-056).
 
 ### M-408 · Neon Outline · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-210. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-210
 
 ### M-683 · Neon Outline · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-210. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-210
 
 ### M-958 · Neon Outline · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-210. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-210
 
 ### M-211 · Spotlight Follow
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Everything goes dark except a light circle that follows you.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop
@@ -3810,18 +4508,22 @@
 - **Spec:** Darken the frame about 85% except a soft circle around the person; the circle tracks the head position every frame.
 
 ### M-420 · Spotlight Follow · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-211. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-211
 
 ### M-695 · Spotlight Follow · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-211. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-211
 
 ### M-970 · Spotlight Follow · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-211. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-211
 
 ### M-212 · Halftone Person
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** The person rendered in halftone dots like old print.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.4s
@@ -3829,18 +4531,22 @@
 - **Spec:** Inside the person matte, overlay an accent halftone dot pattern (dot size tied to brightness) with a multiply blend.
 
 ### M-431 · Halftone Person · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-212. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-212
 
 ### M-706 · Halftone Person · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-212. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-212
 
 ### M-981 · Halftone Person · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-212. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-212
 
 ### M-213 · Background Flash Swap
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** The background color flips on every beat while you stay.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** per beat
@@ -3848,14 +4554,17 @@
 - **Spec:** Using the person matte, replace the background with a solid color that changes on every beat (cycle 3–4 brand colors).
 
 ### M-442 · Background Flash Swap · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-213. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-213
 
 ### M-717 · Background Flash Swap · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-213. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-213
 
 ### M-992 · Background Flash Swap · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-213. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-213
 
@@ -3919,6 +4628,7 @@
 - **Content the user must provide:** same as M-216
 
 ### M-217 · Beat Flash
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A light flash on every beat of the music.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.15s
@@ -3926,18 +4636,22 @@
 - **Spec:** Detect beats in the music track; on each beat flash a white overlay to about 40–85% and fade it out over 0.15s.
 
 ### M-327 · Beat Flash · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-217
 
 ### M-602 · Beat Flash · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-217
 
 ### M-877 · Beat Flash · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-217. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-217
 
 ### M-218 · Beat Zoom
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** The frame pulses a zoom on every beat.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.2s
@@ -3945,18 +4659,22 @@
 - **Spec:** On each detected beat, jump the frame scale to 112% and ease back to 100% over about 0.2s.
 
 ### M-341 · Beat Zoom · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-218
 
 ### M-616 · Beat Zoom · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-218
 
 ### M-891 · Beat Zoom · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-218. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-218
 
 ### M-219 · Beat Shake
+- **Suggested sound:** SX-17 Soft Impact
 - **When to use:** A short shake on every heavy beat.
 - **Content the user must provide:** It runs on the video’s own voice or music, so you upload nothing.
 - **Duration:** per beat · 0.15s
@@ -3964,14 +4682,17 @@
 - **Spec:** On each strong beat (kick), shake the overscaled frame (106%) with 2–3 quick offsets of ±2% over 0.15s.
 
 ### M-355 · Beat Shake · Fast
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-219
 
 ### M-630 · Beat Shake · Slow
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-219
 
 ### M-905 · Beat Shake · Gold
+- **Suggested sound:** SX-17 Soft Impact
 - Variant of M-219. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-219
 
@@ -4092,6 +4813,7 @@
 ## SCR — Screens & UI
 
 ### M-226 · App Window Pop
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A desktop app window pops up while you explain.
 - **Content the user must provide:** text: the title; file: a screenshot or screen recording (it appears inside the frame)
 - **Duration:** 0.4s
@@ -4099,18 +4821,22 @@
 - **Spec:** A rounded window with three title-bar dots and a title scales from 60% to 104% to 100% with a fade over 0.4s, showing your screenshot or screen recording inside.
 
 ### M-286 · App Window Pop · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-226. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-226
 
 ### M-561 · App Window Pop · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-226. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-226
 
 ### M-836 · App Window Pop · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-226. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-226
 
 ### M-227 · Phone Scroll
+- **Suggested sound:** SX-07 Click
 - **When to use:** Shows an app or page scrolling inside a phone.
 - **Content the user must provide:** file: a screenshot or screen recording (it appears inside the frame)
 - **Duration:** 2s scroll
@@ -4118,18 +4844,22 @@
 - **Spec:** A phone frame with rounded corners shows your screen recording or a long screenshot that scrolls up smoothly inside it, then eases to a stop.
 
 ### M-300 · Phone Scroll · Fast
+- **Suggested sound:** SX-07 Click
 - Variant of M-227. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-227
 
 ### M-575 · Phone Scroll · Slow
+- **Suggested sound:** SX-07 Click
 - Variant of M-227. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-227
 
 ### M-850 · Phone Scroll · Gold
+- **Suggested sound:** SX-07 Click
 - Variant of M-227. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-227
 
 ### M-228 · Laptop Mockup
+- **Suggested sound:** SX-07 Click
 - **When to use:** Places your screen recording inside a laptop.
 - **Content the user must provide:** file: your screen recording
 - **Duration:** 0.6s in
@@ -4137,18 +4867,22 @@
 - **Spec:** A laptop mockup (screen bezel and base) rises 10% with a fade over 0.6s; your screen recording plays inside the screen area.
 
 ### M-314 · Laptop Mockup · Fast
+- **Suggested sound:** SX-07 Click
 - Variant of M-228. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-228
 
 ### M-589 · Laptop Mockup · Slow
+- **Suggested sound:** SX-07 Click
 - Variant of M-228. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-228
 
 ### M-864 · Laptop Mockup · Gold
+- **Suggested sound:** SX-07 Click
 - Variant of M-228. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-228
 
 ### M-229 · Browser Window
+- **Suggested sound:** SX-07 Click
 - **When to use:** A website inside a browser window with a URL bar.
 - **Content the user must provide:** text: the link; file: a screenshot or screen recording (it appears inside the frame)
 - **Duration:** 0.4s
@@ -4156,18 +4890,22 @@
 - **Spec:** A browser window with dots, a URL bar showing your site, and the page content pops in; the URL can type itself first (see M-180).
 
 ### M-328 · Browser Window · Fast
+- **Suggested sound:** SX-07 Click
 - Variant of M-229. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-229
 
 ### M-603 · Browser Window · Slow
+- **Suggested sound:** SX-07 Click
 - Variant of M-229. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-229
 
 ### M-878 · Browser Window · Gold
+- **Suggested sound:** SX-07 Click
 - Variant of M-229. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-229
 
 ### M-230 · Phone Slide In
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A phone with your app slides in next to you.
 - **Content the user must provide:** file: a screenshot or screen recording (it appears inside the frame)
 - **Duration:** 0.5s
@@ -4175,18 +4913,22 @@
 - **Spec:** A phone mockup slides in from the side edge with a slight tilt that straightens over 0.5s, then holds beside the speaker.
 
 ### M-342 · Phone Slide In · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-230. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-230
 
 ### M-617 · Phone Slide In · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-230. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-230
 
 ### M-892 · Phone Slide In · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-230. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-230
 
 ### M-231 · Cursor Click
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** A mouse cursor glides over and clicks a button.
 - **Content the user must provide:** text: the button or spot to click
 - **Duration:** 1s
@@ -4194,18 +4936,22 @@
 - **Spec:** A cursor arrow moves along a smooth curve to a button, scales to 85% on click, and a white ring expands from the click point.
 
 ### M-356 · Cursor Click · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-231. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-231
 
 ### M-631 · Cursor Click · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-231. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-231
 
 ### M-906 · Cursor Click · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-231. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-231
 
 ### M-232 · Zoom to Cursor
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** A zoom that follows the cursor in a screen recording.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -4213,18 +4959,22 @@
 - **Spec:** In a screen recording, zoom to about 180% centered on the cursor position over 0.6s, follow it smoothly while zoomed, then zoom back out.
 
 ### M-370 · Zoom to Cursor · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-232. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-232
 
 ### M-645 · Zoom to Cursor · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-232. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-232
 
 ### M-920 · Zoom to Cursor · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-232. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-232
 
 ### M-233 · Modal Pop
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A dialog pops up over a dimmed background.
 - **Content the user must provide:** text: the title; text: the text to show
 - **Duration:** 0.3s
@@ -4232,18 +4982,22 @@
 - **Spec:** The background dims to about 55% black while a rounded dialog card scales from 90% to 102% to 100% over 0.3s.
 
 ### M-384 · Modal Pop · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-233. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-233
 
 ### M-659 · Modal Pop · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-233. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-233
 
 ### M-934 · Modal Pop · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-233. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-233
 
 ### M-234 · Toggle Switch
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** A switch flips from off to on.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.3s
@@ -4251,18 +5005,22 @@
 - **Spec:** A pill toggle: the knob slides to the other side over 0.3s while the track color changes from gray to the accent.
 
 ### M-398 · Toggle Switch · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-234. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-234
 
 ### M-673 · Toggle Switch · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-234. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-234
 
 ### M-948 · Toggle Switch · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-234. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-234
 
 ### M-235 · Loading Spinner
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A "one moment" spinner before the result.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 0.8s
@@ -4270,18 +5028,22 @@
 - **Spec:** A ring with one accent segment rotates one full turn every 0.8s; replace it with the result when it finishes.
 
 ### M-410 · Loading Spinner · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-235. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-235
 
 ### M-685 · Loading Spinner · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-235. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-235
 
 ### M-960 · Loading Spinner · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-235. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-235
 
 ### M-236 · Notification Stack
+- **Suggested sound:** SX-14 Notification Bell
 - **When to use:** Notifications stacking up, like many messages arriving.
 - **Content the user must provide:** text: the messages (one per line)
 - **Duration:** 0.3s each
@@ -4289,18 +5051,22 @@
 - **Spec:** Notification cards drop in from the top one after another, 0.4s apart; each new card pushes the earlier ones down slightly.
 
 ### M-422 · Notification Stack · Fast
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-236. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-236
 
 ### M-697 · Notification Stack · Slow
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-236. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-236
 
 ### M-972 · Notification Stack · Gold
+- **Suggested sound:** SX-14 Notification Bell
 - Variant of M-236. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-236
 
 ### M-237 · Keyboard Shortcut
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** Shows a shortcut like Ctrl + C being pressed.
 - **Content the user must provide:** text: the keys (e.g. Ctrl + C)
 - **Duration:** 0.6s
@@ -4308,18 +5074,22 @@
 - **Spec:** Key caps appear side by side; each key presses down (moves 2% and turns accent) in order, 0.15s apart.
 
 ### M-433 · Keyboard Shortcut · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-237. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-237
 
 ### M-708 · Keyboard Shortcut · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-237. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-237
 
 ### M-983 · Keyboard Shortcut · Gold
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-237. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-237
 
 ### M-238 · Tab Switch
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** Tabs change and the content slides.
 - **Content the user must provide:** text: the items (comma-separated)
 - **Duration:** 0.35s
@@ -4327,18 +5097,22 @@
 - **Spec:** An accent underline slides from one tab to the next while the content panel slides across in the same direction over 0.35s.
 
 ### M-443 · Tab Switch · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-238. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-238
 
 ### M-718 · Tab Switch · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-238. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-238
 
 ### M-993 · Tab Switch · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-238. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-238
 
 ### M-239 · Form Fill
+- **Suggested sound:** SX-25 Keyboard Typing
 - **When to use:** Form fields fill in one after another, for tutorials.
 - **Content the user must provide:** text: the fields and their values
 - **Duration:** ~0.8s per field
@@ -4346,14 +5120,17 @@
 - **Spec:** Each labelled field types its value in order (see M-082), and a checkmark appears at the end of each field when done.
 
 ### M-452 · Form Fill · Fast
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-239. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-239
 
 ### M-727 · Form Fill · Slow
+- **Suggested sound:** SX-25 Keyboard Typing
 - Variant of M-239. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-239
 
 ### M-240 · Upload Progress
+- **Suggested sound:** SX-12 Tick
 - **When to use:** A file uploading with a progress bar.
 - **Content the user must provide:** text: the file name
 - **Duration:** 1.2s
@@ -4361,16 +5138,19 @@
 - **Spec:** A file card with an icon and name shows a progress bar filling from 0 to 100% while the percentage counts up, then a check appears.
 
 ### M-461 · Upload Progress · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-240. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-240
 
 ### M-736 · Upload Progress · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-240. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-240
 
 ## TRK — Tracking
 
 ### M-241 · Label Follow
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** A label that sticks to a moving object.
 - **Content the user must provide:** text: what to track (e.g. the red cup); text: the text to show
 - **Duration:** live
@@ -4378,18 +5158,22 @@
 - **Spec:** Track a point on the object (optical flow or a tracker) and attach a label with a small pointer above it; the label follows the point every frame with slight smoothing.
 
 ### M-287 · Label Follow · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-241. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-241
 
 ### M-562 · Label Follow · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-241. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-241
 
 ### M-837 · Label Follow · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-241. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-241
 
 ### M-242 · Tracking Ring
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** A ring that follows an object to point it out.
 - **Content the user must provide:** text: what to track (e.g. the red cup)
 - **Duration:** live
@@ -4397,18 +5181,22 @@
 - **Spec:** Track the object and draw a mint ring slightly larger than it, centered on the tracked point, with a soft pulse.
 
 ### M-301 · Tracking Ring · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-242. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-242
 
 ### M-576 · Tracking Ring · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-242. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-242
 
 ### M-851 · Tracking Ring · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-242. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-242
 
 ### M-243 · Face Blur
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Hides a face or a plate for privacy.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** live
@@ -4416,18 +5204,22 @@
 - **Spec:** Detect and track the face (or plate) and cover it with a rounded box that blurs what is behind it about 2.5%, following it every frame.
 
 ### M-315 · Face Blur · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-243. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-243
 
 ### M-590 · Face Blur · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-243. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-243
 
 ### M-865 · Face Blur · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-243. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-243
 
 ### M-244 · Callout Line
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** A line draws from an object to a note beside it.
 - **Content the user must provide:** text: what to track (e.g. the red cup); text: the text to show
 - **Duration:** 0.6s
@@ -4435,18 +5227,22 @@
 - **Spec:** A thin line draws from the tracked point to a corner over 0.6s, then a small note box fades in at the end of the line.
 
 ### M-329 · Callout Line · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-244. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-244
 
 ### M-604 · Callout Line · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-244. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-244
 
 ### M-879 · Callout Line · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-244. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-244
 
 ### M-245 · Screen Replace
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Puts another image inside a phone screen in the video.
 - **Content the user must provide:** file: a screenshot or screen recording (it appears inside the frame)
 - **Duration:** live
@@ -4454,18 +5250,22 @@
 - **Spec:** Track the four corners of the screen in the footage and warp your image or recording onto that quad every frame (corner pin), with a slight glare overlay.
 
 ### M-343 · Screen Replace · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-245. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-245
 
 ### M-618 · Screen Replace · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-245. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-245
 
 ### M-893 · Screen Replace · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-245. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-245
 
 ### M-246 · Arrow Follow
+- **Suggested sound:** SX-08 UI Click
 - **When to use:** An arrow that keeps pointing at a moving thing.
 - **Content the user must provide:** text: what to track (e.g. the red cup)
 - **Duration:** live
@@ -4473,18 +5273,22 @@
 - **Spec:** Track the object and keep an accent arrow just above it pointing down, bobbing slightly while it follows.
 
 ### M-357 · Arrow Follow · Fast
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-246. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-246
 
 ### M-632 · Arrow Follow · Slow
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-246. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-246
 
 ### M-907 · Arrow Follow · Gold
+- **Suggested sound:** SX-08 UI Click
 - Variant of M-246. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-246
 
 ### M-247 · Emoji Follow
+- **Suggested sound:** SX-09 Pop
 - **When to use:** A sticker or emoji that follows a moving object.
 - **Content the user must provide:** text: what to track (e.g. the red cup); file: the sticker or emoji image
 - **Duration:** live
@@ -4492,18 +5296,22 @@
 - **Spec:** Track the object and stick a sticker (or emoji image) on it, scaled to its size and following its position and rotation.
 
 ### M-371 · Emoji Follow · Fast
+- **Suggested sound:** SX-09 Pop
 - Variant of M-247. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-247
 
 ### M-646 · Emoji Follow · Slow
+- **Suggested sound:** SX-09 Pop
 - Variant of M-247. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-247
 
 ### M-921 · Emoji Follow · Gold
+- **Suggested sound:** SX-09 Pop
 - Variant of M-247. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-247
 
 ### M-248 · Path Trace
+- **Suggested sound:** SX-05 Soft Swoosh
 - **When to use:** Draws the path an object travelled.
 - **Content the user must provide:** text: what to track (e.g. the red cup)
 - **Duration:** live
@@ -4511,20 +5319,24 @@
 - **Spec:** Track the object and draw a dashed accent line along its past positions that builds up as it moves.
 
 ### M-385 · Path Trace · Fast
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-248. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-248
 
 ### M-660 · Path Trace · Slow
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-248. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-248
 
 ### M-935 · Path Trace · Gold
+- **Suggested sound:** SX-05 Soft Swoosh
 - Variant of M-248. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-248
 
 ## D3 — 3D
 
 ### M-249 · 3D Spin Text
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A word spinning around its vertical axis in 3D.
 - **Content the user must provide:** text: the text to show
 - **Duration:** loop · 3s
@@ -4532,18 +5344,22 @@
 - **Spec:** Rotate the text around the Y axis with perspective, one full turn every 3s; keep the back face visible or mirrored.
 
 ### M-288 · 3D Spin Text · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-249. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-249
 
 ### M-563 · 3D Spin Text · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-249. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-249
 
 ### M-838 · 3D Spin Text · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-249. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-249
 
 ### M-250 · Extruded Text
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** Thick extruded text like a solid object.
 - **Content the user must provide:** text: the text to show
 - **Duration:** loop · 4s
@@ -4551,18 +5367,22 @@
 - **Spec:** Give the text a stacked, darker accent depth (6–10 offset layers) and gently tilt it in 3D (±14°) on a 4s loop.
 
 ### M-302 · Extruded Text · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-250. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-250
 
 ### M-577 · Extruded Text · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-250. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-250
 
 ### M-852 · Extruded Text · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-250. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-250
 
 ### M-251 · Parallax 2.5D
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** A still photo moves in layers as if it has depth.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** loop · 4s
@@ -4570,18 +5390,22 @@
 - **Spec:** Separate the subject from the background (matte or depth map); move the background slowly one way and the subject the other way, with a 115% scale to hide edges.
 
 ### M-316 · Parallax 2.5D · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-251. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-251
 
 ### M-591 · Parallax 2.5D · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-251. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-251
 
 ### M-866 · Parallax 2.5D · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-251. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-251
 
 ### M-252 · Card Flip
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** A card flips to reveal the answer.
 - **Content the user must provide:** text: the text to show
 - **Duration:** 0.6s
@@ -4589,18 +5413,22 @@
 - **Spec:** A card rotates 180° around the Y axis with perspective over 0.6s, showing its back side with the reveal text.
 
 ### M-330 · Card Flip · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-252. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-252
 
 ### M-605 · Card Flip · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-252. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-252
 
 ### M-880 · Card Flip · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-252. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-252
 
 ### M-253 · Cube Spin
+- **Suggested sound:** SX-02 Quick Whoosh
 - **When to use:** A spinning 3D cube for a logo or product.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** loop · 4s
@@ -4608,18 +5436,22 @@
 - **Spec:** Build a cube from six faces with preserve-3d, tilt it -20° on X and rotate it a full turn on Y every 4s; put the logo on the faces.
 
 ### M-344 · Cube Spin · Fast
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-253. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-253
 
 ### M-619 · Cube Spin · Slow
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-253. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-253
 
 ### M-894 · Cube Spin · Gold
+- **Suggested sound:** SX-02 Quick Whoosh
 - Variant of M-253. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-253
 
 ### M-254 · Tilt Card
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** A card tilting as if held in your hand.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** loop · 4s
@@ -4627,18 +5459,22 @@
 - **Spec:** Tilt a card on X and Y (±12–16°) with perspective on a smooth 4s loop, with a soft shadow beneath it.
 
 ### M-358 · Tilt Card · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-254. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-254
 
 ### M-633 · Tilt Card · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-254. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-254
 
 ### M-908 · Tilt Card · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-254. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-254
 
 ### M-255 · Layer Explode
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** Design layers separate apart in 3D.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** 0.8s
@@ -4646,18 +5482,22 @@
 - **Spec:** Tilt a stack of layers into an isometric view and push each layer apart on Z (0, 8%, 16%…), then bring them back together.
 
 ### M-372 · Layer Explode · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-255. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-255
 
 ### M-647 · Layer Explode · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-255. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-255
 
 ### M-922 · Layer Explode · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-255. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-255
 
 ### M-256 · 3D Carousel
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** Cards rotating on a 3D ring to show several items.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** loop · 6s
@@ -4665,18 +5505,22 @@
 - **Spec:** Place 5–8 cards evenly around a 3D ring (rotateY steps + translateZ) and rotate the ring slowly.
 
 ### M-386 · 3D Carousel · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-256. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-256
 
 ### M-661 · 3D Carousel · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-256. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-256
 
 ### M-936 · 3D Carousel · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-256. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-256
 
 ### M-257 · Float Shadow
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** A product or logo floats with a shadow that changes below it.
 - **Content the user must provide:** file: the image(s)
 - **Duration:** loop · 3s
@@ -4684,18 +5528,22 @@
 - **Spec:** Bob the object up 6% with a slight rotation while its drop shadow grows softer and lighter at the top of the motion.
 
 ### M-399 · Float Shadow · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-257. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-257
 
 ### M-674 · Float Shadow · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-257. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-257
 
 ### M-949 · Float Shadow · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-257. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-257
 
 ### M-258 · Coin Flip
+- **Suggested sound:** SX-03 Long Swoosh
 - **When to use:** A coin tosses and flips, like heads or tails.
 - **Content the user must provide:** file: your logo (transparent PNG)
 - **Duration:** 1.2s
@@ -4703,20 +5551,24 @@
 - **Spec:** A two-sided coin rises and falls while spinning several times around the Y axis over about 1.2s, landing on one face.
 
 ### M-411 · Coin Flip · Fast
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-258. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-258
 
 ### M-686 · Coin Flip · Slow
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-258. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-258
 
 ### M-961 · Coin Flip · Gold
+- **Suggested sound:** SX-03 Long Swoosh
 - Variant of M-258. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-258
 
 ## TIM — Time FX
 
 ### M-259 · Reverse
+- **Suggested sound:** SX-22 Rewind
 - **When to use:** The clip plays backwards for surprise or fun.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** clip length
@@ -4724,18 +5576,22 @@
 - **Spec:** Play the selected segment backwards (frames in reverse order) and show a small "◀◀" tag in the corner.
 
 ### M-289 · Reverse · Fast
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-259. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-259
 
 ### M-564 · Reverse · Slow
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-259. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-259
 
 ### M-839 · Reverse · Gold
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-259. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-259
 
 ### M-260 · Boomerang
+- **Suggested sound:** SX-22 Rewind
 - **When to use:** A short clip plays forward and back in a loop.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** loop · 1s
@@ -4743,18 +5599,22 @@
 - **Spec:** Take a 0.5–1s segment and play it forward then backward repeatedly, like a boomerang.
 
 ### M-303 · Boomerang · Fast
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-260. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-260
 
 ### M-578 · Boomerang · Slow
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-260. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-260
 
 ### M-853 · Boomerang · Gold
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-260. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-260
 
 ### M-261 · Stop Motion
+- **Suggested sound:** SX-22 Rewind
 - **When to use:** Choppy, frame-by-frame motion like stop motion.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 12fps
@@ -4762,18 +5622,22 @@
 - **Spec:** Drop the frame rate to about 8–12fps by holding each frame for 3–4 frames, giving a choppy stop-motion feel.
 
 ### M-317 · Stop Motion · Fast
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-261. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-261
 
 ### M-592 · Stop Motion · Slow
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-261. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-261
 
 ### M-867 · Stop Motion · Gold
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-261. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-261
 
 ### M-262 · Strobe
+- **Suggested sound:** SX-22 Rewind
 - **When to use:** Frozen copies of a move stay behind it.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.8s
@@ -4781,18 +5645,22 @@
 - **Spec:** Every 4 frames, freeze a copy of the person at about 35% opacity so the motion leaves a trail of still poses.
 
 ### M-331 · Strobe · Fast
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-262. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-262
 
 ### M-606 · Strobe · Slow
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-262. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-262
 
 ### M-881 · Strobe · Gold
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-262. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-262
 
 ### M-263 · Time-Lapse Clock
+- **Suggested sound:** SX-12 Tick
 - **When to use:** Clock hands spin fast, like "hours later".
 - **Content the user must provide:** text: the text to show
 - **Duration:** 1.5s
@@ -4800,18 +5668,22 @@
 - **Spec:** A clock face with the minute hand spinning many turns and the hour hand moving slowly, for 1–2s, with a "+3h" style label.
 
 ### M-345 · Time-Lapse Clock · Fast
+- **Suggested sound:** SX-12 Tick
 - Variant of M-263. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-263
 
 ### M-620 · Time-Lapse Clock · Slow
+- **Suggested sound:** SX-12 Tick
 - Variant of M-263. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-263
 
 ### M-895 · Time-Lapse Clock · Gold
+- **Suggested sound:** SX-12 Tick
 - Variant of M-263. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-263
 
 ### M-264 · Day to Night
+- **Suggested sound:** SX-21 Short Riser
 - **When to use:** The lighting shifts as if time passes.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 2s
@@ -4819,18 +5691,22 @@
 - **Spec:** Grade the shot from warm daylight to a cool, darker night look over about 2s (color temperature, exposure and saturation).
 
 ### M-359 · Day to Night · Fast
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-264. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-264
 
 ### M-634 · Day to Night · Slow
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-264. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-264
 
 ### M-909 · Day to Night · Gold
+- **Suggested sound:** SX-21 Short Riser
 - Variant of M-264. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-264
 
 ### M-265 · Fast Forward
+- **Suggested sound:** SX-22 Rewind
 - **When to use:** The clip speeds up with a ▶▶ tag.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** clip length
@@ -4838,18 +5714,22 @@
 - **Spec:** Play the segment at 2–4× speed with a "▶▶ 4×" tag and a light motion blur.
 
 ### M-373 · Fast Forward · Fast
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-265. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-265
 
 ### M-648 · Fast Forward · Slow
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-265. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-265
 
 ### M-923 · Fast Forward · Gold
+- **Suggested sound:** SX-22 Rewind
 - Variant of M-265. add a thin gold #FFC857 rim (about 0.5% wide) and a soft gold glow around the main element of this motion.
 - **Content the user must provide:** same as M-265
 
 ### M-266 · Rewind Glitch
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** A fast rewind with tape-like noise lines.
 - **Content the user must provide:** No content needed from you.
 - **Duration:** 0.6s
@@ -4857,14 +5737,17 @@
 - **Spec:** Play the last second backwards at 3× with VHS noise lines (M-155) and a "◀◀ REW" tag, then cut back to normal.
 
 ### M-387 · Rewind Glitch · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-266. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-266
 
 ### M-662 · Rewind Glitch · Slow
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-266. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-266
 
 ### M-937 · Rewind Glitch · Gold
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-266. use gold #FFC857 instead of the coral accent.
 - **Content the user must provide:** same as M-266
 
@@ -5000,6 +5883,382 @@
 | FE-60 | Unbounded | English | Sans | 200–900 (variable) | https://fonts.google.com/specimen/Unbounded |
 | FE-61 | Urbanist | English | Sans | 100–900 (variable) | https://fonts.google.com/specimen/Urbanist |
 | FE-62 | Work Sans | English | Sans | 100–900 (variable) | https://fonts.google.com/specimen/Work+Sans |
+
+## PALETTES — Colour palettes
+
+- When the user names CP-xx, use these colours for text, elements and captions instead of the default brand colours.
+
+| ID | Name | Background | Text | Accent | Highlight | Use |
+|---|---|---|---|---|---|---|
+| CP-01 | Gulf Sand (رمل الخليج) | #102E33 | #F6EFE2 | #E3643F | #FFC857 | The Alansari.Tech house look: calm teal with a coral accent. |
+| CP-02 | Sand Light (رمل فاتح) | #EFE6D8 | #1F2A2E | #0F5B66 | #E3643F | Light, warm background for tips and explainers. |
+| CP-03 | Midnight Gold (ذهبي ليلي) | #0B0B0F | #F5F0E6 | #D4AF37 | #FFFFFF | Luxury products, perfumes, jewellery. |
+| CP-04 | Neon Cyber (سايبر نيون) | #0A0E1A | #E6F1FF | #00E5FF | #FF2E88 | Tech, AI and cybersecurity news. |
+| CP-05 | Clean White (أبيض نظيف) | #FFFFFF | #111111 | #2563EB | #FACC15 | Simple, professional, easy to read. |
+| CP-06 | Bold Yellow (أصفر جريء) | #111111 | #FFFFFF | #FFD60A | #FF3B30 | The classic viral-caption look. |
+| CP-07 | Ramadan Night (ليالي رمضان) | #1B1035 | #F7EFD8 | #E8B04B | #7A5CFA | Ramadan, Eid and religious content. |
+| CP-08 | Kuwait Flag (ألوان العلم) | #FFFFFF | #000000 | #007A3D | #CE1126 | National Day and national occasions. |
+| CP-09 | Medical Calm (طبي هادي) | #F2F8FC | #0C2B40 | #0E7CC2 | #20B486 | Clinics, health and patient education. |
+| CP-10 | Coffee (قهوة) | #2B1D14 | #F3E6D3 | #C68B59 | #E9C46A | Cafés, food and cosy content. |
+| CP-11 | Sunset (غروب) | #2D1B3D | #FFF4E6 | #FF7A45 | #FFC145 | Stories, travel and lifestyle. |
+| CP-12 | Mint Fresh (نعناع) | #0F2A27 | #EFFFFA | #3DDBB0 | #FFE66D | Fresh, positive, wellness. |
+| CP-13 | Mono (أبيض وأسود) | #000000 | #FFFFFF | #FFFFFF | #8A8A8A | Podcasts and serious talk. |
+| CP-14 | Royal Blue (أزرق ملكي) | #0B1F4D | #FFFFFF | #3B82F6 | #FBBF24 | Education, courses, tutorials. |
+| CP-15 | Breaking Red (عاجل أحمر) | #141414 | #FFFFFF | #E11D2E | #FFFFFF | Breaking news, offers, urgency. |
+| CP-16 | Ocean (محيط) | #03254C | #E8F6FF | #1CA7EC | #9CF6F6 | Travel, sea, summer. |
+| CP-17 | Forest (غابة) | #16251C | #EEF5E9 | #4CAF50 | #D9A441 | Nature, outdoors, organic products. |
+| CP-18 | Pastel (باستيل) | #FFF5F7 | #3D2C3E | #F497B6 | #8FD3C7 | Beauty, kids, soft content. |
+| CP-19 | Tech Purple (بنفسجي تقني) | #120B2E | #F1ECFF | #8B5CF6 | #22D3EE | Apps, startups, AI tools. |
+| CP-20 | Retro 80s (ريترو) | #1A1033 | #FFF1F8 | #FF4FD8 | #29E7FF | Gaming, music, fun edits. |
+| CP-21 | Corporate Navy (رسمي كحلي) | #F7F8FA | #0F1C2E | #1E3A5F | #C9A227 | Companies, events, formal content. |
+| CP-22 | Desert Rose (وردي صحراوي) | #F4E4DC | #3E2A26 | #C0675B | #8C5E3C | Fashion, abayas, home decor. |
+| CP-23 | Matcha (ماتشا) | #F1F5E8 | #22301D | #7BA05B | #E07A5F | Healthy food and calm vlogs. |
+| CP-24 | Carbon Orange (كربون برتقالي) | #18181B | #FAFAFA | #F97316 | #A3E635 | Cars, sports, energy. |
+
+## CAPSTYLES — Caption styles
+
+- Each CS-xx sets the caption motion, font, colours, position and words per line. Apply it to all captions unless told otherwise.
+
+### CS-01 · Gulf Karaoke (كاريوكي خليجي)
+- **When:** The house style: the spoken word turns gold.
+- **Motion:** M-011 · **Font:** FA-02 Alexandria · **Colours:** CP-01 (#F6EFE2, #E3643F, #FFC857)
+- **Position:** bottom (about 70% of the height) · max 3 words per line
+- **Look:** the active word changes to the highlight colour, the others stay in the text colour
+
+### CS-02 · Yellow Pop (بوب أصفر)
+- **When:** Viral talking-head captions, the active word grows.
+- **Motion:** M-086 · **Font:** FA-16 Cairo · **Colours:** CP-06 (#FFFFFF, #FFD60A, #FF3B30)
+- **Position:** centre · max 3 words per line
+- **Look:** the active word scales up about 115% and takes the accent colour
+
+### CS-03 · Neon Box (مربع نيون)
+- **When:** Tech news: the active word sits in a neon box.
+- **Motion:** M-014 · **Font:** FA-20 Changa · **Colours:** CP-04 (#E6F1FF, #00E5FF, #FF2E88)
+- **Position:** centre · max 3 words per line
+- **Look:** the active word sits in a rounded accent-coloured box with dark text
+
+### CS-04 · One-Word Punch (كلمة كلمة)
+- **When:** Fast, energetic edits, one big word at a time.
+- **Motion:** M-015 · **Font:** FA-32 Lalezar · **Colours:** CP-06 (#FFFFFF, #FFD60A, #FF3B30)
+- **Position:** centre · one word at a time
+- **Look:** one word at a time, very large, centred, with a quick 90 ms scale pop
+
+### CS-05 · Clean Pill (كبسولة نظيفة)
+- **When:** Calm, professional, readable on any footage.
+- **Motion:** M-089 · **Font:** FA-57 Tajawal · **Colours:** CP-05 (#111111, #2563EB, #FACC15)
+- **Position:** bottom (about 70% of the height) · max 4 words per line
+- **Look:** the whole line sits in a dark semi-transparent pill, the active word in the accent colour
+
+### CS-06 · Bold Outline (حدود عريضة)
+- **When:** Big white outline text, active word filled.
+- **Motion:** M-090 · **Font:** FA-31 Kufam · **Colours:** CP-13 (#FFFFFF, #FFFFFF, #8A8A8A)
+- **Position:** centre · max 2 words per line
+- **Look:** words are white outlines only, the active word fills solid
+
+### CS-07 · Underline Active (خط تحت الكلمة)
+- **When:** Tutorials and courses.
+- **Motion:** M-085 · **Font:** FA-50 Readex Pro · **Colours:** CP-14 (#FFFFFF, #3B82F6, #FBBF24)
+- **Position:** bottom (about 70% of the height) · max 3 words per line
+- **Look:** an accent underline slides under the active word
+
+### CS-08 · Highlighter (قلم تظليل)
+- **When:** Light, friendly tips.
+- **Motion:** M-095 · **Font:** FA-04 Almarai · **Colours:** CP-02 (#1F2A2E, #0F5B66, #E3643F)
+- **Position:** bottom (about 70% of the height) · max 3 words per line
+- **Look:** a highlighter stroke in the highlight colour paints behind the active word
+
+### CS-09 · Podcast Two-Line (بودكاست سطرين)
+- **When:** Long talk and podcasts: two calm lines.
+- **Motion:** M-081 · **Font:** FA-28 IBM Plex Sans Arabic · **Colours:** CP-13 (#FFFFFF, #FFFFFF, #8A8A8A)
+- **Position:** bottom (about 70% of the height) · max 5 words per line
+- **Look:** two lines, max 5 words each, the active word slightly brighter
+
+### CS-10 · Neon Glow (توهج نيون)
+- **When:** Gaming and music, the active word glows.
+- **Motion:** M-087 · **Font:** FA-51 Reem Kufi · **Colours:** CP-20 (#FFF1F8, #FF4FD8, #29E7FF)
+- **Position:** centre · max 2 words per line
+- **Look:** the active word glows in the accent colour (soft blur about 1.5%)
+
+### CS-11 · Handwritten (بخط اليد)
+- **When:** Soft, personal stories and vlogs.
+- **Motion:** M-083 · **Font:** FA-47 Playpen Sans Arabic · **Colours:** CP-18 (#3D2C3E, #F497B6, #8FD3C7)
+- **Position:** bottom (about 70% of the height) · max 3 words per line
+- **Look:** words fade in one by one as they are spoken
+
+### CS-12 · Ramadan Naskh (نسخ رمضاني)
+- **When:** Religious and Ramadan content in a classic Naskh.
+- **Motion:** M-083 · **Font:** FA-06 Amiri · **Colours:** CP-07 (#F7EFD8, #E8B04B, #7A5CFA)
+- **Position:** centre · max 3 words per line
+- **Look:** the active word changes to the highlight colour, the others stay in the text colour
+
+### CS-13 · News Bar (شريط أخبار)
+- **When:** Breaking news: captions on a red bar.
+- **Motion:** M-098 · **Font:** FA-39 Noto Kufi Arabic · **Colours:** CP-15 (#FFFFFF, #E11D2E, #FFFFFF)
+- **Position:** bottom (about 70% of the height) · max 4 words per line
+- **Look:** the line sits on a full-width accent bar at the bottom, active word underlined
+
+### CS-14 · Size Mix (أحجام مختلفة)
+- **When:** Story hooks: the key word is bigger.
+- **Motion:** M-096 · **Font:** FA-61 Zain · **Colours:** CP-11 (#FFF4E6, #FF7A45, #FFC145)
+- **Position:** centre · max 3 words per line
+- **Look:** important words are about 1.6x bigger and in the accent colour
+
+### CS-15 · Bilingual (عربي وإنجليزي)
+- **When:** Arabic line with English under it.
+- **Motion:** M-272 · **Font:** FA-02 Alexandria · **Colours:** CP-01 (#F6EFE2, #E3643F, #FFC857)
+- **Position:** bottom (about 70% of the height) · max 3 words per line
+- **Look:** Arabic line on top, English translation smaller underneath, active Arabic word highlighted
+
+### CS-16 · Keyword Color (لون الكلمة المهمة)
+- **When:** Only the important words take the accent colour.
+- **Motion:** M-088 · **Font:** FA-12 Beiruti · **Colours:** CP-12 (#EFFFFA, #3DDBB0, #FFE66D)
+- **Position:** centre · max 3 words per line
+- **Look:** only key words (nouns, numbers) take the accent colour, everything else stays white
+
+## ELEMENTS — Ready elements
+
+### EL-01 · Follow Button (زر تابعني)
+- **When:** End of the video.
+- **Content the user must provide:** the button text
+- **Spec:** A rounded accent pill reading "Follow" (or the user text) springs in from below, a finger tap ripple hits it after 0.6 s and it turns to "Following ✓".
+- **Sound:** SX-08
+
+### EL-02 · Subscribe Button (زر اشترك)
+- **When:** YouTube Shorts endings.
+- **Content the user must provide:** the button text
+- **Spec:** A red YouTube-style "Subscribe" button pops in, gets tapped, turns grey "Subscribed" and a bell icon rings next to it.
+- **Sound:** SX-14
+
+### EL-03 · Link in Bio (الرابط بالبايو)
+- **When:** When you mention a link.
+- **Content the user must provide:** the text
+- **Spec:** A pill reading "Link in bio" with an arrow pointing up that bounces three times, near the top safe zone.
+- **Sound:** SX-09
+
+### EL-04 · Comment Keyword (اكتب كلمة بالتعليقات)
+- **When:** Comment-to-get-the-link calls to action.
+- **Content the user must provide:** the keyword viewers type
+- **Spec:** A comment box slides up, the keyword is typed letter by letter inside it, then a send arrow pulses. Caption above: "Comment the word".
+- **Sound:** SX-25
+
+### EL-05 · Hand-drawn Arrow (سهم مرسوم)
+- **When:** Pointing at something on screen.
+- **Content the user must provide:** what it points at
+- **Spec:** A hand-drawn curved arrow in the accent colour draws itself (stroke animation, 0.5 s) towards the target and wiggles once.
+- **Sound:** SX-05
+
+### EL-06 · Scribble Circle (دائرة شخبطة)
+- **When:** Highlighting a detail.
+- **Content the user must provide:** what to circle
+- **Spec:** A rough marker circle draws around the target in one stroke, slightly overshooting like a real pen.
+- **Sound:** SX-05
+
+### EL-07 · Corner Brackets (زوايا إطار)
+- **When:** Framing a product or face.
+- **Content the user must provide:** what to frame
+- **Spec:** Four L-shaped corner brackets fly in from the screen corners and lock around the subject, then pulse once.
+- **Sound:** SX-12
+
+### EL-08 · Part Badge (شارة الجزء)
+- **When:** Series videos.
+- **Content the user must provide:** the part number and total
+- **Spec:** A small badge "Part 1/3" drops into the top corner with a soft bounce and stays.
+- **Sound:** SX-12
+
+### EL-09 · Watch Till End (تابع للنهاية)
+- **When:** Hooks that promise a payoff.
+- **Content the user must provide:** the text
+- **Spec:** A banner "Watch till the end" slides in, a progress line fills under it, and an eye icon blinks.
+- **Sound:** SX-20
+
+### EL-10 · NEW Stamp (ختم جديد)
+- **When:** Launches and updates.
+- **Content the user must provide:** the text
+- **Spec:** A rotated stamp "NEW" slams down from 160% to 100% with a small dust burst and a 2% screen shake.
+- **Sound:** SX-17
+
+### EL-11 · Speech Bubble (فقاعة كلام)
+- **When:** Inner thoughts or quoting someone.
+- **Content the user must provide:** the text
+- **Spec:** A speech bubble pops in next to the speaker, its tail pointing at the mouth, text types in.
+- **Sound:** SX-10
+
+### EL-12 · Tape Label (شريط لاصق)
+- **When:** Titles in casual vlogs.
+- **Content the user must provide:** the text
+- **Spec:** A strip of paper tape with the text stretches across at a slight angle as if stuck on by hand.
+- **Sound:** SX-04
+
+### EL-13 · Price Burst (نجمة السعر)
+- **When:** Offers and prices.
+- **Content the user must provide:** the price
+- **Spec:** A star-burst badge spins in 90 degrees with the price inside, then gently pulses.
+- **Sound:** SX-15
+
+### EL-14 · Swipe Hint (اسحب)
+- **When:** Carousels and multi-part posts.
+- **Content the user must provide:** the text
+- **Spec:** Two chevrons slide sideways in a loop with "Swipe" text, like a carousel hint.
+- **Sound:** SX-04
+
+### EL-15 · Save Reminder (احفظ الفيديو)
+- **When:** Tips people will want later.
+- **Content the user must provide:** the text
+- **Spec:** A bookmark icon drops in and fills with the accent colour, with "Save this" next to it.
+- **Sound:** SX-15
+
+### EL-16 · REC Frame (إطار تسجيل)
+- **When:** Behind-the-scenes and vlog look.
+- **Content the user must provide:** nothing
+- **Spec:** Camera viewfinder corners, a blinking red REC dot and a running timer at the top.
+- **Sound:** SX-28
+
+### EL-17 · Emoji Sticker (ستيكر إيموجي)
+- **When:** Reactions.
+- **Content the user must provide:** the emoji
+- **Spec:** A big emoji with a white sticker border pops in with a 15 degree wiggle, then floats.
+- **Sound:** SX-09
+
+### EL-18 · Checklist Card (بطاقة قائمة)
+- **When:** Steps, requirements, summaries.
+- **Content the user must provide:** the items
+- **Spec:** A card slides up and items tick off one by one with a green check.
+- **Sound:** SX-15
+
+## RECIPES — Full Reel recipes
+
+- When the user names R-xx, apply every step in order with the given font, colours and caption style. Look up each ID in its file.
+
+### R-01 · Tech News (نشرة تقنية)
+- **When:** Tech, AI and security news in under 40 s.
+- **Font:** FA-02 · **Colours:** CP-04 · **Captions:** CS-03
+- 0–2s: Hook: crash zoom on your face and the headline decodes (M-129, M-051, SX-06)
+- 2–30s: Body: captions, keywords highlighted, screenshots in a laptop (CS-03, M-006, M-228)
+- between: Cuts between news items (M-110, SX-23)
+- end: Call to action (EL-04, M-031)
+
+### R-02 · 3 Quick Tips (3 نصايح سريعة)
+- **When:** Listicles: "3 things you must know".
+- **Font:** FA-16 · **Colours:** CP-06 · **Captions:** CS-02
+- 0–2s: Hook: stacked kinetic title (M-059, SX-17)
+- each tip: Number badge then the key word punches (M-195, M-008, SX-09)
+- between: Slide push between tips (M-103, SX-04)
+- end: Save reminder (EL-15, M-163)
+
+### R-03 · Product Promo (إعلان منتج)
+- **When:** Shops and brands: show a product and its price.
+- **Font:** FA-21 · **Colours:** CP-03 · **Captions:** CS-05
+- 0–2s: Punch-in and a shine across the product (M-021, M-157, SX-16)
+- 2–10s: Product on a tilting card, details in captions (M-254, CS-05)
+- price: Price badge (EL-13, M-192, SX-15)
+- end: Logo shine and end card (M-185, M-187)
+
+### R-04 · Before / After (قبل وبعد)
+- **When:** Renovations, edits, glow-ups, results.
+- **Font:** FA-20 · **Colours:** CP-11 · **Captions:** CS-14
+- 0–2s: Split screen: before and after side by side (M-132, SX-04)
+- reveal: Circle reveal into the result (M-016, SX-01)
+- detail: Point at the difference (EL-06, EL-05)
+- end: Like burst (M-033, SX-09)
+
+### R-05 · Podcast Clip (مقطع بودكاست)
+- **When:** Cut a strong minute out of a long talk.
+- **Font:** FA-28 · **Colours:** CP-13 · **Captions:** CS-09
+- 0–2s: Podcast card with the guest (M-223, SX-20)
+- first line: Name lower third (M-039)
+- body: Two-line captions and a small waveform (CS-09, M-214)
+- punchlines: Double punch-in on the strong lines (M-131, SX-17)
+
+### R-06 · Screen Tutorial (شرح برنامج)
+- **When:** Explain an app or website step by step.
+- **Font:** FA-50 · **Colours:** CP-14 · **Captions:** CS-07
+- 0–2s: Browser window pops in (M-229, SX-10)
+- steps: Cursor clicks with zoom to the cursor (M-231, M-232, SX-07)
+- shortcuts: Keyboard shortcut and circle the button (M-237, EL-06)
+- end: Checklist of what we did (EL-18, SX-15)
+
+### R-07 · Story Time (وقت القصة)
+- **When:** Personal stories that keep people to the end.
+- **Font:** FA-21 · **Colours:** CP-11 · **Captions:** CS-11
+- 0–2s: Freeze frame on the hook line (M-135, M-001, SX-18)
+- chapters: Chapter titles and letterbox bars (M-191, M-138)
+- emotion: Slow motion on the big moment (M-136, SX-21)
+- end: Fade through black and a quote card (M-101, M-196)
+
+### R-08 · Sale Offer (عرض وخصومات)
+- **When:** Discounts, flash sales, limited offers.
+- **Font:** FA-32 · **Colours:** CP-15 · **Captions:** CS-04
+- 0–2s: Crash zoom and NEW stamp (M-129, EL-10, SX-17)
+- discount: Discount number counts up (M-040, SX-12)
+- urgency: Countdown to the end of the offer (M-173)
+- end: Confetti and link in bio (M-030, EL-03, SX-09)
+
+### R-09 · Motivational Quote (اقتباس تحفيزي)
+- **When:** Calm quote videos.
+- **Font:** FA-06 · **Colours:** CP-03 · **Captions:** CS-12
+- whole: Slow push-in with bokeh lights (M-022, M-158)
+- text: Words appear one by one (M-048, CS-12)
+- quote: Quote card with the author (M-196)
+- end: Signature writes itself (M-200, SX-05)
+
+### R-10 · Reply to Comment (رد على تعليق)
+- **When:** Answer a follower question on video.
+- **Font:** FA-02 · **Colours:** CP-01 · **Captions:** CS-01
+- 0–2s: The comment types in on screen (M-032, SX-25)
+- answer: Captions and arrow to what you show (CS-01, M-068)
+- keywords: Scale punch on the key words (M-008, SX-09)
+- end: Comment keyword call to action (EL-04)
+
+### R-11 · Event Invite (دعوة فعالية)
+- **When:** Invite people to an event, opening or course.
+- **Font:** FA-21 · **Colours:** CP-21 · **Captions:** CS-05
+- 0–2s: Title card drops in (M-038, SX-17)
+- where: Map pin drops on the place (M-199, SX-10)
+- when: Countdown to the date (M-173, SX-12)
+- end: Light leak and end card (M-118, M-187)
+
+### R-12 · Talking Head Pro (كلام للكاميرا احترافي)
+- **When:** Any talking video, cut fast and clean.
+- **Font:** FA-02 · **Colours:** CP-01 · **Captions:** CS-01
+- 0–2s: Big title behind you (M-201, SX-20)
+- every 4–6 s: Punch-in to keep attention (M-131, SX-02)
+- keywords: Captions and scale punch on key words (CS-01, M-008)
+- end: Name lower third and follow button (M-039, EL-01)
+
+## SOUNDS — Sound effects
+
+- All sounds are CC0 (no rights needed). Download from the link and mix softly under the voice (about -18 dB below speech), exactly on the motion frame.
+
+| ID | Name | Type | URL |
+|---|---|---|---|
+| SX-01 | Whoosh (ووش) | Whoosh | https://alansariteach.github.io/motion-library/sfx/SX-01.mp3 |
+| SX-02 | Quick Whoosh (ووش سريع) | Whoosh | https://alansariteach.github.io/motion-library/sfx/SX-02.mp3 |
+| SX-03 | Long Swoosh (سووش طويل) | Whoosh | https://alansariteach.github.io/motion-library/sfx/SX-03.mp3 |
+| SX-04 | Swipe (سحبة) | Transition | https://alansariteach.github.io/motion-library/sfx/SX-04.mp3 |
+| SX-05 | Soft Swoosh (سووش ناعم) | Transition | https://alansariteach.github.io/motion-library/sfx/SX-05.mp3 |
+| SX-06 | Hologram Glitch (قلتش هولوغرام) | Transition | https://alansariteach.github.io/motion-library/sfx/SX-06.mp3 |
+| SX-07 | Click (كليك) | Click | https://alansariteach.github.io/motion-library/sfx/SX-07.mp3 |
+| SX-08 | UI Click (كليك واجهة) | Click | https://alansariteach.github.io/motion-library/sfx/SX-08.mp3 |
+| SX-09 | Pop (بوب) | Pop | https://alansariteach.github.io/motion-library/sfx/SX-09.mp3 |
+| SX-10 | Plop (بلوب) | Pop | https://alansariteach.github.io/motion-library/sfx/SX-10.mp3 |
+| SX-11 | Pop In (بوب دخول) | Pop | https://alansariteach.github.io/motion-library/sfx/SX-11.mp3 |
+| SX-12 | Tick (تك) | Tick | https://alansariteach.github.io/motion-library/sfx/SX-12.mp3 |
+| SX-13 | Tiny Tick (تك صغير) | Tick | https://alansariteach.github.io/motion-library/sfx/SX-13.mp3 |
+| SX-14 | Notification Bell (جرس إشعار) | Ding | https://alansariteach.github.io/motion-library/sfx/SX-14.mp3 |
+| SX-15 | Confirm Ding (دينق تأكيد) | Ding | https://alansariteach.github.io/motion-library/sfx/SX-15.mp3 |
+| SX-16 | Triangle Shine (لمعة مثلث) | Ding | https://alansariteach.github.io/motion-library/sfx/SX-16.mp3 |
+| SX-17 | Soft Impact (ضربة ناعمة) | Impact | https://alansariteach.github.io/motion-library/sfx/SX-17.mp3 |
+| SX-18 | Cinematic Impact (ضربة سينمائية) | Impact | https://alansariteach.github.io/motion-library/sfx/SX-18.mp3 |
+| SX-19 | Dramatic Hit (ضربة درامية) | Impact | https://alansariteach.github.io/motion-library/sfx/SX-19.mp3 |
+| SX-20 | Riser (رايزر) | Riser | https://alansariteach.github.io/motion-library/sfx/SX-20.mp3 |
+| SX-21 | Short Riser (رايزر قصير) | Riser | https://alansariteach.github.io/motion-library/sfx/SX-21.mp3 |
+| SX-22 | Rewind (ترجيع) | Riser | https://alansariteach.github.io/motion-library/sfx/SX-22.mp3 |
+| SX-23 | Glitch (قلتش) | Glitch | https://alansariteach.github.io/motion-library/sfx/SX-23.mp3 |
+| SX-24 | VHS Rewind (ترجيع VHS) | Glitch | https://alansariteach.github.io/motion-library/sfx/SX-24.mp3 |
+| SX-25 | Keyboard Typing (كتابة كيبورد) | Typing | https://alansariteach.github.io/motion-library/sfx/SX-25.mp3 |
+| SX-26 | Digital Typing (كتابة رقمية) | Typing | https://alansariteach.github.io/motion-library/sfx/SX-26.mp3 |
+| SX-27 | Data Reveal (كشف بيانات) | Typing | https://alansariteach.github.io/motion-library/sfx/SX-27.mp3 |
+| SX-28 | Digital Blip (بليب رقمي) | UI | https://alansariteach.github.io/motion-library/sfx/SX-28.mp3 |
 
 ---
 @alansari.tech · Instagram: instagram.com/alansari.tech · Telegram: t.me/Alansaritech · Email: info@alansaritech.com

@@ -21,6 +21,7 @@
 - **Content the user must provide:** same as M-011
 
 ### M-012 · Word Pop
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A fast, lively caption, word by word.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.18s per word
@@ -28,18 +29,22 @@
 - **Spec:** Each word appears at its spoken timestamp, scaling from 30% to 118% and settling to 100% in 0.18s. Earlier words stay. Clear the line when the sentence ends.
 
 ### M-292 · Word Pop · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-012
 
 ### M-567 · Word Pop · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-012
 
 ### M-842 · Word Pop · Slow
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-012. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-012
 
 ### M-013 · Bounce Caption
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A whole line drops in at once with a playful move.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.55s in
@@ -47,14 +52,17 @@
 - **Spec:** The whole caption line enters from 130% below with a spring: overshoot to -14%, rebound to +6%, settle at 0 over about 0.55s. Fade out on exit.
 
 ### M-306 · Bounce Caption · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-013
 
 ### M-581 · Bounce Caption · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-013
 
 ### M-856 · Bounce Caption · Slow
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-013. the same motion 60% slower and smoother (multiply every duration by 1.6).
 - **Content the user must provide:** same as M-013
 
@@ -283,6 +291,7 @@
 - **Content the user must provide:** same as M-090
 
 ### M-091 · Shadow Pop
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** A caption with a solid colored drop shadow that pops, pop-art style.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.3s
@@ -290,10 +299,12 @@
 - **Spec:** A solid accent shadow (no blur) grows to 1.2% offset down-right while the text moves 1% up-left, so it looks lifted. Reverse at exit.
 
 ### M-464 · Shadow Pop · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-091. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-091
 
 ### M-739 · Shadow Pop · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-091. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-091
 
@@ -313,6 +324,7 @@
 - **Content the user must provide:** same as M-092
 
 ### M-093 · Drop Words
+- **Suggested sound:** SX-13 Tiny Tick
 - **When to use:** Each word drops from above with a small bounce.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.25s per word
@@ -320,10 +332,12 @@
 - **Spec:** Each word drops from 80% above its line, overshoots 10% and settles over 0.25s at its spoken timestamp.
 
 ### M-480 · Drop Words · Fast
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-093. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-093
 
 ### M-755 · Drop Words · Boxed
+- **Suggested sound:** SX-13 Tiny Tick
 - Variant of M-093. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-093
 
@@ -403,6 +417,7 @@
 - **Content the user must provide:** same as M-098
 
 ### M-099 · Glitch Caption
+- **Suggested sound:** SX-23 Glitch
 - **When to use:** A tech caption that glitches as it lands.
 - **Content the user must provide:** It comes from your voice automatically, so you type nothing.
 - **Duration:** 0.4s glitch
@@ -410,10 +425,12 @@
 - **Spec:** The caption enters with a 0.4s glitch burst: red and cyan copies jitter through random slice masks, then the line snaps clean (see M-010).
 
 ### M-528 · Glitch Caption · Fast
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-099. the same motion 40% faster (multiply every duration by 0.6).
 - **Content the user must provide:** same as M-099
 
 ### M-803 · Glitch Caption · Boxed
+- **Suggested sound:** SX-23 Glitch
 - Variant of M-099. put the text inside a solid dark teal #102E33 box with rounded corners and white text. Any accent effect of the motion stays on top of it.
 - **Content the user must provide:** same as M-099
 
