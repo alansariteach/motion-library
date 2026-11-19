@@ -398,3 +398,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xgrp .xbr .xnum{background:var(--acc2);color:#fff;border-color:var(--acc2)}
 .xgrp .brok{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;color:#fff;font-size:12px}
 @media (max-width:860px){.xgrp{grid-template-columns:repeat(4,minmax(0,1fr))}.xgrp button,.xgrp .xbr{flex-direction:column;gap:2px;padding:6px 2px;font-size:13px;min-height:58px;border-radius:16px}.xgrp .xnum{width:18px;height:18px;font-size:10.5px}.xgrp .brok{position:absolute;top:-6px;inset-inline-start:-4px;width:18px;height:18px;font-size:11px}}
+/* ===== performance ===== */
+#grid>.card{content-visibility:auto;contain-intrinsic-size:auto 440px}
+.xgrid>.xc{content-visibility:auto;contain-intrinsic-size:auto 380px}
+.fgrid>.fnt{content-visibility:auto;contain-intrinsic-size:auto 220px}

@@ -72,3 +72,8 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - Overlay/size selects folded into «⚙️ العرض» `<details class="xopts">`; use chips scroll sideways in one row.
 - Cards: overlay is ♡ ＋ ✎ (compare moved into the try-it window `#labCmp`); suggested sound chip sits in the `.need` row.
 - More name collisions found: `.sl`, `.gl` (use `xsl`, `xgl`, `xgline`). Language switch writes are guarded (`stx`/`sat`) because text writes on 1000 cards are slow on narrow viewports.
+
+## Performance (2026-11-19)
+- Extra tabs are built only when first opened (`BUILD[k]` + `ensureBuilt(k)` in `showTab`); counts come from `XN`. Caption-style fonts load only for visible cards.
+- `content-visibility:auto` on motion cards, font cards and extra cards (language switch went from ~40 s to 0.1 s in the sandbox).
+- Particle intro now samples only the first 8 cards (it used to call getBoundingClientRect/getComputedStyle on all 1000 cards: ~2.5 s long task). Boot long tasks: ~2.6 s → ~0.3 s; no fonts downloaded at boot (was 2.4 MB).
