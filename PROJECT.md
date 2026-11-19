@@ -64,3 +64,11 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - Prompt history (`ml-history`, last 50, wrapper around `copyText`): «🕘 السجل».
 - Preview size select 4:5 / 9:16 (`ml-ar`, body class `xr916`); also sets the downloaded video aspect.
 - All four rounds pushed and verified live on 2026-11-19 (site c8211bf, plugin 1.2.0).
+
+## Tidy layout (2026-11-19)
+- How-to boxes + install video folded into one `<details id="xhow">` under the hero (closed by default).
+- "What's new" paragraph hidden; the strip `.wnew.xbar` is now just the buttons (Inspire, Projects, History, install).
+- Tabs grouped: top bar `.xgrp` (Motions, Fonts, Design[CP,CS,EL,BG,LT], Ready-made[R,H], Sounds, Tools) + sub-row `.xsub`; old `.tabs` kept hidden (its buttons still exist, so use `showTab(k)` in tests). «جديد» badge per group until visited (`ml-seen`).
+- Overlay/size selects folded into «⚙️ العرض» `<details class="xopts">`; use chips scroll sideways in one row.
+- Cards: overlay is ♡ ＋ ✎ (compare moved into the try-it window `#labCmp`); suggested sound chip sits in the `.need` row.
+- More name collisions found: `.sl`, `.gl` (use `xsl`, `xgl`, `xgline`). Language switch writes are guarded (`stx`/`sat`) because text writes on 1000 cards are slow on narrow viewports.
