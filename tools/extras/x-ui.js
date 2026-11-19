@@ -664,13 +664,13 @@ function r3Lang(){insBtn.textContent=X3t('insB');['insT','insD'].forEach(functio
 
 /* ===== Round 4: download as video, saved projects, prompt history, 9:16 preview ===== */
 var X4={
- ar:{recB:'⬇ نزّل الحركة فيديو',recBg:'الخلفية',recBgO:[['g','أخضر (كروما)'],['k','أسود'],['s','المشهد كما هو']],
+ ar:{recB:'⬇ نزّل الحركة فيديو',recBg:'الخلفية',recBgO:[['s','المشهد كما هو'],['g','أخضر (شاشة خضرا / كروما)'],['k','أسود']],
   recNo:'تنزيل الفيديو يشتغل على كروم أو إيدج بالكمبيوتر بس.',recAsk:'بيطلب منك المتصفح تشارك «هذا التبويب». اختره واضغط مشاركة، والتسجيل ياخذ ثواني بس.',recTab:'لازم تختار «هذا التبويب» مو نافذة أو شاشة كاملة. جرّب مرة ثانية.',recOn:'● قاعد أسجّل…',recDone:function(f){return 'تم ✓ نزل الملف '+f+'. بـ CapCut: حطه فوق الفيديو، وبعدها Remove BG ← Chroma key واختر الأخضر.';},recCx:'انلغى التسجيل.',recErr:'صار خطأ بالتسجيل. جرّب مرة ثانية.',
   prjB:'📁 مشاريعي',prjT:'مشاريعي',prjE:'ما عندك مشاريع للحين. عبّي السلة واضغط «احفظ كمشروع».',prjSave:'💾 احفظ كمشروع',prjName:'اسم المشروع',prjDef:function(n){return 'مشروع '+n;},prjOpen:'افتح بالسلة',prjCp:'⧉ البرومبت',prjLink:'🔗 الرابط',prjDel:'حذف',prjSaved:'انحفظ ✓',prjN:function(n){return n+' عنصر';},
   hisB:'🕘 السجل',hisT:'سجل البرومبتات',hisE:'كل برومبت تنسخه ينحفظ هني (آخر 50).',hisCp:'⧉ انسخ',hisDel:'حذف',hisClr:'امسح السجل',
   ago:function(ms){var m=Math.round(ms/60000);if(m<1)return 'الحين';if(m<60)return 'قبل '+m+' دقيقة';var h=Math.round(m/60);if(h<24)return 'قبل '+h+' ساعة';return 'قبل '+Math.round(h/24)+' يوم';},
   arL:'المقاس',arO:[['45','4:5'],['916','9:16 (ريلز)']]},
- en:{recB:'⬇ Download as video',recBg:'Background',recBgO:[['g','Green (chroma)'],['k','Black'],['s','Scene as is']],
+ en:{recB:'⬇ Download as video',recBg:'Background',recBgO:[['s','Scene as is'],['g','Green screen (chroma)'],['k','Black']],
   recNo:'Video download works in Chrome or Edge on a computer only.',recAsk:'Your browser will ask to share “This tab”. Pick it and press Share; recording takes a few seconds.',recTab:'Please pick “This tab”, not a window or the whole screen. Try again.',recOn:'● Recording…',recDone:function(f){return 'Done ✓ saved '+f+'. In CapCut: put it over your video, then Remove BG → Chroma key and pick the green.';},recCx:'Recording cancelled.',recErr:'Recording failed. Try again.',
   prjB:'📁 My projects',prjT:'My projects',prjE:'No projects yet. Fill the basket and press “Save as project”.',prjSave:'💾 Save as project',prjName:'Project name',prjDef:function(n){return 'Project '+n;},prjOpen:'Open in basket',prjCp:'⧉ Prompt',prjLink:'🔗 Link',prjDel:'Delete',prjSaved:'Saved ✓',prjN:function(n){return n+' items';},
   hisB:'🕘 History',hisT:'Prompt history',hisE:'Every prompt you copy is kept here (last 50).',hisCp:'⧉ Copy',hisDel:'Delete',hisClr:'Clear history',
@@ -692,14 +692,16 @@ Object.keys(UISVG).forEach(function(k){UISVG[k]=UISVG[k].replace('<svg viewBox="
 /* --- download as video (lab) --- */
 var labc=document.querySelector('#lab .labc');
 labc.insertAdjacentHTML('beforeend','<div class="recbox"><label><span id="recBgL"></span><select id="recBg"></select></label><button type="button" class="btn" id="recB"></button><p class="xmut" id="recMsg" aria-live="polite"></p></div>');
+function recBgApply(){var h=document.querySelector('.labst');if(!h)return;var v=document.getElementById('recBg').value;h.classList.remove('rbg-g','rbg-k','rbg-s');h.classList.add('rbg-'+v);}
+document.addEventListener('change',function(e){if(e.target&&e.target.id==='recBg')recBgApply();});
 function recCan(){return 'CropTarget' in window&&navigator.mediaDevices&&navigator.mediaDevices.getDisplayMedia&&window.MediaRecorder&&!matchMedia('(pointer:coarse)').matches;}
 function recMsg(t){document.getElementById('recMsg').textContent=t;}
 function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
 var recBusy=false;
 document.getElementById('recB').addEventListener('click',function(){if(recBusy)return;if(!recCan()){recMsg(X4t('recNo'));return;}recRun();});
 function recRun(){var st=document.getElementById('labSt'),host=document.querySelector('.labst'),bg=document.getElementById('recBg').value,stream=null,m=labM;
-  recBusy=true;recMsg(X4t('recAsk'));lab.classList.add('recmode');host.classList.add('rbg-'+bg);
-  function done(t){recBusy=false;lab.classList.remove('recmode');host.classList.remove('rbg-g','rbg-k','rbg-s','recwait');if(stream)stream.getTracks().forEach(function(t){t.stop();});if(t)recMsg(t);labDraw();}
+  recBusy=true;recMsg(X4t('recAsk'));lab.classList.add('recmode');recBgApply();
+  function done(t){recBusy=false;lab.classList.remove('recmode');host.classList.remove('recwait');recBgApply();if(stream)stream.getTracks().forEach(function(t){t.stop();});if(t)recMsg(t);labDraw();}
   navigator.mediaDevices.getDisplayMedia({video:{frameRate:60,cursor:'never',width:{ideal:3840},height:{ideal:2160}},audio:false,preferCurrentTab:true,selfBrowserSurface:'include',surfaceSwitching:'exclude'}).then(function(s){stream=s;var tr=s.getVideoTracks()[0];
     if((tr.getSettings().displaySurface||'browser')!=='browser'){done(X4t('recTab'));return;}
     return CropTarget.fromElement(st).then(function(ct){return tr.cropTo(ct);}).then(function(){
