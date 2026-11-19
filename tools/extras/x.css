@@ -402,3 +402,5 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 #grid>.card{content-visibility:auto;contain-intrinsic-size:auto 440px}
 .xgrid>.xc{content-visibility:auto;contain-intrinsic-size:auto 380px}
 .fgrid>.fnt{content-visibility:auto;contain-intrinsic-size:auto 220px}
+
+.xstudio{background:var(--fg);color:var(--bg);text-decoration:none;display:inline-flex;align-items:center;order:-1}

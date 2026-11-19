@@ -771,11 +771,13 @@ document.getElementById('hisC').addEventListener('click',function(){HIS=[];lss('
 
 /* --- buttons in the What's new strip --- */
 var wnb=document.querySelector('.wnew');var prjB=document.createElement('button');prjB.type='button';prjB.className='btn ghost xsm';prjB.id='prjB';var hisB=document.createElement('button');hisB.type='button';hisB.className='btn ghost xsm';hisB.id='hisB';
+var stB=document.createElement('a');stB.className='btn xsm xstudio';stB.href='studio.html';stB.id='stB';wnb.insertBefore(stB,document.getElementById('instB'));
 wnb.insertBefore(prjB,document.getElementById('instB'));wnb.insertBefore(hisB,document.getElementById('instB'));wnb.insertBefore(insBtn,prjB);
 prjB.addEventListener('click',function(e){prjDraw();prjM._open(e.currentTarget);});hisB.addEventListener('click',function(e){hisDraw();hisM._open(e.currentTarget);});
 
 function r4Lang(){selFill('recBg',X4t('recBgO'));document.getElementById('recBgL').textContent=X4t('recBg');document.getElementById('recB').textContent=X4t('recB');if(!recBusy)recMsg(recCan()?'':X4t('recNo'));
   arSel.querySelector('span').textContent=X4t('arL');var as=document.getElementById('arS');as.innerHTML=X4t('arO').map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('');as.value=arCur;
+  stB.textContent=lang==='ar'?'🎬 استوديو المونتاج (جديد)':'🎬 Editing Studio (new)';
   prjB.textContent=X4t('prjB');hisB.textContent=X4t('hisB');document.getElementById('prjT').textContent=X4t('prjT');document.getElementById('hisT').textContent=X4t('hisT');
   document.getElementById('prjN').placeholder=X4t('prjName');document.getElementById('prjN').setAttribute('aria-label',X4t('prjName'));document.getElementById('prjS').textContent=X4t('prjSave');if(!prjM.hidden)prjDraw();if(!hisM.hidden)hisDraw();}
 

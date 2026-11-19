@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>استوديو الموشن · Alansari.Tech</title>
+<meta name="theme-color" content="#0F5B66">
+<!--HEADLINKS-->
+<style>/*SITECSS*/</style>
+<style>/*STUDIOCSS*/</style>
+</head>
+<body class="sd">
+<div class="sd-app">
+ <header class="sd-top">
+  <div class="sd-ttl"><!--CHIP--><span data-t="title">استوديو الموشن</span></div>
+  <a class="sd-back" href="./" data-t="back">← المكتبة</a>
+  <button type="button" class="sd-btn" id="undo" data-t="undo" data-nv>↶ تراجع</button>
+  <button type="button" class="sd-btn" id="openP" data-t="open">📂 فتح مشروع</button>
+  <button type="button" class="sd-btn" id="saveP" data-t="save" data-nv>💾 حفظ المشروع</button>
+  <button type="button" class="sd-btn dk" id="exP" data-t="exP" data-nv>⧉ برومبت للذكاء الاصطناعي</button>
+  <button type="button" class="sd-btn pri" id="exV" data-t="exV" data-nv>⬇ تصدير MP4</button>
+  <div class="sd-lang"><button type="button" data-l="ar">عربي</button><button type="button" data-l="en">EN</button></div>
+ </header>
+ <aside class="sd-lib" aria-label="motions">
+  <h2 data-t="lib">الحركات</h2>
+  <input class="sd-q" id="lq" type="search" aria-label="search">
+  <div class="sd-cats" id="lcats"></div>
+  <ul class="sd-list" id="list"></ul>
+  <div class="sd-libf"><button type="button" class="sd-btn sm" id="fromBk" data-t="basket" data-nv>＋ من سلتي</button></div>
+ </aside>
+ <main class="sd-mid">
+  <div class="sd-view" id="view">
+   <div class="sd-frame" id="frame"><video id="vid" playsinline preload="auto"></video><div class="sd-ovl" id="ovl"></div></div>
+   <div class="sd-drop" id="drop" role="button" tabindex="0"><div><b data-t="drop">ارفع الفيديو</b><span data-t="dropS"></span><p id="dropR" style="color:#FFC857;margin:12px 0 0"></p><button type="button" class="sd-btn sm" id="newP" data-t="newP" hidden onclick="event.stopPropagation()">مشروع جديد</button></div></div>
+  </div>
+  <div class="sd-ctl"><button type="button" class="sd-play" id="play" data-nv>▶</button><span class="sd-tc" id="tc">0:00.0 / 0:00.0</span><span class="sp"></span><label><span data-t="vol">الصوت</span><input type="range" id="vol" min="0" max="1" step="0.05" value="1"></label></div>
+ </main>
+ <aside class="sd-insp" aria-label="settings"><h2 data-t="insp">الإعدادات</h2><div id="insb"></div></aside>
+ <section class="sd-tl" aria-label="timeline">
+  <div class="sd-tlbar">
+   <button type="button" class="sd-btn sm" id="inH" data-t="inH" data-nv>⇤ البداية هني</button>
+   <button type="button" class="sd-btn sm" id="outH" data-t="outH" data-nv>النهاية هني ⇥</button>
+   <button type="button" class="sd-btn sm" id="cutB" data-nv>✂ احذف من هني</button>
+   <span class="sp"></span>
+   <label><span data-t="zoom">تكبير التايم لاين</span><input type="range" id="zoom" min="8" max="200" value="40"></label>
+  </div>
+  <div class="sd-tlw" id="tlw"><div class="sd-tlin" id="tlin"></div></div>
+ </section>
+</div>
+<input type="file" id="vfile" accept="video/*" hidden>
+<input type="file" id="pfile" accept="application/json,.json" hidden>
+<div class="sd-mod" id="mod" hidden><div class="sd-box" id="modb" role="dialog" aria-modal="true"></div></div>
+<script>/*ENGINE*/</script>
+<script>/*STUDIOJS*/</script>
+</body>
+</html>
