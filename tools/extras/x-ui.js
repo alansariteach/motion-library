@@ -267,7 +267,7 @@ function tb0(){return document.querySelector('.tabs');}
 var HASH={M:'motions',F:'fonts',CP:'palettes',CS:'captions',EL:'elements',R:'recipes',SX:'sounds',H:'hooks',LT:'luts',BG:'backgrounds',TL:'tools'};
 showTab=function(t){stopSx();document.getElementById('fontsView').hidden=t!=='F';document.getElementById('motionsView').hidden=t!=='M';
   VIEWS.forEach(function(v){document.getElementById('xv-'+v[0]).hidden=t!==v[0];});
-  document.querySelectorAll('.tabs button').forEach(function(b){var k=b.dataset.tab||(b.id==='tabM'?'M':'F');b.setAttribute('aria-pressed',k===t);if(k===t&&b.scrollIntoView&&tb0().scrollWidth>tb0().clientWidth)b.scrollIntoView({inline:'nearest',block:'nearest'});});
+  document.querySelectorAll('.tabs button').forEach(function(b){var k=b.dataset.tab||(b.id==='tabM'?'M':'F');b.setAttribute('aria-pressed',k===t);});
   try{history.replaceState(null,'','#'+HASH[t]);}catch(e){}
   var tb=document.querySelector('.tabs');if(window.scrollY>tb.offsetTop)window.scrollTo({top:tb.offsetTop-8});if(t==='TL')cvDraw();};
 document.getElementById('tabM').dataset.tab='M';document.getElementById('tabF').dataset.tab='F';

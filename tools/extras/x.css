@@ -1,7 +1,7 @@
 /* ===== extras ===== */
 .tabs{flex-wrap:wrap}
 @media (min-width:861px){.tabs button{padding:9px 15px;font-size:15px;gap:6px}}
-@media (max-width:860px){.tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;margin-inline:-16px;padding-inline:16px}}
+@media (max-width:860px){.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.tabs button{padding:8px 4px!important;font-size:14px!important;justify-content:center;gap:4px}.tabs button small{display:none}.tabs .nb{position:absolute;top:-7px;inset-inline-end:-2px;font-size:9.5px;padding:0 5px}}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;position:relative}
 .tabs .nb{font-style:normal;font-size:10.5px;font-weight:800;background:var(--acc2);color:#fff;border-radius:999px;padding:1px 7px;line-height:1.5}
@@ -357,3 +357,5 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .prjids{font-family:var(--f-mono);font-size:11.5px;color:var(--acc);direction:ltr;text-align:start;word-break:break-word}
 .prjl .btn,.hisl .btn{min-height:36px;padding:6px 12px;font-size:13px}
 .hisl p{margin:0;font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+
+.uisel span{font-family:var(--f-ar);letter-spacing:0}
