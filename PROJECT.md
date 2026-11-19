@@ -63,4 +63,4 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - Saved projects (`ml-projects`): save the basket by name from the basket panel; «📁 مشاريعي» opens, copies prompt or link, deletes.
 - Prompt history (`ml-history`, last 50, wrapper around `copyText`): «🕘 السجل».
 - Preview size select 4:5 / 9:16 (`ml-ar`, body class `xr916`); also sets the downloaded video aspect.
-- Nothing pushed yet at the owner's request: local commits wait in both repos.
+- All four rounds pushed and verified live on 2026-11-19 (site c8211bf, plugin 1.2.0).
