@@ -329,3 +329,31 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .pbody{font-family:var(--f-ar);font-size:15px;line-height:1.8;color:var(--fg)}
 .ptags{margin:0;color:var(--acc);font-weight:700;font-size:14.5px;word-break:break-word}
 @media (max-width:640px){.insl li{grid-template-columns:1fr}.insl .ik{grid-row:auto}}
+/* ===== round 4 ===== */
+.xr916 .st{aspect-ratio:9/16}
+.xr916 .xuiov{aspect-ratio:9/16}
+.xsm{min-height:40px;padding:8px 14px;font-size:14px}
+.recbox{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.recbox .btn{justify-content:center}
+.labst.recwait #labSt>*{visibility:hidden}
+.labst.rbg-g #labSt{background:#00FF00!important}
+.labst.rbg-k #labSt{background:#000!important}
+.labst.rbg-g #labSt .scene,.labst.rbg-g #labSt>.pp,.labst.rbg-k #labSt .scene,.labst.rbg-k #labSt>.pp{display:none!important}
+.lab.recmode .labst #labSt{border-radius:0}
+.lab.recmode #labSt .ph,.lab.recmode #labSt .vtag,.lab.recmode .xuiov{display:none!important}
+.lab.recmode .labin{grid-template-columns:minmax(0,1fr)}
+.lab.recmode .labc>*:not(.recbox){display:none}
+.lab.recmode .labst{width:min(100%,calc((96dvh - 190px)*4/5));margin:0 auto}
+.xr916 .lab .labst{max-width:calc(72dvh*9/16);margin:0 auto;width:100%}
+.xr916 .lab.recmode .labst{width:min(100%,calc((96dvh - 190px)*9/16));max-width:none}
+.lab.recmode .labbox{width:96vw;max-height:98dvh;padding:10px}
+.lab.recmode .bkh{display:none}
+.prjsave{display:flex;gap:8px}
+.prjsave input{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:8px 14px;font-family:var(--f-ar);font-size:14px;min-height:42px}
+.prjl,.hisl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.prjl li,.hisl li{background:var(--bg);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.prjh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.prjh b{font-size:15.5px}
+.prjids{font-family:var(--f-mono);font-size:11.5px;color:var(--acc);direction:ltr;text-align:start;word-break:break-word}
+.prjl .btn,.hisl .btn{min-height:36px;padding:6px 12px;font-size:13px}
+.hisl p{margin:0;font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word}

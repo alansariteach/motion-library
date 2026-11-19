@@ -57,4 +57,10 @@ Customize > Plugins > `+ Add` > Add marketplace > Add from a repository > paste 
 - «🎲 ألهمني / Inspire me» button (in the What's new strip): random full combo (hook, caption style, palette, emphasis, transition, ending, LUT) with shuffle, one prompt, add all to basket.
 - Compare: ⇄ button on every motion card (max 4), floating "Compare (n)" pill, modal with the motions side by side.
 - Tools tab: "Post caption & hashtags" generator (templates by tone, CTA, AR/EN/both with optional English topic, topic-matched hashtags `HTG`, platform tags `HPL`, optional Kuwait/Gulf tags; max 5 for IG/TikTok, 3 YouTube, 2 X; 8 when both languages).
+
+## Round 4 (added 2026-11-19)
+- Download as video (lab ✎ → «نزّل الحركة فيديو»): Region Capture (`getDisplayMedia` preferCurrentTab + `CropTarget.fromElement(#labSt)` + MediaRecorder, mp4 h264 when supported else webm). Background green #00FF00 / black / scene. One loop of the motion. Chrome/Edge desktop only (shows a message elsewhere). Resolution = on-screen stage size × devicePixelRatio (lab grows to ~96dvh while recording). Tested headed under xvfb with `--auto-accept-this-tab-capture`.
+- Saved projects (`ml-projects`): save the basket by name from the basket panel; «📁 مشاريعي» opens, copies prompt or link, deletes.
+- Prompt history (`ml-history`, last 50, wrapper around `copyText`): «🕘 السجل».
+- Preview size select 4:5 / 9:16 (`ml-ar`, body class `xr916`); also sets the downloaded video aspect.
 - Nothing pushed yet at the owner's request: local commits wait in both repos.
