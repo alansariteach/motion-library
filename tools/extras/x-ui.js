@@ -691,13 +691,13 @@ function r3Lang(){insBtn.textContent=X3t('insB');['insT','insD'].forEach(functio
 /* ===== Round 4: download as video, saved projects, prompt history, 9:16 preview ===== */
 var X4={
  ar:{recB:'⬇ نزّل الحركة فيديو',recBg:'الخلفية',recBgO:[['s','المشهد كما هو'],['g','أخضر (شاشة خضرا / كروما)'],['k','أسود']],
-  recNo:'تنزيل الفيديو يشتغل على كروم أو إيدج بالكمبيوتر بس.',recAsk:'بيطلب منك المتصفح تشارك «هذا التبويب». اختره واضغط مشاركة، والتسجيل ياخذ ثواني بس.',recTab:'لازم تختار «هذا التبويب» مو نافذة أو شاشة كاملة. جرّب مرة ثانية.',recOn:'● قاعد أسجّل…',recDone:function(f){return 'تم ✓ نزل الملف '+f+'. بـ CapCut: حطه فوق الفيديو، وبعدها Remove BG ← Chroma key واختر الأخضر.';},recCx:'انلغى التسجيل.',recErr:'صار خطأ بالتسجيل. جرّب مرة ثانية.',
+  recNo:'متصفحك ما يقدر يسوي الفيديو. حدّثه أو جرّب كروم.',recPrep:'قاعد أجهّز…',recOn:function(p){return '● قاعد أسوي الفيديو… '+p+'%';},recStop:'■ وقّف',recSave:'⬇ احفظ الفيديو',recShare:'📤 شارك أو احفظ بالصور',recDone:function(f){return 'جاهز ✓ '+f+'. بـ CapCut: حطه فوق الفيديو، وبعدها Remove BG ← Chroma key واختر الأخضر.';},recCx:'انلغى التسجيل.',recErr:'صار خطأ بالتسجيل. جرّب مرة ثانية.',
   prjB:'📁 مشاريعي',prjT:'مشاريعي',prjE:'ما عندك مشاريع للحين. عبّي السلة واضغط «احفظ كمشروع».',prjSave:'💾 احفظ كمشروع',prjName:'اسم المشروع',prjDef:function(n){return 'مشروع '+n;},prjOpen:'افتح بالسلة',prjCp:'⧉ البرومبت',prjLink:'🔗 الرابط',prjDel:'حذف',prjSaved:'انحفظ ✓',prjN:function(n){return n+' عنصر';},
   hisB:'🕘 السجل',hisT:'سجل البرومبتات',hisE:'كل برومبت تنسخه ينحفظ هني (آخر 50).',hisCp:'⧉ انسخ',hisDel:'حذف',hisClr:'امسح السجل',
   ago:function(ms){var m=Math.round(ms/60000);if(m<1)return 'الحين';if(m<60)return 'قبل '+m+' دقيقة';var h=Math.round(m/60);if(h<24)return 'قبل '+h+' ساعة';return 'قبل '+Math.round(h/24)+' يوم';},
   arL:'المقاس',arO:[['45','4:5'],['916','9:16 (ريلز)']]},
  en:{recB:'⬇ Download as video',recBg:'Background',recBgO:[['s','Scene as is'],['g','Green screen (chroma)'],['k','Black']],
-  recNo:'Video download works in Chrome or Edge on a computer only.',recAsk:'Your browser will ask to share “This tab”. Pick it and press Share; recording takes a few seconds.',recTab:'Please pick “This tab”, not a window or the whole screen. Try again.',recOn:'● Recording…',recDone:function(f){return 'Done ✓ saved '+f+'. In CapCut: put it over your video, then Remove BG → Chroma key and pick the green.';},recCx:'Recording cancelled.',recErr:'Recording failed. Try again.',
+  recNo:'Your browser cannot make the video. Update it or try Chrome.',recPrep:'Getting ready…',recOn:function(p){return '● Making the video… '+p+'%';},recStop:'■ Stop',recSave:'⬇ Save video',recShare:'📤 Share or save to Photos',recDone:function(f){return 'Ready ✓ '+f+'. In CapCut: put it over your video, then Remove BG → Chroma key and pick the green.';},recCx:'Recording cancelled.',recErr:'Recording failed. Try again.',
   prjB:'📁 My projects',prjT:'My projects',prjE:'No projects yet. Fill the basket and press “Save as project”.',prjSave:'💾 Save as project',prjName:'Project name',prjDef:function(n){return 'Project '+n;},prjOpen:'Open in basket',prjCp:'⧉ Prompt',prjLink:'🔗 Link',prjDel:'Delete',prjSaved:'Saved ✓',prjN:function(n){return n+' items';},
   hisB:'🕘 History',hisT:'Prompt history',hisE:'Every prompt you copy is kept here (last 50).',hisCp:'⧉ Copy',hisDel:'Delete',hisClr:'Clear history',
   ago:function(ms){var m=Math.round(ms/60000);if(m<1)return 'just now';if(m<60)return m+' min ago';var h=Math.round(m/60);if(h<24)return h+' h ago';return Math.round(h/24)+' d ago';},
@@ -720,24 +720,25 @@ var labc=document.querySelector('#lab .labc');
 labc.insertAdjacentHTML('beforeend','<div class="recbox"><label><span id="recBgL"></span><select id="recBg"></select></label><button type="button" class="btn" id="recB"></button><p class="xmut" id="recMsg" aria-live="polite"></p></div>');
 function recBgApply(){var h=document.querySelector('.labst');if(!h)return;var v=document.getElementById('recBg').value;h.classList.remove('rbg-g','rbg-k','rbg-s');h.classList.add('rbg-'+v);}
 document.addEventListener('change',function(e){if(e.target&&e.target.id==='recBg')recBgApply();});
-function recCan(){return 'CropTarget' in window&&navigator.mediaDevices&&navigator.mediaDevices.getDisplayMedia&&window.MediaRecorder&&!matchMedia('(pointer:coarse)').matches;}
+function recCan(){return true;}
 function recMsg(t){document.getElementById('recMsg').textContent=t;}
-function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
-var recBusy=false;
-document.getElementById('recB').addEventListener('click',function(){if(recBusy)return;if(!recCan()){recMsg(X4t('recNo'));return;}recRun();});
-function recRun(){var st=document.getElementById('labSt'),host=document.querySelector('.labst'),bg=document.getElementById('recBg').value,stream=null,m=labM;
-  recBusy=true;recMsg(X4t('recAsk'));lab.classList.add('recmode');recBgApply();
-  function done(t){recBusy=false;lab.classList.remove('recmode');host.classList.remove('recwait');recBgApply();if(stream)stream.getTracks().forEach(function(t){t.stop();});if(t)recMsg(t);labDraw();}
-  navigator.mediaDevices.getDisplayMedia({video:{frameRate:60,cursor:'never',width:{ideal:3840},height:{ideal:2160}},audio:false,preferCurrentTab:true,selfBrowserSurface:'include',surfaceSwitching:'exclude'}).then(function(s){stream=s;var tr=s.getVideoTracks()[0];
-    if((tr.getSettings().displaySurface||'browser')!=='browser'){done(X4t('recTab'));return;}
-    return CropTarget.fromElement(st).then(function(ct){return tr.cropTo(ct);}).then(function(){
-      var mime=['video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9','video/webm'].filter(function(x){return MediaRecorder.isTypeSupported(x);})[0],ext=mime.indexOf('mp4')>-1?'mp4':'webm';
-      var rec=new MediaRecorder(s,{mimeType:mime,videoBitsPerSecond:16e6}),ch=[];rec.ondataavailable=function(e){if(e.data&&e.data.size)ch.push(e.data);};
-      var dur=parseFloat(m.d||'2.8')*1000;host.classList.add('recwait');recMsg(X4t('recOn'));
-      return sleep(350).then(function(){rec.start(250);return sleep(250);}).then(function(){labDraw();host.classList.remove('recwait');return sleep(dur+200);}).then(function(){return new Promise(function(r){rec.onstop=r;rec.stop();});}).then(function(){
-        var name=m.id+'-'+(bg==='g'?'green':bg==='k'?'black':'scene')+(arCur==='916'?'-9x16':'-4x5')+'.'+ext,blob=new Blob(ch,{type:mime.split(';')[0]}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href);},4000);
-        goat('video-download',m.id);done(X4t('recDone')(name));});});
-  }).catch(function(e){done(e&&e.name==='NotAllowedError'?X4t('recCx'):X4t('recErr'));});}
+function recActs(h){var b=document.getElementById('recActs');if(!b){b=document.createElement('div');b.id='recActs';b.className='xact';document.querySelector('#lab .recbox').appendChild(b);}b.innerHTML=h||'';return b;}
+function needXR(){if(window.XR)return Promise.resolve();return new Promise(function(res,rej){var s=document.createElement('script');s.src='vendor/xrender.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+var recBusy=false,recJob=null;
+document.getElementById('recB').addEventListener('click',function(){if(recBusy){if(recJob)recJob.stop=true;return;}recBusy=true;recActs('');recMsg(X4t('recPrep'));
+  needXR().then(function(){if(!XR.canWork()){recBusy=false;recMsg(X4t('recNo'));return;}recRun();}).catch(function(){recBusy=false;recMsg(X4t('recErr'));});});
+function recRun(){var st=document.getElementById('labSt'),bg=document.getElementById('recBg').value,m=labM,job=recJob={stop:false},btn=document.getElementById('recB');
+  recBgApply();labDraw();btn.textContent=X4t('recStop');
+  var w=st.offsetWidth||400,h=st.offsetHeight||500,W=1080,H=Math.round(W*h/w/2)*2,fps=30,d=parseFloat(m.d||'2.8');if(!isFinite(d)||d<=0)d=2.8;var n=Math.round((d+0.2)*fps),an=null;
+  function done(t){recBusy=false;recJob=null;btn.textContent=X4t('recB');if(t)recMsg(t);labDraw();}
+  XR.render({w:W,h:H,fps:fps,n:n,audio:null,stop:function(){return job.stop;},prog:function(f){recMsg(X4t('recOn')(Math.round(f*100)));},
+    frame:function(i,ctx){if(!an)an=st.getAnimations({subtree:true});an.forEach(function(a){a.pause();a.currentTime=i*1000/fps;});
+      return XR.snap(st,W,H,'.ph,.vtag,.xuiov').then(function(img){ctx.fillStyle=bg==='g'?'#00FF00':'#000';ctx.fillRect(0,0,W,H);if(img)ctx.drawImage(img,0,0,W,H);});}
+  }).then(function(r){var name=m.id+'-'+(bg==='g'?'green':bg==='k'?'black':'scene')+(arCur==='916'?'-9x16':'-4x5')+'.'+r.ext;
+    recActs('<button type="button" class="btn" id="recSv">'+X4t('recSave')+'</button>'+(XR.canShare(r.blob,name)?'<button type="button" class="btn ghost" id="recSh">'+X4t('recShare')+'</button>':''));
+    document.getElementById('recSv').addEventListener('click',function(){XR.save(r.blob,name);});var sh=document.getElementById('recSh');if(sh)sh.addEventListener('click',function(){XR.share(r.blob,name);});
+    if(!XR.touch)XR.save(r.blob,name);goat('video-download',m.id);done(X4t('recDone')(name));
+  }).catch(function(e){done(e&&e.message==='stop'?X4t('recCx'):X4t('recErr'));});}
 
 /* --- saved projects --- */
 var PRJ=ls('ml-projects',[]);
@@ -775,7 +776,7 @@ var stB=document.createElement('a');stB.className='btn xsm xstudio';stB.href='st
 wnb.insertBefore(prjB,document.getElementById('instB'));wnb.insertBefore(hisB,document.getElementById('instB'));wnb.insertBefore(insBtn,prjB);
 prjB.addEventListener('click',function(e){prjDraw();prjM._open(e.currentTarget);});hisB.addEventListener('click',function(e){hisDraw();hisM._open(e.currentTarget);});
 
-function r4Lang(){selFill('recBg',X4t('recBgO'));document.getElementById('recBgL').textContent=X4t('recBg');document.getElementById('recB').textContent=X4t('recB');if(!recBusy)recMsg(recCan()?'':X4t('recNo'));
+function r4Lang(){selFill('recBg',X4t('recBgO'));document.getElementById('recBgL').textContent=X4t('recBg');document.getElementById('recB').textContent=X4t('recB');if(!recBusy)recMsg('');
   arSel.querySelector('span').textContent=X4t('arL');var as=document.getElementById('arS');as.innerHTML=X4t('arO').map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('');as.value=arCur;
   stB.textContent=lang==='ar'?'🎬 استوديو المونتاج (جديد)':'🎬 Editing Studio (new)';
   prjB.textContent=X4t('prjB');hisB.textContent=X4t('hisB');document.getElementById('prjT').textContent=X4t('prjT');document.getElementById('hisT').textContent=X4t('hisT');
