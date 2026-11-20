@@ -426,7 +426,44 @@ HOOKS.forEach(function(h){var m=mById(h.m);var el=mk('H',h.id,'xhk',ovHTML(h.id)
   el.querySelector('[data-a="n"]').onclick=function(e){copyText(lang==='ar'?h.ar:h.en,e.currentTarget,X2t('hkT'));};
   el.querySelector('[data-a="p"]').onclick=function(e){copyText(hkPr(h),e.currentTarget,X('cp'));};});
 XC.H.forEach(function(o){xio&&xio.observe(o.el);});
+hgInit();
 };
+/* --- hooks on the user's topic (templates, no AI) + prompt for AI --- */
+var HGT={
+ q:{ar:['تدري شنو أكبر غلطة بـ{t}؟','ليش أغلب الناس يغلطون بـ{t}؟','تبي تفهم {t} بدقيقة وحدة؟','شنو الشي اللي محد قالك عنه بـ{t}؟'],en:['Do you know the biggest mistake in {t}?','Why do most people get {t} wrong?','Want to understand {t} in one minute?','What has nobody told you about {t}?']},
+ n:{ar:['3 أشياء لازم تعرفها عن {t}','5 نصايح بـ{t} محد قالك عنها','بـ60 ثانية: كل شي تحتاجه عن {t}','خطوتين بس وتضبط {t}'],en:['3 things you must know about {t}','5 {t} tips nobody told you','In 60 seconds: all you need on {t}','Just 2 steps to get {t} right']},
+ w:{ar:['لا تسوي هالغلطة بـ{t}!','وقف! قبل لا تبدأ بـ{t} شوف هذا','إذا تسوي جذي بـ{t}… انتبه','أكبر خطر بـ{t} وأغلب الناس ما يدرون'],en:['Don’t make this {t} mistake!','Stop! Watch this before you start {t}','If you do this in {t}… careful','The biggest {t} risk most people miss']},
+ s:{ar:['سر بـ{t} محد يتكلم عنه','هالحيلة بـ{t} بتغير كل شي','الطريقة اللي يستخدمها المحترفين بـ{t}','شي بسيط بـ{t} بيفرق معاك واجد'],en:['The {t} secret nobody talks about','This {t} trick changes everything','How the pros do {t}','One small {t} change makes a big difference']},
+ st:{ar:['قبل سنة ما كنت أعرف شي عن {t}…','خلني أقولك شصار معاي بـ{t}','واحد سألني عن {t}، وهذا ردّي','كنت أغلط بـ{t} لين عرفت هالشي'],en:['A year ago I knew nothing about {t}…','Let me tell you what happened with {t}','Someone asked me about {t}, here’s my answer','I got {t} wrong until I learned this']},
+ r:{ar:['جربت هالطريقة بـ{t}، وهذي النتيجة','شوف الفرق قبل وبعد بـ{t}','النتيجة بآخر الفيديو عن {t} بتصدمك','بعد ما فهمت {t} تغير كل شي'],en:['I tried this for {t}, here’s the result','See the before and after of {t}','The {t} result at the end will shock you','Once I understood {t}, everything changed']}};
+var HGL={ar:{t:'هوك على موضوعك',d:'اكتب موضوع الفيديو، ويطلع لك هوكات عنه، كل واحد معه الحركة والصوت المناسبين.',ph:'مثلاً: حماية حساب الانستغرام',go:'✨ طلّع الهوكات',again:'🎲 غيّرها',ai:'🤖 انسخ البرومبت (لهوكات أقوى)',aiN:'الصقه بـ Claude أو ChatGPT ويكتب لك هوكات على موضوعك مع أرقام الحركات.',need:'اكتب موضوعك أول.',cpl:'⧉ الجملة',cpp:'⧉ البرومبت'},
+ en:{t:'Hooks on your topic',d:'Type your video topic and get hooks about it, each with the motion and sound that fit.',ph:'e.g. Instagram account security',go:'✨ Get hooks',again:'🎲 Shuffle',ai:'🤖 Copy prompt (for stronger hooks)',aiN:'Paste it in Claude or ChatGPT and it writes hooks on your topic with motion IDs.',need:'Type your topic first.',cpl:'⧉ Line',cpp:'⧉ Prompt'}};
+function hgT(k){return HGL[lang][k];}
+var hgList=[];
+function hgMake(topic){var out=[];Object.keys(HGT).forEach(function(c){var tp=HGT[c][lang].slice().sort(function(){return Math.random()-.5;}).slice(0,c==='q'||c==='n'?2:1),src=HOOKS.filter(function(h){var m=mById(h.m);return h.c===c&&m&&['CAM','TRN','PER','TIM'].indexOf(m.c)<0;});if(!src.length)src=HOOKS.filter(function(h){var m=mById(h.m);return m&&['CAM','TRN','PER','TIM'].indexOf(m.c)<0;});
+  tp.forEach(function(t){var h=pick(src);out.push({c:c,t:t.split('{t}').join(topic),m:h.m,sx:h.sx});});});return out;}
+function hgPr(g){var m=mById(g.m);return lang==='ar'?'ابدأ الفيديو بهالهوك: "'+g.t+'" (أول 3 ثواني، نص كبير بنص الشاشة)، وطبّق عليه '+g.m+' '+(m?m.en:'')+'.'+sxLine(g.sx,'ar'):'Open the video with this hook: "'+g.t+'" (first 3 seconds, big text in the centre) and apply '+g.m+' '+(m?m.en:'')+'.'+sxLine(g.sx,'en');}
+function hgAI(topic){var ms={},sx={};HOOKS.forEach(function(h){ms[h.m]=1;sx[h.sx]=1;});
+  var ml=Object.keys(ms).map(function(id){var m=mById(id);return id+' '+(m?m.en:'');}).join('، '),sl=Object.keys(sx).map(function(id){var s=sxById(id);return id+' '+(s?s.en:'');}).join('، ');
+  return lang==='ar'?'اكتب لي 10 هوكات (جمل لأول 3 ثواني) لفيديو ريلز موضوعه: "'+topic+'".\n- باللهجة الخليجية، كل هوك أقل من 10 كلمات، ويخلي اللي يشوف يكمل الفيديو.\n- نوّعها: سؤال، رقم، تحذير، سر، قصة، نتيجة.\n- لكل هوك اختر حركة من مكتبة الموشن (Alansari.Tech) من هذي: '+ml+'\n- واختر صوت من هذي: '+sl+'\n- اكتبها جدول: الهوك | النوع | رقم الحركة | رقم الصوت.'
+   :'Write 10 hooks (lines for the first 3 seconds) for a Reel about: "'+topic+'".\n- Each under 10 words and makes the viewer keep watching.\n- Mix types: question, number, warning, secret, story, result.\n- For each hook pick a motion from the Motion Library (Alansari.Tech) from: '+ml+'\n- And a sound from: '+sl+'\n- Write a table: hook | type | motion ID | sound ID.';}
+function hgDraw(){var ol=document.getElementById('hgL');if(!ol)return;ol.innerHTML='';hgList.forEach(function(g,i){var li=document.createElement('li');
+  li.innerHTML='<span class="lp hkc"></span><p dir="auto" class="hgt"></p><div class="need">'+idChip(g.m)+sxChip(g.sx)+'</div><div class="xact"><button type="button" class="btn ghost xsm" data-hl="'+i+'"></button><button type="button" class="btn ghost xsm" data-hp="'+i+'"></button><button type="button" class="btn xsm" data-ht="'+i+'"></button></div>';
+  li.querySelector('.hkc').textContent=HKC[g.c][lang==='ar'?1:0];li.querySelector('.hgt').textContent=g.t;li.querySelector('[data-hl]').textContent=hgT('cpl');li.querySelector('[data-hp]').textContent=hgT('cpp');li.querySelector('[data-ht]').textContent='✎ '+X('try');ol.appendChild(li);});
+  document.getElementById('hgA').hidden=!hgList.length;}
+function hgLang(){var b=document.getElementById('hgBox');if(!b)return;b.querySelector('.hgh').textContent=hgT('t');b.querySelector('.hgd').textContent=hgT('d');var i=document.getElementById('hgIn');i.placeholder=hgT('ph');i.setAttribute('aria-label',hgT('t'));
+  document.getElementById('hgGo').textContent=hgT('go');document.getElementById('hgAg').textContent=hgT('again');document.getElementById('hgAi').textContent=hgT('ai');document.getElementById('hgAiN').textContent=hgT('aiN');
+  var t=i.value.trim();if(t&&hgList.length){hgList=hgMake(t);}hgDraw();}
+function hgInit(){var sec=document.querySelector('#xv-H .fctl');if(!sec||document.getElementById('hgBox'))return;
+  sec.insertAdjacentHTML('beforebegin','<section class="box xhg" id="hgBox"><h3 class="hgh"></h3><p class="xmut hgd"></p><div class="xhgrow"><input type="text" id="hgIn" maxlength="80" dir="auto"><button type="button" class="btn" id="hgGo"></button></div><p class="xmut" id="hgMsg" aria-live="polite"></p><ol class="xhgl" id="hgL"></ol><div id="hgA" hidden><div class="xact"><button type="button" class="btn ghost" id="hgAg"></button><button type="button" class="btn ghost" id="hgAi"></button></div><p class="xmut" id="hgAiN"></p></div></section>');
+  var inp=document.getElementById('hgIn');try{inp.value=localStorage.getItem('ml-hgt')||'';}catch(e){}
+  function run(){var t=inp.value.trim();var msg=document.getElementById('hgMsg');if(!t){msg.textContent=hgT('need');inp.focus();return;}msg.textContent='';try{localStorage.setItem('ml-hgt',t);}catch(e){}hgList=hgMake(t);hgDraw();goat('hook-topic','H');}
+  document.getElementById('hgGo').onclick=run;inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();run();}});
+  document.getElementById('hgAg').onclick=run;
+  document.getElementById('hgAi').onclick=function(e){var t=inp.value.trim();if(!t){document.getElementById('hgMsg').textContent=hgT('need');return;}copyText(hgAI(t),e.currentTarget,hgT('ai'));};
+  document.getElementById('hgL').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var d=b.dataset;
+    if(d.hl)copyText(hgList[+d.hl].t,b,hgT('cpl'));else if(d.hp)copyText(hgPr(hgList[+d.hp]),b,X('cp'));else if(d.ht){var g=hgList[+d.ht];openLab(g.m,b,g.t);}});
+  hgLang();}
 function hkPr(h){var m=mById(h.m),t=lang==='ar'?h.ar:h.en;return lang==='ar'?'ابدأ الفيديو بالهوك '+h.id+': "'+t+'" (أول 3 ثواني، نص كبير بنص الشاشة)، وطبّق عليه '+h.m+' '+(m?m.en:'')+'.'+sxLine(h.sx,'ar'):'Open the video with hook '+h.id+': "'+t+'" (first 3 seconds, big text in the centre) and apply '+h.m+' '+(m?m.en:'')+'.'+sxLine(h.sx,'en');}
 document.addEventListener('click',function(e){var b=e.target.closest('[data-tryh]');if(!b)return;var h=byId(HOOKS,b.dataset.tryh);openLab(h.m,b,lang==='ar'?h.ar:h.en);});
 
@@ -690,15 +727,11 @@ function r3Lang(){insBtn.textContent=X3t('insB');['insT','insD'].forEach(functio
 
 /* ===== Round 4: download as video, saved projects, prompt history, 9:16 preview ===== */
 var X4={
- ar:{recB:'⬇ نزّل الحركة فيديو',recBg:'الخلفية',recBgO:[['s','المشهد كما هو'],['g','أخضر (شاشة خضرا / كروما)'],['k','أسود']],
-  recNo:'متصفحك ما يقدر يسوي الفيديو. حدّثه أو جرّب كروم.',recPrep:'قاعد أجهّز…',recOn:function(p){return '● قاعد أسوي الفيديو… '+p+'%';},recStop:'■ وقّف',recSave:'⬇ احفظ الفيديو',recShare:'📤 شارك أو احفظ بالصور',recDone:function(f){return 'جاهز ✓ '+f+'. بـ CapCut: حطه فوق الفيديو، وبعدها Remove BG ← Chroma key واختر الأخضر.';},recCx:'انلغى التسجيل.',recErr:'صار خطأ بالتسجيل. جرّب مرة ثانية.',
-  prjB:'📁 مشاريعي',prjT:'مشاريعي',prjE:'ما عندك مشاريع للحين. عبّي السلة واضغط «احفظ كمشروع».',prjSave:'💾 احفظ كمشروع',prjName:'اسم المشروع',prjDef:function(n){return 'مشروع '+n;},prjOpen:'افتح بالسلة',prjCp:'⧉ البرومبت',prjLink:'🔗 الرابط',prjDel:'حذف',prjSaved:'انحفظ ✓',prjN:function(n){return n+' عنصر';},
+ ar:{prjB:'📁 مشاريعي',prjT:'مشاريعي',prjE:'ما عندك مشاريع للحين. عبّي السلة واضغط «احفظ كمشروع».',prjSave:'💾 احفظ كمشروع',prjName:'اسم المشروع',prjDef:function(n){return 'مشروع '+n;},prjOpen:'افتح بالسلة',prjCp:'⧉ البرومبت',prjLink:'🔗 الرابط',prjDel:'حذف',prjSaved:'انحفظ ✓',prjN:function(n){return n+' عنصر';},
   hisB:'🕘 السجل',hisT:'سجل البرومبتات',hisE:'كل برومبت تنسخه ينحفظ هني (آخر 50).',hisCp:'⧉ انسخ',hisDel:'حذف',hisClr:'امسح السجل',
   ago:function(ms){var m=Math.round(ms/60000);if(m<1)return 'الحين';if(m<60)return 'قبل '+m+' دقيقة';var h=Math.round(m/60);if(h<24)return 'قبل '+h+' ساعة';return 'قبل '+Math.round(h/24)+' يوم';},
   arL:'المقاس',arO:[['45','4:5'],['916','9:16 (ريلز)']]},
- en:{recB:'⬇ Download as video',recBg:'Background',recBgO:[['s','Scene as is'],['g','Green screen (chroma)'],['k','Black']],
-  recNo:'Your browser cannot make the video. Update it or try Chrome.',recPrep:'Getting ready…',recOn:function(p){return '● Making the video… '+p+'%';},recStop:'■ Stop',recSave:'⬇ Save video',recShare:'📤 Share or save to Photos',recDone:function(f){return 'Ready ✓ '+f+'. In CapCut: put it over your video, then Remove BG → Chroma key and pick the green.';},recCx:'Recording cancelled.',recErr:'Recording failed. Try again.',
-  prjB:'📁 My projects',prjT:'My projects',prjE:'No projects yet. Fill the basket and press “Save as project”.',prjSave:'💾 Save as project',prjName:'Project name',prjDef:function(n){return 'Project '+n;},prjOpen:'Open in basket',prjCp:'⧉ Prompt',prjLink:'🔗 Link',prjDel:'Delete',prjSaved:'Saved ✓',prjN:function(n){return n+' items';},
+ en:{prjB:'📁 My projects',prjT:'My projects',prjE:'No projects yet. Fill the basket and press “Save as project”.',prjSave:'💾 Save as project',prjName:'Project name',prjDef:function(n){return 'Project '+n;},prjOpen:'Open in basket',prjCp:'⧉ Prompt',prjLink:'🔗 Link',prjDel:'Delete',prjSaved:'Saved ✓',prjN:function(n){return n+' items';},
   hisB:'🕘 History',hisT:'Prompt history',hisE:'Every prompt you copy is kept here (last 50).',hisCp:'⧉ Copy',hisDel:'Delete',hisClr:'Clear history',
   ago:function(ms){var m=Math.round(ms/60000);if(m<1)return 'just now';if(m<60)return m+' min ago';var h=Math.round(m/60);if(h<24)return h+' h ago';return Math.round(h/24)+' d ago';},
   arL:'Size',arO:[['45','4:5'],['916','9:16 (Reels)']]}};
@@ -714,31 +747,6 @@ function arApply(){document.body.classList.toggle('xr916',arCur==='916');}
 document.getElementById('arS').addEventListener('change',function(e){arCur=e.target.value;try{localStorage.setItem('ml-ar',arCur);}catch(_){}arApply();});
 arApply();
 Object.keys(UISVG).forEach(function(k){UISVG[k]=UISVG[k].replace('<svg viewBox="0 0 400 500">','<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet">');});
-
-/* --- download as video (lab) --- */
-var labc=document.querySelector('#lab .labc');
-labc.insertAdjacentHTML('beforeend','<div class="recbox"><label><span id="recBgL"></span><select id="recBg"></select></label><button type="button" class="btn" id="recB"></button><p class="xmut" id="recMsg" aria-live="polite"></p></div>');
-function recBgApply(){var h=document.querySelector('.labst');if(!h)return;var v=document.getElementById('recBg').value;h.classList.remove('rbg-g','rbg-k','rbg-s');h.classList.add('rbg-'+v);}
-document.addEventListener('change',function(e){if(e.target&&e.target.id==='recBg')recBgApply();});
-function recCan(){return true;}
-function recMsg(t){document.getElementById('recMsg').textContent=t;}
-function recActs(h){var b=document.getElementById('recActs');if(!b){b=document.createElement('div');b.id='recActs';b.className='xact';document.querySelector('#lab .recbox').appendChild(b);}b.innerHTML=h||'';return b;}
-function needXR(){if(window.XR)return Promise.resolve();return new Promise(function(res,rej){var s=document.createElement('script');s.src='vendor/xrender.js';s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
-var recBusy=false,recJob=null;
-document.getElementById('recB').addEventListener('click',function(){if(recBusy){if(recJob)recJob.stop=true;return;}recBusy=true;recActs('');recMsg(X4t('recPrep'));
-  needXR().then(function(){if(!XR.canWork()){recBusy=false;recMsg(X4t('recNo'));return;}recRun();}).catch(function(){recBusy=false;recMsg(X4t('recErr'));});});
-function recRun(){var st=document.getElementById('labSt'),bg=document.getElementById('recBg').value,m=labM,job=recJob={stop:false},btn=document.getElementById('recB');
-  recBgApply();labDraw();btn.textContent=X4t('recStop');
-  var w=st.offsetWidth||400,h=st.offsetHeight||500,W=1080,H=Math.round(W*h/w/2)*2,fps=30,d=parseFloat(m.d||'2.8');if(!isFinite(d)||d<=0)d=2.8;var n=Math.round((d+0.2)*fps),an=null;
-  function done(t){recBusy=false;recJob=null;btn.textContent=X4t('recB');if(t)recMsg(t);labDraw();}
-  XR.render({w:W,h:H,fps:fps,n:n,audio:null,stop:function(){return job.stop;},prog:function(f){recMsg(X4t('recOn')(Math.round(f*100)));},
-    frame:function(i,ctx){if(!an)an=st.getAnimations({subtree:true});an.forEach(function(a){a.pause();a.currentTime=i*1000/fps;});
-      return XR.snap(st,W,H,'.ph,.vtag,.xuiov').then(function(img){ctx.fillStyle=bg==='g'?'#00FF00':'#000';ctx.fillRect(0,0,W,H);if(img)ctx.drawImage(img,0,0,W,H);});}
-  }).then(function(r){var name=m.id+'-'+(bg==='g'?'green':bg==='k'?'black':'scene')+(arCur==='916'?'-9x16':'-4x5')+'.'+r.ext;
-    recActs('<button type="button" class="btn" id="recSv">'+X4t('recSave')+'</button>'+(XR.canShare(r.blob,name)?'<button type="button" class="btn ghost" id="recSh">'+X4t('recShare')+'</button>':''));
-    document.getElementById('recSv').addEventListener('click',function(){XR.save(r.blob,name);});var sh=document.getElementById('recSh');if(sh)sh.addEventListener('click',function(){XR.share(r.blob,name);});
-    if(!XR.touch)XR.save(r.blob,name);goat('video-download',m.id);done(X4t('recDone')(name));
-  }).catch(function(e){done(e&&e.message==='stop'?X4t('recCx'):X4t('recErr'));});}
 
 /* --- saved projects --- */
 var PRJ=ls('ml-projects',[]);
@@ -772,11 +780,11 @@ document.getElementById('hisC').addEventListener('click',function(){HIS=[];lss('
 
 /* --- buttons in the What's new strip --- */
 var wnb=document.querySelector('.wnew');var prjB=document.createElement('button');prjB.type='button';prjB.className='btn ghost xsm';prjB.id='prjB';var hisB=document.createElement('button');hisB.type='button';hisB.className='btn ghost xsm';hisB.id='hisB';
-var stB=document.createElement('a');stB.className='btn xsm xstudio';stB.href='studio.html';stB.id='stB';wnb.insertBefore(stB,document.getElementById('instB'));
+var stB=document.createElement('a');stB.className='btn xsm xstudio';stB.href='#studio';stB.id='stB';stB.addEventListener('click',function(e){e.preventDefault();showTab('ST');});wnb.insertBefore(stB,document.getElementById('instB'));
 wnb.insertBefore(prjB,document.getElementById('instB'));wnb.insertBefore(hisB,document.getElementById('instB'));wnb.insertBefore(insBtn,prjB);
 prjB.addEventListener('click',function(e){prjDraw();prjM._open(e.currentTarget);});hisB.addEventListener('click',function(e){hisDraw();hisM._open(e.currentTarget);});
 
-function r4Lang(){selFill('recBg',X4t('recBgO'));document.getElementById('recBgL').textContent=X4t('recBg');document.getElementById('recB').textContent=X4t('recB');if(!recBusy)recMsg('');
+function r4Lang(){
   arSel.querySelector('span').textContent=X4t('arL');var as=document.getElementById('arS');as.innerHTML=X4t('arO').map(function(o){return '<option value="'+o[0]+'">'+o[1]+'</option>';}).join('');as.value=arCur;
   stB.textContent=lang==='ar'?'🎬 استوديو المونتاج (جديد)':'🎬 Editing Studio (new)';
   prjB.textContent=X4t('prjB');hisB.textContent=X4t('hisB');document.getElementById('prjT').textContent=X4t('prjT');document.getElementById('hisT').textContent=X4t('hisT');
@@ -784,8 +792,8 @@ function r4Lang(){selFill('recBg',X4t('recBgO'));document.getElementById('recBgL
 
 /* ===== Round 5: tidy layout (how-to collapsed, compact toolbar, grouped tabs, view options, lighter cards) ===== */
 var X5={
- ar:{how:'📖 شلون تستخدم المكتبة وتثبّت البلقن (مع فيديو)',howS:'افتح',gM:'الحركات',gF:'الخطوط',gDS:'التصميم',gRD:'جاهز',gSX:'الأصوات',gTL:'الأدوات',view:'⚙️ العرض',cmp:'⇄ أضف للمقارنة',cmpIn:'✓ بالمقارنة'},
- en:{how:'📖 How to use the library & install the plugin (with video)',howS:'Open',gM:'Motions',gF:'Fonts',gDS:'Design',gRD:'Ready-made',gSX:'Sounds',gTL:'Tools',view:'⚙️ View',cmp:'⇄ Add to compare',cmpIn:'✓ In compare'}};
+ ar:{gST:'الاستوديو',how:'📖 شلون تستخدم المكتبة وتثبّت البلقن (مع فيديو)',howS:'افتح',gM:'الحركات',gF:'الخطوط',gDS:'التصميم',gRD:'جاهز',gSX:'الأصوات',gTL:'الأدوات',view:'⚙️ العرض',cmp:'⇄ أضف للمقارنة',cmpIn:'✓ بالمقارنة'},
+ en:{gST:'Studio',how:'📖 How to use the library & install the plugin (with video)',howS:'Open',gM:'Motions',gF:'Fonts',gDS:'Design',gRD:'Ready-made',gSX:'Sounds',gTL:'Tools',view:'⚙️ View',cmp:'⇄ Add to compare',cmpIn:'✓ In compare'}};
 function X5t(k){return X5[lang][k];}
 
 /* 1. how-to + install + video collapsed into one section */
@@ -816,6 +824,20 @@ showTab=function(t){show0(t);var g=grpOf(t);if(lastSub[g]!==undefined)lastSub[g]
 function gLang(){gbar.querySelectorAll('button[data-g]').forEach(function(b){var g=b.dataset.g;b.querySelector('.xgl').textContent=X5t('g'+g);var nb=b.querySelector('.nb');nb.textContent=(g!=='M'&&g!=='F'&&SEEN.indexOf(g)<0)?X('nb'):'';});
   sub.querySelectorAll('button').forEach(function(b){var k=b.dataset.s;b.querySelector('.xsl').textContent=X('t'+k)||X2t('t'+k);b.querySelector('small').textContent=XN[k]||'';});}
 
+/* 3b. the editing Studio as a tab of the same site (studio.html inside an iframe) */
+var stv=document.createElement('section');stv.id='xv-ST';stv.className='xstv';stv.hidden=true;stv.innerHTML='<iframe id="stFrame" title="Motion Studio" allow="clipboard-write; fullscreen"></iframe>';
+document.getElementById('xv-'+VIEWS[VIEWS.length-1][0]).after(stv);HASH.ST='studio';
+var gst=document.createElement('button');gst.type='button';gst.dataset.g='ST';gst.className='xgst';gst.innerHTML='<span class="xnum">🎬</span><span class="xgl"></span><em class="nb"></em>';gbar.appendChild(gst);gst.onclick=function(){showTab('ST');};
+function stFrame(){var f=document.getElementById('stFrame');if(!f.getAttribute('src'))f.setAttribute('src','studio.html');return f;}
+var show2=showTab;
+showTab=function(t){if(t!=='ST'){stv.hidden=true;document.body.classList.remove('xstudio-on');show2(t);return;}
+  stopSx();document.getElementById('fontsView').hidden=true;document.getElementById('motionsView').hidden=true;VIEWS.forEach(function(v){document.getElementById('xv-'+v[0]).hidden=true;});
+  stv.hidden=false;document.body.classList.add('xstudio-on');stFrame();sub.hidden=true;gbar.querySelectorAll('button[data-g]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.g==='ST');});
+  try{history.replaceState(null,'','#studio');}catch(e){}
+  if(SEEN.indexOf('ST')<0&&(document.readyState==='complete'||location.hash)){SEEN.push('ST');lss('ml-seen',SEEN);gLang();}
+  setTimeout(function(){var y=gbar.getBoundingClientRect().bottom+window.scrollY+8;window.scrollTo({top:y});},30);goat('studio-tab','ST');};
+window.mlToStudio=function(){showTab('ST');var f=stFrame();try{if(f.contentWindow&&f.contentWindow.mlAddPending)f.contentWindow.mlAddPending();}catch(e){}};
+
 /* 4. view options (overlay + size) folded into one menu */
 var mh=document.querySelector('#motionsView .mainh'),vo=document.createElement('details');vo.className='xopts';vo.innerHTML='<summary id="xoptT"></summary><div class="xoptb"></div>';
 mh.appendChild(vo);vo.querySelector('.xoptb').appendChild(uiSel);vo.querySelector('.xoptb').appendChild(arSel);
@@ -826,7 +848,12 @@ document.querySelectorAll('.card .ovb.cm').forEach(function(b){b.remove();});
 var lacts=document.querySelector('#lab .labc .acts:nth-of-type(2)')||document.getElementById('labBk').parentElement;
 var lcmp=document.createElement('button');lcmp.type='button';lcmp.className='exb';lcmp.id='labCmp';document.getElementById('labBk').after(lcmp);
 lcmp.addEventListener('click',function(){togCmp(labM.id);r5LabCmp();});
-function r5LabCmp(){if(!labM)return;var on=CMP.indexOf(labM.id)>-1;lcmp.textContent=X5t(on?'cmpIn':'cmp');}
+function r5LabCmp(){lst.textContent=lang==='ar'?'🎬 حطها بالاستوديو':'🎬 Put it in the Studio';if(!labM)return;var on=CMP.indexOf(labM.id)>-1;lcmp.textContent=X5t(on?'cmpIn':'cmp');}
+/* --- put the motion in the Studio (with the text, font and colours from the try-it window) --- */
+var lst=document.createElement('button');lst.type='button';lst.className='btn xstudio';lst.id='labSt2';document.getElementById('labBk').parentElement.before(lst);
+lst.addEventListener('click',function(){if(!labM)return;var q=[];try{q=JSON.parse(localStorage.getItem('ml-studio-add'))||[];}catch(e){}
+  q.push({m:labM.id,text:labHasText?document.getElementById('labIn').value.trim():'',f:document.getElementById('labF').value||'',p:document.getElementById('labP').value||''});
+  try{localStorage.setItem('ml-studio-add',JSON.stringify(q.slice(-20)));}catch(e){}goat('to-studio',labM.id);document.getElementById('labX').click();window.mlToStudio();});
 var openLab0=openLab;openLab=function(id,btn,txt){openLab0(id,btn,txt);r5LabCmp();};
 cards.forEach(function(o){if(o.sx&&o.sx.parentElement)o.sx.remove();});
 
@@ -850,7 +877,7 @@ function xLang(){document.querySelectorAll('.tabs button[data-tab]').forEach(fun
     e.querySelector('[data-a="p"]').innerHTML=X('copyPr');e.querySelector('[data-a="all"]').textContent=X('addAll');});
   XC.SX.forEach(function(o){var s=sxById(o.id),e=o.el;e.querySelector('.xn').textContent=nm(s);e.querySelector('.sxty').textContent=SXT[s.ty][lang==='ar'?1:0];e.querySelector('.xu').textContent=sxUse[s.id]?X('usedBy')(sxUse[s.id]):'';
     var bb=e.querySelector('.sxbig');if(!bb.classList.contains('on'))bb.innerHTML=X('play');e.querySelector('[data-a="n"]').innerHTML=X('cn');e.querySelector('[data-a="p"]').innerHTML=X('cp');e.querySelector('[data-a="d"]').textContent=X('dl');});
-  XC.H.forEach(function(o){var h=byId(HOOKS,o.id),e=o.el,pp=brOn()?brPal():(pById({q:'CP-01',n:'CP-06',w:'CP-15',s:'CP-04',st:'CP-11',r:'CP-12'}[h.c]));
+  hgLang();XC.H.forEach(function(o){var h=byId(HOOKS,o.id),e=o.el,pp=brOn()?brPal():(pById({q:'CP-01',n:'CP-06',w:'CP-15',s:'CP-04',st:'CP-11',r:'CP-12'}[h.c]));
     var st=e.querySelector('.hkst');st.style.background=pp.bg;var tt=e.querySelector('.hkt');tt.textContent=lang==='ar'?h.ar:h.en;tt.style.color=pp.tx;tt.style.setProperty('--a',pp.ac);tt.style.fontFamily=fontFam(brOn()&&BR.f?BR.f:'FA-02');
     e.querySelector('.hkc').textContent=HKC[h.c][lang==='ar'?1:0];e.querySelector('[data-a="n"]').innerHTML=X2t('hkT');e.querySelector('[data-a="p"]').innerHTML=X('cp');e.querySelector('[data-tryh]').textContent='✎ '+X('try');e.querySelector('.sxrow').innerHTML=sxChip(h.sx);});
   XC.LT.forEach(function(o){var l=byId(LTS,o.id),e=o.el;e.querySelector('.xn').textContent=nm(l);e.querySelector('.xu').textContent=lang==='ar'?l.ua:l.ue;var ib=e.querySelector('.ltim');ib.querySelector('.ltb').textContent=ib.getAttribute('aria-pressed')==='true'?(lang==='ar'?'قبل':'Before'):(lang==='ar'?'بعد':'After');ib.setAttribute('aria-label',X2t('cmp'));e.querySelector('[data-a="n"]').innerHTML=X('cn');e.querySelector('[data-a="p"]').innerHTML=X('cp');e.querySelector('[data-a="d"]').textContent=X2t('dlC');});

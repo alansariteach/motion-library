@@ -2,7 +2,7 @@
 (function(){
 var L={
  ar:{title:'استوديو الموشن',back:'← المكتبة',lib:'الحركات',q:'ابحث: زوم، كتابة، M-021',all:'الكل',ft:'على الفيديو',ftNote:'هذي الحركة تشتغل على الفيديو نفسه (كاميرا أو انتقال أو تأثير على الشخص). ما تبين بالمعاينة، بس تنحط بالتايم لاين وتطلع بالبرومبت عشان Claude يطبقها.',
-  basket:'＋ من سلتي',drop:'ارفع الفيديو اللي تبي تسوي له مونتاج',dropS:'اسحبه هني أو اضغط تختاره. الفيديو يبقى بجهازك وما ينرفع لأي مكان.',dropR:function(n){return 'عندك مشروع محفوظ فيه '+n+' حركة. ارفع نفس الفيديو عشان تكمل عليه.';},newP:'مشروع جديد',
+  basket:'＋ من سلتي',drop:'ارفع الفيديو اللي تبي تسوي له مونتاج',dropS:'اسحبه هني أو اضغط تختاره. الفيديو يبقى بجهازك وما ينرفع لأي مكان.',dropQ:function(l){return '🎬 عندك حركات جاهزة تنضاف ('+l+'). ارفع فيديوك وتنحط عليه على طول.';},dropR:function(n){return 'عندك مشروع محفوظ فيه '+n+' حركة. ارفع نفس الفيديو عشان تكمل عليه.';},newP:'مشروع جديد',
   play:'تشغيل',pause:'إيقاف',vol:'الصوت',zoom:'تكبير التايم لاين',inH:'⇤ البداية هني',outH:'النهاية هني ⇥',cutA:'✂ احذف من هني',cutB:'✂ لين هني',undo:'↶ تراجع',
   insp:'الإعدادات',none:'اختر حركة من التايم لاين أو من الشاشة عشان تعدلها.\n\nالخطوات:\n١. ارفع الفيديو.\n٢. حرّك المؤشر الأحمر للمكان اللي تبيه.\n٣. اضغط ＋ على أي حركة من القائمة.\n٤. اسحبها بالتايم لاين عشان تغير وقتها، ومن أطرافها تطولها أو تقصرها.\n٥. اسحبها على الشاشة عشان تغير مكانها، ومن الدائرة الصفرا تكبرها.',
   text:'النص',textPh:'اكتب النص اللي يطلع بالحركة',font:'الخط',pal:'الألوان',orig:'الأصلي',brand:'🎨 هويتي',start:'البداية (ث)',dur:'المدة (ث)',x:'يمين ويسار',y:'فوق وتحت',size:'الحجم',dup:'⧉ نسخة',del:'🗑 حذف',goto:'▶ روح لها',
@@ -17,7 +17,7 @@ var L={
   needV:'ارفع فيديو أول.',saved:'انحفظ ✓',badFile:'هذا مو ملف مشروع من الاستوديو.',
   cats:{TXT:'نصوص',EMP:'إبراز',CAP:'كابشن',SOC:'سوشال',LGO:'شعارات',FX:'مؤثرات',SCR:'شاشات',TRK:'تتبع',D3:'ثلاثي',AUD:'صوت',CAM:'كاميرا',TRN:'انتقالات',PER:'الشخص',TIM:'الوقت'}},
  en:{title:'Motion Studio',back:'← Library',lib:'Motions',q:'Search: zoom, type, M-021',all:'All',ft:'on footage',ftNote:'This motion works on the footage itself (camera, transition or person effect). It does not show in the preview, but it sits on the timeline and goes into the prompt so Claude can apply it.',
-  basket:'＋ From my basket',drop:'Upload the video you want to edit',dropS:'Drag it here or click to choose. The video stays on your device and is never uploaded.',dropR:function(n){return 'You have a saved project with '+n+' motions. Upload the same video to continue.';},newP:'New project',
+  basket:'＋ From my basket',drop:'Upload the video you want to edit',dropS:'Drag it here or click to choose. The video stays on your device and is never uploaded.',dropQ:function(l){return '🎬 Motions waiting to be added ('+l+'). Upload your video and they go on it right away.';},dropR:function(n){return 'You have a saved project with '+n+' motions. Upload the same video to continue.';},newP:'New project',
   play:'Play',pause:'Pause',vol:'Volume',zoom:'Timeline zoom',inH:'⇤ Start here',outH:'End here ⇥',cutA:'✂ Delete from here',cutB:'✂ …to here',undo:'↶ Undo',
   insp:'Settings',none:'Pick a motion on the timeline or on screen to edit it.\n\nSteps:\n1. Upload the video.\n2. Move the red playhead where you want.\n3. Press ＋ on any motion in the list.\n4. Drag it on the timeline to change its time; drag its edges to make it longer or shorter.\n5. Drag it on screen to move it; drag the yellow dot to resize.',
   text:'Text',textPh:'Type the text the motion shows',font:'Font',pal:'Colours',orig:'Original',brand:'🎨 My brand',start:'Start (s)',dur:'Duration (s)',x:'Left / right',y:'Up / down',size:'Size',dup:'⧉ Duplicate',del:'🗑 Delete',goto:'▶ Go to it',
@@ -102,7 +102,14 @@ vid.addEventListener('loadedmetadata',function(){hasV=true;VD=vid.duration||0;VW
   if(saved&&saved.S&&saved.S.clips&&saved.S.clips.length&&!S.clips.length){S=saved.S;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});}
   if(S.tout!=null&&S.tout>VD)S.tout=null;
   pps=Math.max(8,Math.min(200,($('tlw').clientWidth-30)/Math.max(1,VD)));$('zoom').value=pps;
-  fit();rebuild();enable();});
+  fit();rebuild();enable();addPending();});
+/* motions sent from the library's try-it window («حطها بالاستوديو») */
+window.mlAddPending=function(){dropInfo();addPending();};
+if(window.top!==window){document.documentElement.classList.add('inframe');var bk=document.querySelector('.sd-back');if(bk)bk.addEventListener('click',function(e){try{if(parent.showTab){e.preventDefault();parent.showTab('M');}}catch(_){}});}
+function pending(){try{return JSON.parse(localStorage.getItem('ml-studio-add'))||[];}catch(e){return [];}}
+function addPending(){var q=pending();if(!q.length||!hasV)return;try{localStorage.removeItem('ml-studio-add');}catch(e){}var t=Math.min(vid.currentTime||0,Math.max(0,VD-1)),last=null;
+  q.forEach(function(x){var c=addClip(x.m,t,true);if(!c)return;if(x.text)c.text=x.text;if(x.f&&fBy(x.f))c.f=x.f;if(x.p&&pBy(x.p))c.p=x.p;renderClip(c);last=c;t=Math.min(VD-.5,c.s+c.d);});
+  if(last){sel=last.u;markSel();}drawTL();insp();save();}
 function enable(){document.querySelectorAll('[data-nv]').forEach(function(b){b.disabled=!hasV;});}
 
 /* ---------- library list ---------- */
@@ -220,7 +227,7 @@ $('saveP').addEventListener('click',function(){var a=document.createElement('a')
 $('openP').addEventListener('click',function(){$('pfile').click();});
 $('pfile').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;f.text().then(function(t){var j=JSON.parse(t);if(!j||!j.studio||!j.S)throw 0;snap();S=j.S;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});sel=null;selCut=null;if(hasV)rebuild();else{save();dropInfo();}}).catch(function(){alertMsg(t_('badFile'));});e.target.value='';});
 $('newP').addEventListener('click',function(){snap();S={clips:[],cuts:[],tin:0,tout:null};sel=null;selCut=null;try{localStorage.removeItem('ml-studio');}catch(e){}if(hasV)rebuild();dropInfo();});
-function dropInfo(){var s=null;try{s=JSON.parse(localStorage.getItem('ml-studio'));}catch(e){}var n=s&&s.S&&s.S.clips?s.S.clips.length:0;$('dropR').textContent=n?t_('dropR')(n)+(s.name?' ('+s.name+')':''):'';$('newP').hidden=!n||hasV;}
+function dropInfo(){var pq=pending();if($('dropQ'))$('dropQ').textContent=pq.length?t_('dropQ')(pq.map(function(x){return x.m;}).join('، ')):'';var s=null;try{s=JSON.parse(localStorage.getItem('ml-studio'));}catch(e){}var n=s&&s.S&&s.S.clips?s.S.clips.length:0;$('dropR').textContent=n?t_('dropR')(n)+(s.name?' ('+s.name+')':''):'';$('newP').hidden=!n||hasV;}
 
 /* ---------- MP4 export: every frame is drawn on this device (phone or computer), then saved as MP4 ---------- */
 var rec=null,xp=null,vfileObj=null;
