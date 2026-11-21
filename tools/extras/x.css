@@ -405,3 +405,11 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xstv{margin-top:10px}
 .xstv iframe{display:block;width:100%;height:calc(100dvh - 16px);min-height:560px;border:0;border-radius:18px;background:#0B2226}
 .xgrp .xgst{border-color:var(--acc2)}
+.brc .xcbtn{flex-direction:column;padding:6px;gap:4px;font-size:10.5px}.brc .xcbtn i{width:100%;height:34px}
+
+/* script generator: live preview of each suggested motion */
+.gout li{flex-direction:row!important;align-items:center;gap:12px!important}
+.gout .gtx{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.gout .gpv{flex:0 0 auto;width:110px;aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:12px;padding:0;border:0;cursor:pointer;background:var(--mon,#102E33)}
+.gout .gpv .st{position:absolute;inset:0;aspect-ratio:auto}
+@media (max-width:480px){.gout .gpv{width:92px}}

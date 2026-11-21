@@ -3,7 +3,7 @@
 var L={
  ar:{title:'استوديو الموشن',back:'← المكتبة',lib:'الحركات',q:'ابحث: زوم، كتابة، M-021',all:'الكل',ft:'على الفيديو',ftNote:'هذي الحركة تشتغل على الفيديو نفسه (كاميرا أو انتقال أو تأثير على الشخص). ما تبين بالمعاينة، بس تنحط بالتايم لاين وتطلع بالبرومبت عشان Claude يطبقها.',
   basket:'＋ من سلتي',drop:'ارفع الفيديو اللي تبي تسوي له مونتاج',dropS:'اسحبه هني أو اضغط تختاره. الفيديو يبقى بجهازك وما ينرفع لأي مكان.',dropQ:function(l){return '🎬 عندك حركات جاهزة تنضاف ('+l+'). ارفع فيديوك وتنحط عليه على طول.';},dropR:function(n){return 'عندك مشروع محفوظ فيه '+n+' حركة. ارفع نفس الفيديو عشان تكمل عليه.';},newP:'مشروع جديد',
-  play:'تشغيل',pause:'إيقاف',vol:'الصوت',zoom:'تكبير التايم لاين',inH:'⇤ البداية هني',outH:'النهاية هني ⇥',cutA:'✂ احذف من هني',cutB:'✂ لين هني',tip:'💡 اسحب الحركة على التايم لاين تقدّمها أو تأخرها، واسحب طرفها تطوّلها أو تقصّرها. وبالفيديو: اسحبها تغيّر مكانها، وبإصبعين (أو الدائرة الصفرا) تكبّرها وتصغّرها. وتقص الفيديو بأزرار «البداية هني» و«النهاية هني» و«احذف من هني».',earlier:'⏪ قدّم',later:'أخّر ⏩',shorter:'أقصر',longer:'أطول',smaller:'➖ أصغر',bigger:'➕ أكبر',cutFrom:'من',cutTo:'إلى',chV:'🎞 غيّر الفيديو',clr:'🗑 ابدأ من جديد',clrQ:'أكيد؟ بينشال الفيديو والحركات وتبدأ من الصفر.',undo:'↶ تراجع',
+  play:'تشغيل',pause:'إيقاف',vol:'الصوت',zoom:'تكبير التايم لاين',inH:'⇤ البداية هني',outH:'النهاية هني ⇥',cutA:'✂ قص هني',cutB:'✂ قص هني',delB:'🗑 احذف',restore:'↩ رجّع الجزء',segT:'جزء من الفيديو',segDel:'🗑 احذف هالجزء',tip:'💡 اسحب الحركة على التايم لاين تقدّمها أو تأخرها، واسحب طرفها تطوّلها أو تقصّرها. وبالفيديو: اسحبها تغيّر مكانها، وبإصبعين (أو الدائرة الصفرا) تكبّرها وتصغّرها. ولقص الفيديو: حط المؤشر واضغط «✂ قص هني»، بعدين اضغط على الجزء اللي تبي تشيله واضغط «🗑 احذف». وأي حركة تختارها تقدر تحذفها بنفس الزر.',earlier:'⏪ قدّم',later:'أخّر ⏩',shorter:'أقصر',longer:'أطول',smaller:'➖ أصغر',bigger:'➕ أكبر',cutFrom:'من',cutTo:'إلى',chV:'🎞 غيّر الفيديو',pvAdd:'＋ أضفها على الفيديو',clr:'🗑 ابدأ من جديد',clrQ:'أكيد؟ بينشال الفيديو والحركات وتبدأ من الصفر.',undo:'↶ تراجع',
   insp:'الإعدادات',none:'اختر حركة من التايم لاين أو من الشاشة عشان تعدلها.\n\nالخطوات:\n١. ارفع الفيديو.\n٢. حرّك المؤشر الأحمر للمكان اللي تبيه.\n٣. اضغط ＋ على أي حركة من القائمة.\n٤. اسحبها بالتايم لاين عشان تغير وقتها، ومن أطرافها تطولها أو تقصرها.\n٥. اسحبها على الشاشة عشان تغير مكانها، ومن الدائرة الصفرا تكبرها.',
   text:'النص',textPh:'اكتب النص اللي يطلع بالحركة',font:'الخط',pal:'الألوان',orig:'الأصلي',brand:'🎨 هويتي',start:'البداية (ث)',dur:'المدة (ث)',x:'يمين ويسار',y:'فوق وتحت',size:'الحجم',dup:'⧉ نسخة',del:'🗑 حذف',goto:'▶ روح لها',
   cut:'جزء محذوف',cutDel:'🗑 رجّع هالجزء',vinfo:'الفيديو',trimIn:'يبدأ من',trimOut:'ينتهي عند',
@@ -18,7 +18,7 @@ var L={
   cats:{TXT:'نصوص',EMP:'إبراز',CAP:'كابشن',SOC:'سوشال',LGO:'شعارات',FX:'مؤثرات',SCR:'شاشات',TRK:'تتبع',D3:'ثلاثي',AUD:'صوت',CAM:'كاميرا',TRN:'انتقالات',PER:'الشخص',TIM:'الوقت'}},
  en:{title:'Motion Studio',back:'← Library',lib:'Motions',q:'Search: zoom, type, M-021',all:'All',ft:'on footage',ftNote:'This motion works on the footage itself (camera, transition or person effect). It does not show in the preview, but it sits on the timeline and goes into the prompt so Claude can apply it.',
   basket:'＋ From my basket',drop:'Upload the video you want to edit',dropS:'Drag it here or click to choose. The video stays on your device and is never uploaded.',dropQ:function(l){return '🎬 Motions waiting to be added ('+l+'). Upload your video and they go on it right away.';},dropR:function(n){return 'You have a saved project with '+n+' motions. Upload the same video to continue.';},newP:'New project',
-  play:'Play',pause:'Pause',vol:'Volume',zoom:'Timeline zoom',inH:'⇤ Start here',outH:'End here ⇥',cutA:'✂ Delete from here',cutB:'✂ …to here',tip:'💡 Drag a motion on the timeline to move it earlier or later; drag its edge to make it longer or shorter. On the video: drag it to move it, pinch with two fingers (or use the yellow dot) to resize. Trim the video with «Start here», «End here» and «Delete from here».',earlier:'⏪ Earlier',later:'Later ⏩',shorter:'Shorter',longer:'Longer',smaller:'➖ Smaller',bigger:'➕ Bigger',cutFrom:'From',cutTo:'To',chV:'🎞 Change video',clr:'🗑 Start over',clrQ:'Sure? The video and all motions will be removed and you start from scratch.',undo:'↶ Undo',
+  play:'Play',pause:'Pause',vol:'Volume',zoom:'Timeline zoom',inH:'⇤ Start here',outH:'End here ⇥',cutA:'✂ Split here',cutB:'✂ Split here',delB:'🗑 Delete',restore:'↩ Bring it back',segT:'Video part',segDel:'🗑 Delete this part',tip:'💡 Drag a motion on the timeline to move it earlier or later; drag its edge to make it longer or shorter. On the video: drag it to move it, pinch with two fingers (or use the yellow dot) to resize. To cut the video: put the playhead and press «✂ Split here», tap the part you want gone and press «🗑 Delete». The same button deletes a selected motion.',earlier:'⏪ Earlier',later:'Later ⏩',shorter:'Shorter',longer:'Longer',smaller:'➖ Smaller',bigger:'➕ Bigger',cutFrom:'From',cutTo:'To',chV:'🎞 Change video',pvAdd:'＋ Add it to the video',clr:'🗑 Start over',clrQ:'Sure? The video and all motions will be removed and you start from scratch.',undo:'↶ Undo',
   insp:'Settings',none:'Pick a motion on the timeline or on screen to edit it.\n\nSteps:\n1. Upload the video.\n2. Move the red playhead where you want.\n3. Press ＋ on any motion in the list.\n4. Drag it on the timeline to change its time; drag its edges to make it longer or shorter.\n5. Drag it on screen to move it; drag the yellow dot to resize.',
   text:'Text',textPh:'Type the text the motion shows',font:'Font',pal:'Colours',orig:'Original',brand:'🎨 My brand',start:'Start (s)',dur:'Duration (s)',x:'Left / right',y:'Up / down',size:'Size',dup:'⧉ Duplicate',del:'🗑 Delete',goto:'▶ Go to it',
   cut:'Deleted part',cutDel:'🗑 Restore this part',vinfo:'Video',trimIn:'Starts at',trimOut:'Ends at',
@@ -38,7 +38,7 @@ function $(i){return document.getElementById(i);}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function mBy(id){for(var i=0;i<M.length;i++)if(M[i].id===id)return M[i];return null;}
 function fBy(id){for(var i=0;i<FONTS.length;i++)if(FONTS[i].id===id)return FONTS[i];return null;}
-function pBy(id){if(id==='BR'){var b=brand();return b?{id:'BR',bg:b.bg,tx:b.tx,ac:b.ac,hl:b.hl}:null;}for(var i=0;i<CPS.length;i++)if(CPS[i].id===id)return CPS[i];return null;}
+function pBy(id){var cu=XCol.cuParse(id);if(cu)return cu;if(id==='BR'){var b=brand();return b?{id:'BR',bg:b.bg,tx:b.tx,ac:b.ac,hl:b.hl}:null;}for(var i=0;i<CPS.length;i++)if(CPS[i].id===id)return CPS[i];return null;}
 function brand(){try{var b=JSON.parse(localStorage.getItem('ml-brand'));return b&&b.on?b:null;}catch(e){return null;}}
 function mDur(m){var d=parseFloat(m.d||'2.8');return isFinite(d)&&d>0?d:2.8;}
 function fmt(t){t=Math.max(0,t||0);var m=Math.floor(t/60),s=t-m*60;return m+':'+(s<10?'0':'')+s.toFixed(1);}
@@ -46,11 +46,11 @@ var famDone={};
 function fam(id){var f=fBy(id);if(!f)return '';var n='sdf_'+f.id.replace('-','');if(!famDone[n]){famDone[n]=1;try{var ff=new FontFace(n,'url("'+fUrl(f)+'")',f.v?{weight:f.w[0]+' '+f.w[1]}:{});ff.load().then(function(x){document.fonts.add(x);}).catch(function(){});}catch(e){}}return '"'+n+'",var(--f-ar)';}
 
 /* ---------- state ---------- */
-var S={clips:[],cuts:[],tin:0,tout:null},uid=1,sel=null,selCut=null,vid=$('vid'),hasV=false,VD=0,VW=9,VH=16,pps=40,hist=[],pendCut=null;
+var S={clips:[],cuts:[],splits:[],tin:0,tout:null},selSeg=null,uid=1,sel=null,selCut=null,vid=$('vid'),hasV=false,VD=0,VW=9,VH=16,pps=40,hist=[],pendCut=null;
 function save(){try{localStorage.setItem('ml-studio',JSON.stringify({v:1,S:S,name:vname}));}catch(e){}}
 var vname='';
 function snap(){hist.push(JSON.stringify(S));if(hist.length>60)hist.shift();}
-function undo(){if(!hist.length)return;S=JSON.parse(hist.pop());S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});sel=null;selCut=null;rebuild();}
+function undo(){if(!hist.length)return;S=JSON.parse(hist.pop());S.splits=S.splits||[];selSeg=null;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});sel=null;selCut=null;rebuild();}
 
 /* ---------- swap text (same logic as the library's try-it window) ---------- */
 function textNodes(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){if(!n.textContent.trim())return NodeFilter.FILTER_REJECT;var p=n.parentElement;if(p.closest('.vtag,.lbl,.ph,.sd-foot,.sd-h'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}}),a=[],n;while(n=w.nextNode())a.push(n);return a;}
@@ -102,7 +102,7 @@ $('chV').addEventListener('click',function(){vid.pause();fin.value='';fin.click(
 $('clr').addEventListener('click',function(){if(!confirm(t_('clrQ')))return;vid.pause();try{localStorage.removeItem('ml-studio');}catch(e){}location.reload();});
 vid.addEventListener('loadedmetadata',function(){hasV=true;VD=vid.duration||0;VW=vid.videoWidth||9;VH=vid.videoHeight||16;drop.hidden=true;
   var saved=null;try{saved=JSON.parse(localStorage.getItem('ml-studio'));}catch(e){}
-  if(saved&&saved.S&&saved.S.clips&&saved.S.clips.length&&!S.clips.length){S=saved.S;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});}
+  if(saved&&saved.S&&saved.S.clips&&saved.S.clips.length&&!S.clips.length){S=saved.S;S.splits=S.splits||[];S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});}
   if(S.tout!=null&&S.tout>VD)S.tout=null;if(S.tin>=VD)S.tin=0;
   S.cuts=S.cuts.filter(function(k){return k.a<VD;});S.cuts.forEach(function(k){if(k.b>VD)k.b=VD;});
   S.clips.forEach(function(c){if(c.d>VD)c.d=Math.max(0.5,VD);if(c.s+c.d>VD)c.s=Math.max(0,VD-c.d);});
@@ -126,7 +126,22 @@ function libDraw(){var t=lq.value.trim().toLowerCase(),h='',n=0;
 function catsDraw(){var c=$('lcats');c.innerHTML='<button type="button" data-c="ALL">'+t_('all')+'</button>'+CORD.map(function(k){return '<button type="button" data-c="'+k+'">'+t_('cats')[k]+'</button>';}).join('');
   c.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.c===lcat);b.onclick=function(){lcat=b.dataset.c;catsDraw();libDraw();};});}
 lq.addEventListener('input',libDraw);
-list.addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(b){addClip(b.dataset.add);return;}var li=e.target.closest('li');if(li&&hasV)addClip(li.dataset.m);});
+var TOUCH=matchMedia('(hover:none)').matches;
+list.addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(b){pvHide();addClip(b.dataset.add);return;}var li=e.target.closest('li');if(!li)return;if(TOUCH){pvShow(li,true);return;}if(hasV)addClip(li.dataset.m);});
+/* motion preview: hover on a computer, tap on a phone */
+var pv=document.createElement('div');pv.className='sd-pv';pv.hidden=true;pv.innerHTML='<div class="sd-pvst"></div><p class="sd-pvn"></p><div class="sd-pva"><button type="button" class="sd-btn sm pri" data-pva></button><button type="button" class="sd-btn sm" data-pvx>✕</button></div>';document.body.appendChild(pv);
+var pvM=null,pvTm=null;
+function pvRender(){if(!pvM)return;var m=mBy(pvM),box=pv.querySelector('.sd-pvst'),b=brand();box.innerHTML='';var el=document.createElement('div');el.className='st'+(m.vcls?' '+m.vcls:'');el.style.setProperty('--d',(m.d||'2.8s'));el.style.setProperty('--vf',m.vf||1);
+  el.innerHTML=stageHTML(m);el.querySelectorAll('.scr').forEach(function(x){x.textContent=x.dataset.t||x.textContent;});el.querySelectorAll('.cnt').forEach(function(x){x.textContent=x.dataset.to||x.textContent;});
+  if(b){el.style.setProperty('--mon',b.bg);el.style.setProperty('--mon2',b.bg);el.style.setProperty('--mon-fg',b.tx);el.style.setProperty('--coral',b.ac);el.style.setProperty('--mint',b.hl);}box.appendChild(el);
+  clearTimeout(pvTm);pvTm=setTimeout(pvRender,(parseFloat(m.d)||2.8)*1000+900);}
+function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FT[m.c]?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
+  var a=pv.querySelector('[data-pva]');a.textContent=t_('pvAdd');a.disabled=!hasV;pv.classList.toggle('tap',!!tap);pv.hidden=false;pvRender();
+  if(!tap){var r=li.getBoundingClientRect(),w=pv.offsetWidth,h=pv.offsetHeight,x=r.left-w-12;if(x<8)x=r.right+12;var y=Math.max(8,Math.min(innerHeight-h-8,r.top+r.height/2-h/2));pv.style.left=x+'px';pv.style.top=y+'px';}else{pv.style.left='';pv.style.top='';}}
+function pvHide(){pv.hidden=true;pvM=null;clearTimeout(pvTm);pv.querySelector('.sd-pvst').innerHTML='';}
+if(!TOUCH){list.addEventListener('mouseover',function(e){var li=e.target.closest('li');if(li&&li.dataset.m!==pvM)pvShow(li,false);});list.addEventListener('mouseleave',pvHide);}
+pv.addEventListener('click',function(e){if(e.target.closest('[data-pva]')&&pvM){var id=pvM;pvHide();addClip(id);if(TOUCH)$('frame').scrollIntoView({block:'center',behavior:'smooth'});return;}if(e.target.closest('[data-pvx]'))pvHide();});
+document.addEventListener('pointerdown',function(e){if(!pv.hidden&&TOUCH&&!pv.contains(e.target)&&!e.target.closest('#list'))pvHide();});
 list.addEventListener('keydown',function(e){if(e.key==='Enter'){var li=e.target.closest('li');if(li&&hasV)addClip(li.dataset.m);}});
 function freeLane(s,d,skip){for(var l=0;l<20;l++){if(!S.clips.some(function(c){return c.u!==skip&&c.l===l&&c.s<s+d&&s<c.s+c.d;}))return l;}return 0;}
 function addClip(id,at,quiet){if(!hasV){alertMsg(t_('needV'));return null;}var m=mBy(id);if(!m)return null;snap();var d=Math.min(Math.max(2,mDur(m)),Math.max(.5,VD)),s=at!=null?at:(vid.currentTime||0);if(s+d>VD)s=Math.max(0,VD-d);
@@ -143,7 +158,8 @@ function drawTL(){if(!hasV){tlin.innerHTML='';return;}var W=Math.max(tlw.clientW
   h+='<div class="sd-trk sd-vtrk" id="vtrk" style="width:'+W+'px"><span class="sd-vlbl">🎬 '+esc(vname)+'</span>';
   if(S.tin>0)h+='<div class="sd-trim" style="left:0;width:'+(S.tin*pps)+'px"></div>';if(S.tout!=null)h+='<div class="sd-trim" style="left:'+(S.tout*pps)+'px;width:'+((VD-S.tout)*pps)+'px"></div>';
   S.cuts.forEach(function(k,i){h+='<div class="sd-cut'+(selCut===i?' sel':'')+'" data-cut="'+i+'" style="left:'+(k.a*pps)+'px;width:'+((k.b-k.a)*pps)+'px"></div>';});
-  if(pendCut!=null)h+='<div class="sd-cut" style="left:'+(pendCut*pps)+'px;width:3px"></div>';h+='</div>';
+  segList().forEach(function(g){var on=selSeg&&Math.abs(selSeg[0]-g[0])<1e-3&&Math.abs(selSeg[1]-g[1])<1e-3;h+='<div class="sd-seg'+(on?' sel':'')+'" data-sa="'+g[0]+'" data-sb="'+g[1]+'" style="left:'+(g[0]*pps)+'px;width:'+((g[1]-g[0])*pps)+'px"></div>';});
+  (S.splits||[]).forEach(function(x){h+='<i class="sd-split" style="left:'+(x*pps)+'px"></i>';});h+='</div>';
   for(var l=0;l<lanes();l++){h+='<div class="sd-trk" data-lane="'+l+'" style="width:'+W+'px">';S.clips.filter(function(c){return c.l===l;}).forEach(function(c){var m=mBy(c.m);
       h+='<div class="sd-blk'+(FT[m.c]?' ft':'')+(sel===c.u?' sel':'')+'" data-u="'+c.u+'" style="left:'+(c.s*pps)+'px;width:'+Math.max(14,c.d*pps)+'px"><i class="e l" data-e="l"></i><span>'+esc(m.id+' '+(c.text||m.en))+'</span><i class="e r" data-e="r"></i></div>';});h+='</div>';}
   h+='<div class="sd-ph" id="ph"></div>';tlin.innerHTML=h;tlin.style.width=W+'px';sync(true);}
@@ -153,8 +169,9 @@ function seek(t){vid.currentTime=Math.max(0,Math.min(VD,t));}
 var drag=null;
 tlin.addEventListener('pointerdown',function(e){if(!hasV)return;var blk=e.target.closest('.sd-blk'),cut=e.target.closest('[data-cut]');
   if(blk){var c=byU(+blk.dataset.u);sel=c.u;selCut=null;snap();drag={k:e.target.dataset.e||'m',c:c,x0:e.clientX,y0:e.clientY,s0:c.s,d0:c.d,l0:c.l,moved:false};blk.setPointerCapture(e.pointerId);markSel();insp();e.preventDefault();return;}
-  if(cut){selCut=+cut.dataset.cut;sel=null;markSel();insp();drawTL();return;}
-  if(e.target.closest('#ruler,#vtrk')||e.target.closest('.sd-trk')){drag={k:'seek'};seek(tAt(e.clientX));tlin.setPointerCapture(e.pointerId);if(!e.target.closest('.sd-blk')){sel=null;selCut=null;markSel();insp();}}});
+  if(cut){selCut=+cut.dataset.cut;sel=null;selSeg=null;markSel();insp();drawTL();return;}
+  var sg=e.target.closest('.sd-seg');if(sg){selSeg=[+sg.dataset.sa,+sg.dataset.sb];sel=null;selCut=null;seek(tAt(e.clientX));markSel();insp();drawTL();return;}
+  if(e.target.closest('#ruler,#vtrk')||e.target.closest('.sd-trk')){drag={k:'seek'};seek(tAt(e.clientX));tlin.setPointerCapture(e.pointerId);if(!e.target.closest('.sd-blk')){sel=null;selCut=null;if(selSeg){selSeg=null;drawTL();}markSel();insp();}}});
 tlin.addEventListener('pointermove',function(e){if(!drag)return;if(drag.k==='seek'){seek(tAt(e.clientX));return;}var c=drag.c,dt=(e.clientX-drag.x0)/pps;drag.moved=true;
   if(drag.k==='m'){c.s=+Math.max(0,Math.min(VD-c.d,drag.s0+dt)).toFixed(2);var lh=(tlin.querySelector('.sd-trk[data-lane]')||{}).offsetHeight||34,dl=Math.round((e.clientY-drag.y0)/lh);c.l=Math.max(0,drag.l0+dl);}
   else if(drag.k==='l'){var ns=Math.max(0,Math.min(drag.s0+drag.d0-.3,drag.s0+dt));c.d=+(drag.s0+drag.d0-ns).toFixed(2);c.s=+ns.toFixed(2);}
@@ -163,7 +180,7 @@ tlin.addEventListener('pointermove',function(e){if(!drag)return;if(drag.k==='see
 function endDrag(){if(!drag)return;var d=drag;drag=null;if(d.c){if(!d.moved)hist.pop();var c=d.c;if(S.clips.some(function(o){return o.u!==c.u&&o.l===c.l&&o.s<c.s+c.d&&c.s<o.s+o.d;}))c.l=freeLane(c.s,c.d,c.u);drawTL();insp();save();}}
 tlin.addEventListener('pointerup',endDrag);tlin.addEventListener('pointercancel',endDrag);
 function byU(u){for(var i=0;i<S.clips.length;i++)if(S.clips[i].u===u)return S.clips[i];return null;}
-function markSel(){ovl.classList.toggle('hasSel',sel!=null);document.querySelectorAll('.sd-clip').forEach(function(el){el.classList.toggle('sel',+el.dataset.u===sel);});document.querySelectorAll('.sd-blk').forEach(function(el){el.classList.toggle('sel',+el.dataset.u===sel);});}
+function markSel(){ovl.classList.toggle('hasSel',sel!=null);setTimeout(updDel,0);document.querySelectorAll('.sd-clip').forEach(function(el){el.classList.toggle('sel',+el.dataset.u===sel);});document.querySelectorAll('.sd-blk').forEach(function(el){el.classList.toggle('sel',+el.dataset.u===sel);});}
 
 /* ---------- drag on the preview ---------- */
 var pdrag=null;
@@ -182,7 +199,7 @@ ovl.addEventListener('pointerup',endP);ovl.addEventListener('pointercancel',endP
 /* ---------- inspector ---------- */
 var IN=$('insb');
 function opts(list,val){return list.map(function(o){return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+esc(o[1])+'</option>';}).join('');}
-function insp(){var c=sel!=null?byU(sel):null;
+function insp(){setTimeout(updDel,0);var c=sel!=null?byU(sel):null;
   if(c){var m=mBy(c.m),b=brand();
     var fo=[['',t_('orig')]].concat(FONTS.map(function(f){return [f.id,f.id+' · '+f.n];}));
     var po=[['',t_('orig')]].concat(b?[['BR',t_('brand')]]:[]).concat(CPS.map(function(p){return [p.id,p.id+' · '+(lang==='ar'?p.ar:p.en)];}));
@@ -193,6 +210,7 @@ function insp(){var c=sel!=null?byU(sel):null;
      '<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="s:-0.5">'+t_('earlier')+'</button><button type="button" class="sd-btn sm" data-nd="s:0.5">'+t_('later')+'</button><button type="button" class="sd-btn sm" data-nd="d:-0.5">'+t_('shorter')+'</button><button type="button" class="sd-btn sm" data-nd="d:0.5">'+t_('longer')+'</button></div>'+'<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="sc:-10">'+t_('smaller')+'</button><button type="button" class="sd-btn sm" data-nd="sc:10">'+t_('bigger')+'</button></div>'+'<label class="sd-f">'+t_('x')+' <input type="range" id="iX" min="0" max="100" value="'+c.x+'"></label><label class="sd-f">'+t_('y')+' <input type="range" id="iY" min="0" max="100" value="'+c.y+'"></label><label class="sd-f">'+t_('size')+' <input type="range" id="iSc" min="10" max="250" value="'+c.sc+'"></label>'+
      '<div class="sd-acts"><button type="button" class="sd-btn sm" id="iGo">'+t_('goto')+'</button><button type="button" class="sd-btn sm" id="iDup">'+t_('dup')+'</button><button type="button" class="sd-btn sm" id="iDel">'+t_('del')+'</button></div>';
     var tx=$('iTx'),tm=null;tx.addEventListener('focus',snap);tx.addEventListener('input',function(){c.text=tx.value;clearTimeout(tm);tm=setTimeout(function(){renderClip(c);drawTL();save();},200);});
+    XCol.opts($('iP'),c.p);XCol.wire($('iP'),pBy,function(id){snap();c.p=id;renderClip(c);save();});XFont.wire($('iF'),{famOf:fam,sample:function(){return c.text;},title:t_('font')});
     $('iF').addEventListener('change',function(e){snap();c.f=e.target.value;renderClip(c);save();});
     $('iP').addEventListener('change',function(e){snap();c.p=e.target.value;renderClip(c);save();});
     $('iS').addEventListener('change',function(e){snap();c.s=Math.max(0,Math.min(VD-.3,+e.target.value||0));c.d=Math.min(c.d,VD-c.s);drawTL();save();insFill();});
@@ -204,6 +222,7 @@ function insp(){var c=sel!=null?byU(sel):null;
     $('iGo').addEventListener('click',function(){seek(c.s+.01);});
     $('iDup').addEventListener('click',function(){snap();var n=JSON.parse(JSON.stringify(c));n.u=uid++;n.s=Math.min(VD-n.d,+(c.s+c.d).toFixed(2));n.l=freeLane(n.s,n.d);S.clips.push(n);sel=n.u;ovl.appendChild(clipEl(n));fontsCSS();drawTL();insp();save();});
     $('iDel').addEventListener('click',delSel);return;}
+  if(selSeg){IN.innerHTML='<p class="sd-mname"><b>🎬</b> '+t_('segT')+': '+fmt(selSeg[0])+' → '+fmt(selSeg[1])+'</p><div class="sd-acts"><button type="button" class="sd-btn sm" id="iSeg">'+t_('segDel')+'</button></div>';$('iSeg').addEventListener('click',delAny);return;}
   if(selCut!=null&&S.cuts[selCut]){var k=S.cuts[selCut];IN.innerHTML='<p class="sd-mname"><b>✂</b> '+t_('cut')+'</p><div class="sd-row"><label class="sd-f">'+t_('cutFrom')+'<input type="number" id="iCa" step="0.1" min="0" value="'+k.a.toFixed(1)+'"></label><label class="sd-f">'+t_('cutTo')+'<input type="number" id="iCb" step="0.1" min="0" value="'+k.b.toFixed(1)+'"></label></div><div class="sd-acts"><button type="button" class="sd-btn sm" id="iCut">'+t_('cutDel')+'</button></div>';
     ['iCa','iCb'].forEach(function(id){$(id).addEventListener('change',function(){snap();var a=Math.max(0,Math.min(VD,+$('iCa').value||0)),b=Math.max(0,Math.min(VD,+$('iCb').value||0));if(b-a<0.1)b=Math.min(VD,a+0.1);k.a=+a.toFixed(2);k.b=+b.toFixed(2);drawTL();save();});});
     $('iCut').addEventListener('click',function(){snap();S.cuts.splice(selCut,1);selCut=null;drawTL();insp();save();});return;}
@@ -217,11 +236,18 @@ function togglePlay(){if(!hasV)return;if(vid.paused){if(vid.currentTime>=tout()-
 $('vol').addEventListener('input',function(e){vid.volume=+e.target.value;vid.muted=vid.volume===0;});
 $('inH').addEventListener('click',function(){snap();S.tin=+vid.currentTime.toFixed(2);if(S.tout!=null&&S.tout<=S.tin)S.tout=null;drawTL();insp();save();});
 $('outH').addEventListener('click',function(){snap();var t=+vid.currentTime.toFixed(2);S.tout=t>S.tin?t:null;drawTL();insp();save();});
-$('cutB').addEventListener('click',function(){var t=+vid.currentTime.toFixed(2);if(pendCut==null){pendCut=t;$('cutB').textContent=t_('cutB');$('cutB').classList.add('pri');drawTL();return;}
-  var a=Math.min(pendCut,t),b=Math.max(pendCut,t);pendCut=null;$('cutB').textContent=t_('cutA');$('cutB').classList.remove('pri');if(b-a>=.05){snap();S.cuts.push({a:a,b:b});S.cuts.sort(function(x,y){return x.a-y.a;});}drawTL();save();});
+function segList(){var b=[S.tin].concat((S.splits||[]).filter(function(x){return x>S.tin+.05&&x<tout()-.05;})).concat([tout()]).sort(function(x,y){return x-y;}),out=[];
+  for(var i=0;i<b.length-1;i++){var a=b[i],c=b[i+1];if(c-a<.05)continue;if(S.cuts.some(function(k){return k.a<=a+.01&&k.b>=c-.01;}))continue;out.push([a,c]);}return out;}
+$('cutB').addEventListener('click',function(){var t=+vid.currentTime.toFixed(2);S.splits=S.splits||[];if(t<=S.tin+.05||t>=tout()-.05||S.splits.some(function(x){return Math.abs(x-t)<.05;}))return;
+  snap();S.splits.push(t);S.splits.sort(function(x,y){return x-y;});var g=segList().filter(function(x){return x[0]<=t+.001&&x[1]>t+.001;})[0];selSeg=g||null;sel=null;selCut=null;markSel();insp();drawTL();save();});
+function delAny(){if(sel!=null){delSel();return;}if(selSeg){snap();var a=selSeg[0],b=selSeg[1];S.cuts.push({a:a,b:b});S.cuts.sort(function(x,y){return x.a-y.a;});
+    var m=[];S.cuts.forEach(function(k){var l=m[m.length-1];if(l&&k.a<=l.b+.001)l.b=Math.max(l.b,k.b);else m.push({a:k.a,b:k.b});});S.cuts=m;selSeg=null;drawTL();insp();save();updDel();return;}
+  if(selCut!=null&&S.cuts[selCut]){snap();S.cuts.splice(selCut,1);selCut=null;drawTL();insp();save();updDel();}}
+function updDel(){var b=$('delB');if(!b)return;b.disabled=!(sel!=null||selSeg||selCut!=null);b.textContent=selCut!=null&&sel==null&&!selSeg?t_('restore'):t_('delB');}
+$('delB').addEventListener('click',delAny);
 $('undo').addEventListener('click',undo);
 document.addEventListener('keydown',function(e){var tg=e.target.tagName;if(tg==='INPUT'||tg==='TEXTAREA'||tg==='SELECT')return;
-  if(e.code==='Space'){e.preventDefault();togglePlay();}else if(e.key==='Delete'||e.key==='Backspace'){if(sel!=null){e.preventDefault();delSel();}else if(selCut!=null){snap();S.cuts.splice(selCut,1);selCut=null;drawTL();insp();save();}}
+  if(e.code==='Space'){e.preventDefault();togglePlay();}else if(e.key==='Delete'||e.key==='Backspace'){if(sel!=null||selSeg||selCut!=null){e.preventDefault();delAny();}}
   else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo();}
   else if(e.key==='ArrowLeft'||e.key==='ArrowRight'){seek((vid.currentTime||0)+(e.key==='ArrowRight'?1:-1)*(e.shiftKey?1:1/30));}});
 
@@ -238,8 +264,8 @@ $('exP').addEventListener('click',function(){var p=prompt_();modal('<h3>'+t_('pr
 /* ---------- save / open project ---------- */
 $('saveP').addEventListener('click',function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({studio:1,video:vname,S:S},null,1)],{type:'application/json'}));a.download=(vname||'project').replace(/\.[^.]+$/,'')+'-studio.json';document.body.appendChild(a);a.click();a.remove();});
 $('openP').addEventListener('click',function(){$('pfile').click();});
-$('pfile').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;f.text().then(function(t){var j=JSON.parse(t);if(!j||!j.studio||!j.S)throw 0;snap();S=j.S;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});sel=null;selCut=null;if(hasV)rebuild();else{save();dropInfo();}}).catch(function(){alertMsg(t_('badFile'));});e.target.value='';});
-$('newP').addEventListener('click',function(){snap();S={clips:[],cuts:[],tin:0,tout:null};sel=null;selCut=null;try{localStorage.removeItem('ml-studio');}catch(e){}if(hasV)rebuild();dropInfo();});
+$('pfile').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;f.text().then(function(t){var j=JSON.parse(t);if(!j||!j.studio||!j.S)throw 0;snap();S=j.S;S.splits=S.splits||[];S.cuts=S.cuts||[];selSeg=null;S.clips.forEach(function(c){uid=Math.max(uid,c.u+1);});sel=null;selCut=null;if(hasV)rebuild();else{save();dropInfo();}}).catch(function(){alertMsg(t_('badFile'));});e.target.value='';});
+$('newP').addEventListener('click',function(){snap();S={clips:[],cuts:[],splits:[],tin:0,tout:null};sel=null;selCut=null;selSeg=null;try{localStorage.removeItem('ml-studio');}catch(e){}if(hasV)rebuild();dropInfo();});
 function dropInfo(){var pq=pending();if($('dropQ'))$('dropQ').textContent=pq.length?t_('dropQ')(pq.map(function(x){return x.m;}).join('، ')):'';var s=null;try{s=JSON.parse(localStorage.getItem('ml-studio'));}catch(e){}var n=s&&s.S&&s.S.clips?s.S.clips.length:0;$('dropR').textContent=n?t_('dropR')(n)+(s.name?' ('+s.name+')':''):'';$('newP').hidden=!n||hasV;}
 
 /* ---------- MP4 export: every frame is drawn on this device (phone or computer), then saved as MP4 ---------- */
@@ -288,7 +314,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(xp)xp.st
 /* ---------- language ---------- */
 function applyL(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.title=t_('title')+' · Alansari.Tech';
   document.querySelectorAll('[data-t]').forEach(function(e){if(e.closest('.sd-clip'))return;var k=e.dataset.t;if(L[lang][k]!=null&&typeof L[lang][k]==='string')e.textContent=L[lang][k];});
-  lq.placeholder=t_('q');$('cutB').textContent=pendCut==null?t_('cutA'):t_('cutB');
+  lq.placeholder=t_('q');$('cutB').textContent=t_('cutA');updDel();
   document.querySelectorAll('.sd-lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===lang);});
   S.clips.forEach(function(c){var m=mBy(c.m);m._en=null;});catsDraw();libDraw();if(hasV){rebuild();}else insp();dropInfo();}
 document.querySelectorAll('.sd-lang button').forEach(function(b){b.addEventListener('click',function(){lang=b.dataset.l;try{localStorage.setItem('ml-lang',lang);}catch(e){}applyL();});});

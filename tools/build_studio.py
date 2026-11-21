@@ -13,7 +13,7 @@ k=s.index("/* English preview text */",j);l=s.index("function paint(o)",k);eng+=
 a=s.index("var ARFIX=",l);b=s.index("\n",s.index("function arFix(",a));eng+=s[a:b]+"\n"
 f=s.index("var FONTS=[");eng+=s[f:s.index("\n",f)]+"\n"
 g=s.index("function fUrl(f)");eng+=s[g:s.index("\n",g)]+"\n"
-eng+=open(os.path.join(R,'tools','extras','x-data.js')).read()
+eng+=open(os.path.join(R,'tools','extras','x-data.js')).read()+'\n'+open(os.path.join(R,'tools','extras','x-color.js')).read()
 chip=re.search(r'<img class="chip"[^>]*>|<img[^>]*class="brand-chip"[^>]*>',s)
 fav=re.search(r'<link rel="icon" href="(data:image/svg\+xml,[^"]+)"',s).group(1)
 t=open(os.path.join(D,'studio.src.html')).read()
