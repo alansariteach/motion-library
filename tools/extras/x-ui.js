@@ -333,7 +333,7 @@ function labTexts(){document.getElementById('labT').textContent=X('labT');docume
 function openLab(id,btn,txt){labM=mById(id);if(!labM)return;labBack=btn;if(txt)document.getElementById('labIn').value=txt;labOpts();labTexts();document.getElementById('labId').textContent=labM.id+' · '+labM.en;labDraw();lab.hidden=false;document.getElementById('labX').focus({preventScroll:true});goat('try-open',id);}
 function labClose(){if(lab.hidden)return;lab.hidden=true;document.getElementById('labSt').innerHTML='';labCss.textContent='';if(labBack)labBack.focus({preventScroll:true});}
 var labTm=null;document.getElementById('labIn').addEventListener('input',function(){clearTimeout(labTm);labTm=setTimeout(labDraw,250);});
-XCol.wire(document.getElementById('labP'),function(v){return v==='BR'?brPal():pById(v);},labDraw);XFont.wire(document.getElementById('labF'),{famOf:fontFam,sample:function(){return labHasText?document.getElementById('labIn').value.trim():'';},title:X('labF')});
+XCol.wire(document.getElementById('labP'),function(v){return v==='BR'?brPal():pById(v);},labDraw);XPal.wire(document.getElementById('labP'),{resolve:function(v){return v==='BR'?brPal():pById(v);},title:X('labP')});XFont.wire(document.getElementById('labF'),{famOf:fontFam,sample:function(){return labHasText?document.getElementById('labIn').value.trim():'';},title:X('labF')});
 document.getElementById('labF').addEventListener('change',labDraw);document.getElementById('labP').addEventListener('change',labDraw);document.getElementById('labRe').addEventListener('click',labDraw);
 document.getElementById('labCp').addEventListener('click',function(e){var t=document.getElementById('labIn').value.trim()||'[النص]',f=fById(document.getElementById('labF').value),p=pById(document.getElementById('labP').value);
   var p2=document.getElementById('labP').value==='BR'?null:p;var pr=labHasText?X('labPr')(labM,t,f,p2):UI[lang].pr(labM)+(p?' '+cpPr(p):'');copyText(pr,e.currentTarget,X('labCp'));});
@@ -416,6 +416,7 @@ brp.innerHTML='<div class="bkbox"><div class="bkh"><h2 id="brT"></h2><button typ
  '<div class="acts"><button type="button" id="brS"></button><button type="button" id="brC"></button></div></div></div>';
 document.body.appendChild(brp);
 function brLogoSync(){var b=document.getElementById('brLogo'),o=XLogo.get();b.querySelector('i').style.backgroundImage=o?'url('+XLogo.url()+')':'';b.classList.toggle('has',!!o);b.querySelector('span').textContent=o?(lang==='ar'?'🏷 شعارك (اضغط تعدّله)':'🏷 Your logo (tap to edit)'):(lang==='ar'?'🏷 ارفع شعارك':'🏷 Upload your logo');document.getElementById('brLg').checked=!!o;}
+XPal.wire(document.getElementById('brP'),{resolve:function(v){return pById(v);},title:lang==='ar'?'خذ ألوان بالِتة جاهزة':'Take a ready palette'});
 document.getElementById('brLogo').addEventListener('click',function(){XLogo.editor(function(o){BR.logo=!!o;lss('ml-brand',BR);brLogoSync();cvDraw();});});
 setTimeout(function(){brLogoSync();XLogo.previews();},0);
 ['bg','tx','ac','hl'].forEach(function(k,i){XCol.enhance(document.getElementById('br_'+k),function(){return XCol.t('slots')[i];});});XFont.wire(document.getElementById('brF'),{famOf:fontFam,sample:function(){return document.getElementById('brN').value.trim();},title:lang==='ar'?'خط هويتي':'Brand font'});
@@ -901,7 +902,7 @@ function xLang(){document.querySelectorAll('.tabs button[data-tab]').forEach(fun
   ['cTi','cSu','cTp','cPh'].forEach(function(i){document.getElementById(i+'L').textContent=X2t(i);});document.getElementById('cNuL').textContent=lang==='ar'?'الرقم الكبير':'Big number';cvNumShow();document.getElementById('cPL').textContent=X('pal');document.getElementById('cFL').textContent=X('font');document.getElementById('cDl').textContent=X2t('cDl');document.getElementById('cTi').placeholder=X2t('cDefT');document.getElementById('cSu').placeholder=X2t('cDefS');
   var ct=document.getElementById('cTp'),cv=ct.value;ct.innerHTML=CVS.map(function(c){return '<option value="'+c.id+'">'+c.id+' · '+nm(c)+'</option>';}).join('');ct.value=cv||'CV-01';
   var cp2=document.getElementById('cP'),pv=cp2.value;cp2.innerHTML=(brOn()?'<option value="BR">🎨 '+X2t('brB')+'</option>':'')+CPS.map(function(p){return '<option value="'+p.id+'">'+p.id+' · '+nm(p)+'</option>';}).join('');cp2.value=pv&&(pv!=='BR'||brOn())?pv:(brOn()?'BR':'CP-01');
-  XCol.opts(cp2,cp2.value);XCol.wire(cp2,function(v){return v==='BR'?brPal():pById(v);},cvDraw);
+  XCol.opts(cp2,cp2.value);XCol.wire(cp2,function(v){return v==='BR'?brPal():pById(v);},cvDraw);XPal.wire(cp2,{resolve:function(v){return v==='BR'?brPal():pById(v);}});
   var cf=document.getElementById('cF'),fv2=cf.value;cf.innerHTML=FONTS.map(function(f){return '<option value="'+f.id+'">'+f.id+' · '+f.n+'</option>';}).join('');cf.value=fv2||(brOn()&&BR.f?BR.f:'FA-02');cvDraw();
   XFont.wire(cf,{famOf:fontFam,sample:function(){var e=document.getElementById('cTi');return e?e.value.trim():'';},title:X5t?(lang==='ar'?'الخط':'Font'):'Font'});
   
