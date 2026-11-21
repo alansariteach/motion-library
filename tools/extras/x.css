@@ -417,3 +417,8 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xcpcu .cpst{background:var(--b,#102E33)}
 .xcpcu .cuwheel{width:62%;aspect-ratio:1;border-radius:50%;margin:auto;background:conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);box-shadow:0 0 0 8px rgba(255,255,255,.12)}
 .xcpcu{border:2px dashed var(--acc2)}
+
+.xlgbtn{display:flex;align-items:center;gap:10px;border:2px dashed var(--acc2);background:transparent;color:var(--fg);border-radius:14px;padding:10px 12px;font:800 14px var(--f-ar);cursor:pointer;width:100%}
+.xlgbtn i{width:46px;height:46px;border-radius:10px;flex:0 0 auto;background:repeating-conic-gradient(#d9d4cc 0 25%,#fff 0 50%) 0 0/12px 12px;background-size:contain;background-repeat:no-repeat;background-position:center}
+.xlgbtn.has i{background:center/contain no-repeat,repeating-conic-gradient(#d9d4cc 0 25%,#fff 0 50%) 0 0/12px 12px}
+.xlgbtn.has{border-style:solid}

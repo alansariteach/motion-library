@@ -3,7 +3,7 @@ Safe to run again: it replaces the previous copy."""
 import re,sys,os
 D=os.path.dirname(os.path.abspath(__file__));S=sys.argv[1] if len(sys.argv)>1 else os.path.join(D,'..','index.html')
 s=open(S).read();X=os.path.join(D,'extras')
-css=open(X+'/x.css').read();js=open(X+'/x-data.js').read()+'\n'+open(X+'/x-color.js').read()+'\n'+open(X+'/x-ui.js').read()
+css=open(X+'/x.css').read();js=open(X+'/x-data.js').read()+'\n'+open(X+'/x-color.js').read()+'\n'+open(X+'/x-logo.js').read()+'\n'+open(X+'/x-ui.js').read()
 def put(s,a,b,body,anchor,before=False):
     if a in s: return re.sub(re.escape(a)+'.*?'+re.escape(b),lambda m:a+body+b,s,flags=re.S)
     i=s.index(anchor)+(0 if before else len(anchor));return s[:i]+a+body+b+s[i:]

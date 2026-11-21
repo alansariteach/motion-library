@@ -411,10 +411,13 @@ brp.innerHTML='<div class="bkbox"><div class="bkh"><h2 id="brT"></h2><button typ
  '<div class="labc"><label><span id="brNL"></span><input id="brN" type="text" maxlength="40"></label><label><span id="brHL"></span><input id="brH" type="text" maxlength="40" dir="ltr" placeholder="@"></label>'+
  '<div class="brcs">'+['bg','tx','ac','hl'].map(function(k,i){return '<label class="brc"><input type="color" id="br_'+k+'"><span class="brcl" data-i="'+i+'"></span></label>';}).join('')+'</div>'+
  '<label><span id="brPL"></span><select id="brP"></select></label><label><span id="brFL"></span><select id="brF"></select></label>'+
- '<label class="chk"><input type="checkbox" id="brLg"><span id="brLL"></span></label><label class="chk"><input type="checkbox" id="brOn"><span id="brOL"></span></label>'+
+ '<label class="chk" hidden><input type="checkbox" id="brLg"><span id="brLL"></span></label><button type="button" class="xlgbtn" id="brLogo"><i></i><span></span></button><label class="chk"><input type="checkbox" id="brOn"><span id="brOL"></span></label>'+
  '<div class="brpv" id="brPv"><b></b><span></span></div>'+
  '<div class="acts"><button type="button" id="brS"></button><button type="button" id="brC"></button></div></div></div>';
 document.body.appendChild(brp);
+function brLogoSync(){var b=document.getElementById('brLogo'),o=XLogo.get();b.querySelector('i').style.backgroundImage=o?'url('+XLogo.url()+')':'';b.classList.toggle('has',!!o);b.querySelector('span').textContent=o?(lang==='ar'?'🏷 شعارك (اضغط تعدّله)':'🏷 Your logo (tap to edit)'):(lang==='ar'?'🏷 ارفع شعارك':'🏷 Upload your logo');document.getElementById('brLg').checked=!!o;}
+document.getElementById('brLogo').addEventListener('click',function(){XLogo.editor(function(o){BR.logo=!!o;lss('ml-brand',BR);brLogoSync();cvDraw();});});
+setTimeout(function(){brLogoSync();XLogo.previews();},0);
 ['bg','tx','ac','hl'].forEach(function(k,i){XCol.enhance(document.getElementById('br_'+k),function(){return XCol.t('slots')[i];});});XFont.wire(document.getElementById('brF'),{famOf:fontFam,sample:function(){return document.getElementById('brN').value.trim();},title:lang==='ar'?'خط هويتي':'Brand font'});
 function brFill(){var g=function(i){return document.getElementById(i);};g('brN').value=BR.name;g('brH').value=BR.handle;['bg','tx','ac','hl'].forEach(function(k){g('br_'+k).value=BR[k];});g('brLg').checked=!!BR.logo;g('brOn').checked=!!BR.on;g('brF').value=BR.f||'';brPv();}
 function brRead(){var g=function(i){return document.getElementById(i);};BR.name=g('brN').value.trim();BR.handle=g('brH').value.trim();if(BR.handle&&BR.handle[0]!=='@')BR.handle='@'+BR.handle;['bg','tx','ac','hl'].forEach(function(k){BR[k]=g('br_'+k).value.toUpperCase();});BR.f=g('brF').value;BR.logo=g('brLg').checked;BR.on=g('brOn').checked;}
@@ -564,7 +567,8 @@ function cvDraw(){var cv=document.getElementById('cvC');if(!cv||document.getElem
     else if(tp==='CV-04'){c.textAlign='center';c.fillStyle=p.ac;c.globalAlpha=.22;c.font='900 1200px '+fam;c.fillText(rtl?'؟':'?',W/2,1450);c.globalAlpha=1;o=fitT(c,t,fam,860,560,150);y=lines(o,W/2,820,p.tx);c.fillStyle=p.hl;c.fillRect(W/2-90,y+10,180,14);if(sub)small(sub,W/2,y+110,p.tx,46);}
     else if(tp==='CV-05'){c.fillStyle=p.ac;c.fillRect(0,0,W,1000);o=fitT(c,t,fam,880,520,150);lines(o,W/2,1000-o.L.length*o.s*1.18+o.s*.6-60,p.bg);if(sub){o=fitT(c,sub,fam,880,360,110);c.font='800 '+o.s+'px '+fam;lines(o,W/2,1130+o.s*.8,p.tx);}small(hd,W/2,1620,p.hl,40);}
     else{var x=rtl?W-130:130,al=rtl?'right':'left';small(hd,x,420,p.ac,40,al);o=fitT(c,t,fam,820,700,140);c.font='800 '+o.s+'px '+fam;y=lines(o,x,560+o.s,p.tx,al);c.fillStyle=p.hl;c.fillRect(rtl?W-130-160:130,y+10,160,10);if(sub)small(sub,x,y+100,p.tx,44,al);}
-    c.restore();}}
+    c.restore();
+    var lo=XLogo.get(),li=XLogo.image();if(lo&&li){var pd=function(){var r=XLogo.place(lo,W,H);c.save();c.globalAlpha=(lo.op||90)/100;c.drawImage(li,r.x,r.y,r.w,r.h);c.restore();};if(li.complete&&li.naturalWidth)pd();else li.onload=function(){cvDraw();};}}}
 document.getElementById('cDl').addEventListener('click',function(){var cv=document.getElementById('cvC');try{var a=document.createElement('a');a.download='cover-'+(document.getElementById('cTp').value||'CV-01')+'.png';a.href=cv.toDataURL('image/png');document.body.appendChild(a);a.click();a.remove();goat('cover-download','Cover downloaded');}catch(e){}});
 
 /* --- platform UI overlay --- */
@@ -906,7 +910,7 @@ function xLang(){document.querySelectorAll('.tabs button[data-tab]').forEach(fun
   ['brT','brD'].forEach(function(i){document.getElementById(i).textContent=X2t(i);});document.getElementById('brNL').textContent=X2t('brN');document.getElementById('brHL').textContent=X2t('brH');document.querySelectorAll('.brcl').forEach(function(s){s.textContent=X2t('brC')[+s.dataset.i];});
   document.getElementById('brPL').textContent=X2t('brFrom');var bp=document.getElementById('brP');bp.innerHTML='<option value="">—</option>'+CPS.map(function(p){return '<option value="'+p.id+'">'+p.id+' · '+nm(p)+'</option>';}).join('');
   document.getElementById('brFL').textContent=X2t('brF');var bf=document.getElementById('brF'),bfv=bf.value||BR.f;bf.innerHTML=FONTS.map(function(f){return '<option value="'+f.id+'">'+f.id+' · '+f.n+'</option>';}).join('');bf.value=bfv;
-  document.getElementById('brLL').textContent=X2t('brL');document.getElementById('brOL').textContent=X2t('brOn');document.getElementById('brS').textContent=X2t('brSave');document.getElementById('brC').textContent=X2t('brClr');brSync();r3Lang();r4Lang();r5Lang();
+  document.getElementById('brLL').textContent=X2t('brL');brLogoSync();document.getElementById('brOL').textContent=X2t('brOn');document.getElementById('brS').textContent=X2t('brSave');document.getElementById('brC').textContent=X2t('brClr');brSync();r3Lang();r4Lang();r5Lang();
   ucRender();bkRender();syncBtns();labOpts();labTexts();
   document.getElementById('wnT').innerHTML=X('wn');document.getElementById('instB').textContent=X('inst');var ii=document.getElementById('instI');ii.textContent=X('instIos');ii.hidden=!ios;}
 var _al2=applyLang;applyLang=function(){var H=Array.prototype.slice.call(document.querySelectorAll('#grid,#fontsView,.xv')),P=H.map(function(e){return e.style.display;});H.forEach(function(e){e.style.display='none';});try{_al2();xLang();}finally{H.forEach(function(e,i){e.style.display=P[i];});}};
