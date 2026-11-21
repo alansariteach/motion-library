@@ -4147,7 +4147,7 @@ function gLang(){gbar.querySelectorAll('button[data-g]').forEach(function(b){var
 var stv=document.createElement('section');stv.id='xv-ST';stv.className='xstv';stv.hidden=true;stv.innerHTML='<iframe id="stFrame" title="Motion Studio" allow="clipboard-write; fullscreen"></iframe>';
 document.getElementById('xv-'+VIEWS[VIEWS.length-1][0]).after(stv);HASH.ST='studio';
 var gst=document.createElement('button');gst.type='button';gst.dataset.g='ST';gst.className='xgst';gst.innerHTML='<span class="xnum">🎬</span><span class="xgl"></span><em class="nb"></em>';gbar.appendChild(gst);gst.onclick=function(){showTab('ST');};
-function stFrame(){var f=document.getElementById('stFrame');if(!f.getAttribute('src'))f.setAttribute('src','studio.html');return f;}
+function stFrame(){var f=document.getElementById('stFrame');if(!f.getAttribute('src'))f.setAttribute('src','studio.html?v='+Date.now().toString(36));return f;}
 var show2=showTab;
 showTab=function(t){if(t!=='ST'){stv.hidden=true;document.body.classList.remove('xstudio-on');show2(t);return;}
   stopSx();document.getElementById('fontsView').hidden=true;document.getElementById('motionsView').hidden=true;VIEWS.forEach(function(v){document.getElementById('xv-'+v[0]).hidden=true;});
