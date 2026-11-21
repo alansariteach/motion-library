@@ -15,6 +15,8 @@
   <div class="sd-ttl"><!--CHIP--><span data-t="title">استوديو الموشن</span></div>
   <a class="sd-back" href="./" data-t="back">← المكتبة</a>
   <button type="button" class="sd-btn" id="undo" data-t="undo" data-nv>↶ تراجع</button>
+  <button type="button" class="sd-btn" id="chV" data-t="chV" data-nv>🎞 غيّر الفيديو</button>
+  <button type="button" class="sd-btn" id="clr" data-t="clr" data-nv>🗑 ابدأ من جديد</button>
   <button type="button" class="sd-btn" id="openP" data-t="open">📂 فتح مشروع</button>
   <button type="button" class="sd-btn" id="saveP" data-t="save" data-nv>💾 حفظ المشروع</button>
   <button type="button" class="sd-btn dk" id="exP" data-t="exP" data-nv>⧉ برومبت للذكاء الاصطناعي</button>
@@ -45,6 +47,7 @@
    <label><span data-t="zoom">تكبير التايم لاين</span><input type="range" id="zoom" min="8" max="200" value="40"></label>
   </div>
   <div class="sd-tlw" id="tlw"><div class="sd-tlin" id="tlin"></div></div>
+  <p class="sd-tip" data-t="tip"></p>
  </section>
 </div>
 <input type="file" id="vfile" accept="video/*" hidden>

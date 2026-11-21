@@ -113,3 +113,19 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
  .sd-tlw{height:200px;flex:none}
  .sd-top .sd-ttl{font-size:15px}
 }
+
+/* phone-friendly editing */
+.sd-ovl.hasSel{touch-action:none}
+#ruler,.sd-vtrk{touch-action:none}
+.sd-tip{margin:6px 10px 2px;font-size:12.5px;line-height:1.7;opacity:.8}
+.sd-nudge{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:6px}
+@media (pointer:coarse){
+ .sd-trk{height:46px}
+ .sd-blk{top:4px;height:38px;font-size:12px;padding:0 24px}
+ .sd-blk .e{width:22px;background:rgba(255,255,255,.3)}
+ .sd-blk .e::after{content:"";position:absolute;top:9px;bottom:9px;left:50%;width:3px;margin-left:-1.5px;border-radius:2px;background:rgba(255,255,255,.9)}
+ .sd-clip .sd-h{width:34px;height:34px;right:-17px;bottom:-17px}
+ .sd-vtrk{height:46px}
+ .sd-tlw{height:260px}
+}
+.sd-insp input[type=range]{direction:ltr}
