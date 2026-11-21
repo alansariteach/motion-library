@@ -1459,6 +1459,8 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-clip.foot{aspect-ratio:1/1;width:16%!important;border:2px dashed rgba(255,255,255,.0)}
 .sd-clip.foot.sel{border-color:rgba(255,200,87,.9);border-radius:50%!important}
 .sd-fxwait{position:absolute;left:50%;bottom:10px;translate:-50% 0;background:rgba(0,0,0,.7);color:#fff;font:700 12px var(--f-ar,system-ui);padding:5px 10px;border-radius:99px;z-index:60;pointer-events:none}
+.sd-chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:6px 0}.sd-chk input{width:18px;height:18px;accent-color:#FFC857}
+.sd-clip .obj{display:none!important}.sd-clip [style*="--k:ktrk"]{animation-name:none!important;transform:none!important}
 </style>
 </head>
 <body class="sd">
@@ -3171,11 +3173,12 @@ var GOLD='#FFC857';
 var DUR={'M-016':.8,'M-017':.7,'M-018':.9,'M-019':.8,'M-020':.6,'M-101':.9,'M-102':.7,'M-103':.6,'M-104':.7,'M-105':1,'M-106':.8,'M-107':.7,'M-108':.8,'M-109':.8,'M-110':.6,'M-111':.8,'M-112':.5,'M-113':.5,'M-114':.8,'M-115':.8,'M-116':.7,'M-117':.8,'M-118':1,'M-119':.5,'M-120':.6,'M-267':1.2,'M-268':1.4,'M-269':.9,'M-270':1.1,'M-271':.6,
   'M-021':2,'M-022':4,'M-023':1,'M-024':2.5,'M-025':5,'M-121':3,'M-122':4,'M-123':4,'M-124':2,'M-125':1.5,'M-126':4,'M-127':2,'M-128':1.2,'M-129':1.5,'M-130':4,'M-131':1.5,'M-132':3,'M-133':3,'M-134':2,'M-135':2,'M-136':3,'M-137':2,'M-138':3,'M-139':3,'M-140':1.5,
   'M-201':3,'M-202':3,'M-203':2.5,'M-204':3,'M-205':3,'M-206':3,'M-207':3,'M-208':3,'M-209':2,'M-210':3,'M-211':3,'M-212':2,'M-213':2.5,
-  'M-259':2,'M-260':2,'M-261':2,'M-262':2,'M-263':2,'M-264':4,'M-265':1.6,'M-266':1.6};
-var PERSON={'M-121':1,'M-124':1,'M-201':1,'M-202':1,'M-203':1,'M-204':1,'M-205':1,'M-206':1,'M-207':1,'M-208':1,'M-209':1,'M-210':1,'M-211':1,'M-212':1,'M-213':1,'M-262':1};
+  'M-243':3,'M-155':2.4,'M-156':3,'M-217':1.2,'M-218':2,'M-219':1.5,'M-251':4,'M-259':2,'M-260':2,'M-261':2,'M-262':2,'M-263':2,'M-264':4,'M-265':1.6,'M-266':1.6};
+var PERSON={'M-243':1,'M-251':1,'M-121':1,'M-124':1,'M-201':1,'M-202':1,'M-203':1,'M-204':1,'M-205':1,'M-206':1,'M-207':1,'M-208':1,'M-209':1,'M-210':1,'M-211':1,'M-212':1,'M-213':1,'M-262':1};
 var TRN_HOLD={'M-135':1};/* also every TRN */
 function bid(m){return m&&(m.base||m.id);}
-function isFoot(m){return !!(m&&FOOT[m.c]);}
+var EXTRA={'M-243':1,'M-155':1,'M-156':1,'M-217':1,'M-218':1,'M-219':1,'M-251':1};
+function isFoot(m){return !!(m&&(FOOT[m.c]||EXTRA[bid(m)]));}
 /* the text-behind effect keeps its own (editable) title on top of the video, under the person */
 function keepsHTML(m){return bid(m)==='M-201';}
 function dur(m){var d=DUR[bid(m)];if(!d)return null;return Math.max(.3,+(d*(m.vf||1)).toFixed(2));}
@@ -3336,6 +3339,16 @@ function camDraw(x,img,mask,it,W,H,io){var b=it.b,lt=it.lt,d=it.d,p=it.p,f={cx:i
   case 'M-135':full(x,img,W,H);gray(x,W,H,.85,0);x.save();x.globalAlpha=.18;x.globalCompositeOperation='overlay';x.fillStyle='#000';x.fillRect(0,0,W,H);x.restore();return;
   case 'M-137':s=lt<d*.5?1+.04*(lt/(d*.5)):lt<d*.5+.15?1.04+.26*eo((lt-d*.5)/.15):1.3+.03*eo((lt-d*.5-.15)/Math.max(.1,d*.5-.15));go({s:s});return;
   case 'M-140':var kf=[[0,1],[.15,1.32],[.28,1.16],[.4,1.24],[.5,1.22]],v=1.22;for(var i=0;i<kf.length-1;i++)if(lt<kf[i+1][0]){v=kf[i][1]+(kf[i+1][1]-kf[i][1])*eio((lt-kf[i][0])/(kf[i+1][0]-kf[i][0]));break;}go({s:v});return;
+  case 'M-243':full(x,img,W,H);if(!mask||!mask.any||io.front)return;var fh=mask.head,rw=fh.w*W*.62,rh=rw*1.3,fcx=fh.x*W,fcy=fh.y*H+rh*.15,px=Math.max(6,Math.round(W*.035)),sm=cv(Math.max(2,Math.round(W/px)),Math.max(2,Math.round(H/px)));sm.getContext('2d').drawImage(img,0,0,sm.width,sm.height);
+    x.save();x.beginPath();x.ellipse(fcx,fcy,rw,rh,0,0,6.283);x.clip();x.imageSmoothingEnabled=false;x.drawImage(sm,0,0,W,H);x.restore();give(sm);return;
+  case 'M-155':full(x,img,W,H);var fr=Math.floor(lt*12);for(var vi=0;vi<7;vi++){var vy=rnd(fr*13+vi)*H,vh=H*(.01+rnd(fr+vi*7)*.04);x.drawImage(img,0,vy*(img.videoHeight||img.height||H)/H,(img.videoWidth||img.width||W),vh*(img.videoHeight||img.height||H)/H,(rnd(fr*5+vi)-.5)*W*.08,vy,W,vh);}
+    x.save();x.globalCompositeOperation='screen';x.globalAlpha=.35;x.drawImage(x.canvas,W*.006,0);x.restore();x.fillStyle='rgba(0,0,0,.12)';for(var sl=0;sl<H;sl+=4)x.fillRect(0,sl,W,1.5);return;
+  case 'M-156':full(x,img,W,H);var gs=cv(160,Math.round(160*H/W)),gx=gs.getContext('2d'),gid=gx.createImageData(gs.width,gs.height),gd=gid.data,seed=Math.floor(lt*24);for(var gi=0;gi<gd.length;gi+=4){var v=rnd(seed*9973+gi)*255;gd[gi]=gd[gi+1]=gd[gi+2]=v;gd[gi+3]=40;}gx.putImageData(gid,0,0);x.save();x.globalCompositeOperation='overlay';x.imageSmoothingEnabled=false;x.drawImage(gs,0,0,W,H);x.restore();give(gs);
+    x.save();x.globalCompositeOperation='multiply';x.fillStyle='rgba(255,235,205,.5)';x.fillRect(0,0,W,H);x.restore();return;
+  case 'M-217':full(x,img,W,H);var bt=(lt%.5)/.5;x.fillStyle='rgba(255,255,255,'+(.75*(1-eo(bt*2)))+')';x.fillRect(0,0,W,H);return;
+  case 'M-218':var bz=(lt%.5)/.5;go({s:1+.1*(1-eo(bz*2.2))});return;
+  case 'M-219':var bs=(lt%.5)/.5,amp=1-eo(bs*2.5),kk=Math.floor(lt*30);go({s:1.06,ox:(rnd(kk)-.5)*.04*amp,oy:(rnd(kk+5)-.5)*.03*amp,rot:(rnd(kk+2)-.5)*2*amp});return;
+  case 'M-251':if(!mask||io.front){go({s:1.06+.03*Math.sin(lt*1.5),ox:Math.sin(lt*1.5)*.012});return;}var bgp=cv(W,H),bgx=bgp.getContext('2d'),ct=back(img,mask,W,H,W*.02);for(var bj=0;bj<4;bj++)blurInto(bgx,ct,W,H,W*[.12,.08,.05,.03][bj]);bgx.drawImage(ct,0,0);give(ct);var sw=Math.sin(lt/4*Math.PI*2);tdraw(x,bgp,W,H,{s:1.12,ox:sw*.03,cx:.5,cy:.5});give(bgp);var pp3=person(img,mask,W,H);tdraw(x,pp3,W,H,{s:1.04,ox:-sw*.015,cx:.5,cy:1});give(pp3);return;
   default:full(x,img,W,H);}}
 
 function trnDraw(x,A,B,it,W,H){var b=it.b,q=cl(it.p,0,1),ac=it.pal.ac,fx=it.fx*W,fy=it.fy*H,diag=Math.hypot(W,H),e;
@@ -3384,16 +3397,17 @@ function top(x,it,W,H,mask){var b=it.b,lt=it.lt,e;
     x.direction='ltr';x.font='800 '+Math.round(W*.06)+'px system-ui,Arial,sans-serif';x.fillStyle='#fff';x.textAlign='center';x.shadowColor='rgba(0,0,0,.6)';x.shadowBlur=W*.02;x.fillText('+'+Math.max(1,Math.round(lt*1.5))+'h',cx2,cy2-r-W*.03);x.restore();}}
 
 /* the list of footage effects active at timeline time t */
-function active(clips,t,mBy,pal,inCut,lang){var out=[];clips.forEach(function(c){var m=mBy(c.m);if(!m||!FOOT[m.c])return;if(t<c.s||t>=c.s+c.d)return;if(inCut&&inCut(t))return;var gold=/gold/.test(m.vcls||''),p0=pal(c)||{};
+function active(clips,t,mBy,pal,inCut,lang){var out=[];clips.forEach(function(c){var m=mBy(c.m);if(!m||!isFoot(m))return;if(t<c.s||t>=c.s+c.d)return;if(inCut&&inCut(t))return;var gold=/gold/.test(m.vcls||''),p0=pal(c)||{};
   out.push({c:c,m:m,b:bid(m),lt:t-c.s,d:c.d,p:(t-c.s)/c.d,fx:(c.x||50)/100,fy:(c.y||40)/100,lang:lang,pal:{ac:gold?GOLD:(p0.ac||'#F07A50'),hl:gold?GOLD:(p0.hl||'#7FE0C8'),bg:p0.bg||'#102E33'}});});return out;}
 
-return {isFoot:isFoot,keepsHTML:keepsHTML,dur:dur,needsPerson:needsPerson,needsHold:needsHold,remap:remap,holdTime:holdTime,draw:draw,front:front,active:active,segLoad:segLoad,ready:function(){return !!SEG;},failed:function(){return segBad;},histReset:histReset,onReady:null,bid:bid};
+function head(img,key){if(!SEG){if(!segBad)segLoad().catch(function(){});return null;}var mk=maskOf(img,key);return mk&&mk.any?mk.head:null;}
+return {head:head,isFoot:isFoot,keepsHTML:keepsHTML,dur:dur,needsPerson:needsPerson,needsHold:needsHold,remap:remap,holdTime:holdTime,draw:draw,front:front,active:active,segLoad:segLoad,ready:function(){return !!SEG;},failed:function(){return segBad;},histReset:histReset,onReady:null,bid:bid};
 })();
 
 /* ===== Motion Studio app ===== */
 (function(){
 var L={
- ar:{title:'استوديو الموشن',back:'← المكتبة',lib:'الحركات',q:'ابحث: زوم، كتابة، M-021',all:'الكل',ft:'على الفيديو',ftNote:'هذي الحركة تشتغل على الفيديو نفسه، وتشوفها بالمعاينة وتطلع بالتصدير. الدائرة على الفيديو هي نقطة التركيز (مكان الزوم أو بداية الانتقال)، اسحبها لمكان ثاني. حركات الشخص تقص الشخص عن الخلفية بجهازك (أول مرة تنزّل ملف صغير). والانتقال يبين أحسن إذا حطيته عند مكان قص.',fxWait:'قاعد أجهّز قص الشخص…',
+ ar:{title:'استوديو الموشن',back:'← المكتبة',lib:'الحركات',q:'ابحث: زوم، كتابة، M-021',all:'الكل',ft:'على الفيديو',ftNote:'هذي الحركة تشتغل على الفيديو نفسه، وتشوفها بالمعاينة وتطلع بالتصدير. الدائرة على الفيديو هي نقطة التركيز (مكان الزوم أو بداية الانتقال)، اسحبها لمكان ثاني. حركات الشخص تقص الشخص عن الخلفية بجهازك (أول مرة تنزّل ملف صغير). والانتقال يبين أحسن إذا حطيته عند مكان قص.',fxWait:'قاعد أجهّز قص الشخص…',trk:'🎯 تتبع وجهي تلقائياً (إذا سحبتها بيدك يوقف التتبع)',
   basket:'＋ من سلتي',drop:'ارفع الفيديو اللي تبي تسوي له مونتاج',dropS:'اسحبه هني أو اضغط تختاره. الفيديو يبقى بجهازك وما ينرفع لأي مكان.',dropQ:function(l){return '🎬 عندك حركات جاهزة تنضاف ('+l+'). ارفع فيديوك وتنحط عليه على طول.';},dropR:function(n){return 'عندك مشروع محفوظ فيه '+n+' حركة. ارفع نفس الفيديو عشان تكمل عليه.';},newP:'مشروع جديد',
   play:'تشغيل',pause:'إيقاف',vol:'الصوت',zoom:'تكبير التايم لاين',inH:'⇤ البداية هني',outH:'النهاية هني ⇥',cutA:'✂ قص هني',cutB:'✂ قص هني',delB:'🗑 احذف',restore:'↩ رجّع الجزء',segT:'جزء من الفيديو',segDel:'🗑 احذف هالجزء',tip:'💡 اسحب الحركة على التايم لاين تقدّمها أو تأخرها، واسحب طرفها تطوّلها أو تقصّرها. وبالفيديو: اسحبها تغيّر مكانها، وبإصبعين (أو الدائرة الصفرا) تكبّرها وتصغّرها. ولقص الفيديو: حط المؤشر واضغط «✂ قص هني»، بعدين اضغط على الجزء اللي تبي تشيله واضغط «🗑 احذف». وأي حركة تختارها تقدر تحذفها بنفس الزر.',earlier:'⏪ قدّم',later:'أخّر ⏩',shorter:'أقصر',longer:'أطول',smaller:'➖ أصغر',bigger:'➕ أكبر',cutFrom:'من',cutTo:'إلى',silB:'✂️ قص السكتات',silT:'قص السكتات',silD:'ألقى الأماكن اللي ما فيها كلام بالفيديو وأشيلها، فيصير الفيديو أسرع وأقوى. تقدر ترجعها أو تضغط «تراجع».',silS:'الحساسية',silS1:'خفيف',silS2:'قوي',silM:'أقل طول للسكتة',silK:'أخلّي هامش قبل وبعد الكلام',silWait:'قاعد أسمع الفيديو…',silFound:function(n,t){return n?'لقيت '+n+' سكتة، مجموعها '+t+' ثانية.':'ما لقيت سكتات بهالإعدادات. جرّب «قوي» أو طول أقل.';},silGo:'✂️ قصها',silUndo:'↩ رجّع السكتات اللي انقصت',silNoA:'هالفيديو ما فيه صوت.',silDone:function(n,t){return 'تم ✓ انقص '+n+' سكتة ('+t+' ثانية).';},capB:'📝 كابشن',logoB:'🏷 الشعار',capT:'الكابشن على الفيديو',capD:'اكتب أو الصق الكلام اللي تقوله بالفيديو، أو خل الموقع يسمع الفيديو ويطلّع الكلام. بعدها اختار الستايل، وكل جملة تنحط على التايم لاين وتقدر تعدّلها.',capAI:'🎙 طلّع الكلام من الفيديو',capAIN:'مجاني ويشتغل بجهازك. أول مرة ينزّل البرنامج وبعدها ينحفظ. «الأدق» هو الأحسن للهجة الكويتية والخليجية، بس حجمه كبير ويكون أسرع بكثير على كمبيوتر بكروم. راجع الكلام وصحّحه بعدها.',capQ:'الدقة',capQ1:'سريع (80 ميقا، أقل دقة)',capQ2:'متوسط (250 ميقا)',capQ3:'الأدق: ينفع للهجة (تقريباً 1 قيقا أول مرة بس، الأحسن بالكمبيوتر)',capTx:'الكلام',capPh:'اكتب أو الصق الكلام هني… كل سطر يصير جملة لحاله، أو خله فقرة وحدة وأنا أقسمه.',capS:'الستايل',capW:'كلمات بكل كابشن',capP:'المكان',capPb:'تحت',capPc:'بالنص',capPt:'فوق',capGo:'✓ ركّب الكابشن',capRm:'🗑 شيل الكابشن',capNo:'اكتب الكلام أول، أو طلّعه من الفيديو.',capDl:function(p){return 'قاعد أنزّل البرنامج… '+p+'%';},capRun:'قاعد أسمع الفيديو وأكتب الكلام… (الأدق ياخذ دقايق، خل الصفحة مفتوحة)',capRetry:'الكتابة الأولى ما كانت مضبوطة، قاعد أعيدها بطريقة أدق…',capAud:'قاعد أجهّز الصوت…',capOk:function(n){return 'تم ✓ طلع '+n+' سطر. راجعهم وصحّح أي كلمة، بعدين اضغط «ركّب الكابشن».';},capErr:'ما قدرت أطلّع الكلام. جرّب «سريع»، أو من الكمبيوتر بكروم، أو اكتب الكلام بنفسك.',capNoA:'هالفيديو ما فيه صوت.',capDone:function(n){return 'تم ✓ انحطّ '+n+' كابشن على التايم لاين.';},chV:'🎞 غيّر الفيديو',chVQ:'إذا غيّرت الفيديو بينمسح كل الشغل اللي سويته على هالفيديو (الحركات والقص والكابشن) وتبدأ من جديد. تكمل؟',pvAdd:'＋ أضفها على الفيديو',clr:'🗑 ابدأ من جديد',clrQ:'أكيد؟ بينشال الفيديو والحركات وتبدأ من الصفر.',undo:'↶ تراجع',
   insp:'الإعدادات',none:'اختر حركة من التايم لاين أو من الشاشة عشان تعدلها.\n\nالخطوات:\n١. ارفع الفيديو.\n٢. حرّك المؤشر الأحمر للمكان اللي تبيه.\n٣. اضغط ＋ على أي حركة من القائمة.\n٤. اسحبها بالتايم لاين عشان تغير وقتها، ومن أطرافها تطولها أو تقصرها.\n٥. اسحبها على الشاشة عشان تغير مكانها، ومن الدائرة الصفرا تكبرها.',
@@ -3408,7 +3422,7 @@ var L={
   recNo:'متصفحك ما يقدر يسوي الفيديو. حدّثه أو جرّب كروم، أو استخدم «برومبت للذكاء الاصطناعي».',recPrep:'قاعد أجهّز…',recKeep:'خل الصفحة مفتوحة لين يخلص. كل شي يصير بجهازك وما ينرفع شي.',recOn:function(p){return '● قاعد أصدّر الفيديو… '+p+'%';},recSave:'⬇ احفظ الفيديو',recShare:'📤 شارك أو احفظ بالصور',recDone:function(f){return 'جاهز ✓ '+f;},recCx:'انلغى التصدير.',recErr:'صار خطأ بالتصدير. جرّب مرة ثانية.',recStop:'وقّف التصدير',
   needV:'ارفع فيديو أول.',saved:'انحفظ ✓',badFile:'هذا مو ملف مشروع من الاستوديو.',
   cats:{TXT:'نصوص',EMP:'إبراز',CAP:'كابشن',SOC:'سوشال',LGO:'شعارات',FX:'مؤثرات',SCR:'شاشات',TRK:'تتبع',D3:'ثلاثي',AUD:'صوت',CAM:'كاميرا',TRN:'انتقالات',PER:'الشخص',TIM:'الوقت'}},
- en:{title:'Motion Studio',back:'← Library',lib:'Motions',q:'Search: zoom, type, M-021',all:'All',ft:'on footage',ftNote:'This motion works on the footage itself; you see it in the preview and it goes into the export. The circle on the video is the focus point (where the zoom or the transition starts); drag it. Person effects cut you out of the background on your device (a small download the first time). A transition shows best where you made a cut.',fxWait:'Getting the person cut-out ready…',
+ en:{title:'Motion Studio',back:'← Library',lib:'Motions',q:'Search: zoom, type, M-021',all:'All',ft:'on footage',ftNote:'This motion works on the footage itself; you see it in the preview and it goes into the export. The circle on the video is the focus point (where the zoom or the transition starts); drag it. Person effects cut you out of the background on your device (a small download the first time). A transition shows best where you made a cut.',fxWait:'Getting the person cut-out ready…',trk:'🎯 Follow my face automatically (dragging it by hand turns this off)',
   basket:'＋ From my basket',drop:'Upload the video you want to edit',dropS:'Drag it here or click to choose. The video stays on your device and is never uploaded.',dropQ:function(l){return '🎬 Motions waiting to be added ('+l+'). Upload your video and they go on it right away.';},dropR:function(n){return 'You have a saved project with '+n+' motions. Upload the same video to continue.';},newP:'New project',
   play:'Play',pause:'Pause',vol:'Volume',zoom:'Timeline zoom',inH:'⇤ Start here',outH:'End here ⇥',cutA:'✂ Split here',cutB:'✂ Split here',delB:'🗑 Delete',restore:'↩ Bring it back',segT:'Video part',segDel:'🗑 Delete this part',tip:'💡 Drag a motion on the timeline to move it earlier or later; drag its edge to make it longer or shorter. On the video: drag it to move it, pinch with two fingers (or use the yellow dot) to resize. To cut the video: put the playhead and press «✂ Split here», tap the part you want gone and press «🗑 Delete». The same button deletes a selected motion.',earlier:'⏪ Earlier',later:'Later ⏩',shorter:'Shorter',longer:'Longer',smaller:'➖ Smaller',bigger:'➕ Bigger',cutFrom:'From',cutTo:'To',silB:'✂️ Cut silences',silT:'Cut the silences',silD:'I find the parts with no talking and remove them, so the video is faster and tighter. You can bring them back or press «Undo».',silS:'Sensitivity',silS1:'Light',silS2:'Strong',silM:'Shortest silence',silK:'Keep a little gap before and after speech',silWait:'Listening to the video…',silFound:function(n,t){return n?'Found '+n+' silences, '+t+' s in total.':'No silences with these settings. Try «Strong» or a shorter length.';},silGo:'✂️ Cut them',silUndo:'↩ Bring the cut silences back',silNoA:'This video has no sound.',silDone:function(n,t){return 'Done ✓ '+n+' silences cut ('+t+' s).';},capB:'📝 Captions',logoB:'🏷 Logo',capT:'Captions on the video',capD:'Type or paste what you say in the video, or let the site listen to the video and write it. Then pick a style; every line goes on the timeline and you can edit it.',capAI:'🎙 Get the words from the video',capAIN:'Free and runs on your device. The first time it downloads the model, then it is saved. «Most accurate» is best for Gulf dialects but large, and much faster on a computer with Chrome. Check and fix the words afterwards.',capQ:'Accuracy',capQ1:'Fast (80 MB, less accurate)',capQ2:'Medium (250 MB)',capQ3:'Most accurate, good with dialects (about 1 GB, first time only; best on a computer)',capTx:'Words',capPh:'Type or paste the words here… each line becomes one caption group, or paste one paragraph and I split it.',capS:'Style',capW:'Words per caption',capP:'Position',capPb:'Bottom',capPc:'Middle',capPt:'Top',capGo:'✓ Add captions',capRm:'🗑 Remove captions',capNo:'Type the words first, or get them from the video.',capDl:function(p){return 'Downloading the model… '+p+'%';},capRun:'Listening to the video and writing the words… (the most accurate one takes minutes; keep the page open)',capRetry:'The first pass did not look right, redoing it the accurate way…',capAud:'Preparing the audio…',capOk:function(n){return 'Done ✓ '+n+' lines. Check and fix any word, then press «Add captions».';},capErr:'Could not get the words. Try «Fast», or Chrome on a computer, or type the words yourself.',capNoA:'This video has no sound.',capDone:function(n){return 'Done ✓ '+n+' captions added to the timeline.';},chV:'🎞 Change video',chVQ:'Changing the video wipes everything you did on this one (motions, cuts and captions) and you start fresh. Continue?',pvAdd:'＋ Add it to the video',clr:'🗑 Start over',clrQ:'Sure? The video and all motions will be removed and you start from scratch.',undo:'↶ Undo',
   insp:'Settings',none:'Pick a motion on the timeline or on screen to edit it.\n\nSteps:\n1. Upload the video.\n2. Move the red playhead where you want.\n3. Press ＋ on any motion in the list.\n4. Drag it on the timeline to change its time; drag its edges to make it longer or shorter.\n5. Drag it on screen to move it; drag the yellow dot to resize.',
@@ -3458,7 +3472,7 @@ function swapText(root,txt){var tn=textNodes(root);if(!tn.length||!txt)return;
 var ovl=$('ovl'),frame=$('frame'),fstyle=document.createElement('style');document.head.appendChild(fstyle);
 function fit(){var v=$('view'),r=v.getBoundingClientRect(),w=r.width-28,h=r.height-28,ar=VW/VH;var fw=Math.min(w,h*ar),fh=fw/ar;frame.style.width=Math.max(10,fw)+'px';frame.style.height=Math.max(10,fh)+'px';}
 window.addEventListener('resize',function(){fit();drawTL();});
-function clipEl(c){var m=mBy(c.m),el=document.createElement('div');el.className='st sd-clip'+(m.vcls?' '+m.vcls:'')+(FT[m.c]&&!FX.keepsHTML(m)?' foot':'')+(FX.keepsHTML(m)?' tbp':'');el.id='c'+c.u;el.dataset.u=c.u;
+function clipEl(c){var m=mBy(c.m),el=document.createElement('div');el.className='st sd-clip'+(m.vcls?' '+m.vcls:'')+(FX.isFoot(m)&&!FX.keepsHTML(m)?' foot':'')+(FX.keepsHTML(m)?' tbp':'');el.id='c'+c.u;el.dataset.u=c.u;
   el.style.setProperty('--d',(m.d||'2.8s'));el.style.setProperty('--vf',m.vf||1);
   el.innerHTML=stageHTML(m)+'<span class="sd-foot">'+esc(m.id+' '+m.en+' · '+t_('ft'))+'</span><i class="sd-h" data-h="1"></i>';
   if(c.text)swapText(el,c.text);
@@ -3492,7 +3506,16 @@ function grab(ts,maxW){grabQ=grabQ.then(function(){return new Promise(function(r
     if(vid2.readyState>=1)go();else{vid2.addEventListener('loadedmetadata',go,{once:true});setTimeout(fin,5000);}});});return grabQ;}
 function holdFor(it){if(!FX.needsHold(it.m))return null;var ht=FX.holdTime(it,S.cuts),k=it.c.u+':'+ht.toFixed(2);if(holds[k])return holds[k]===1?null:holds[k];holds[k]=1;grab(ht).then(function(c){holds[k]=c;fxLastKey='';});return null;}
 function fxWait(on){if(on&&!fxWaitEl){fxWaitEl=document.createElement('div');fxWaitEl.className='sd-fxwait';fxWaitEl.textContent=t_('fxWait');frame.appendChild(fxWaitEl);}else if(!on&&fxWaitEl){fxWaitEl.remove();fxWaitEl=null;}}
+/* tracking motions (label, ring, face blur, arrow…) follow the real face: the motion's drawn face is lined up with yours */
+var TRKA={'M-242':[53.5,16],'M-247':[53.5,20],'M-160':[25,30]},TRKNO={'M-245':1,'M-248':1,'M-243':1};
+function isTrk(m){if(!m)return false;var b=FX.bid(m);return (m.c==='TRK'&&!TRKNO[b])||b==='M-160';}
+function trkAt(t){return S.clips.filter(function(c){var m=mBy(c.m);return c.trk!==0&&isTrk(m)&&t>=c.s&&t<c.s+c.d&&!inCut(t);});}
+function trkPlace(list,h,Wf){list.forEach(function(c){var el=$('c'+c.u);if(!el)return;if(!h){place(el,c);return;}var A=TRKA[FX.bid(mBy(c.m))]||[53.5,26],sw=cl01(h.w/(A[1]/100),.25,2.6),yy=h.y-(A[0]/100-.5)*sw*1.25*(VW/VH);
+  el.style.left=(h.x*100)+'%';el.style.top=(yy*100)+'%';el.style.width=(sw*100)+'%';});}
+function cl01(v,a,b){return v<a?a:v>b?b:v;}
+var trkKey='';
 function fxTick(){if(xp||!fxc)return;var t=vid.currentTime||0,L=hasV?fxList(t):[],olds=ovl.querySelectorAll('.sd-fxp');
+  var TK=hasV&&!drag?trkAt(t):[];if(TK.length){var hk='v'+Math.round(t*30)+TK.map(function(c){return c.u;}).join(',');if(hk!==trkKey){var h=FX.head(vid,'v'+Math.round(t*30));if(h)trkKey=hk;else if(!FX.failed()&&!FX.ready())fxWait(true);trkPlace(TK,h);}}
   if(!L.length){if(!fxc.hidden)fxc.hidden=true;olds.forEach(function(e){e.remove();});fxWait(false);fxLastKey='';return;}
   var r=frame.getBoundingClientRect(),dpr=Math.min(2,window.devicePixelRatio||1),W=Math.max(2,Math.round(Math.min(r.width*dpr,720))),H=Math.max(2,Math.round(W*VH/VW));
   var ts=FX.remap(L,t),img=vid,far=Math.abs(ts-t)>.05;
@@ -3546,7 +3569,7 @@ function enable(){document.querySelectorAll('[data-nv]').forEach(function(b){b.d
 var lq=$('lq'),lcat='ALL',list=$('list');
 function libDraw(){var t=lq.value.trim().toLowerCase(),h='';
   M.forEach(function(m){if(lcat!=='ALL'&&m.c!==lcat)return;var hay=(m.id+' '+m.en+' '+m.ar+' '+(m.use||'')).toLowerCase();if(t&&hay.indexOf(t)<0)return;
-    h+='<li tabindex="0" data-m="'+m.id+'"><div class="sd-mth"></div><div class="sd-mmeta"><span class="id">'+m.id+'</span><span class="nm">'+esc(lang==='ar'?m.ar:m.en)+'<small>'+esc(lang==='ar'?m.en:L.ar.cats[m.c])+(FT[m.c]?' · <span class="ft">'+t_('ft')+'</span>':'')+'</small></span></div><button type="button" class="add" data-add="'+m.id+'" aria-label="+ '+m.id+'" data-nv>＋</button></li>';});
+    h+='<li tabindex="0" data-m="'+m.id+'"><div class="sd-mth"></div><div class="sd-mmeta"><span class="id">'+m.id+'</span><span class="nm">'+esc(lang==='ar'?m.ar:m.en)+'<small>'+esc(lang==='ar'?m.en:L.ar.cats[m.c])+(FX.isFoot(m)?' · <span class="ft">'+t_('ft')+'</span>':'')+'</small></span></div><button type="button" class="add" data-add="'+m.id+'" aria-label="+ '+m.id+'" data-nv>＋</button></li>';});
   list.innerHTML=h;enable();thObserve();var lc=$('lcount');if(lc)lc.textContent=list.children.length+' / '+M.length;}
 /* live thumbnails only for the items on screen */
 var thIO=('IntersectionObserver' in window)?new IntersectionObserver(function(en){en.forEach(function(x){var li=x.target,box=li.querySelector('.sd-mth');if(x.isIntersecting)thDraw(li);else{box.innerHTML='';li._th=0;}});},{root:list,rootMargin:'120px'}):null;
@@ -3567,7 +3590,7 @@ function pvRender(){if(!pvM)return;var m=mBy(pvM),box=pv.querySelector('.sd-pvst
   el.innerHTML=stageHTML(m);el.querySelectorAll('.scr').forEach(function(x){x.textContent=x.dataset.t||x.textContent;});el.querySelectorAll('.cnt').forEach(function(x){x.textContent=x.dataset.to||x.textContent;});
   if(b){el.style.setProperty('--mon',b.bg);el.style.setProperty('--mon2',b.bg);el.style.setProperty('--mon-fg',b.tx);el.style.setProperty('--coral',b.ac);el.style.setProperty('--mint',b.hl);}box.appendChild(el);
   clearTimeout(pvTm);pvTm=setTimeout(pvRender,(parseFloat(m.d)||2.8)*1000+900);}
-function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FT[m.c]?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
+function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FX.isFoot(m)?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
   var a=pv.querySelector('[data-pva]');a.textContent=t_('pvAdd');a.disabled=!hasV;pv.classList.toggle('tap',!!tap);pv.hidden=false;pvRender();
   if(!tap){var r=li.getBoundingClientRect(),w=pv.offsetWidth,h=pv.offsetHeight,x=r.left-w-12;if(x<8)x=r.right+12;var y=Math.max(8,Math.min(innerHeight-h-8,r.top+r.height/2-h/2));pv.style.left=x+'px';pv.style.top=y+'px';}else{pv.style.left='';pv.style.top='';}}
 function pvHide(){pv.hidden=true;pvM=null;clearTimeout(pvTm);pv.querySelector('.sd-pvst').innerHTML='';}
@@ -3577,7 +3600,7 @@ document.addEventListener('pointerdown',function(e){if(!pv.hidden&&TOUCH&&!pv.co
 list.addEventListener('keydown',function(e){if(e.key==='Enter'){var li=e.target.closest('li');if(li&&hasV)addClip(li.dataset.m);}});
 function freeLane(s,d,skip){for(var l=0;l<20;l++){if(!S.clips.some(function(c){return c.u!==skip&&c.l===l&&c.s<s+d&&s<c.s+c.d;}))return l;}return 0;}
 function addClip(id,at,quiet){if(!hasV){alertMsg(t_('needV'));return null;}var m=mBy(id);if(!m)return null;snap();var d=Math.min(FX.dur(m)||Math.max(2,mDur(m)),Math.max(.5,VD)),s=at!=null?at:(vid.currentTime||0);if(m.c==='TRN'){var nk=null;S.cuts.forEach(function(k){if(Math.abs(k.b-s)<2&&(!nk||Math.abs(k.b-s)<Math.abs(nk.b-s)))nk=k;});if(nk)s=nk.b;}if(s+d>VD)s=Math.max(0,VD-d);
-  var b=brand(),c={u:uid++,m:id,s:+s.toFixed(2),d:+d.toFixed(2),l:freeLane(s,d),text:'',f:b&&b.f?b.f:'',p:b?'BR':'',x:50,y:FX.keepsHTML(m)?24:FT[m.c]?50:(m.c==='CAP'?72:40),sc:FX.keepsHTML(m)?100:90};
+  var b=brand(),c={u:uid++,m:id,s:+s.toFixed(2),d:+d.toFixed(2),l:freeLane(s,d),text:'',f:b&&b.f?b.f:'',p:b?'BR':'',x:50,y:FX.keepsHTML(m)?24:FX.isFoot(m)?50:(m.c==='CAP'?72:40),sc:FX.keepsHTML(m)?100:90};
   S.clips.push(c);sel=c.u;selCut=null;ovl.appendChild(clipEl(c));fontsCSS();if(!quiet){drawTL();insp();save();}return c;}
 $('fromBk').addEventListener('click',function(){var ids=[];try{ids=JSON.parse(localStorage.getItem('ml-basket'))||[];}catch(e){}ids=ids.filter(function(i){return /^M-\d+$/.test(i);});if(!ids.length)return;var t=vid.currentTime||0;
   ids.forEach(function(id){var c=addClip(id,t,true);if(c)t=Math.min(VD-.5,c.s+c.d);});drawTL();insp();save();});
@@ -3593,7 +3616,7 @@ function drawTL(){if(!hasV){tlin.innerHTML='';return;}var W=Math.max(tlw.clientW
   segList().forEach(function(g){var on=selSeg&&Math.abs(selSeg[0]-g[0])<1e-3&&Math.abs(selSeg[1]-g[1])<1e-3;h+='<div class="sd-seg'+(on?' sel':'')+'" data-sa="'+g[0]+'" data-sb="'+g[1]+'" style="left:'+(g[0]*pps)+'px;width:'+((g[1]-g[0])*pps)+'px"></div>';});
   (S.splits||[]).forEach(function(x){h+='<i class="sd-split" style="left:'+(x*pps)+'px"></i>';});h+='</div>';
   for(var l=0;l<lanes();l++){h+='<div class="sd-trk" data-lane="'+l+'" style="width:'+W+'px">';S.clips.filter(function(c){return c.l===l;}).forEach(function(c){var m=mBy(c.m);
-      h+='<div class="sd-blk'+(FT[m.c]?' ft':'')+(sel===c.u?' sel':'')+'" data-u="'+c.u+'" style="left:'+(c.s*pps)+'px;width:'+Math.max(14,c.d*pps)+'px"><i class="e l" data-e="l"></i><span>'+esc(m.id+' '+(c.text||m.en))+'</span><i class="e r" data-e="r"></i></div>';});h+='</div>';}
+      h+='<div class="sd-blk'+(FX.isFoot(m)?' ft':'')+(sel===c.u?' sel':'')+'" data-u="'+c.u+'" style="left:'+(c.s*pps)+'px;width:'+Math.max(14,c.d*pps)+'px"><i class="e l" data-e="l"></i><span>'+esc(m.id+' '+(c.text||m.en))+'</span><i class="e r" data-e="r"></i></div>';});h+='</div>';}
   h+='<div class="sd-ph" id="ph"></div>';tlin.innerHTML=h;tlin.style.width=W+'px';sync(true);}
 $('zoom').addEventListener('input',function(e){pps=+e.target.value;drawTL();});
 function tAt(x){var r=tlin.getBoundingClientRect();return Math.max(0,Math.min(VD,(x-r.left)/pps));}
@@ -3624,7 +3647,7 @@ ovl.addEventListener('pointerdown',function(e){PT[e.pointerId]={x:e.clientX,y:e.
   var fr=frame.getBoundingClientRect();pdrag={c:c,el:el,h:!!e.target.dataset.h,x0:e.clientX,y0:e.clientY,cx:c.x,cy:c.y,sc0:c.sc,fw:fr.width,fh:fr.height,moved:false};el.setPointerCapture(e.pointerId);e.preventDefault();});
 ovl.addEventListener('pointermove',function(e){if(PT[e.pointerId]){PT[e.pointerId].x=e.clientX;PT[e.pointerId].y=e.clientY;}if(pinch){var d=pdist();if(d){pinch.c.sc=Math.round(Math.max(10,Math.min(250,pinch.sc0*d/pinch.d0)));place($('c'+pinch.c.u),pinch.c);insFill();}return;}if(!pdrag)return;var p=pdrag,c=p.c;p.moved=true;
   if(p.h){c.sc=Math.round(Math.max(10,Math.min(250,p.sc0+((e.clientX-p.x0)/p.fw)*200)));}else{c.x=Math.round(Math.max(0,Math.min(100,p.cx+(e.clientX-p.x0)/p.fw*100)));c.y=Math.round(Math.max(0,Math.min(100,p.cy+(e.clientY-p.y0)/p.fh*100)));}
-  place(p.el,c);insFill();});
+  if(isTrk(mBy(c.m))&&c.trk!==0){c.trk=0;var tb=$('iTrk');if(tb)tb.checked=false;}place(p.el,c);insFill();});
 function endP(e){if(e&&e.pointerId!=null)delete PT[e.pointerId];if(pinch&&Object.keys(PT).length<2){pinch=null;save();}if(!pdrag)return;if(!pdrag.moved)hist.pop();pdrag=null;save();}
 ovl.addEventListener('pointerup',endP);ovl.addEventListener('pointercancel',endP);
 
@@ -3635,12 +3658,13 @@ function insp(){setTimeout(updDel,0);var c=sel!=null?byU(sel):null;
   if(c){var m=mBy(c.m),b=brand();
     var fo=[['',t_('orig')]].concat(FONTS.map(function(f){return [f.id,f.id+' · '+f.n];}));
     var po=[['',t_('orig')]].concat(b?[['BR',t_('brand')]]:[]).concat(CPS.map(function(p){return [p.id,p.id+' · '+(lang==='ar'?p.ar:p.en)];}));
-    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FT[m.c]?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+
+    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
      '<label class="sd-f">'+t_('text')+'<input type="text" id="iTx" maxlength="80" placeholder="'+esc(t_('textPh'))+'" value="'+esc(c.text)+'"></label>'+
      '<label class="sd-f">'+t_('font')+'<select id="iF">'+opts(fo,c.f)+'</select></label><label class="sd-f">'+t_('pal')+'<select id="iP">'+opts(po,c.p)+'</select></label>'+
      '<div class="sd-row"><label class="sd-f">'+t_('start')+'<input type="number" id="iS" step="0.1" min="0" value="'+c.s+'"></label><label class="sd-f">'+t_('dur')+'<input type="number" id="iD" step="0.1" min="0.3" value="'+c.d+'"></label></div>'+
      '<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="s:-0.5">'+t_('earlier')+'</button><button type="button" class="sd-btn sm" data-nd="s:0.5">'+t_('later')+'</button><button type="button" class="sd-btn sm" data-nd="d:-0.5">'+t_('shorter')+'</button><button type="button" class="sd-btn sm" data-nd="d:0.5">'+t_('longer')+'</button></div>'+'<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="sc:-10">'+t_('smaller')+'</button><button type="button" class="sd-btn sm" data-nd="sc:10">'+t_('bigger')+'</button></div>'+'<label class="sd-f">'+t_('x')+' <input type="range" id="iX" min="0" max="100" value="'+c.x+'"></label><label class="sd-f">'+t_('y')+' <input type="range" id="iY" min="0" max="100" value="'+c.y+'"></label><label class="sd-f">'+t_('size')+' <input type="range" id="iSc" min="10" max="250" value="'+c.sc+'"></label>'+
      '<div class="sd-acts"><button type="button" class="sd-btn sm" id="iGo">'+t_('goto')+'</button><button type="button" class="sd-btn sm" id="iDup">'+t_('dup')+'</button><button type="button" class="sd-btn sm" id="iDel">'+t_('del')+'</button></div>';
+    if($('iTrk'))$('iTrk').addEventListener('change',function(e){snap();c.trk=e.target.checked?1:0;trkKey='';if(!e.target.checked)place($('c'+c.u),c);save();});
     var tx=$('iTx'),tm=null;tx.addEventListener('focus',snap);tx.addEventListener('input',function(){c.text=tx.value;clearTimeout(tm);tm=setTimeout(function(){renderClip(c);drawTL();save();},200);});
     XCol.opts($('iP'),c.p);XCol.wire($('iP'),pBy,function(id){snap();c.p=id;renderClip(c);save();});XPal.wire($('iP'),{resolve:pBy,title:t_('pal')});XFont.wire($('iF'),{famOf:fam,sample:function(){return c.text;},title:t_('font')});
     $('iF').addEventListener('change',function(e){snap();c.f=e.target.value;renderClip(c);save();});
@@ -3716,7 +3740,7 @@ function frameAt(t){var half=0.5/30;
   return new Promise(function(res){var done=false,tm=setTimeout(function(){if(done)return;done=true;vid.pause();seekTo(t).then(res);},3000);
     var cb=function(now,md){if(done)return;lastMT=md.mediaTime;if(md.mediaTime>=t-half||vid.ended){done=true;clearTimeout(tm);vid.pause();res();}else vid.requestVideoFrameCallback(cb);};
     vid.requestVideoFrameCallback(cb);var p=vid.play();if(p&&p.catch)p.catch(function(){if(done)return;done=true;clearTimeout(tm);seekTo(t).then(res);});});}
-function clipsAt(t){var any=false;S.clips.forEach(function(c){var el=$('c'+c.u);if(!el)return;var on=t>=c.s&&t<c.s+c.d&&!inCut(t);el.hidden=!on;if(!on)return;var mm=mBy(c.m);if(!FT[mm.c]||FX.keepsHTML(mm))any=true;
+function clipsAt(t){var any=false;S.clips.forEach(function(c){var el=$('c'+c.u);if(!el)return;var on=t>=c.s&&t<c.s+c.d&&!inCut(t);el.hidden=!on;if(!on)return;var mm=mBy(c.m);if(!FX.isFoot(mm)||FX.keepsHTML(mm))any=true;
   el._an=el.getAnimations({subtree:true});var lt=(t-c.s)*1000;el._an.forEach(function(a){a.pause();a.currentTime=lt;});});return any;}
 function audioOf(a){if(!vfileObj||!a)return Promise.resolve(null);
   return vfileObj.arrayBuffer().then(function(ab){return new Promise(function(res){try{var p=a.decodeAudioData(ab,res,function(){res(null);});if(p&&p.then)p.then(res,function(){res(null);});}catch(e){res(null);}});}).then(function(buf){if(!buf)return null;
@@ -3732,7 +3756,7 @@ function recStart(a){sel=null;markSel();vid.pause();var back=vid.currentTime||0,
   function srcAt(i){var t=i/fps;for(var j=0;j<sg.length;j++){var L2=sg[j][1]-sg[j][0];if(t<L2)return sg[j][0]+t;t-=L2;}return sg.length?sg[sg.length-1][1]-0.001:0;}
   function pr(f){var p=Math.round(f*100),b=$('rBar'),m=$('rMsg');if(b)b.style.width=p+'%';if(m)m.textContent=t_('recOn')(p);}
   var xHold={},hl=S.clips.filter(function(c){var m=mBy(c.m);return m&&FX.isFoot(m)&&FX.needsHold(m);});FX.histReset();
-  var needP=S.clips.some(function(c){var m=mBy(c.m);return m&&FX.needsPerson(m);});
+  var needP=S.clips.some(function(c){var m=mBy(c.m);return m&&(FX.needsPerson(m)||(isTrk(m)&&c.trk!==0));});
   var pre=(needP?FX.segLoad().catch(function(){}):Promise.resolve()).then(function(){return hl.reduce(function(pp,c){return pp.then(function(){var it={c:c,m:mBy(c.m)};return grab(FX.holdTime(it,S.cuts),Math.max(W,H)).then(function(cv){xHold[c.u]=cv;});});},Promise.resolve());});
   pre.then(function(){return audioOf(a);}).then(function(buf){if(a&&a.close)try{a.close();}catch(e){}return XR.render({w:W,h:H,fps:fps,n:n,audio:buf,prog:pr,stop:function(){return job.stop;},
     frame:function(i,ctx){var ts=srcAt(i),L=fxList(ts),st=L.length?FX.remap(L,ts):ts;return frameAt(st).then(function(){ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
@@ -3741,6 +3765,7 @@ function recStart(a){sel=null;markSel();vid.pause();var back=vid.currentTime||0,
       if(L.some(function(x){return x.b==='M-207';}))FX.front(ctx,L,io,'M-207');
       var lg=function(){var lo=XLogo.get(),li=XLogo.image();if(!lo||lo.vid===false||!li||!li.naturalWidth)return;var r=XLogo.place(lo,W,H);ctx.save();ctx.globalAlpha=(lo.op||90)/100;ctx.drawImage(li,r.x,r.y,r.w,r.h);ctx.restore();};
       if(!clipsAt(ts)){lg();return;}
+      var TK=trkAt(ts);if(TK.length)trkPlace(TK,FX.head(vid,'x'+i));
       /* text behind the person: motions up to that title, then the person, then the motions above it */
       var tb=io.mask?L.filter(function(x){return x.b==='M-201';}):[];
       if(!tb.length)return XR.snap(ovl,W,H,'.sd-foot,.sd-h,.foot,.sd-fxp').then(function(img){if(img)ctx.drawImage(img,0,0,W,H);lg();});
