@@ -177,6 +177,18 @@ function acts(btns){return '<div class="acts">'+btns.join('')+'</div>';}
 
 /* palettes */
 BUILD.CP=function(){
+/* first card: your own colours */
+var cu=document.createElement('article');cu.className='xc xcp xcpcu';cu.style.position='relative';xgrid('CP').appendChild(cu);
+function cuGet(){try{return XCol.cuParse(localStorage.getItem('ml-cu'))||null;}catch(e){return null;}}
+function cuDraw(){var p=cuGet(),ar=lang==='ar';
+  cu.innerHTML='<div class="cpst" style="'+(p?'--b:'+p.bg+';--t:'+p.tx+';--a:'+p.ac+';--h:'+p.hl:'')+'" aria-hidden="true">'+(p?'<div class="cpw"><span class="cp1">'+(ar?'ألوانك':'Your')+'</span> <span class="cp2">'+(ar?'الخاصة':'colours')+'</span></div><div class="cpsw"><i style="background:'+p.bg+'"></i><i style="background:'+p.tx+'"></i><i style="background:'+p.ac+'"></i><i style="background:'+p.hl+'"></i></div>':'<div class="cuwheel"></div>')+'</div>'+
+   '<div class="meta"><div class="idrow"><b>🎨</b></div><div class="xn">'+(ar?'ألوان من اختيارك':'Your own colours')+'</div><div class="use xu">'+(ar?'اختار 4 ألوان بنفسك (أو ابدأ من بالِتة جاهزة) وانسخ البرومبت.':'Pick 4 colours yourself (or start from a ready palette) and copy the prompt.')+'</div>'+
+   (p?'<div class="hexes">'+[['bg',p.bg],['tx',p.tx],['ac',p.ac],['hl',p.hl]].map(function(h){return '<button type="button" class="hx" data-hex="'+h[1]+'"><i style="background:'+h[1]+'"></i><span>'+(ar?{bg:'خلفية',tx:'نص',ac:'هوية',hl:'تظليل'}:{bg:'Background',tx:'Text',ac:'Accent',hl:'Highlight'})[h[0]]+'</span><b class="mono">'+h[1]+'</b></button>';}).join('')+'</div>':'')+
+   acts(['<button type="button" data-a="e">'+(ar?'🎨 اختار ألوانك':'🎨 Pick colours')+'</button>'].concat(p?['<button type="button" data-a="p">'+X('cp')+'</button>']:[]))+'</div>';
+  cu.querySelector('[data-a="e"]').onclick=function(){XCol.palette({value:cuGet(),onDone:function(pp,id){try{localStorage.setItem('ml-cu',id);}catch(e){}cuDraw();goat('custom-palette','CP');}});};
+  var pb=cu.querySelector('[data-a="p"]');if(pb)pb.onclick=function(e){copyText(cpPr(cuGet()),e.currentTarget,X('cp'));};
+  cu.querySelectorAll('.hx').forEach(function(b){b.onclick=function(){copyText(b.dataset.hex,b.querySelector('b'),b.dataset.hex);};});}
+cuDraw();window.cuDrawCP=cuDraw;
 CPS.forEach(function(p){var el=mk('CP',p.id,'xcp',
   ovHTML(p.id)+'<div class="cpst" style="--b:'+p.bg+';--t:'+p.tx+';--a:'+p.ac+';--h:'+p.hl+'" aria-hidden="true"><div class="cpw"><span class="cp1"></span> <span class="cp2"></span></div><div class="cpsw"><i style="background:'+p.bg+'"></i><i style="background:'+p.tx+'"></i><i style="background:'+p.ac+'"></i><i style="background:'+p.hl+'"></i></div></div>'+
   '<div class="meta"><div class="idrow"><b>'+p.id+'</b></div><div class="xn"></div><div class="use xu"></div><div class="hexes">'+[['bg',p.bg],['tx',p.tx],['ac',p.ac],['hl',p.hl]].map(function(h){return '<button type="button" class="hx" data-hex="'+h[1]+'" data-k="'+h[0]+'"><i style="background:'+h[1]+'"></i><span></span><b class="mono">'+h[1]+'</b></button>';}).join('')+'</div>'+
@@ -861,7 +873,7 @@ function r5Lang(){document.getElementById('xhowT').textContent=X5t('how');docume
 /* ---------- language ---------- */
 function xLang(){document.querySelectorAll('.tabs button[data-tab]').forEach(function(b){var k=b.dataset.tab;if(k==='M'||k==='F')return;b.querySelector('.tl').textContent=X('t'+k)||X2t('t'+k);b.querySelector('small').textContent=XC[k]?XC[k].length:'';b.querySelector('.nb').textContent=X('nb');});
   VIEWS.forEach(function(v){var s=document.getElementById('xv-'+v[0]);s.querySelector('.xt').textContent=X('t'+v[0])||X2t('t'+v[0]);s.querySelector('.xd').textContent=X('d'+v[0])||X2t('d'+v[0]);var i=s.querySelector('.xq');i.placeholder=X('q');i.setAttribute('aria-label',X('q'));xFilter(v[0]);});
-  XC.CP.forEach(function(o){var p=pById(o.id),e=o.el;e.querySelector('.xn').textContent=nm(p);e.querySelector('.xu').textContent=lang==='ar'?p.ua:p.ue;e.querySelector('.cp1').textContent=lang==='ar'?'عنوان':'Title';e.querySelector('.cp2').textContent=lang==='ar'?'مهم':'key';
+  if(window.cuDrawCP)cuDrawCP();  XC.CP.forEach(function(o){var p=pById(o.id),e=o.el;e.querySelector('.xn').textContent=nm(p);e.querySelector('.xu').textContent=lang==='ar'?p.ua:p.ue;e.querySelector('.cp1').textContent=lang==='ar'?'عنوان':'Title';e.querySelector('.cp2').textContent=lang==='ar'?'مهم':'key';
     e.querySelectorAll('.hx span').forEach(function(s){s.textContent=X(s.parentElement.dataset.k);});e.querySelector('[data-a="n"]').innerHTML=X('cn');e.querySelector('[data-a="p"]').innerHTML=X('cp');});
   XC.CS.forEach(function(o){var c=byId(CSS_,o.id),e=o.el;e.querySelector('.xn').textContent=nm(c);e.querySelector('.xu').textContent=lang==='ar'?c.ua:c.ue;e.querySelector('[data-a="n"]').innerHTML=X('cn');e.querySelector('[data-a="p"]').innerHTML=X('cp');});
   csRuns.forEach(function(r){r.i=0;csPaint(r);});

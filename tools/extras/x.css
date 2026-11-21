@@ -413,3 +413,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .gout .gpv{flex:0 0 auto;width:110px;aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:12px;padding:0;border:0;cursor:pointer;background:var(--mon,#102E33)}
 .gout .gpv .st{position:absolute;inset:0;aspect-ratio:auto}
 @media (max-width:480px){.gout .gpv{width:92px}}
+
+.xcpcu .cpst{background:var(--b,#102E33)}
+.xcpcu .cuwheel{width:62%;aspect-ratio:1;border-radius:50%;margin:auto;background:conic-gradient(#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);box-shadow:0 0 0 8px rgba(255,255,255,.12)}
+.xcpcu{border:2px dashed var(--acc2)}

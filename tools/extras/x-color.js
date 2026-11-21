@@ -110,8 +110,10 @@ function palette(o){var p={bg:'#102E33',tx:'#F6EFE2',ac:'#E3643F',hl:'#FFC857'};
   paint();return m;}
 /* add "your own colours" to a palette <select>; keepVal = value to keep selected after the options are rebuilt */
 function opts(sel,keepVal){var v=keepVal!==undefined?keepVal:sel.value;Array.prototype.slice.call(sel.querySelectorAll('option[data-xc]')).forEach(function(o){o.remove();});
-  if(/^CU:/.test(v||'')){var o1=document.createElement('option');o1.value=v;o1.dataset.xc=1;o1.textContent=t('cur');sel.appendChild(o1);}
-  var o2=document.createElement('option');o2.value='__CU';o2.dataset.xc=1;o2.textContent=t('opt');sel.appendChild(o2);sel.value=v;if(sel.value!==v)sel.value='';}
+  var first=sel.options[0]||null;
+  var o2=document.createElement('option');o2.value='__CU';o2.dataset.xc=1;o2.textContent=t('opt');sel.insertBefore(o2,first);
+  if(/^CU:/.test(v||'')){var o1=document.createElement('option');o1.value=v;o1.dataset.xc=1;o1.textContent=t('cur');sel.insertBefore(o1,first);}
+  sel.value=v;if(sel.value!==v||sel.value==='__CU'){var f=Array.prototype.filter.call(sel.options,function(o){return o.value!=='__CU';})[0];if(Array.prototype.some.call(sel.options,function(o){return o.value==='';}))sel.value='';else if(f)sel.value=f.value;}}
 /* select change helper: returns true if it handled the "your own colours" choice */
 function onSel(sel,prev,getPal,done){if(sel.value!=='__CU')return false;var base=getPal&&getPal(prev);
   palette({value:base||null,onDone:function(p,id){opts(sel,id);done(id);},onCancel:function(){sel.value=prev||'';done(null);}});return true;}
