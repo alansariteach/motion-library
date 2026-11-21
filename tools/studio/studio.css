@@ -141,3 +141,12 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-pva{display:none;gap:6px}
 .sd-pv.tap{pointer-events:auto;left:50%!important;right:auto;bottom:16px;top:auto!important;transform:translateX(-50%);width:min(300px,92vw)}
 .sd-pv.tap .sd-pva{display:flex}.sd-pv.tap .sd-pva .pri{flex:1}
+
+/* motion list as live thumbnails */
+.sd-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-content:start}
+.sd-list li{position:relative;flex-direction:column;align-items:stretch;gap:6px;padding:6px;border:1px solid var(--line);background:var(--panel)}
+.sd-list .sd-mth{position:relative;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--mon,#102E33)}
+.sd-list .sd-mth .st{position:absolute;inset:0;aspect-ratio:auto;border-radius:0}
+.sd-list .sd-mmeta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sd-list .sd-mmeta .nm{font-size:12.5px}
+.sd-list .add{position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
