@@ -1312,7 +1312,7 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-lib{border-inline-end:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-height:0}
 .sd-lib h2,.sd-insp h2{margin:0;font-size:15px;font-weight:800;padding:12px 14px 6px}
 .sd-q{margin:0 12px 8px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:8px 14px;font-size:14px}
-.sd-cats{display:flex;gap:5px;overflow-x:auto;padding:0 12px 8px;scrollbar-width:none}
+.sd-cats{padding:0 12px 8px}.sd-cats select{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:8px 14px;font:700 14px var(--f-ar);cursor:pointer}
 .sd-cats::-webkit-scrollbar{display:none}
 .sd-cats button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer}
 .sd-cats button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -1442,6 +1442,8 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-list .sd-mmeta{display:flex;flex-direction:column;gap:2px;min-width:0}
 .sd-list .sd-mmeta .nm{font-size:12.5px}
 .sd-list .add{position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+.sd-lcount{font:600 11px var(--f-mono);color:var(--muted);margin-inline-start:10px;direction:ltr;display:inline-block}
+.sd-lib h2{display:flex;align-items:baseline;gap:10px}
 </style>
 </head>
 <body class="sd">
@@ -1459,7 +1461,7 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
   <div class="sd-lang"><button type="button" data-l="ar">عربي</button><button type="button" data-l="en">EN</button></div>
  </header>
  <aside class="sd-lib" aria-label="motions">
-  <h2 data-t="lib">الحركات</h2>
+  <h2><span data-t="lib">الحركات</span><span class="sd-lcount" id="lcount"></span></h2>
   <input class="sd-q" id="lq" type="search" aria-label="search">
   <div class="sd-cats" id="lcats"></div>
   <ul class="sd-list" id="list"></ul>
@@ -3136,15 +3138,16 @@ var lq=$('lq'),lcat='ALL',list=$('list');
 function libDraw(){var t=lq.value.trim().toLowerCase(),h='';
   M.forEach(function(m){if(lcat!=='ALL'&&m.c!==lcat)return;var hay=(m.id+' '+m.en+' '+m.ar+' '+(m.use||'')).toLowerCase();if(t&&hay.indexOf(t)<0)return;
     h+='<li tabindex="0" data-m="'+m.id+'"><div class="sd-mth"></div><div class="sd-mmeta"><span class="id">'+m.id+'</span><span class="nm">'+esc(lang==='ar'?m.ar:m.en)+'<small>'+esc(lang==='ar'?m.en:L.ar.cats[m.c])+(FT[m.c]?' · <span class="ft">'+t_('ft')+'</span>':'')+'</small></span></div><button type="button" class="add" data-add="'+m.id+'" aria-label="+ '+m.id+'" data-nv>＋</button></li>';});
-  list.innerHTML=h;enable();thObserve();}
+  list.innerHTML=h;enable();thObserve();var lc=$('lcount');if(lc)lc.textContent=list.children.length+' / '+M.length;}
 /* live thumbnails only for the items on screen */
 var thIO=('IntersectionObserver' in window)?new IntersectionObserver(function(en){en.forEach(function(x){var li=x.target,box=li.querySelector('.sd-mth');if(x.isIntersecting)thDraw(li);else{box.innerHTML='';li._th=0;}});},{root:list,rootMargin:'120px'}):null;
 function thDraw(li){var m=mBy(li.dataset.m),box=li.querySelector('.sd-mth');if(!m||!box)return;var el=document.createElement('div');el.className='st'+(m.vcls?' '+m.vcls:'');el.style.setProperty('--d',(m.d||'2.8s'));el.style.setProperty('--vf',m.vf||1);
   el.innerHTML=stageHTML(m);el.querySelectorAll('.scr').forEach(function(x){x.textContent=x.dataset.t||x.textContent;});el.querySelectorAll('.cnt').forEach(function(x){x.textContent=x.dataset.to||x.textContent;});box.innerHTML='';box.appendChild(el);li._th=Date.now();}
 function thObserve(){if(!thIO){Array.prototype.slice.call(list.children,0,40).forEach(thDraw);return;}thIO.disconnect();Array.prototype.forEach.call(list.children,function(li){thIO.observe(li);});}
 setInterval(function(){if(document.hidden)return;var now=Date.now();Array.prototype.forEach.call(list.children,function(li){if(li._th&&now-li._th>4200)thDraw(li);});},1000);
-function catsDraw(){var c=$('lcats');c.innerHTML='<button type="button" data-c="ALL">'+t_('all')+'</button>'+CORD.map(function(k){return '<button type="button" data-c="'+k+'">'+t_('cats')[k]+'</button>';}).join('');
-  c.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.c===lcat);b.onclick=function(){lcat=b.dataset.c;catsDraw();libDraw();};});}
+function catsDraw(){var c=$('lcats'),cnt={};M.forEach(function(m){cnt[m.c]=(cnt[m.c]||0)+1;});
+  c.innerHTML='<select id="lcatS" aria-label="'+esc(t_('lib'))+'"><option value="ALL">'+t_('all')+' ('+M.length+')</option>'+CORD.filter(function(k){return cnt[k];}).map(function(k){return '<option value="'+k+'">'+t_('cats')[k]+' ('+cnt[k]+')</option>';}).join('')+'</select>';
+  var sl=$('lcatS');sl.value=lcat;sl.onchange=function(){lcat=sl.value;libDraw();list.scrollTop=0;};}
 lq.addEventListener('input',libDraw);
 var TOUCH=matchMedia('(hover:none)').matches;
 list.addEventListener('click',function(e){var b=e.target.closest('[data-add]');if(b){pvHide();addClip(b.dataset.add);return;}var li=e.target.closest('li');if(!li)return;if(TOUCH){pvShow(li,true);return;}if(hasV)addClip(li.dataset.m);});
