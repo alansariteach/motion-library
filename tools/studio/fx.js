@@ -52,17 +52,27 @@ function segLoad(){if(SEG)return Promise.resolve(SEG);if(segP)return segP;if(seg
     return mk('GPU').catch(function(){return mk('CPU');});});}).then(function(s){SEG=s;segP=null;if(FX.onReady)FX.onReady();return s;}).catch(function(e){segBad=true;segP=null;try{console.warn('person cut-out',e);}catch(_){}throw e;});return segP;}
 var MW=256,inC=null,mkC=null,lastKey=null,lastMask=null;
 /* the mask as a canvas (white person, transparent background) the size of the small input */
-function maskOf(img,key){if(!SEG)return null;if(key!=null&&key===lastKey&&lastMask)return lastMask;
+var prevF=null,prevTs=null;
+/* keep only the biggest piece of person (drops bits of chairs and things behind) */
+function keepBig(f,w,h){var n=w*h,lab=new Int32Array(n),st=new Int32Array(n),best=0,bestN=0,id=0;for(var i=0;i<n;i++){if(lab[i]||f[i]<.5)continue;id++;var sp=0,cnt=0;st[sp++]=i;lab[i]=id;while(sp){var k=st[--sp];cnt++;var x=k%w,y=(k-x)/w;if(x>0&&!lab[k-1]&&f[k-1]>=.5){lab[k-1]=id;st[sp++]=k-1;}if(x<w-1&&!lab[k+1]&&f[k+1]>=.5){lab[k+1]=id;st[sp++]=k+1;}if(y>0&&!lab[k-w]&&f[k-w]>=.5){lab[k-w]=id;st[sp++]=k-w;}if(y<h-1&&!lab[k+w]&&f[k+w]>=.5){lab[k+w]=id;st[sp++]=k+w;}}if(cnt>bestN){bestN=cnt;best=id;}}
+  if(!best)return f;for(var j=0;j<n;j++){if(lab[j]&&lab[j]!==best)f[j]=0;else if(!lab[j]&&f[j]>0){var xx=j%w,yy=(j-xx)/w,bad=false;for(var dy=-2;dy<=2&&!bad;dy++)for(var dx=-2;dx<=2;dx++){var X=xx+dx,Y=yy+dy;if(X<0||Y<0||X>=w||Y>=h)continue;var L=lab[Y*w+X];if(L&&L!==best){bad=true;break;}}if(bad)f[j]=0;}}return f;}
+function maskOf(img,key,ts){if(!SEG)return null;if(key!=null&&key===lastKey&&lastMask)return lastMask;
   var iw=img.videoWidth||img.naturalWidth||img.width,ih=img.videoHeight||img.naturalHeight||img.height;if(!iw||!ih)return null;var w=MW,h=Math.max(2,Math.round(MW*ih/iw));
   if(!inC)inC=document.createElement('canvas');if(inC.width!==w||inC.height!==h){inC.width=w;inC.height=h;}inC.getContext('2d').drawImage(img,0,0,w,h);
   var r;try{r=SEG.segment(inC);}catch(e){return lastMask;}var m=r&&r.confidenceMasks&&r.confidenceMasks[0];if(!m)return lastMask;
-  var f=m.getAsFloat32Array(),mw=m.width,mh=m.height;try{r.confidenceMasks.forEach(function(x){x.close();});}catch(_){}
+  var f=m.getAsFloat32Array().slice(),mw=m.width,mh=m.height;try{r.confidenceMasks.forEach(function(x){x.close();});}catch(_){}
+  f=keepBig(f,mw,mh);
+  /* smooth between neighbouring frames so the edge does not flicker */
+  if(prevF&&prevF.length===f.length&&ts!=null&&prevTs!=null&&Math.abs(ts-prevTs)<.12){for(var q=0;q<f.length;q++)f[q]=f[q]*.65+prevF[q]*.35;}prevF=f;prevTs=ts;
   if(!mkC)mkC=document.createElement('canvas');if(mkC.width!==mw||mkC.height!==mh){mkC.width=mw;mkC.height=mh;}var x=mkC.getContext('2d'),id=x.createImageData(mw,mh),d=id.data;
   for(var i=0,n=mw*mh;i<n;i++){var v=f[i];v=v<.25?0:v>.75?1:(v-.25)*2;d[i*4]=d[i*4+1]=d[i*4+2]=255;d[i*4+3]=Math.round(v*255);}x.putImageData(id,0,0);
   /* head: the first row with a real amount of person in it, and the middle of the person around there */
   var top=-1,minX=mw,maxX=0,need=Math.max(3,mw*.04);for(var yy=0;yy<mh&&top<0;yy++){var cnt=0;for(var xx=0;xx<mw;xx++)if(f[yy*mw+xx]>.5)cnt++;if(cnt>=need)top=yy;}
-  var hx=.5,hy=.3,found=top>=0;if(found){var y2=Math.min(mh-1,top+Math.round(mh*.1)),sx=0,n2=0;for(var yy2=top;yy2<=y2;yy2++)for(var xx2=0;xx2<mw;xx2++)if(f[yy2*mw+xx2]>.5){sx+=xx2;n2++;if(xx2<minX)minX=xx2;if(xx2>maxX)maxX=xx2;}hx=n2?sx/n2/mw:.5;hy=(top/mh)+.08;}
-  lastKey=key;lastMask={c:mkC,head:{x:hx,y:hy,top:found?top/mh:.15,w:found?Math.max(.12,(maxX-minX)/mw):.25},any:found};return lastMask;}
+  /* walk down from the top of the head row by row; stop where the shoulders (or raised hands) make the row jump wider */
+  var hx=.5,hy=.3,hwid=.25,found=top>=0;if(found){var rows=[],sx=0,n2=0,hb=top;for(var yy2=top;yy2<Math.min(mh,top+Math.round(mh*.2));yy2++){var c2=0,l=mw,rr=0;for(var xx2=0;xx2<mw;xx2++)if(f[yy2*mw+xx2]>.5){c2++;if(xx2<l)l=xx2;rr=xx2;}
+      if(rows.length>4){var srt=rows.slice().sort(function(a,b){return a-b;}),md=srt[Math.floor(srt.length/2)];if(c2>md*1.45&&rows.length>mw*.06)break;}rows.push(c2);hb=yy2;sx+=(l+rr)/2;n2++;}
+    var mx=0;rows.forEach(function(v){if(v>mx)mx=v;});hwid=Math.max(.05,mx/mw);hx=n2?sx/n2/mw:.5;hy=(top+.62*1.3*hwid*mw)/mh;}
+  lastKey=key;lastMask={c:mkC,head:{x:hx,y:hy,top:found?top/mh:.15,w:found?hwid:.25},any:found};return lastMask;}
 /* person only / background only, at W×H */
 function person(img,mask,W,H){var c=cv(W,H),x=c.getContext('2d');full(x,img,W,H);x.globalCompositeOperation='destination-in';x.imageSmoothingEnabled=true;x.drawImage(mask.c,0,0,W,H);return c;}
 function back(img,mask,W,H,grow){var c=cv(W,H),x=c.getContext('2d');full(x,img,W,H);x.globalCompositeOperation='destination-out';x.drawImage(mask.c,0,0,W,H);if(grow){for(var i=0;i<8;i++){var a=i/8*6.283;x.drawImage(mask.c,Math.cos(a)*grow,Math.sin(a)*grow,W,H);}}return c;}
@@ -86,7 +96,7 @@ function holdTime(it,cuts){var s=it.c.s;for(var i=0;i<(cuts||[]).length;i++){var
 /* ---- draw one frame: video + every footage effect active at this moment ----
    io: {img (frame at the remapped time), hold(it) (frame for transitions/freeze or null), W,H, key (frame id for the mask cache)} */
 function draw(ctx,list,io){var W=io.W,H=io.H,img=io.img,mask=null,need=list.some(function(it){return needsPerson(it.m);});
-  if(need&&SEG)mask=maskOf(img,io.key);if(need&&!SEG&&!segBad)segLoad().catch(function(){});
+  if(need&&SEG)mask=maskOf(img,io.key,io.ts);if(need&&!SEG&&!segBad)segLoad().catch(function(){});
   io.mask=mask;
   /* base layer goes into a work canvas so later steps can reuse it */
   var A=cv(W,H),ax=A.getContext('2d');full(ax,img,W,H);
@@ -179,7 +189,7 @@ function camDraw(x,img,mask,it,W,H,io){var b=it.b,lt=it.lt,d=it.d,p=it.p,f={cx:i
   case 'M-135':full(x,img,W,H);gray(x,W,H,.85,0);x.save();x.globalAlpha=.18;x.globalCompositeOperation='overlay';x.fillStyle='#000';x.fillRect(0,0,W,H);x.restore();return;
   case 'M-137':s=lt<d*.5?1+.04*(lt/(d*.5)):lt<d*.5+.15?1.04+.26*eo((lt-d*.5)/.15):1.3+.03*eo((lt-d*.5-.15)/Math.max(.1,d*.5-.15));go({s:s});return;
   case 'M-140':var kf=[[0,1],[.15,1.32],[.28,1.16],[.4,1.24],[.5,1.22]],v=1.22;for(var i=0;i<kf.length-1;i++)if(lt<kf[i+1][0]){v=kf[i][1]+(kf[i+1][1]-kf[i][1])*eio((lt-kf[i][0])/(kf[i+1][0]-kf[i][0]));break;}go({s:v});return;
-  case 'M-243':full(x,img,W,H);if(!mask||!mask.any||io.front)return;var fh=mask.head,rw=fh.w*W*.62,rh=rw*1.3,fcx=fh.x*W,fcy=fh.y*H+rh*.15,px=Math.max(6,Math.round(W*.035)),sm=cv(Math.max(2,Math.round(W/px)),Math.max(2,Math.round(H/px)));sm.getContext('2d').drawImage(img,0,0,sm.width,sm.height);
+  case 'M-243':full(x,img,W,H);if(!mask||!mask.any||io.front)return;var fh=mask.head,rw=fh.w*W*.72,rh=rw*1.5,fcx=fh.x*W,fcy=fh.y*H+rh*.12,px=Math.max(6,Math.round(W*.035)),sm=cv(Math.max(2,Math.round(W/px)),Math.max(2,Math.round(H/px)));sm.getContext('2d').drawImage(img,0,0,sm.width,sm.height);
     x.save();x.beginPath();x.ellipse(fcx,fcy,rw,rh,0,0,6.283);x.clip();x.imageSmoothingEnabled=false;x.drawImage(sm,0,0,W,H);x.restore();give(sm);return;
   case 'M-155':full(x,img,W,H);var fr=Math.floor(lt*12);for(var vi=0;vi<7;vi++){var vy=rnd(fr*13+vi)*H,vh=H*(.01+rnd(fr+vi*7)*.04);x.drawImage(img,0,vy*(img.videoHeight||img.height||H)/H,(img.videoWidth||img.width||W),vh*(img.videoHeight||img.height||H)/H,(rnd(fr*5+vi)-.5)*W*.08,vy,W,vh);}
     x.save();x.globalCompositeOperation='screen';x.globalAlpha=.35;x.drawImage(x.canvas,W*.006,0);x.restore();x.fillStyle='rgba(0,0,0,.12)';for(var sl=0;sl<H;sl+=4)x.fillRect(0,sl,W,1.5);return;
@@ -242,6 +252,6 @@ function top(x,it,W,H,mask){var b=it.b,lt=it.lt,e;
 function active(clips,t,mBy,pal,inCut,lang){var out=[];clips.forEach(function(c){var m=mBy(c.m);if(!m||!isFoot(m))return;if(t<c.s||t>=c.s+c.d)return;if(inCut&&inCut(t))return;var gold=/gold/.test(m.vcls||''),p0=pal(c)||{};
   out.push({c:c,m:m,b:bid(m),lt:t-c.s,d:c.d,p:(t-c.s)/c.d,fx:(c.x||50)/100,fy:(c.y||40)/100,lang:lang,pal:{ac:gold?GOLD:(p0.ac||'#F07A50'),hl:gold?GOLD:(p0.hl||'#7FE0C8'),bg:p0.bg||'#102E33'}});});return out;}
 
-function head(img,key){if(!SEG){if(!segBad)segLoad().catch(function(){});return null;}var mk=maskOf(img,key);return mk&&mk.any?mk.head:null;}
+function head(img,key,ts){if(!SEG){if(!segBad)segLoad().catch(function(){});return null;}var mk=maskOf(img,key,ts);return mk&&mk.any?mk.head:null;}
 return {head:head,isFoot:isFoot,keepsHTML:keepsHTML,dur:dur,needsPerson:needsPerson,needsHold:needsHold,remap:remap,holdTime:holdTime,draw:draw,front:front,active:active,segLoad:segLoad,ready:function(){return !!SEG;},failed:function(){return segBad;},histReset:histReset,onReady:null,bid:bid};
 })();
