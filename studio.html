@@ -1461,6 +1461,7 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-fxwait{position:absolute;left:50%;bottom:10px;translate:-50% 0;background:rgba(0,0,0,.7);color:#fff;font:700 12px var(--f-ar,system-ui);padding:5px 10px;border-radius:99px;z-index:60;pointer-events:none}
 .sd-chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:6px 0}.sd-chk input{width:18px;height:18px;accent-color:#FFC857}
 .sd-clip .obj{display:none!important}.sd-clip [style*="--k:ktrk"]{animation-name:none!important;transform:none!important}
+.sd-clip .dimov,.sd-clip .bdrop,.sd-clip.tbp .flash{display:none!important}
 </style>
 </head>
 <body class="sd">
@@ -3173,14 +3174,15 @@ var GOLD='#FFC857';
 var DUR={'M-016':.8,'M-017':.7,'M-018':.9,'M-019':.8,'M-020':.6,'M-101':.9,'M-102':.7,'M-103':.6,'M-104':.7,'M-105':1,'M-106':.8,'M-107':.7,'M-108':.8,'M-109':.8,'M-110':.6,'M-111':.8,'M-112':.5,'M-113':.5,'M-114':.8,'M-115':.8,'M-116':.7,'M-117':.8,'M-118':1,'M-119':.5,'M-120':.6,'M-267':1.2,'M-268':1.4,'M-269':.9,'M-270':1.1,'M-271':.6,
   'M-021':2,'M-022':4,'M-023':1,'M-024':2.5,'M-025':5,'M-121':3,'M-122':4,'M-123':4,'M-124':2,'M-125':1.5,'M-126':4,'M-127':2,'M-128':1.2,'M-129':1.5,'M-130':4,'M-131':1.5,'M-132':3,'M-133':3,'M-134':2,'M-135':2,'M-136':3,'M-137':2,'M-138':3,'M-139':3,'M-140':1.5,
   'M-201':3,'M-202':3,'M-203':2.5,'M-204':3,'M-205':3,'M-206':3,'M-207':3,'M-208':3,'M-209':2,'M-210':3,'M-211':3,'M-212':2,'M-213':2.5,
-  'M-243':3,'M-155':2.4,'M-156':3,'M-217':1.2,'M-218':2,'M-219':1.5,'M-251':4,'M-259':2,'M-260':2,'M-261':2,'M-262':2,'M-263':2,'M-264':4,'M-265':1.6,'M-266':1.6};
-var PERSON={'M-243':1,'M-251':1,'M-121':1,'M-124':1,'M-201':1,'M-202':1,'M-203':1,'M-204':1,'M-205':1,'M-206':1,'M-207':1,'M-208':1,'M-209':1,'M-210':1,'M-211':1,'M-212':1,'M-213':1,'M-262':1};
+  'M-074':2.5,'M-076':1.2,'M-233':3,'M-146':2,'M-148':2,'M-154':2,'M-243':3,'M-155':2.4,'M-156':3,'M-217':1.2,'M-218':2,'M-219':1.5,'M-251':4,'M-259':2,'M-260':2,'M-261':2,'M-262':2,'M-263':2,'M-264':4,'M-265':1.6,'M-266':1.6};
+var PERSON={'M-146':1,'M-148':1,'M-154':1,'M-243':1,'M-251':1,'M-121':1,'M-124':1,'M-201':1,'M-202':1,'M-203':1,'M-204':1,'M-205':1,'M-206':1,'M-207':1,'M-208':1,'M-209':1,'M-210':1,'M-211':1,'M-212':1,'M-213':1,'M-262':1};
 var TRN_HOLD={'M-135':1};/* also every TRN */
 function bid(m){return m&&(m.base||m.id);}
-var EXTRA={'M-243':1,'M-155':1,'M-156':1,'M-217':1,'M-218':1,'M-219':1,'M-251':1};
+var EXTRA={'M-074':1,'M-076':1,'M-233':1,'M-146':1,'M-148':1,'M-154':1,'M-243':1,'M-155':1,'M-156':1,'M-217':1,'M-218':1,'M-219':1,'M-251':1};
 function isFoot(m){return !!(m&&(FOOT[m.c]||EXTRA[bid(m)]));}
 /* the text-behind effect keeps its own (editable) title on top of the video, under the person */
-function keepsHTML(m){return bid(m)==='M-201';}
+var KEEP={'M-201':1,'M-074':1,'M-076':1,'M-233':1};
+function keepsHTML(m){return !!KEEP[bid(m)];}
 function dur(m){var d=DUR[bid(m)];if(!d)return null;return Math.max(.3,+(d*(m.vf||1)).toFixed(2));}
 function needsPerson(m){return !!PERSON[bid(m)];}
 function needsHold(m){return m.c==='TRN'||!!TRN_HOLD[bid(m)];}
@@ -3254,7 +3256,7 @@ function draw(ctx,list,io){var W=io.W,H=io.H,img=io.img,mask=null,need=list.some
   io.mask=mask;
   /* base layer goes into a work canvas so later steps can reuse it */
   var A=cv(W,H),ax=A.getContext('2d');full(ax,img,W,H);
-  var cam=null,trn=[],per=[],tim=[];list.forEach(function(it){if(it.m.c==='TRN')trn.push(it);else if(it.m.c==='PER')per.push(it);else if(it.m.c==='TIM')tim.push(it);else cam=cam||[],cam.push(it);});
+  var cam=null,trn=[],per=[],tim=[];list.forEach(function(it){if(it.m.c==='TRN')trn.push(it);else if(it.m.c==='PER'||it.b==='M-146'||it.b==='M-148'||it.b==='M-154')per.push(it);else if(it.m.c==='TIM')tim.push(it);else cam=cam||[],cam.push(it);});
   /* person effects first (they work on the untransformed picture) */
   per.forEach(function(it){var c2=cv(W,H),x=c2.getContext('2d');perDraw(x,A,mask,it,W,H,io);ax.clearRect(0,0,W,H);ax.drawImage(c2,0,0);give(c2);});
   tim.forEach(function(it){timDraw(ax,A,mask,it,W,H,io);});
@@ -3276,6 +3278,10 @@ function front(ctx,list,io,which){var tb=list.filter(function(it){return which?i
 function perDraw(x,img,mask,it,W,H,io){var b=it.b,lt=it.lt,ac=it.pal.ac,hl=it.pal.hl,e;
   if(!mask){full(x,img,W,H);return;}
   if(b==='M-201'){full(x,img,W,H);return;}
+  if(b==='M-146'){e=env(it,.3,.3);x.fillStyle='#04121a';x.fillRect(0,0,W,H);x.globalAlpha=1-.75*e;full(x,img,W,H);x.globalAlpha=1;var hp=person(img,mask,W,H),hx3=hp.getContext('2d');hx3.globalCompositeOperation='source-atop';hx3.fillStyle='rgba(80,230,255,'+(.55*e)+')';hx3.fillRect(0,0,W,H);hx3.fillStyle='rgba(0,0,0,'+(.35*e)+')';for(var sy=0;sy<H;sy+=Math.max(3,H/160))hx3.fillRect(0,sy,W,Math.max(1,H/400));
+    var fl2=lt<.5&&rnd(Math.floor(lt*20))>.6?.5:1;x.save();x.globalAlpha=fl2;x.shadowColor='rgba(80,230,255,'+(.9*e)+')';x.shadowBlur=W*.04;x.drawImage(hp,0,0);x.restore();give(hp);return;}
+  if(b==='M-148'||b==='M-154'){e=env(it,.3,.3);full(x,img,W,H);var col=b==='M-148'?'rgba(255,120,40,':'rgba(255,255,255,',gl=silh(mask,W,H,col+'1)'),pp4=person(img,mask,W,H);x.save();x.globalAlpha=(b==='M-148'?.9:.85)*e*(b==='M-148'?.75+.25*Math.sin(lt*6):1);if(FILT){x.filter='blur('+(W*(b==='M-148'?.04:.015))+'px)';x.drawImage(gl,0,0);x.drawImage(gl,0,0);x.filter='none';}else{x.shadowColor=col+'1)';x.shadowBlur=W*.04;x.drawImage(gl,0,0);}x.restore();x.drawImage(pp4,0,0);
+    if(b==='M-148'){x.save();x.globalCompositeOperation='soft-light';x.globalAlpha=.5*e;x.fillStyle='#ff7a30';x.fillRect(0,0,W,H);x.restore();}give(gl);give(pp4);return;}
   if(b==='M-202'||b==='M-208'||b==='M-213'){var bg=back(img,mask,W,H),pp=person(img,mask,W,H),g=bg.getContext('2d');
     if(b==='M-202'){e=eo(lt/.4)*env(it,0,.3);full(x,img,W,H);x.drawImage(bg,0,0);var t=cv(W,H),tx=t.getContext('2d');tx.drawImage(bg,0,0);gray(tx,W,H,e,.18);tx.globalCompositeOperation='destination-in';tx.drawImage(bg,0,0);x.drawImage(t,0,0);give(t);x.drawImage(pp,0,0);}
     else if(b==='M-208'){e=eo(lt/.5)*env(it,0,.3);blurInto(x,img,W,H,W*.016*e);x.drawImage(pp,0,0);}
@@ -3388,6 +3394,8 @@ function trnDraw(x,A,B,it,W,H){var b=it.b,q=cl(it.p,0,1),ac=it.pal.ac,fx=it.fx*W
 function top(x,it,W,H,mask){var b=it.b,lt=it.lt,e;
   if(b==='M-138'){e=eio(env(it,.5,.4));var bh=Math.min(W*.16,H*.14)*e;x.fillStyle='#000';x.fillRect(0,0,W,bh);x.fillRect(0,H-bh,W,bh);}
   else if(b==='M-139'){e=env(it,.6,.4);var cx=(mask&&mask.any?mask.head.x:it.fx)*W,cy=(mask&&mask.any?mask.head.y:it.fy)*H,g=x.createRadialGradient(cx,cy,W*.25,cx,cy,Math.hypot(W,H)*.6);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,'+(.9*e)+')');x.fillStyle=g;x.fillRect(0,0,W,H);}
+  else if(b==='M-074'||b==='M-233'){e=env(it,.35,.3);x.fillStyle='rgba(0,0,0,'+((b==='M-074'?.62:.5)*e)+')';x.fillRect(0,0,W,H);}
+  else if(b==='M-076'){if(lt<.35){x.fillStyle='rgba(255,255,255,'+(.85*(1-eo(lt/.35)))+')';x.fillRect(0,0,W,H);}}
   else if(b==='M-135'){tag(x,W,H,'⏸ '+(it.lang==='en'?'FREEZE':'لحظة'),it.pal.ac,eo(lt/.25)*env(it,0,.2));}
   else if(b==='M-259'){tag(x,W,H,'◀◀',it.pal.ac,env(it,.2,.2));}
   else if(b==='M-265'){tag(x,W,H,'▶▶ 3×',it.pal.ac,env(it,.2,.2));}
@@ -3590,7 +3598,7 @@ function pvRender(){if(!pvM)return;var m=mBy(pvM),box=pv.querySelector('.sd-pvst
   el.innerHTML=stageHTML(m);el.querySelectorAll('.scr').forEach(function(x){x.textContent=x.dataset.t||x.textContent;});el.querySelectorAll('.cnt').forEach(function(x){x.textContent=x.dataset.to||x.textContent;});
   if(b){el.style.setProperty('--mon',b.bg);el.style.setProperty('--mon2',b.bg);el.style.setProperty('--mon-fg',b.tx);el.style.setProperty('--coral',b.ac);el.style.setProperty('--mint',b.hl);}box.appendChild(el);
   clearTimeout(pvTm);pvTm=setTimeout(pvRender,(parseFloat(m.d)||2.8)*1000+900);}
-function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FX.isFoot(m)?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
+function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FX.isFoot(m)&&!FX.keepsHTML(m)?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
   var a=pv.querySelector('[data-pva]');a.textContent=t_('pvAdd');a.disabled=!hasV;pv.classList.toggle('tap',!!tap);pv.hidden=false;pvRender();
   if(!tap){var r=li.getBoundingClientRect(),w=pv.offsetWidth,h=pv.offsetHeight,x=r.left-w-12;if(x<8)x=r.right+12;var y=Math.max(8,Math.min(innerHeight-h-8,r.top+r.height/2-h/2));pv.style.left=x+'px';pv.style.top=y+'px';}else{pv.style.left='';pv.style.top='';}}
 function pvHide(){pv.hidden=true;pvM=null;clearTimeout(pvTm);pv.querySelector('.sd-pvst').innerHTML='';}
@@ -3658,7 +3666,7 @@ function insp(){setTimeout(updDel,0);var c=sel!=null?byU(sel):null;
   if(c){var m=mBy(c.m),b=brand();
     var fo=[['',t_('orig')]].concat(FONTS.map(function(f){return [f.id,f.id+' · '+f.n];}));
     var po=[['',t_('orig')]].concat(b?[['BR',t_('brand')]]:[]).concat(CPS.map(function(p){return [p.id,p.id+' · '+(lang==='ar'?p.ar:p.en)];}));
-    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
+    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)&&!FX.keepsHTML(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
      '<label class="sd-f">'+t_('text')+'<input type="text" id="iTx" maxlength="80" placeholder="'+esc(t_('textPh'))+'" value="'+esc(c.text)+'"></label>'+
      '<label class="sd-f">'+t_('font')+'<select id="iF">'+opts(fo,c.f)+'</select></label><label class="sd-f">'+t_('pal')+'<select id="iP">'+opts(po,c.p)+'</select></label>'+
      '<div class="sd-row"><label class="sd-f">'+t_('start')+'<input type="number" id="iS" step="0.1" min="0" value="'+c.s+'"></label><label class="sd-f">'+t_('dur')+'<input type="number" id="iD" step="0.1" min="0.3" value="'+c.d+'"></label></div>'+

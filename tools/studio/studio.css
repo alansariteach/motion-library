@@ -164,3 +164,4 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-fxwait{position:absolute;left:50%;bottom:10px;translate:-50% 0;background:rgba(0,0,0,.7);color:#fff;font:700 12px var(--f-ar,system-ui);padding:5px 10px;border-radius:99px;z-index:60;pointer-events:none}
 .sd-chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:6px 0}.sd-chk input{width:18px;height:18px;accent-color:#FFC857}
 .sd-clip .obj{display:none!important}.sd-clip [style*="--k:ktrk"]{animation-name:none!important;transform:none!important}
+.sd-clip .dimov,.sd-clip .bdrop,.sd-clip.tbp .flash{display:none!important}

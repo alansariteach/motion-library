@@ -184,7 +184,7 @@ function pvRender(){if(!pvM)return;var m=mBy(pvM),box=pv.querySelector('.sd-pvst
   el.innerHTML=stageHTML(m);el.querySelectorAll('.scr').forEach(function(x){x.textContent=x.dataset.t||x.textContent;});el.querySelectorAll('.cnt').forEach(function(x){x.textContent=x.dataset.to||x.textContent;});
   if(b){el.style.setProperty('--mon',b.bg);el.style.setProperty('--mon2',b.bg);el.style.setProperty('--mon-fg',b.tx);el.style.setProperty('--coral',b.ac);el.style.setProperty('--mint',b.hl);}box.appendChild(el);
   clearTimeout(pvTm);pvTm=setTimeout(pvRender,(parseFloat(m.d)||2.8)*1000+900);}
-function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FX.isFoot(m)?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
+function pvShow(li,tap){var m=mBy(li.dataset.m);if(!m)return;pvM=m.id;pv.querySelector('.sd-pvn').innerHTML='<b>'+m.id+'</b> '+esc(lang==='ar'?m.ar:m.en)+(FX.isFoot(m)&&!FX.keepsHTML(m)?'<br><small>'+esc(t_('ftNote'))+'</small>':'');
   var a=pv.querySelector('[data-pva]');a.textContent=t_('pvAdd');a.disabled=!hasV;pv.classList.toggle('tap',!!tap);pv.hidden=false;pvRender();
   if(!tap){var r=li.getBoundingClientRect(),w=pv.offsetWidth,h=pv.offsetHeight,x=r.left-w-12;if(x<8)x=r.right+12;var y=Math.max(8,Math.min(innerHeight-h-8,r.top+r.height/2-h/2));pv.style.left=x+'px';pv.style.top=y+'px';}else{pv.style.left='';pv.style.top='';}}
 function pvHide(){pv.hidden=true;pvM=null;clearTimeout(pvTm);pv.querySelector('.sd-pvst').innerHTML='';}
@@ -252,7 +252,7 @@ function insp(){setTimeout(updDel,0);var c=sel!=null?byU(sel):null;
   if(c){var m=mBy(c.m),b=brand();
     var fo=[['',t_('orig')]].concat(FONTS.map(function(f){return [f.id,f.id+' · '+f.n];}));
     var po=[['',t_('orig')]].concat(b?[['BR',t_('brand')]]:[]).concat(CPS.map(function(p){return [p.id,p.id+' · '+(lang==='ar'?p.ar:p.en)];}));
-    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
+    IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)&&!FX.keepsHTML(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
      '<label class="sd-f">'+t_('text')+'<input type="text" id="iTx" maxlength="80" placeholder="'+esc(t_('textPh'))+'" value="'+esc(c.text)+'"></label>'+
      '<label class="sd-f">'+t_('font')+'<select id="iF">'+opts(fo,c.f)+'</select></label><label class="sd-f">'+t_('pal')+'<select id="iP">'+opts(po,c.p)+'</select></label>'+
      '<div class="sd-row"><label class="sd-f">'+t_('start')+'<input type="number" id="iS" step="0.1" min="0" value="'+c.s+'"></label><label class="sd-f">'+t_('dur')+'<input type="number" id="iD" step="0.1" min="0.3" value="'+c.d+'"></label></div>'+
