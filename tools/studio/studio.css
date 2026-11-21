@@ -165,3 +165,12 @@ body.sd{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-ar);ov
 .sd-chk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:6px 0}.sd-chk input{width:18px;height:18px;accent-color:#FFC857}
 .sd-clip .obj{display:none!important}.sd-clip [style*="--k:ktrk"]{animation-name:none!important;transform:none!important}
 .sd-clip .dimov,.sd-clip .bdrop,.sd-clip.tbp .flash{display:none!important}
+.sd-rband{position:absolute;border:1.5px dashed #FFC857;background:rgba(255,200,87,.12);pointer-events:none;z-index:30;border-radius:4px}
+.sd-ovl.hasMulti .sd-clip.sel{outline:2px dashed #FFC857;outline-offset:2px}
+.sd-cpg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px;max-height:340px;overflow:auto;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.sd-cpt{display:flex;flex-direction:column;gap:3px;padding:5px;border:2px solid var(--line);border-radius:12px;background:var(--panel);color:inherit;cursor:pointer;text-align:start;font:inherit}
+.sd-cpt .sd-mth{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:#1d2b2f}
+.sd-cpt .sd-mth .st{position:absolute;inset:0;aspect-ratio:auto;border-radius:0}
+.sd-cpt .id{font:800 11px/1.2 ui-monospace,monospace;color:var(--acc,#FFC857)}.sd-cpt .nm{font-size:11px;line-height:1.25;opacity:.85}
+.sd-cpt.on{border-color:#FFC857;box-shadow:0 0 0 3px rgba(255,200,87,.3)}
+.sd-cpf,.sd-cpf *{font-family:inherit!important}
