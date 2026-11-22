@@ -27,6 +27,7 @@
   <button type="button" class="sd-btn pri" id="exV" data-t="exV" data-nv>⬇ تصدير MP4</button>
  </header>
  <nav class="sd-rail" id="rail" aria-label="sections">
+  <button type="button" data-p="auto"><i>⚡</i><span data-t="pAuto">تلقائي</span></button>
   <button type="button" data-p="vid" aria-pressed="true"><i>🎬</i><span data-t="pVid">الفيديو</span></button>
   <button type="button" data-p="mot"><i>✨</i><span data-t="pMot">الحركات</span></button>
   <button type="button" data-p="cap"><i>📝</i><span data-t="pCap">الكابشن</span></button>
@@ -38,6 +39,7 @@
  <aside class="sd-lib" id="pane" aria-label="library">
   <div class="sd-ph2"><h2 id="paneT">الفيديو</h2><button type="button" class="sd-pclose" id="paneX" aria-label="close">✕</button></div>
   <div class="sd-pbody" id="pane-vid" data-pane="vid"></div>
+  <div class="sd-pbody" id="pane-auto" data-pane="auto" hidden></div>
   <div class="sd-pbody sd-plist" id="pane-lib" data-pane="mot fx" hidden>
    <input class="sd-q" id="lq" type="search" aria-label="search">
    <div class="sd-cats" id="lcats"></div><span class="sd-lcount" id="lcount"></span>

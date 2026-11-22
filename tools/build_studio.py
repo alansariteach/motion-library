@@ -18,5 +18,9 @@ chip=re.search(r'<img class="chip"[^>]*>|<img[^>]*class="brand-chip"[^>]*>',s)
 fav=re.search(r'<link rel="icon" href="(data:image/svg\+xml,[^"]+)"',s).group(1)
 t=open(os.path.join(D,'studio.src.html')).read()
 t=t.replace('<!--HEADLINKS-->',head).replace('/*SITECSS*/',css).replace('/*STUDIOCSS*/',open(os.path.join(D,'studio.css')).read())
-t=t.replace('<!--CHIP-->','<img src="'+fav.replace('"','%22')+'" alt="">').replace('/*ENGINE*/',eng).replace('/*STUDIOJS*/',open(os.path.join(D,'fx.js')).read()+'\n'+open(os.path.join(D,'studio.js')).read())
+def sjs():
+    # auto.js goes inside the studio IIFE, just before its last line
+    sj=open(os.path.join(D,'studio.js')).read().rstrip();i=sj.rfind('})();')
+    return sj[:i]+open(os.path.join(D,'auto.js')).read()+'\n'+sj[i:]
+t=t.replace('<!--CHIP-->','<img src="'+fav.replace('"','%22')+'" alt="">').replace('/*ENGINE*/',eng).replace('/*STUDIOJS*/',open(os.path.join(D,'fx.js')).read()+'\n'+sjs())
 open(os.path.join(R,'studio.html'),'w').write(t);print('studio.html',len(t))

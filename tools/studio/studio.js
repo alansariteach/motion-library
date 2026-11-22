@@ -86,7 +86,16 @@ function swapText(root,txt){var tn=textNodes(root);if(!tn.length||!txt)return;
   if(best){var letters=best.g.every(function(s){return s.textContent.trim().length<=1;}),parts=letters?Array.from(txt.replace(/\s+/g,' ')):txt.trim().split(/\s+/),tpl=best.g[0];
     best.g.forEach(function(s,i){if(i){var pr=s.previousSibling;if(pr&&pr.nodeType===3&&!pr.textContent.trim())pr.remove();s.remove();}});
     var anchor=tpl;parts.forEach(function(w,i){var s=tpl.cloneNode(false);s.textContent=w;s.style.setProperty('--i',i);if(i){anchor.after(document.createTextNode(letters?'':' '));anchor.nextSibling.after(s);}else tpl.replaceWith(s);anchor=s;});return;}
-  var big=tn.sort(function(a,b){return b.textContent.trim().length-a.textContent.trim().length;})[0];big.textContent=txt;var de=big.parentElement.closest('[data-t]');if(de)de.dataset.t=txt;}
+  var big=tn.slice().sort(function(a,b){return b.textContent.trim().length-a.textContent.trim().length;})[0],path=function(n){var a=[],e=n.parentElement;while(e&&e!==root){a.push(e.tagName);e=e.parentElement;}return a.join('<');},bp=path(big);
+  /* lines built the same way (like a two-line caption) share the words in order, so no sample text is left behind */
+  var ws=txt.trim().split(/\s+/),INL=/^(SPAN|B|I|EM|STRONG|MARK|U|BDI|SMALL|SUB|SUP|S|DEL|INS|A)$/,blk=function(n){var e=n.parentElement;while(e&&e!==root&&INL.test(e.tagName))e=e.parentElement;return e;},bb=blk(big);
+  /* words split over pieces of one line (a highlighted word in the middle, a marked word): the user's words fill every piece in order */
+  var line=tn.filter(function(n){return blk(n)===bb;});
+  if(line.length>1&&ws.length>=line.length){var cnt=line.map(function(n){return Math.max(1,n.textContent.trim().split(/\s+/).length);}),tot=cnt.reduce(function(a,b){return a+b;},0),left=ws.length,at=0;
+    line.forEach(function(n,i){var take=i===line.length-1?left:Math.max(1,Math.min(left-(line.length-1-i),Math.round(ws.length*cnt[i]/tot)));var lead=/^\s/.test(n.textContent),trail=/\s$/.test(n.textContent);n.textContent=(lead?' ':'')+ws.slice(at,at+take).join(' ')+(trail?' ':'');at+=take;left-=take;});return;}
+  var same=tn.filter(function(n){return path(n)===bp;});
+  if(same.length>1&&ws.length>=same.length){var k=same.length,per=Math.ceil(ws.length/k);same.forEach(function(n,i){n.textContent=ws.slice(i*per,(i+1)*per).join(' ');var de2=n.parentElement.closest('[data-t]');if(de2)de2.dataset.t=n.textContent;});return;}
+  big.textContent=txt;var de=big.parentElement.closest('[data-t]');if(de)de.dataset.t=txt;}
 
 /* ---------- preview ---------- */
 var ovl=$('ovl'),frame=$('frame'),fstyle=document.createElement('style');document.head.appendChild(fstyle);
@@ -595,12 +604,19 @@ function capKept(){var sg=segs(),tot=0;sg.forEach(function(x){tot+=x[1]-x[0];});
 function capChunks(words,n){var out=[];for(var i=0;i<words.length;i+=n)out.push(words.slice(i,i+n));return out;}
 function capPlace(text,sid,n,pos,fo,po){var st=capStyles().filter(function(x){return x.id===sid;})[0];if(!st&&mBy(sid))st={m:sid,f:'',p:''};if(!st)return 0;st={m:st.m,f:fo||st.f||'',p:po||st.p||''};var lines=String(text||'').split(/\n+/).map(function(l){return l.trim();}).filter(Boolean);if(!lines.length)return 0;
   var items=[],K=capKept();
-  if(capSegs&&capSegs.length===lines.length){lines.forEach(function(l,i){var a=+capSegs[i][0],b=capSegs[i][1]==null?Math.min(VD,a+3):+capSegs[i][1];if(!(b>a))b=a+1.5;var w=l.split(/\s+/),ch=capChunks(w,n),per=(b-a)/w.length,t=a;
-      ch.forEach(function(c){var d=Math.max(.35,per*c.length);items.push([t,d,c.join(' ')]);t+=per*c.length;});});}
+  if(capSegs&&capSegs.length===lines.length){lines.forEach(function(l,i){var a=+capSegs[i][0],b=capSegs[i][1]==null?Math.min(VD,a+3):+capSegs[i][1];if(!(b>a))b=a+1.5;var w=l.split(/\s+/).filter(Boolean),ch=capChunks(w,n);
+      /* spread the words only over the parts of this line that are kept (deleted parts and cut silences are skipped) */
+      var iv=K.sg.map(function(g){return [Math.max(a,g[0]),Math.min(b,g[1])];}).filter(function(g){return g[1]-g[0]>.02;});if(!iv.length)iv=[[a,b]];var tot=iv.reduce(function(x,g){return x+g[1]-g[0];},0),per=tot/Math.max(1,w.length),o=0;
+      var at=function(o){for(var j=0;j<iv.length;j++){var L2=iv[j][1]-iv[j][0];if(o<L2-1e-6)return [iv[j][0]+o,iv[j][1]];o-=L2;}var e=iv[iv.length-1];return [Math.max(e[0],e[1]-.35),e[1]];};
+      ch.forEach(function(c){var r=at(o),d=Math.min(per*c.length,r[1]-r[0]);items.push([r[0],Math.max(.35,d),c.join(' ')]);o+=per*c.length;});});}
   else{var w=lines.join(' ').split(/\s+/).filter(Boolean),per=K.tot/Math.max(1,w.length),o=0;capChunks(w,n).forEach(function(c){var r=K.at(o),d=Math.min(per*c.length,Math.max(.35,r[1]-r[0]));items.push([r[0],Math.max(.35,d),c.join(' ')]);o+=per*c.length;});}
   snap();S.clips=S.clips.filter(function(c){return !c.cap;});var lane=0;S.clips.forEach(function(c){lane=Math.max(lane,c.l+1);});var y=pos==='t'?18:pos==='c'?50:80,m=mBy(st.m);if(!m)return 0;
   items.forEach(function(it){var s0=Math.max(0,Math.min(VD-.3,+it[0].toFixed(2))),d0=+Math.min(VD-s0,it[1]).toFixed(2);S.clips.push({u:uid++,m:st.m,s:s0,d:Math.max(.3,d0),l:lane,text:it[2],f:st.f||'',p:st.p||'',x:50,y:y,sc:85,cap:1});});
-  sel=null;rebuild();return items.length;}
+  sel=null;rebuild();var tg=pos==='t'?20:pos==='c'?50:78,f0=S.clips.filter(function(c){return c.cap;})[0],k=f0?textY(f0,tg):null;if(k!=null){S.clips.forEach(function(c){if(c.cap){c.y=k;var e=$('c'+c.u);if(e)place(e,c);}});save();}return items.length;}
+/* where the words sit inside a motion's box differs per motion: measure it and return the y that puts the words' middle at target % of the frame */
+function textY(c,target){var el=$('c'+c.u);if(!el)return null;var fr=frame.getBoundingClientRect();if(!(fr.height>0))return null;var was=el.hidden;el.hidden=false;var r=el.getBoundingClientRect(),top=1e9,bot=-1e9;
+  textNodes(el).forEach(function(n){var rg=document.createRange();rg.selectNodeContents(n);var q=rg.getBoundingClientRect();if(q.height>0){top=Math.min(top,q.top);bot=Math.max(bot,q.bottom);}});el.hidden=was;
+  if(!(r.height>0)||bot<top)return null;var cy=((top+bot)/2-fr.top)/fr.height*100;return Math.round(Math.max(5,Math.min(97,c.y+(target-cy)))*10)/10;}
 function capAudio(){if(!SRC.length)return Promise.reject(new Error('nofile'));var OC=window.OfflineAudioContext||window.webkitOfflineAudioContext,oc=new OC(1,Math.ceil(Math.max(1,VD)*16000),16000);return decodeAll(oc,1).then(function(b){if(!b)throw new Error('noaudio');return b.getChannelData(0);});}
 /* common slips the speech model makes in Gulf Arabic */
 var ARFIX=[[/ذكال/g,'ذكاء'],[/ذكاء الصناعي/g,'ذكاء الاصطناعي'],[/الذكا(?=\s|$)/g,'الذكاء'],[/(^|\s)قع(?=\s)/g,'$1قاعد'],[/(^|\s)شون(?=\s)/g,'$1شلون'],[/البرومت/g,'البرومبت'],[/الذكاء الصناعي/g,'الذكاء الاصطناعي']];
