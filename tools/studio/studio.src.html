@@ -15,6 +15,7 @@
   <div class="sd-ttl"><!--CHIP--><span data-t="title">استوديو الموشن</span></div>
   <a class="sd-back" href="./" data-t="back">← المكتبة</a>
   <button type="button" class="sd-btn" id="undo" data-t="undo" data-nv>↶ تراجع</button>
+  <button type="button" class="sd-btn" id="addV" data-t="addV" data-nv>➕ أضف فيديو</button>
   <button type="button" class="sd-btn" id="chV" data-t="chV" data-nv>🎞 غيّر الفيديو</button>
   <button type="button" class="sd-btn" id="clr" data-t="clr" data-nv>🗑 ابدأ من جديد</button>
   <button type="button" class="sd-btn" id="openP" data-t="open">📂 فتح مشروع</button>
@@ -54,7 +55,7 @@
   <p class="sd-tip" data-t="tip"></p>
  </section>
 </div>
-<input type="file" id="vfile" accept="video/*" hidden>
+<input type="file" id="vfile" accept="video/*" multiple hidden><input type="file" id="vfile2" accept="video/*" multiple hidden>
 <input type="file" id="pfile" accept="application/json,.json" hidden>
 <div class="sd-mod" id="mod" hidden><div class="sd-box" id="modb" role="dialog" aria-modal="true"></div></div>
 <script>/*ENGINE*/</script>

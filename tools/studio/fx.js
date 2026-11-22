@@ -33,7 +33,8 @@ var pool=[];function cv(W,H){var c=pool.pop()||document.createElement('canvas');
 function give(c){if(c&&pool.length<14)pool.push(c);}
 var FILT=(function(){try{var c=document.createElement('canvas').getContext('2d');c.filter='blur(2px)';return c.filter==='blur(2px)';}catch(e){return false;}})();
 /* draw an image covering W×H (same aspect as the video) */
-function full(ctx,img,W,H){ctx.drawImage(img,0,0,W,H);}
+function full(ctx,img,W,H){var iw=img.videoWidth,ih=img.videoHeight;if(iw&&ih&&Math.abs(iw/ih-W/H)>.01){var k=Math.min(W/iw,H/ih),w=iw*k,h=ih*k;ctx.save();ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);ctx.restore();ctx.drawImage(img,(W-w)/2,(H-h)/2,w,h);return;}ctx.drawImage(img,0,0,W,H);}
+function fit(ctx,img,W,H){try{full(ctx,img,W,H);}catch(e){}}
 function blurInto(ctx,img,W,H,r){if(r<=.3){full(ctx,img,W,H);return;}
   if(FILT){ctx.save();ctx.filter='blur('+r+'px)';ctx.drawImage(img,-r*2,-r*2,W+r*4,H+r*4);ctx.restore();return;}
   var k=Math.max(2,Math.min(24,r/1.5)),w=Math.max(2,Math.round(W/k)),h=Math.max(2,Math.round(H/k)),t=cv(w,h);t.getContext('2d').drawImage(img,0,0,w,h);ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(t,0,0,W,H);ctx.restore();give(t);}
@@ -253,5 +254,5 @@ function active(clips,t,mBy,pal,inCut,lang){var out=[];clips.forEach(function(c)
   out.push({c:c,m:m,b:bid(m),lt:t-c.s,d:c.d,p:(t-c.s)/c.d,fx:(c.x||50)/100,fy:(c.y||40)/100,lang:lang,pal:{ac:gold?GOLD:(p0.ac||'#F07A50'),hl:gold?GOLD:(p0.hl||'#7FE0C8'),bg:p0.bg||'#102E33'}});});return out;}
 
 function head(img,key,ts){if(!SEG){if(!segBad)segLoad().catch(function(){});return null;}var mk=maskOf(img,key,ts);return mk&&mk.any?mk.head:null;}
-return {head:head,isFoot:isFoot,keepsHTML:keepsHTML,dur:dur,needsPerson:needsPerson,needsHold:needsHold,remap:remap,holdTime:holdTime,draw:draw,front:front,active:active,segLoad:segLoad,ready:function(){return !!SEG;},failed:function(){return segBad;},histReset:histReset,onReady:null,bid:bid};
+return {fit:fit,head:head,isFoot:isFoot,keepsHTML:keepsHTML,dur:dur,needsPerson:needsPerson,needsHold:needsHold,remap:remap,holdTime:holdTime,draw:draw,front:front,active:active,segLoad:segLoad,ready:function(){return !!SEG;},failed:function(){return segBad;},histReset:histReset,onReady:null,bid:bid};
 })();
