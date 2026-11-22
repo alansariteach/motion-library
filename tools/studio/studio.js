@@ -604,12 +604,14 @@ function capKept(){var sg=segs(),tot=0;sg.forEach(function(x){tot+=x[1]-x[0];});
 function capChunks(words,n){var out=[];for(var i=0;i<words.length;i+=n)out.push(words.slice(i,i+n));return out;}
 function capPlace(text,sid,n,pos,fo,po){var st=capStyles().filter(function(x){return x.id===sid;})[0];if(!st&&mBy(sid))st={m:sid,f:'',p:''};if(!st)return 0;st={m:st.m,f:fo||st.f||'',p:po||st.p||''};var lines=String(text||'').split(/\n+/).map(function(l){return l.trim();}).filter(Boolean);if(!lines.length)return 0;
   var items=[],K=capKept();
-  if(capSegs&&capSegs.length===lines.length){lines.forEach(function(l,i){var a=+capSegs[i][0],b=capSegs[i][1]==null?Math.min(VD,a+3):+capSegs[i][1];if(!(b>a))b=a+1.5;var w=l.split(/\s+/).filter(Boolean),ch=capChunks(w,n);
+  if(capSegs&&capSegs.length===lines.length){lines.forEach(function(l,i){var wt=capSegs[i][2];if(wt&&wt.length){capByWords(l,wt,n,K,items);return;}var a=+capSegs[i][0],b=capSegs[i][1]==null?Math.min(VD,a+3):+capSegs[i][1];if(!(b>a))b=a+1.5;var w=l.split(/\s+/).filter(Boolean),ch=capChunks(w,n);
       /* spread the words only over the parts of this line that are kept (deleted parts and cut silences are skipped) */
       var iv=K.sg.map(function(g){return [Math.max(a,g[0]),Math.min(b,g[1])];}).filter(function(g){return g[1]-g[0]>.02;});if(!iv.length)iv=[[a,b]];var tot=iv.reduce(function(x,g){return x+g[1]-g[0];},0),per=tot/Math.max(1,w.length),o=0;
       var at=function(o){for(var j=0;j<iv.length;j++){var L2=iv[j][1]-iv[j][0];if(o<L2-1e-6)return [iv[j][0]+o,iv[j][1]];o-=L2;}var e=iv[iv.length-1];return [Math.max(e[0],e[1]-.35),e[1]];};
       ch.forEach(function(c){var r=at(o),d=Math.min(per*c.length,r[1]-r[0]);items.push([r[0],Math.max(.35,d),c.join(' ')]);o+=per*c.length;});});}
   else{var w=lines.join(' ').split(/\s+/).filter(Boolean),per=K.tot/Math.max(1,w.length),o=0;capChunks(w,n).forEach(function(c){var r=K.at(o),d=Math.min(per*c.length,Math.max(.35,r[1]-r[0]));items.push([r[0],Math.max(.35,d),c.join(' ')]);o+=per*c.length;});}
+  /* a caption stays until the next one starts when the gap is short, so the words don't blink */
+  items.sort(function(x,y){return x[0]-y[0];});items.forEach(function(it,i){var nx=items[i+1];if(nx){var gap=nx[0]-(it[0]+it[1]);if(gap<.6)it[1]=Math.max(.3,nx[0]-it[0]);}});
   snap();S.clips=S.clips.filter(function(c){return !c.cap;});var lane=0;S.clips.forEach(function(c){lane=Math.max(lane,c.l+1);});var y=pos==='t'?18:pos==='c'?50:80,m=mBy(st.m);if(!m)return 0;
   items.forEach(function(it){var s0=Math.max(0,Math.min(VD-.3,+it[0].toFixed(2))),d0=+Math.min(VD-s0,it[1]).toFixed(2);S.clips.push({u:uid++,m:st.m,s:s0,d:Math.max(.3,d0),l:lane,text:it[2],f:st.f||'',p:st.p||'',x:50,y:y,sc:85,cap:1});});
   sel=null;rebuild();var tg=pos==='t'?20:pos==='c'?50:78,f0=S.clips.filter(function(c){return c.cap;})[0],k=f0?textY(f0,tg):null;if(k!=null){S.clips.forEach(function(c){if(c.cap){c.y=k;var e=$('c'+c.u);if(e)place(e,c);}});save();}return items.length;}
@@ -620,25 +622,40 @@ function textY(c,target){var el=$('c'+c.u);if(!el)return null;var fr=frame.getBo
 function capAudio(){if(!SRC.length)return Promise.reject(new Error('nofile'));var OC=window.OfflineAudioContext||window.webkitOfflineAudioContext,oc=new OC(1,Math.ceil(Math.max(1,VD)*16000),16000);return decodeAll(oc,1).then(function(b){if(!b)throw new Error('noaudio');return b.getChannelData(0);});}
 /* common slips the speech model makes in Gulf Arabic */
 var ARFIX=[[/ذكال/g,'ذكاء'],[/ذكاء الصناعي/g,'ذكاء الاصطناعي'],[/الذكا(?=\s|$)/g,'الذكاء'],[/(^|\s)قع(?=\s)/g,'$1قاعد'],[/(^|\s)شون(?=\s)/g,'$1شلون'],[/البرومت/g,'البرومبت'],[/الذكاء الصناعي/g,'الذكاء الاصطناعي']];
+/* timing from the spoken words: each caption starts with its first word and ends with its last (if the text was edited, words are matched by position) */
+function capByWords(l,wt,n,K,items){var w=l.split(/\s+/).filter(Boolean),N=wt.length,W=w.length,j=0;if(!W)return;
+  capChunks(w,n).forEach(function(c){var k0=Math.min(N-1,Math.floor(j*N/W)),k1=Math.min(N-1,Math.max(k0,Math.round((j+c.length)*N/W)-1)),a=+wt[k0][0],b=+wt[k1][1];if(!(b>a))b=a+.4;
+    /* inside a deleted part: start where the video comes back */
+    var inK=K.sg.some(function(g){return a>=g[0]-1e-3&&a<g[1];});if(!inK){var nx=K.sg.filter(function(g){return g[0]>=a;})[0];if(nx){b=Math.max(nx[0]+.35,b);a=nx[0];}}
+    items.push([a,Math.max(.35,b-a),c.join(' ')]);j+=c.length;});}
+/* speech result → lines with times; with word times, lines break at pauses, punctuation or about 12 words */
+function asrLines(out){var ch=(out&&out.chunks)||[],lines=[],sg=[];
+  if(out&&out.word&&ch.length){var cur=[],flush=function(){if(!cur.length)return;var t=fixAr(cur.map(function(x){return x.w;}).join(' ').replace(/\s+/g,' ').trim());if(t){lines.push(t);sg.push([cur[0].a,cur[cur.length-1].b,cur.map(function(x){return [x.a,x.b];})]);}cur=[];};
+    ch.forEach(function(c,i){var w=String(c.text||'').trim();if(!w)return;var ts=c.timestamp||[],a=+ts[0]||0,b=ts[1]==null?a+.4:+ts[1];if(cur.length){var last=cur[cur.length-1];if(a-last.b>.55||cur.length>=12||b-cur[0].a>6.5)flush();}
+      w.split(/\s+/).forEach(function(p2,k,arr){var span=(b-a)/arr.length;cur.push({w:p2,a:+(a+span*k).toFixed(2),b:+(a+span*(k+1)).toFixed(2)});});if(/[.!?؟،,]$/.test(w))flush();});flush();}
+  else{ch.forEach(function(c){var t=fixAr(String(c.text||'').trim());if(!t)return;lines.push(t);sg.push([c.timestamp?c.timestamp[0]:0,c.timestamp?c.timestamp[1]:null]);});}
+  if(!lines.length&&out&&out.text&&String(out.text).trim()){lines=[fixAr(String(out.text).trim())];sg=null;}
+  return {lines:lines,segs:sg&&sg.length===lines.length?sg:null};}
 function fixAr(t){ARFIX.forEach(function(r){t=t.replace(r[0],r[1]);});return t;}
 function capWorker(){if(WK)return WK;var src="import {pipeline,env} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';env.allowLocalModels=false;let asr=null,cur='';\n"+
   /* the large model: on the graphics card the listening part must stay fp16 (q4 there writes wrong words on many cards); on the processor q4 is tested and accurate */
-  "const DT={'onnx-community/whisper-large-v3-turbo':{webgpu:{encoder_model:'fp16',decoder_model_merged:'q4'},wasm:{encoder_model:'q4',decoder_model_merged:'q4'}}};\nasync function load(model,dev){const o={device:dev,progress_callback:p=>self.postMessage({type:'dl',p})};if(DT[model])o.dtype=DT[model][dev];return pipeline('automatic-speech-recognition',model,o);}\n"+
+  /* word timings come from the _timestamped exports of the same models; the processor is used for every model (on many graphics cards the large model wrote wrong words) */
+  "const TS={'onnx-community/whisper-large-v3-turbo':'onnx-community/whisper-large-v3-turbo_timestamped','onnx-community/whisper-small':'onnx-community/whisper-small_timestamped','onnx-community/whisper-base':'onnx-community/whisper-base_timestamped'};\n"+
+  "const DT={'onnx-community/whisper-large-v3-turbo_timestamped':{wasm:{encoder_model:'q4',decoder_model_merged:'q4'}},'onnx-community/whisper-large-v3-turbo':{wasm:{encoder_model:'q4',decoder_model_merged:'q4'}}};\nasync function load(model,dev){const o={device:dev,progress_callback:p=>self.postMessage({type:'dl',p})};if(DT[model])o.dtype=DT[model][dev];return pipeline('automatic-speech-recognition',model,o);}\n"+
   "async function goodGpu(){try{if(!navigator.gpu)return false;const a=await navigator.gpu.requestAdapter();if(!a||a.isFallbackAdapter||!a.features.has('shader-f16'))return false;const i=a.info||(a.requestAdapterInfo?await a.requestAdapterInfo():{});return !/swiftshader|llvmpipe|software/i.test(JSON.stringify(i||{}));}catch(_){return false;}}\n"+
   /* a quick check that the words make sense: mostly Arabic letters and no word stuck on repeat */
   "function bad(o){const t=String(o&&o.text||'').trim();if(!t)return false;const L=(t.match(/\\p{L}/gu)||[]).length,A=(t.match(/[\\u0600-\\u06FF]/g)||[]).length;if(L>8&&A/L<.6)return true;const w=t.split(/\\s+/);let r=1;for(let i=1;i<w.length;i++){r=w[i]===w[i-1]?r+1:1;if(r>=4)return true;}const u=new Set(w);return w.length>24&&u.size/w.length<.3;}\n"+
   "const OPT={language:'arabic',task:'transcribe',chunk_length_s:30,stride_length_s:5,return_timestamps:true};\n"+
-  "self.onmessage=async e=>{const d=e.data;try{let dev='wasm';if(!asr||cur!==d.model+d.gpu){cur=d.model+d.gpu;asr=null;if(d.gpu&&DT[d.model]&&await goodGpu()){try{asr=await load(d.model,'webgpu');dev='webgpu';}catch(_){asr=null;}}if(!asr)asr=await load(d.model,'wasm');asr._dev=asr._dev||dev;}\n"+
-  "self.postMessage({type:'run'});let out=await asr(d.audio,OPT);if(asr._dev==='webgpu'&&bad(out)){self.postMessage({type:'retry'});asr=await load(d.model,'wasm');asr._dev='wasm';out=await asr(d.audio,OPT);}self.postMessage({type:'done',out});}catch(err){self.postMessage({type:'err',msg:String(err&&err.message||err)});}};";
+  "self.onmessage=async e=>{const d=e.data;try{let word=!!TS[d.model];if(!asr||cur!==d.model){cur=d.model;asr=null;if(word){try{asr=await load(TS[d.model],'wasm');}catch(_){asr=null;word=false;}}if(!asr)asr=await load(d.model,'wasm');asr._word=word;}\n"+
+  "self.postMessage({type:'run'});let out=null;if(asr._word){try{out=await asr(d.audio.slice(0),Object.assign({},OPT,{return_timestamps:'word'}));out.word=true;}catch(_){out=null;}}if(!out){if(asr._word){asr=await load(d.model,'wasm');asr._word=false;}out=await asr(d.audio,OPT);}self.postMessage({type:'done',out});}catch(err){self.postMessage({type:'err',msg:String(err&&err.message||err)});}};";
   WK=new Worker(URL.createObjectURL(new Blob([src],{type:'text/javascript'})),{type:'module'});return WK;}
 function capListen(){if(capBusy)return;var pg=$('capPg'),btn=$('capAI');capBusy=true;btn.disabled=true;pg.textContent=t_('capAud');var files={};
   capAudio().then(function(audio){var w=capWorker();return new Promise(function(res,rej){w.onmessage=function(e){var d=e.data;
       if(d.type==='dl'&&d.p){if(d.p.file&&d.p.total){files[d.p.file]=[d.p.loaded||0,d.p.total];var L=0,T=0;Object.keys(files).forEach(function(k){L+=files[k][0];T+=files[k][1];});var el=$('capPg');if(el)el.textContent=t_('capDl')(Math.round(L/T*100));}}
       else if(d.type==='run'||d.type==='retry'){var key=d.type==='run'?'capRun':'capRetry',t0=Date.now();clearInterval(w._tk);var tick=function(){var el2=$('capPg');if(el2)el2.textContent=t_(key)+' '+Math.round((Date.now()-t0)/1000)+'s';};tick();w._tk=setInterval(tick,1000);clearTimeout(w._wd);w._wd=setTimeout(function(){clearInterval(w._tk);try{w.terminate();}catch(_){}WK=null;rej(new Error('timeout'));},(audio.length/16000*20+300)*1000);}else if(d.type==='done'){clearTimeout(w._wd);clearInterval(w._tk);res(d.out);}else if(d.type==='err'){clearTimeout(w._wd);clearInterval(w._tk);rej(new Error(d.msg));}};
     w.onerror=function(e){rej(new Error(e.message||'worker'));};w.postMessage({audio:audio,model:$('capQ')?$('capQ').value:'onnx-community/whisper-base',gpu:!!navigator.gpu&&!matchMedia('(pointer:coarse)').matches},[audio.buffer]);});
-  }).then(function(out){var ch=(out&&out.chunks)||[],lines=[],sg=[];ch.forEach(function(c){var t=fixAr(String(c.text||'').trim());if(!t)return;lines.push(t);sg.push([c.timestamp?c.timestamp[0]:0,c.timestamp?c.timestamp[1]:null]);});
-    if(!lines.length&&out&&out.text){lines=[String(out.text).trim()];sg=null;}
-    capSegs=sg&&sg.length===lines.length?sg:null;var tx=$('capTx');if(tx){tx.value=lines.join('\n');}try{localStorage.setItem('ml-captx',lines.join('\n'));localStorage.setItem('ml-capseg',JSON.stringify(capSegs));}catch(e){}
+  }).then(function(out){var R=asrLines(out),lines=R.lines;
+    capSegs=R.segs;var tx=$('capTx');if(tx){tx.value=lines.join('\n');}try{localStorage.setItem('ml-captx',lines.join('\n'));localStorage.setItem('ml-capseg',JSON.stringify(capSegs));}catch(e){}
     var el=$('capPg');if(el)el.textContent=t_('capOk')(lines.length);try{if(window.goatcounter&&goatcounter.count)goatcounter.count({path:'captions-ai',title:'Captions AI',event:true});}catch(_){}
   }).catch(function(e){var el=$('capPg');if(el)el.textContent=(e&&/decode|EncodingError|nofile/i.test(String(e.message||e.name)))?t_('capNoA'):t_('capErr');try{console.warn('captions',e);}catch(_){}})
   .then(function(){capBusy=false;var b=$('capAI');if(b)b.disabled=false;});}
