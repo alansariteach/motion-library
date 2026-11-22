@@ -71,9 +71,10 @@ XR.snap=function(el,W,H,skip){
   });};
 
 /* ---------- encoding ---------- */
-function pickCodec(w,h,fps){if(typeof VideoEncoder==='undefined'||typeof VideoFrame==='undefined')return Promise.resolve(null);
-  var list=['avc1.640028','avc1.4d0028','avc1.420028','avc1.640033','avc1.42003e'];
-  return list.reduce(function(p,c){return p.then(function(f){if(f)return f;var cfg={codec:c,width:w,height:h,bitrate:Math.round(w*h*fps*0.18),framerate:fps,avc:{format:'avc'}};
+function pickCodec(w,h,fps,q){if(typeof VideoEncoder==='undefined'||typeof VideoFrame==='undefined')return Promise.resolve(null);
+  /* bigger frames or 60 fps need a higher H.264 level */
+  var big=w*h>2100000||fps>30,list=big?['avc1.640034','avc1.640033','avc1.4d0033','avc1.640032','avc1.42003e','avc1.640028']:['avc1.640028','avc1.4d0028','avc1.420028','avc1.640033','avc1.42003e'];
+  return list.reduce(function(p,c){return p.then(function(f){if(f)return f;var cfg={codec:c,width:w,height:h,bitrate:Math.round(w*h*fps*(q||0.18)),framerate:fps,avc:{format:'avc'}};
     return VideoEncoder.isConfigSupported(cfg).then(function(r){return r.supported?cfg:null;}).catch(function(){return null;});});},Promise.resolve(null));}
 function resample(buf,sr){if(buf.sampleRate===sr||typeof OfflineAudioContext==='undefined')return Promise.resolve(buf);var ch=Math.min(2,buf.numberOfChannels),oc=new OfflineAudioContext(ch,Math.ceil(buf.duration*sr),sr),s=oc.createBufferSource();s.buffer=buf;s.connect(oc.destination);s.start();return oc.startRendering();}
 function pickAudio(o){var buf=o.audio;if(!buf)return Promise.resolve(false);if(typeof AudioEncoder==='undefined'||typeof AudioData==='undefined')return Promise.resolve(null);
@@ -86,7 +87,7 @@ XR.canWork=function(){var c=document.createElement('canvas');return (typeof Vide
 /* o: {w,h,fps,n,frame:function(i,ctx,canvas)->Promise, audio:AudioBuffer|null, prog:function(0..1), stop:function()->bool} */
 XR.render=function(o){
   var cv=document.createElement('canvas');cv.width=o.w;cv.height=o.h;var ctx=cv.getContext('2d');
-  return pickCodec(o.w,o.h,o.fps).then(function(vc){return (vc?pickAudio(o):Promise.resolve(null)).then(function(au){
+  return pickCodec(o.w,o.h,o.fps,o.q).then(function(vc){return (vc?pickAudio(o):Promise.resolve(null)).then(function(au){
     if(vc&&au!==null)return needMux().then(function(){return wcPath(o,cv,ctx,vc,au||null);});
     return mrPath(o,cv,ctx);});});};
 
