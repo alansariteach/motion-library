@@ -561,7 +561,7 @@ function capPlace(text,sid,n,pos,fo,po){var st=capStyles().filter(function(x){re
   sel=null;rebuild();return items.length;}
 function capAudio(){if(!SRC.length)return Promise.reject(new Error('nofile'));var OC=window.OfflineAudioContext||window.webkitOfflineAudioContext,oc=new OC(1,Math.ceil(Math.max(1,VD)*16000),16000);return decodeAll(oc,1).then(function(b){if(!b)throw new Error('noaudio');return b.getChannelData(0);});}
 /* common slips the speech model makes in Gulf Arabic */
-var ARFIX=[[/الذكال/g,'الذكاء'],[/الذكا(?=\s|$)/g,'الذكاء'],[/(^|\s)قع(?=\s)/g,'$1قاعد'],[/(^|\s)شون(?=\s)/g,'$1شلون'],[/البرومت/g,'البرومبت'],[/الذكاء الصناعي/g,'الذكاء الاصطناعي']];
+var ARFIX=[[/ذكال/g,'ذكاء'],[/ذكاء الصناعي/g,'ذكاء الاصطناعي'],[/الذكا(?=\s|$)/g,'الذكاء'],[/(^|\s)قع(?=\s)/g,'$1قاعد'],[/(^|\s)شون(?=\s)/g,'$1شلون'],[/البرومت/g,'البرومبت'],[/الذكاء الصناعي/g,'الذكاء الاصطناعي']];
 function fixAr(t){ARFIX.forEach(function(r){t=t.replace(r[0],r[1]);});return t;}
 function capWorker(){if(WK)return WK;var src="import {pipeline,env} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';env.allowLocalModels=false;let asr=null,cur='';\n"+
   /* the large model: on the graphics card the listening part must stay fp16 (q4 there writes wrong words on many cards); on the processor q4 is tested and accurate */
