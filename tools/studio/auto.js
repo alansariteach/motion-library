@@ -32,7 +32,7 @@ function moodBy(k){for(var i=0;i<MOODS.length;i++)if(MOODS[i].k===k)return MOODS
 /* words that deserve a highlight: numbers, then strong words (Kuwaiti and standard spellings) */
 var AU_NUM=/[0-9٠-٩]|%|٪|\b(واحد|وحدة|ثنين|اثنين|ثلاث|ثلاثة|أربع|اربع|خمس|ست|سبع|ثمان|تسع|عشر|عشرة|مية|مئة|ألف|الف|مليون)\b/;
 var AU_KEY=/(انتبه|انتبهو|لا تسوي|لا تسوون|سر|أسرار|اسرار|أهم|اهم|مهم|مجاني|ببلاش|خطير|أفضل|افضل|أقوى|اقوى|أول|اول|آخر|اخر|ليش|شلون|كيف|ترى|صدق|حقيقة|غلط|صح|الحين|فوراً|لازم|أبد|ابد|مستحيل|جديد|حصري|خصم|عرض|ضمان|مضمون|أسرع|اسرع|سهل|بسيط|ممنوع|تحذير|نصيحة|حيلة|خدعة)/;
-var auASR=null,auSeed=0,auLast=null,auBase=null;
+var IOSDEV=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),auASR=null,auSeed=0,auLast=null,auBase=null;
 function auOpts(){var d={o1:1,o2:1,o3:1,o4:1,o5:1,o6:1,o7:1,o8:1,br:0,rv:1};try{var s=JSON.parse(localStorage.getItem('ml-auto'));if(s)Object.keys(s).forEach(function(k){d[k]=s[k];});}catch(e){}return d;}
 function auSave(o){try{localStorage.setItem('ml-auto',JSON.stringify(o));}catch(e){}}
 function auPick(a,salt){return a&&a.length?a[(auSeed+(salt||0))%a.length]:null;}
@@ -106,7 +106,7 @@ function auReview(r){return new Promise(function(res){var P=$('pane-auto'),box=d
   $('auGo2').addEventListener('click',function(){var L2=tx.value.split(/\n+/).map(function(l){return l.trim();}).filter(Boolean);box.remove();
     if(L2.length!==r.lines.length&&r.segs&&r.segs.length&&r.segs[0][2]){var all=[];r.segs.forEach(function(g){all=all.concat(g[2]);});r.segs=[[all[0][0],all[all.length-1][1],all]];L2=[L2.join(' ')];}else if(L2.length!==r.lines.length)r.segs=[];r.lines=L2;try{localStorage.setItem('ml-captx',L2.join('\n'));}catch(e){}res(r);});});}
 function paneAuto(){var P=$('pane-auto');if(!P)return;if(!hasV){P.innerHTML='<div class="sd-pempty"><p>'+esc(t_('auD'))+'</p><button type="button" class="sd-btn pri" id="auUp">'+t_('drop')+'</button></div>';$('auUp').addEventListener('click',function(){fin.click();});return;}
-  var o=auOpts();if(!o.mood)o.mood='hype';var b=brand(),coarse=matchMedia('(pointer:coarse)').matches;if(!o.q)o.q='onnx-community/whisper-large-v3-turbo';
+  var o=auOpts();if(!o.mood)o.mood='hype';var b=brand(),coarse=matchMedia('(pointer:coarse)').matches;if(!o.q)o.q=IOSDEV?'onnx-community/whisper-small':'onnx-community/whisper-large-v3-turbo';
   var chk=function(k){return '<label class="sd-auck"><input type="checkbox" data-o="'+k+'"'+(o[k]?' checked':'')+'> '+t_('auO'+k.slice(1))+'</label>';};
   P.innerHTML='<p class="sd-note sd-aud">'+esc(t_('auD'))+'</p><p class="sd-mname"><b>'+t_('auMood')+'</b></p><div class="sd-cpg sd-aum"></div>'+
    '<p class="sd-mname"><b>'+t_('auDo')+'</b></p><div class="sd-auo">'+['o1','o2','o3','o4','o5','o6','o7','o8'].map(chk).join('')+'</div>'+
