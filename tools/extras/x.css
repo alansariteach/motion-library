@@ -422,3 +422,6 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xlgbtn i{width:46px;height:46px;border-radius:10px;flex:0 0 auto;background:repeating-conic-gradient(#d9d4cc 0 25%,#fff 0 50%) 0 0/12px 12px;background-size:contain;background-repeat:no-repeat;background-position:center}
 .xlgbtn.has i{background:center/contain no-repeat,repeating-conic-gradient(#d9d4cc 0 25%,#fff 0 50%) 0 0/12px 12px}
 .xlgbtn.has{border-style:solid}
+
+.ximgrow{flex-wrap:wrap}
+.ximgrow button{flex:1 1 auto}

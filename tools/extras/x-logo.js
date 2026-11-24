@@ -91,3 +91,22 @@ function editor(done){var cur=get(),o=cur?JSON.parse(JSON.stringify(cur)):{raw:'
   sync();show();}
 return {get:get,url:url,image:image,place:place,editor:editor,previews:previews,process:process,t:t};
 })();
+/* ---------- XImg: put the user's own picture in place of the shape in a motion (star, logo, icons) ---------- */
+var XImg=(function(){
+var PAR='.logo,.icn,.heart,.pin,.mic,.lnk,.srch,.send,.tcard';
+function marks(){var a=[];try{[STAR,HEART,PLANE,MIC].forEach(function(x){if(typeof x==='string')a.push(x);});}catch(e){}return a;}
+/* the svg shapes in a drawn motion that can take a picture (decorations like circles, underlines and sparkles stay) */
+function targets(root){var mk=marks();return [].slice.call(root.querySelectorAll('svg')).filter(function(s){if(s.closest('.ph,.vtag,.sd-foot'))return false;var p=s.parentElement;
+  if(p&&p.matches&&p.matches(PAR)&&!s.closest('.spk,.csr'))return true;var ph=s.querySelector('path'),d=ph&&ph.getAttribute('d');return !!d&&!s.closest('.spk,.csr')&&mk.some(function(x){return x.indexOf('d="'+d+'"')>-1;});});}
+function can(root){return targets(root).length>0;}
+function apply(root,url){if(!url)return 0;var t=targets(root);t.forEach(function(s){var vb=(s.getAttribute('viewBox')||'0 0 100 100').split(/[\s,]+/).map(Number);if(vb.length<4||!(vb[2]>0))vb=[0,0,100,100];
+    s.innerHTML='<image href="'+url+'" x="'+vb[0]+'" y="'+vb[1]+'" width="'+vb[2]+'" height="'+vb[3]+'" preserveAspectRatio="xMidYMid meet"/>';s.classList.add('ximg');});return t.length;}
+/* read a picture, shrink it to 480 px, keep transparency when it has any */
+function read(file){return new Promise(function(res,rej){if(!file||!/^image\//.test(file.type||'')){rej(new Error('type'));return;}var u=URL.createObjectURL(file),im=new Image();
+  im.onload=function(){var k=Math.min(1,480/Math.max(im.naturalWidth,im.naturalHeight)),w=Math.max(1,Math.round(im.naturalWidth*k)),h=Math.max(1,Math.round(im.naturalHeight*k)),c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');x.drawImage(im,0,0,w,h);URL.revokeObjectURL(u);
+    var alpha=false;try{var d=x.getImageData(0,0,w,h).data;for(var i=3;i<d.length;i+=16)if(d[i]<250){alpha=true;break;}}catch(e){}res(alpha?c.toDataURL('image/png'):c.toDataURL('image/jpeg',.88));};
+  im.onerror=function(){URL.revokeObjectURL(u);rej(new Error('load'));};im.src=u;});}
+function pick(){return new Promise(function(res,rej){var i=document.createElement('input');i.type='file';i.accept='image/*';i.style.display='none';document.body.appendChild(i);
+  i.addEventListener('change',function(){var f=i.files&&i.files[0];i.remove();if(!f){rej(new Error('none'));return;}read(f).then(res,rej);});i.click();});}
+function logo(){try{var o=XLogo.get();return o&&o.src||null;}catch(e){return null;}}
+return {targets:targets,can:can,apply:apply,read:read,pick:pick,logo:logo};})();
