@@ -439,3 +439,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .lab .ximc-c input{width:18px!important;height:18px;margin:0}
 /* phones: keep the preview in sight while moving the sliders */
 @media (max-width:700px){.lab .labst{position:sticky;top:-19px;z-index:3;width:auto;margin-inline:-4px;padding:6px 4px 8px;background:var(--panel);border-radius:0 0 16px 16px;box-shadow:0 8px 14px -10px rgba(0,0,0,.35)}.lab .labst #labSt{width:min(100%,calc(32vh * .8));margin-inline:auto}}
+
+.xtxf{display:flex;flex-direction:column;gap:6px;margin:4px 0 8px}
+.xtxf .xtxf-h{margin:0;font-weight:700;font-size:13.5px}
+.xtxf input{width:100%;box-sizing:border-box;padding:9px 12px;border-radius:12px;border:1px solid var(--line,#d9cdb6);background:transparent;color:inherit;font:inherit;font-size:14px}

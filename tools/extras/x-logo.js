@@ -97,12 +97,21 @@ var PAR='.logo,.icn,.heart,.pin,.mic,.lnk,.srch,.send,.tcard';
 function marks(){var a=[];try{[STAR,HEART,PLANE,MIC].forEach(function(x){if(typeof x==='string')a.push(x);});}catch(e){}return a;}
 /* the svg shapes in a drawn motion that can take a picture (decorations like circles, underlines and sparkles stay) */
 function targets(root){var mk=marks();return [].slice.call(root.querySelectorAll('svg')).filter(function(s){if(s.closest('.ph,.vtag,.sd-foot'))return false;var p=s.parentElement;
+  if(s.classList.contains('sig'))return true;
   if(p&&p.matches&&p.matches(PAR)&&!s.closest('.spk,.csr'))return true;var ph=s.querySelector('path'),d=ph&&ph.getAttribute('d');return !!d&&!s.closest('.spk,.csr')&&mk.some(function(x){return x.indexOf('d="'+d+'"')>-1;});});}
-function can(root){return targets(root).length>0;}
+/* boxes drawn with CSS that stand for a picture: profile photo, phone/laptop/window screen, carousel and coin faces… (keep:1 = the words on it stay) */
+var SLOTS=[['.av .fc'],['.phone .sc'],['.lap .scr2'],['.win .bd'],['.phn2'],['.car>i'],['.coin>div'],['.cv>b'],['.lay>i'],['.tcard2',1]];
+function slots(root){var a=[];SLOTS.forEach(function(sl){root.querySelectorAll(sl[0]).forEach(function(e){if(!e.closest('.ph,.vtag'))a.push({el:e,keep:!!sl[1]});});});
+  /* the sticker that follows (a star by default) */
+  root.querySelectorAll('div.a').forEach(function(e){if(e.children.length===0&&e.textContent.trim()==='★')a.push({el:e,keep:0});});return a;}
+var cssDone=false;function css(){if(cssDone)return;cssDone=true;var st=document.createElement('style');st.textContent='.ximgf{background-repeat:no-repeat!important;background-color:transparent}.ximgf.xcov{color:transparent!important;text-shadow:none!important}.ximgf.xcov>*{visibility:hidden!important}.ximgf.xcov::before,.ximgf.xcov::after{display:none!important}';document.head.appendChild(st);}
+function can(root){return targets(root).length>0||slots(root).length>0;}
 /* o = {sc: size %, ox/oy: move right/down in % of the shape} */
 function apply(root,url,o){if(!url)return 0;o=o||{};var sc=(+o.sc||100)/100,ox=(+o.ox||0)/100,oy=(+o.oy||0)/100,t=targets(root);t.forEach(function(s){var vb=(s.getAttribute('viewBox')||'0 0 100 100').split(/[\s,]+/).map(Number);if(vb.length<4||!(vb[2]>0))vb=[0,0,100,100];
     var w=vb[2]*sc,h=vb[3]*sc,x=vb[0]+(vb[2]-w)/2+ox*vb[2],y=vb[1]+(vb[3]-h)/2+oy*vb[3];
-    s.innerHTML='<image href="'+url+'" x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="'+w.toFixed(2)+'" height="'+h.toFixed(2)+'" preserveAspectRatio="xMidYMid meet"/>';s.style.overflow='visible';s.classList.add('ximg');});return t.length;}
+    s.innerHTML='<image href="'+url+'" x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="'+w.toFixed(2)+'" height="'+h.toFixed(2)+'" preserveAspectRatio="xMidYMid meet"/>';s.style.overflow='visible';s.classList.add('ximg');});
+  var sl=slots(root);if(sl.length)css();sl.forEach(function(x){var e=x.el;e.classList.add('ximgf');if(!x.keep)e.classList.add('xcov');e.style.backgroundImage='url("'+url+'")';e.style.backgroundSize=Math.abs(sc-1)<.001?'cover':(sc*100).toFixed(0)+'%';e.style.backgroundPosition=(50+ox*100).toFixed(1)+'% '+(50+oy*100).toFixed(1)+'%';});
+  return t.length+sl.length;}
 /* clear the background (same flood fill as the logo editor); strength 1..100 */
 function cut(url,str){return XLogo.process(url,{bg:true,tol:Math.round(12+(+str||50)*1.1),trim:true,col:'orig'}).then(function(r){return r.src;});}
 /* the picture controls: size, move left/right and up/down, clear the background */
@@ -122,3 +131,28 @@ function pick(){return new Promise(function(res,rej){var i=document.createElemen
   i.addEventListener('change',function(){var f=i.files&&i.files[0];i.remove();if(!f){rej(new Error('none'));return;}read(f).then(res,rej);});i.click();});}
 function logo(){try{var o=XLogo.get();return o&&o.src||null;}catch(e){return null;}}
 return {targets:targets,can:can,apply:apply,read:read,pick:pick,logo:logo,cut:cut,controls:controls};})();
+
+/* ---------- XTxt: every piece of writing in a motion as its own field (poll question, options, numbers, names…) ---------- */
+var XTxt=(function(){
+var SKIP='.vtag,.lbl,.ph,.sd-foot,.sd-h,.xov,.xlgi';
+function nodes(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){if(!n.textContent.trim())return NodeFilter.FILTER_REJECT;var p=n.parentElement;if(!p||p.closest(SKIP)||p.closest('style,script'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}}),a=[],n;while(n=w.nextNode())a.push(n);return a;}
+/* one field per text, or per group of one-word / one-letter spans (staggered motions) */
+function fields(root){var tn=nodes(root),out=[],seen=new Set();
+  tn.forEach(function(n){var p=n.parentElement;if(seen.has(n))return;
+    if(p.tagName==='SPAN'&&p.childNodes.length===1&&p.parentElement){var sib=[].slice.call(p.parentElement.children).filter(function(e){return e.tagName==='SPAN'&&e.childNodes.length===1&&e.firstChild.nodeType===3&&e.textContent.trim();});
+      if(sib.length>=2&&sib.every(function(e){return e.textContent.trim().split(/\s+/).length===1&&/--i\s*:/.test(e.getAttribute('style')||'');})){var letters=sib.every(function(e){return e.textContent.trim().length<=1;});sib.forEach(function(e){seen.add(e.firstChild);});
+        out.push({group:p.parentElement,spans:sib,letters:letters,text:letters?sib.map(function(e){return e.textContent;}).join('').replace(/\u00A0/g,' '):sib.map(function(e){return e.textContent.trim();}).join(' ')});return;}}
+    seen.add(n);out.push({node:n,text:n.textContent.trim()});});return out;}
+function setOne(f,val){val=String(val);if(f.group){var parts=f.letters?Array.from(val.replace(/\s/g,'\u00A0')):val.trim().split(/\s+/),tpl=f.spans[0];
+    f.spans.forEach(function(s,i){if(i){var pr=s.previousSibling;if(pr&&pr.nodeType===3&&!pr.textContent.trim())pr.remove();s.remove();}});
+    var anchor=tpl;parts.forEach(function(w,i){var s=tpl.cloneNode(false);s.textContent=w;s.style.setProperty('--i',i);if(i){anchor.after(document.createTextNode(f.letters?'':' '));anchor.nextSibling.after(s);}else tpl.replaceWith(s);anchor=s;});return;}
+  var n=f.node,o=n.textContent,lead=/^\s/.test(o)?' ':'',trail=/\s$/.test(o)?' ':'';n.textContent=lead+val+trail;var p=n.parentElement;
+  var dt=p.closest('[data-t]');if(dt)dt.dataset.t=val;if(p.classList.contains('cnt')||p.dataset.to!=null){var num=val.replace(/[^0-9.]/g,'');if(num)p.dataset.to=num;}
+  /* a percentage next to a bar: the bar follows it */
+  var m=val.match(/(\d+(?:\.\d+)?)\s*[%٪]/);if(m){var row=p.parentElement;var bar=row&&[].slice.call(row.children).filter(function(e){return e!==p&&e.style&&e.style.getPropertyValue('--w');})[0];if(bar)bar.style.setProperty('--w',Math.max(0,Math.min(1,+m[1]/100)).toFixed(3));}}
+function apply(root,map){if(!map)return;var f=fields(root);Object.keys(map).forEach(function(k){var i=+k;if(f[i]&&map[k]!=null&&String(map[k]).trim()!=='')setOne(f[i],map[k]);});}
+/* the list of fields; on(i,value) on every change */
+function form(box,root,map,on){var f=fields(root),ar=(document.documentElement.lang||'ar').indexOf('ar')===0;if(f.length<2){box.innerHTML='';box.hidden=true;return 0;}box.hidden=false;
+  box.innerHTML='<p class="xtxf-h">'+(ar?'✎ كل الكتابة اللي بالحركة':'✎ All the writing in the motion')+'</p>'+f.map(function(x,i){var v=map&&map[i]!=null?map[i]:x.text;return '<input type="text" dir="auto" maxlength="120" data-i="'+i+'" value="'+String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'">';}).join('');
+  box.querySelectorAll('input').forEach(function(inp){inp.addEventListener('input',function(){on(+inp.dataset.i,inp.value);});});return f.length;}
+return {fields:fields,apply:apply,form:form,set:setOne};})();

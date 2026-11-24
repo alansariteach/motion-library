@@ -304,7 +304,7 @@ document.getElementById('tabM').onclick=function(){showTab('M');};document.getEl
 
 /* ---------- try-it lab ---------- */
 var lab=document.createElement('div');lab.className='exm lab';lab.id='lab';lab.hidden=true;lab.setAttribute('role','dialog');lab.setAttribute('aria-modal','true');
-lab.innerHTML='<div class="labbox"><div class="bkh"><h2 id="labT"></h2><button type="button" class="exx" id="labX" aria-label="Close">✕</button></div><div class="labin"><div class="labst card labcard"><div class="st" id="labSt"></div></div><div class="labc"><div class="mono" id="labId"></div><label><span id="labInL"></span><input id="labIn" type="text" maxlength="60"></label><p class="labno" id="labNo" hidden></p><div class="acts ximgrow" id="labImR" hidden><button type="button" id="labIm"></button><button type="button" id="labImL"></button><button type="button" id="labImX" hidden></button></div><div class="ximc" id="labImC" hidden></div><label><span id="labFL"></span><select id="labF"></select></label><label><span id="labPL"></span><select id="labP"></select></label><div class="acts"><button type="button" id="labRe"></button><button type="button" id="labCp"></button></div><div class="acts"><button type="button" class="exb" id="labBk"></button></div></div></div></div>';
+lab.innerHTML='<div class="labbox"><div class="bkh"><h2 id="labT"></h2><button type="button" class="exx" id="labX" aria-label="Close">✕</button></div><div class="labin"><div class="labst card labcard"><div class="st" id="labSt"></div></div><div class="labc"><div class="mono" id="labId"></div><label><span id="labInL"></span><input id="labIn" type="text" maxlength="60"></label><p class="labno" id="labNo" hidden></p><div class="acts ximgrow" id="labImR" hidden><button type="button" id="labIm"></button><button type="button" id="labImL"></button><button type="button" id="labImX" hidden></button></div><div class="ximc" id="labImC" hidden></div><div class="xtxf" id="labTxF" hidden></div><label><span id="labFL"></span><select id="labF"></select></label><label><span id="labPL"></span><select id="labP"></select></label><div class="acts"><button type="button" id="labRe"></button><button type="button" id="labCp"></button></div><div class="acts"><button type="button" class="exb" id="labBk"></button></div></div></div></div>';
 document.body.appendChild(lab);
 var labImg=null,labImgC=null,labImgS={sc:100,ox:0,oy:0,bg:0};
 function labImSet(d){labImg=d;labImgC=null;labImgS={sc:100,ox:0,oy:0,bg:0};var c=document.getElementById('labImC');if(d)XImg.controls(c,labImgS,labImOn);labDraw();}
@@ -326,11 +326,12 @@ function swapText(root,txt){var tn=textNodes(root);if(!tn.length)return false;if
     if(!letters)return true;}
   var big=tn.filter(function(n){return n.isConnected;}).sort(function(a,b){return b.textContent.trim().length-a.textContent.trim().length;})[0];
   if(big&&!best){big.textContent=txt;var de=big.parentElement.closest('[data-t]');if(de)de.dataset.t=txt;}return true;}
-function labDraw(){var m=labM,st=document.getElementById('labSt'),t=document.getElementById('labIn').value.trim(),fid=document.getElementById('labF').value,pid=document.getElementById('labP').value;
+var labTx={},labTxM=null,labTxT=null;
+function labDraw(keepForm){var m=labM,st=document.getElementById('labSt'),t=document.getElementById('labIn').value.trim(),fid=document.getElementById('labF').value,pid=document.getElementById('labP').value;
   st.className='st'+(m.vcls?' '+m.vcls:'');st.style.cssText='--d:'+(m.d||'2.8s')+';--vf:'+(m.vf||1);
   st.innerHTML=stageHTML(m)+(m.vlab?'<span class="vtag">'+m.vlab+'</span>':'')+'<i class="ph"></i>';
   var canIm=XImg.can(st);if(labImg&&canIm)XImg.apply(st,labImgS.bg&&labImgC?labImgC:labImg,labImgS);labImUI(canIm);
-  labHasText=swapText(st,t);document.getElementById('labNo').hidden=labHasText;document.getElementById('labNo').textContent=X('labNo');document.getElementById('labIn').disabled=!labHasText;
+  labHasText=swapText(st,t);if(labTxM!==m.id){labTx={};labTxM=m.id;keepForm=false;}XTxt.apply(st,labTx);if(!keepForm)XTxt.form(document.getElementById('labTxF'),st,labTx,function(i,v){labTx[i]=v;clearTimeout(labTxT);labTxT=setTimeout(function(){labDraw(true);},200);});document.getElementById('labNo').hidden=labHasText||XTxt.fields(st).length>0;document.getElementById('labNo').textContent=X('labNo');document.getElementById('labIn').disabled=!labHasText;
   var css='';if(fid)css+='#labSt *:not(.vtag){font-family:'+fontFam(fid)+'!important}';
   var p=pid==='BR'?brPal():pById(pid);if(p)st.style.cssText+=';--mon:'+p.bg+';--mon2:'+p.bg+';--mon-fg:'+p.tx+';--coral:'+p.ac+';--mint:'+p.hl+';color:'+p.tx;
   labCss.textContent=css;}
@@ -876,7 +877,7 @@ function r5LabCmp(){lst.textContent=lang==='ar'?'🎬 حطها بالاستود�
 /* --- put the motion in the Studio (with the text, font and colours from the try-it window) --- */
 var lst=document.createElement('button');lst.type='button';lst.className='btn xstudio';lst.id='labSt2';document.getElementById('labBk').parentElement.before(lst);
 lst.addEventListener('click',function(){if(!labM)return;var q=[];try{q=JSON.parse(localStorage.getItem('ml-studio-add'))||[];}catch(e){}
-  q.push({m:labM.id,text:labHasText?document.getElementById('labIn').value.trim():'',f:document.getElementById('labF').value||'',p:document.getElementById('labP').value||'',img:labImg&&XImg.can(document.getElementById('labSt'))?labImg:'',imgS:labImg?labImgS:null});
+  q.push({m:labM.id,text:labHasText?document.getElementById('labIn').value.trim():'',f:document.getElementById('labF').value||'',p:document.getElementById('labP').value||'',img:labImg&&XImg.can(document.getElementById('labSt'))?labImg:'',imgS:labImg?labImgS:null,tx:labTx});
   try{localStorage.setItem('ml-studio-add',JSON.stringify(q.slice(-20)));}catch(e){}goat('to-studio',labM.id);document.getElementById('labX').click();window.mlToStudio();});
 var openLab0=openLab;openLab=function(id,btn,txt){openLab0(id,btn,txt);r5LabCmp();};
 cards.forEach(function(o){if(o.sx&&o.sx.parentElement)o.sx.remove();});
