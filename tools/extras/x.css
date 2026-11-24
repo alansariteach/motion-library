@@ -425,3 +425,17 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 
 .ximgrow{flex-wrap:wrap}
 .ximgrow button{flex:1 1 auto}
+
+.ximc{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px;padding:10px 12px;border:1px dashed var(--line,#d9cdb6);border-radius:14px}
+.ximc-r{display:flex;align-items:center;gap:10px;font-size:13px}
+.ximc-r span{min-width:84px}
+.ximc-r input{flex:1}
+.ximc-c{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;cursor:pointer}
+.ximc-c input{width:18px;height:18px}
+.ximc-b{align-self:flex-start;font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line,#d9cdb6);background:transparent;color:inherit;cursor:pointer}
+.lab .ximc label.ximc-r{display:flex!important;flex-direction:row!important;align-items:center;text-align:start;gap:10px;margin:0}
+.lab .ximc label.ximc-c{display:flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;gap:8px;margin:0}
+.lab .ximc-r input{flex:1;width:auto!important;margin:0}
+.lab .ximc-c input{width:18px!important;height:18px;margin:0}
+/* phones: keep the preview in sight while moving the sliders */
+@media (max-width:700px){.lab .labst{position:sticky;top:-19px;z-index:3;width:auto;margin-inline:-4px;padding:6px 4px 8px;background:var(--panel);border-radius:0 0 16px 16px;box-shadow:0 8px 14px -10px rgba(0,0,0,.35)}.lab .labst #labSt{width:min(100%,calc(32vh * .8));margin-inline:auto}}

@@ -1310,6 +1310,20 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .ximgrow{flex-wrap:wrap}
 .ximgrow button{flex:1 1 auto}
 
+.ximc{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px;padding:10px 12px;border:1px dashed var(--line,#d9cdb6);border-radius:14px}
+.ximc-r{display:flex;align-items:center;gap:10px;font-size:13px}
+.ximc-r span{min-width:84px}
+.ximc-r input{flex:1}
+.ximc-c{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;cursor:pointer}
+.ximc-c input{width:18px;height:18px}
+.ximc-b{align-self:flex-start;font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line,#d9cdb6);background:transparent;color:inherit;cursor:pointer}
+.lab .ximc label.ximc-r{display:flex!important;flex-direction:row!important;align-items:center;text-align:start;gap:10px;margin:0}
+.lab .ximc label.ximc-c{display:flex!important;flex-direction:row!important;align-items:center;justify-content:flex-start;gap:8px;margin:0}
+.lab .ximc-r input{flex:1;width:auto!important;margin:0}
+.lab .ximc-c input{width:18px!important;height:18px;margin:0}
+/* phones: keep the preview in sight while moving the sliders */
+@media (max-width:700px){.lab .labst{position:sticky;top:-19px;z-index:3;width:auto;margin-inline:-4px;padding:6px 4px 8px;background:var(--panel);border-radius:0 0 16px 16px;box-shadow:0 8px 14px -10px rgba(0,0,0,.35)}.lab .labst #labSt{width:min(100%,calc(32vh * .8));margin-inline:auto}}
+
 /*XCSS-END*/</style>
 
 <div class="wrap" id="app">
@@ -3312,8 +3326,20 @@ function marks(){var a=[];try{[STAR,HEART,PLANE,MIC].forEach(function(x){if(type
 function targets(root){var mk=marks();return [].slice.call(root.querySelectorAll('svg')).filter(function(s){if(s.closest('.ph,.vtag,.sd-foot'))return false;var p=s.parentElement;
   if(p&&p.matches&&p.matches(PAR)&&!s.closest('.spk,.csr'))return true;var ph=s.querySelector('path'),d=ph&&ph.getAttribute('d');return !!d&&!s.closest('.spk,.csr')&&mk.some(function(x){return x.indexOf('d="'+d+'"')>-1;});});}
 function can(root){return targets(root).length>0;}
-function apply(root,url){if(!url)return 0;var t=targets(root);t.forEach(function(s){var vb=(s.getAttribute('viewBox')||'0 0 100 100').split(/[\s,]+/).map(Number);if(vb.length<4||!(vb[2]>0))vb=[0,0,100,100];
-    s.innerHTML='<image href="'+url+'" x="'+vb[0]+'" y="'+vb[1]+'" width="'+vb[2]+'" height="'+vb[3]+'" preserveAspectRatio="xMidYMid meet"/>';s.classList.add('ximg');});return t.length;}
+/* o = {sc: size %, ox/oy: move right/down in % of the shape} */
+function apply(root,url,o){if(!url)return 0;o=o||{};var sc=(+o.sc||100)/100,ox=(+o.ox||0)/100,oy=(+o.oy||0)/100,t=targets(root);t.forEach(function(s){var vb=(s.getAttribute('viewBox')||'0 0 100 100').split(/[\s,]+/).map(Number);if(vb.length<4||!(vb[2]>0))vb=[0,0,100,100];
+    var w=vb[2]*sc,h=vb[3]*sc,x=vb[0]+(vb[2]-w)/2+ox*vb[2],y=vb[1]+(vb[3]-h)/2+oy*vb[3];
+    s.innerHTML='<image href="'+url+'" x="'+x.toFixed(2)+'" y="'+y.toFixed(2)+'" width="'+w.toFixed(2)+'" height="'+h.toFixed(2)+'" preserveAspectRatio="xMidYMid meet"/>';s.style.overflow='visible';s.classList.add('ximg');});return t.length;}
+/* clear the background (same flood fill as the logo editor); strength 1..100 */
+function cut(url,str){return XLogo.process(url,{bg:true,tol:Math.round(12+(+str||50)*1.1),trim:true,col:'orig'}).then(function(r){return r.src;});}
+/* the picture controls: size, move left/right and up/down, clear the background */
+function controls(box,st,on){var ar=(document.documentElement.lang||'ar').indexOf('ar')===0,L=ar?{sc:'حجم الصورة',ox:'يمين ويسار',oy:'فوق وتحت',bg:'✂ فرّغ الخلفية',bs:'قوة التفريغ',rs:'↺ رجّع المكان والحجم'}:{sc:'Picture size',ox:'Left and right',oy:'Up and down',bg:'✂ Clear the background',bs:'Clearing strength',rs:'↺ Reset place and size'};
+  var rg=function(k,min,max,v){return '<label class="ximc-r"><span>'+L[k]+'</span><input type="range" dir="ltr" data-k="'+k+'" min="'+min+'" max="'+max+'" value="'+v+'"></label>';};
+  box.innerHTML=rg('sc',20,250,st.sc||100)+rg('ox',-60,60,st.ox||0)+rg('oy',-60,60,st.oy||0)+'<label class="ximc-c"><input type="checkbox" data-k="bg"'+(st.bg?' checked':'')+'> '+L.bg+'</label>'+(st.bg?rg('bs',1,100,st.bg):'')+'<button type="button" class="ximc-b" data-k="rs">'+L.rs+'</button>';
+  box.querySelectorAll('input,button').forEach(function(i){['pointerdown','keydown'].forEach(function(ev){i.addEventListener(ev,function(){on('pre',false);});});});
+  box.querySelectorAll('input[type=range]').forEach(function(i){var k=i.dataset.k;i.addEventListener('input',function(){if(k==='bs')return;st[k]=+i.value;on(k,false);});i.addEventListener('change',function(){if(k==='bs'){st.bg=+i.value;on('bg',true);}else on(k,true);});});
+  box.querySelector('[data-k=bg]').addEventListener('change',function(e){st.bg=e.target.checked?50:0;on('bg',true);controls(box,st,on);});
+  box.querySelector('[data-k=rs]').addEventListener('click',function(){st.sc=100;st.ox=0;st.oy=0;on('rs',true);controls(box,st,on);});}
 /* read a picture, shrink it to 480 px, keep transparency when it has any */
 function read(file){return new Promise(function(res,rej){if(!file||!/^image\//.test(file.type||'')){rej(new Error('type'));return;}var u=URL.createObjectURL(file),im=new Image();
   im.onload=function(){var k=Math.min(1,480/Math.max(im.naturalWidth,im.naturalHeight)),w=Math.max(1,Math.round(im.naturalWidth*k)),h=Math.max(1,Math.round(im.naturalHeight*k)),c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');x.drawImage(im,0,0,w,h);URL.revokeObjectURL(u);
@@ -3322,7 +3348,7 @@ function read(file){return new Promise(function(res,rej){if(!file||!/^image\//.t
 function pick(){return new Promise(function(res,rej){var i=document.createElement('input');i.type='file';i.accept='image/*';i.style.display='none';document.body.appendChild(i);
   i.addEventListener('change',function(){var f=i.files&&i.files[0];i.remove();if(!f){rej(new Error('none'));return;}read(f).then(res,rej);});i.click();});}
 function logo(){try{var o=XLogo.get();return o&&o.src||null;}catch(e){return null;}}
-return {targets:targets,can:can,apply:apply,read:read,pick:pick,logo:logo};})();
+return {targets:targets,can:can,apply:apply,read:read,pick:pick,logo:logo,cut:cut,controls:controls};})();
 
 /* ===== Extra UI: new tabs, basket, favourites, use filters, try-it lab, sounds ===== */
 (function(){
@@ -3630,10 +3656,13 @@ document.getElementById('tabM').onclick=function(){showTab('M');};document.getEl
 
 /* ---------- try-it lab ---------- */
 var lab=document.createElement('div');lab.className='exm lab';lab.id='lab';lab.hidden=true;lab.setAttribute('role','dialog');lab.setAttribute('aria-modal','true');
-lab.innerHTML='<div class="labbox"><div class="bkh"><h2 id="labT"></h2><button type="button" class="exx" id="labX" aria-label="Close">✕</button></div><div class="labin"><div class="labst card labcard"><div class="st" id="labSt"></div></div><div class="labc"><div class="mono" id="labId"></div><label><span id="labInL"></span><input id="labIn" type="text" maxlength="60"></label><p class="labno" id="labNo" hidden></p><div class="acts ximgrow" id="labImR" hidden><button type="button" id="labIm"></button><button type="button" id="labImL"></button><button type="button" id="labImX" hidden></button></div><label><span id="labFL"></span><select id="labF"></select></label><label><span id="labPL"></span><select id="labP"></select></label><div class="acts"><button type="button" id="labRe"></button><button type="button" id="labCp"></button></div><div class="acts"><button type="button" class="exb" id="labBk"></button></div></div></div></div>';
+lab.innerHTML='<div class="labbox"><div class="bkh"><h2 id="labT"></h2><button type="button" class="exx" id="labX" aria-label="Close">✕</button></div><div class="labin"><div class="labst card labcard"><div class="st" id="labSt"></div></div><div class="labc"><div class="mono" id="labId"></div><label><span id="labInL"></span><input id="labIn" type="text" maxlength="60"></label><p class="labno" id="labNo" hidden></p><div class="acts ximgrow" id="labImR" hidden><button type="button" id="labIm"></button><button type="button" id="labImL"></button><button type="button" id="labImX" hidden></button></div><div class="ximc" id="labImC" hidden></div><label><span id="labFL"></span><select id="labF"></select></label><label><span id="labPL"></span><select id="labP"></select></label><div class="acts"><button type="button" id="labRe"></button><button type="button" id="labCp"></button></div><div class="acts"><button type="button" class="exb" id="labBk"></button></div></div></div></div>';
 document.body.appendChild(lab);
-var labImg=null;
-function labImUI(can){var r=document.getElementById('labImR');r.hidden=!can;var ar=lang==='ar';document.getElementById('labIm').textContent=ar?'🖼 حط صورتك بدل الشكل':'🖼 Use your picture instead of the shape';var lb=document.getElementById('labImL');lb.textContent=ar?'🏷 حط شعاري':'🏷 Use my logo';lb.hidden=!XImg.logo();var x=document.getElementById('labImX');x.textContent=ar?'↩ رجّع الشكل':'↩ Back to the shape';x.hidden=!labImg;}
+var labImg=null,labImgC=null,labImgS={sc:100,ox:0,oy:0,bg:0};
+function labImSet(d){labImg=d;labImgC=null;labImgS={sc:100,ox:0,oy:0,bg:0};var c=document.getElementById('labImC');if(d)XImg.controls(c,labImgS,labImOn);labDraw();}
+function labImOn(k,end){if(k==='pre')return;if(k==='bg'){if(!end)return;if(!labImgS.bg){labImgC=null;labDraw();return;}XImg.cut(labImg,labImgS.bg).then(function(d){labImgC=d;labDraw();}).catch(function(){});return;}
+  var st=document.getElementById('labSt'),im=st.querySelectorAll('svg.ximg');if(im.length&&!end){XImg.apply(st,labImgS.bg&&labImgC?labImgC:labImg,labImgS);}else labDraw();}
+function labImUI(can){var r=document.getElementById('labImR');r.hidden=!can;var ar=lang==='ar';document.getElementById('labIm').textContent=ar?'🖼 حط صورتك بدل الشكل':'🖼 Use your picture instead of the shape';var lb=document.getElementById('labImL');lb.textContent=ar?'🏷 حط شعاري':'🏷 Use my logo';lb.hidden=!XImg.logo();var x=document.getElementById('labImX');x.textContent=ar?'↩ رجّع الشكل':'↩ Back to the shape';x.hidden=!labImg;document.getElementById('labImC').hidden=!(labImg&&can);}
 var labM=null,labBack=null,labHasText=false,labCss=document.createElement('style');document.head.appendChild(labCss);
 function labOpts(){var fs=document.getElementById('labF'),ps=document.getElementById('labP'),fv=fs.value,pv=ps.value;
   fs.innerHTML='<option value="">'+X('labNone')+'</option><optgroup label="'+T('secAr')+'">'+FONTS.filter(function(f){return f.k==='ar';}).map(function(f){return '<option value="'+f.id+'">'+f.id+' · '+f.n+'</option>';}).join('')+'</optgroup><optgroup label="English">'+FONTS.filter(function(f){return f.k==='en';}).map(function(f){return '<option value="'+f.id+'">'+f.id+' · '+f.n+'</option>';}).join('')+'</optgroup>';
@@ -3652,7 +3681,7 @@ function swapText(root,txt){var tn=textNodes(root);if(!tn.length)return false;if
 function labDraw(){var m=labM,st=document.getElementById('labSt'),t=document.getElementById('labIn').value.trim(),fid=document.getElementById('labF').value,pid=document.getElementById('labP').value;
   st.className='st'+(m.vcls?' '+m.vcls:'');st.style.cssText='--d:'+(m.d||'2.8s')+';--vf:'+(m.vf||1);
   st.innerHTML=stageHTML(m)+(m.vlab?'<span class="vtag">'+m.vlab+'</span>':'')+'<i class="ph"></i>';
-  var canIm=XImg.can(st);if(labImg&&canIm)XImg.apply(st,labImg);labImUI(canIm);
+  var canIm=XImg.can(st);if(labImg&&canIm)XImg.apply(st,labImgS.bg&&labImgC?labImgC:labImg,labImgS);labImUI(canIm);
   labHasText=swapText(st,t);document.getElementById('labNo').hidden=labHasText;document.getElementById('labNo').textContent=X('labNo');document.getElementById('labIn').disabled=!labHasText;
   var css='';if(fid)css+='#labSt *:not(.vtag){font-family:'+fontFam(fid)+'!important}';
   var p=pid==='BR'?brPal():pById(pid);if(p)st.style.cssText+=';--mon:'+p.bg+';--mon2:'+p.bg+';--mon-fg:'+p.tx+';--coral:'+p.ac+';--mint:'+p.hl+';color:'+p.tx;
@@ -3661,9 +3690,9 @@ function labTexts(){document.getElementById('labT').textContent=X('labT');docume
   if(labM)document.getElementById('labBk').textContent=(inBk(labM.id)?'✓ ':'＋ ')+X(inBk(labM.id)?'inB':'add');}
 function openLab(id,btn,txt){labM=mById(id);if(!labM)return;labBack=btn;if(txt)document.getElementById('labIn').value=txt;labOpts();labTexts();document.getElementById('labId').textContent=labM.id+' · '+labM.en;labDraw();lab.hidden=false;document.getElementById('labX').focus({preventScroll:true});goat('try-open',id);}
 function labClose(){if(lab.hidden)return;lab.hidden=true;document.getElementById('labSt').innerHTML='';labCss.textContent='';if(labBack)labBack.focus({preventScroll:true});}
-document.getElementById('labIm').addEventListener('click',function(){XImg.pick().then(function(d){labImg=d;labDraw();var s0=document.getElementById('labSt');if(s0&&s0.scrollIntoView)s0.scrollIntoView({block:'nearest',behavior:'smooth'});goat('try-img/'+(labM&&labM.id),'Try image');}).catch(function(){});});
-document.getElementById('labImL').addEventListener('click',function(){var d=XImg.logo();if(d){labImg=d;labDraw();}});
-document.getElementById('labImX').addEventListener('click',function(){labImg=null;labDraw();});
+document.getElementById('labIm').addEventListener('click',function(){XImg.pick().then(function(d){labImSet(d);var s0=document.getElementById('labSt');if(s0&&s0.scrollIntoView)s0.scrollIntoView({block:'nearest',behavior:'smooth'});goat('try-img/'+(labM&&labM.id),'Try image');}).catch(function(){});});
+document.getElementById('labImL').addEventListener('click',function(){var d=XImg.logo();if(d)labImSet(d);});
+document.getElementById('labImX').addEventListener('click',function(){labImSet(null);});
 var labTm=null;document.getElementById('labIn').addEventListener('input',function(){clearTimeout(labTm);labTm=setTimeout(labDraw,250);});
 XCol.wire(document.getElementById('labP'),function(v){return v==='BR'?brPal():pById(v);},labDraw);XPal.wire(document.getElementById('labP'),{resolve:function(v){return v==='BR'?brPal():pById(v);},title:X('labP')});XFont.wire(document.getElementById('labF'),{famOf:fontFam,sample:function(){return labHasText?document.getElementById('labIn').value.trim():'';},title:X('labF')});
 document.getElementById('labF').addEventListener('change',labDraw);document.getElementById('labP').addEventListener('change',labDraw);document.getElementById('labRe').addEventListener('click',labDraw);
@@ -4199,7 +4228,7 @@ function r5LabCmp(){lst.textContent=lang==='ar'?'🎬 حطها بالاستود�
 /* --- put the motion in the Studio (with the text, font and colours from the try-it window) --- */
 var lst=document.createElement('button');lst.type='button';lst.className='btn xstudio';lst.id='labSt2';document.getElementById('labBk').parentElement.before(lst);
 lst.addEventListener('click',function(){if(!labM)return;var q=[];try{q=JSON.parse(localStorage.getItem('ml-studio-add'))||[];}catch(e){}
-  q.push({m:labM.id,text:labHasText?document.getElementById('labIn').value.trim():'',f:document.getElementById('labF').value||'',p:document.getElementById('labP').value||'',img:labImg&&XImg.can(document.getElementById('labSt'))?labImg:''});
+  q.push({m:labM.id,text:labHasText?document.getElementById('labIn').value.trim():'',f:document.getElementById('labF').value||'',p:document.getElementById('labP').value||'',img:labImg&&XImg.can(document.getElementById('labSt'))?labImg:'',imgS:labImg?labImgS:null});
   try{localStorage.setItem('ml-studio-add',JSON.stringify(q.slice(-20)));}catch(e){}goat('to-studio',labM.id);document.getElementById('labX').click();window.mlToStudio();});
 var openLab0=openLab;openLab=function(id,btn,txt){openLab0(id,btn,txt);r5LabCmp();};
 cards.forEach(function(o){if(o.sx&&o.sx.parentElement)o.sx.remove();});

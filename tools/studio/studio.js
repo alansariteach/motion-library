@@ -107,7 +107,7 @@ function clipEl(c){if(isOv(c)){var o=OVF[c.u],ev=document.createElement('div');e
   el.style.setProperty('--d',(m.d||'2.8s'));el.style.setProperty('--vf',m.vf||1);
   el.innerHTML=stageHTML(m)+'<span class="sd-foot">'+esc(m.id+' '+m.en+' · '+t_('ft'))+'</span><i class="sd-h" data-h="1"></i>';
   if(c.text)swapText(el,c.text);
-  if(c.img&&S.imgs&&S.imgs[c.img])XImg.apply(el,S.imgs[c.img]);
+  if(c.img&&S.imgs&&S.imgs[c.img])XImg.apply(el,imgUrl(c),c.imgS);
   el.querySelectorAll('.scr').forEach(function(s){s.textContent=s.dataset.t||s.textContent;});el.querySelectorAll('.cnt').forEach(function(s){s.textContent=s.dataset.to||s.textContent;});
   var p=pBy(c.p);if(p)palApply(el,p);
   place(el,c);return el;}
@@ -117,7 +117,9 @@ function fontsCSS(){fstyle.textContent=S.clips.filter(function(c){return c.f;}).
 /* pictures put in place of a motion's shape: kept once per project in S.imgs, clips point to them by key */
 function imgPut(d){if(!d)return '';S.imgs=S.imgs||{};var h=0;for(var i=0;i<d.length;i+=7)h=(h*31+d.charCodeAt(i))|0;var k='i'+(h>>>0).toString(36)+d.length.toString(36);S.imgs[k]=d;return k;}
 var IMC={};function imCan(m){if(!(m.id in IMC)){var d=document.createElement('div');d.innerHTML=stageHTML(m);IMC[m.id]=XImg.can(d);}return IMC[m.id];}
-function imgPrune(){if(!S.imgs)return;var used={};S.clips.forEach(function(c){if(c.img)used[c.img]=1;});Object.keys(S.imgs).forEach(function(k){if(!used[k])delete S.imgs[k];});}
+function imgUrl(c){var o=c.imgS;return (o&&o.bg&&c.imgC&&S.imgs[c.imgC])||S.imgs[c.img];}
+function imgCut(c){if(!c.img||!S.imgs[c.img])return Promise.resolve();if(!(c.imgS&&c.imgS.bg)){delete c.imgC;return Promise.resolve();}return XImg.cut(S.imgs[c.img],c.imgS.bg).then(function(d){c.imgC=imgPut(d);imgPrune();}).catch(function(){});}
+function imgPrune(){if(!S.imgs)return;var used={};S.clips.forEach(function(c){if(c.img)used[c.img]=1;if(c.imgC)used[c.imgC]=1;});Object.keys(S.imgs).forEach(function(k){if(!used[k])delete S.imgs[k];});}
 function renderClip(c){var old=$('c'+c.u),el=clipEl(c);el._an=null;if(old)old.replaceWith(el);else ovl.appendChild(el);if(isSel(c.u))el.classList.add('sel');fontsCSS();sync(true);}
 function rebuild(){ovl.innerHTML='';S.clips.forEach(function(c){ovl.appendChild(clipEl(c));});fontsCSS();drawTL();insp();save();sync(true);}
 function inCut(t){for(var i=0;i<S.cuts.length;i++){var k=S.cuts[i];if(t>=k.a&&t<k.b)return k;}return null;}
@@ -232,7 +234,7 @@ window.mlAddPending=function(){dropInfo();addPending();};
 if(window.top!==window){document.documentElement.classList.add('inframe');var bk=document.querySelector('.sd-back');if(bk)bk.addEventListener('click',function(e){try{if(parent.showTab){e.preventDefault();parent.showTab('M');}}catch(_){}});}
 function pending(){try{return JSON.parse(localStorage.getItem('ml-studio-add'))||[];}catch(e){return [];}}
 function addPending(){var q=pending();if(!q.length||!hasV)return;try{localStorage.removeItem('ml-studio-add');}catch(e){}var t=Math.min(vid.currentTime||0,Math.max(0,VD-1)),last=null;
-  q.forEach(function(x){var c=addClip(x.m,t,true);if(!c)return;if(x.text)c.text=x.text;if(x.f&&fBy(x.f))c.f=x.f;if(x.p&&pBy(x.p))c.p=x.p;if(x.img)c.img=imgPut(x.img);renderClip(c);last=c;t=Math.min(VD-.5,c.s+c.d);});
+  q.forEach(function(x){var c=addClip(x.m,t,true);if(!c)return;if(x.text)c.text=x.text;if(x.f&&fBy(x.f))c.f=x.f;if(x.p&&pBy(x.p))c.p=x.p;if(x.img){c.img=imgPut(x.img);if(x.imgS)c.imgS={sc:+x.imgS.sc||100,ox:+x.imgS.ox||0,oy:+x.imgS.oy||0,bg:+x.imgS.bg||0};if(c.imgS&&c.imgS.bg){(function(cc){imgCut(cc).then(function(){renderClip(cc);save();});})(c);}}renderClip(c);last=c;t=Math.min(VD-.5,c.s+c.d);});
   if(last){sel=last.u;msel=[];markSel();}drawTL();insp();save();}
 function enable(){document.querySelectorAll('[data-nv]').forEach(function(b){b.disabled=!hasV;});}
 
@@ -376,13 +378,15 @@ function insp(){setTimeout(updDel,0);if(selSnd!=null&&sndBy(selSnd)){inspSnd(snd
     var fo=[['',t_('orig')]].concat(FONTS.map(function(f){return [f.id,f.id+' · '+f.n];}));
     var po=[['',t_('orig')]].concat(b?[['BR',t_('brand')]]:[]).concat(CPS.map(function(p){return [p.id,p.id+' · '+(lang==='ar'?p.ar:p.en)];}));
     IN.innerHTML='<p class="sd-mname"><b>'+m.id+'</b> '+esc(m.en)+' · '+esc(m.ar)+'</p>'+(FX.isFoot(m)&&!FX.keepsHTML(m)?'<p class="sd-note">'+t_('ftNote')+'</p>':'')+(isTrk(m)?'<label class="sd-chk"><input type="checkbox" id="iTrk"'+(c.trk!==0?' checked':'')+'> '+t_('trk')+'</label>':'')+
-     (imCan(m)?'<div class="sd-acts sd-imr"><button type="button" class="sd-btn sm" id="iIm">'+t_('imPick')+'</button>'+(XImg.logo()?'<button type="button" class="sd-btn sm" id="iImL">'+t_('imLogo')+'</button>':'')+(c.img?'<button type="button" class="sd-btn sm" id="iImX">'+t_('imBack')+'</button>':'')+'</div>':'')+'<label class="sd-f">'+t_('text')+'<input type="text" id="iTx" maxlength="80" placeholder="'+esc(t_('textPh'))+'" value="'+esc(c.text)+'"></label>'+
+     (imCan(m)?'<div class="sd-acts sd-imr"><button type="button" class="sd-btn sm" id="iIm">'+t_('imPick')+'</button>'+(XImg.logo()?'<button type="button" class="sd-btn sm" id="iImL">'+t_('imLogo')+'</button>':'')+(c.img?'<button type="button" class="sd-btn sm" id="iImX">'+t_('imBack')+'</button>':'')+'</div>'+(c.img?'<div class="ximc" id="iImC"></div>':''):'')+'<label class="sd-f">'+t_('text')+'<input type="text" id="iTx" maxlength="80" placeholder="'+esc(t_('textPh'))+'" value="'+esc(c.text)+'"></label>'+
      '<label class="sd-f">'+t_('font')+'<select id="iF">'+opts(fo,c.f)+'</select></label><label class="sd-f">'+t_('pal')+'<select id="iP">'+opts(po,c.p)+'</select></label>'+
      '<div class="sd-row"><label class="sd-f">'+t_('start')+'<input type="number" id="iS" step="0.1" min="0" value="'+c.s+'"></label><label class="sd-f">'+t_('dur')+'<input type="number" id="iD" step="0.1" min="0.3" value="'+c.d+'"></label></div>'+
      '<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="s:-0.5">'+t_('earlier')+'</button><button type="button" class="sd-btn sm" data-nd="s:0.5">'+t_('later')+'</button><button type="button" class="sd-btn sm" data-nd="d:-0.5">'+t_('shorter')+'</button><button type="button" class="sd-btn sm" data-nd="d:0.5">'+t_('longer')+'</button></div>'+'<div class="sd-acts sd-nudge"><button type="button" class="sd-btn sm" data-nd="sc:-10">'+t_('smaller')+'</button><button type="button" class="sd-btn sm" data-nd="sc:10">'+t_('bigger')+'</button></div>'+'<label class="sd-f">'+t_('x')+' <input type="range" id="iX" min="0" max="100" value="'+c.x+'"></label><label class="sd-f">'+t_('y')+' <input type="range" id="iY" min="0" max="100" value="'+c.y+'"></label><label class="sd-f">'+t_('size')+' <input type="range" id="iSc" min="10" max="250" value="'+c.sc+'"></label>'+
      (c.cap?'<div class="sd-acts"><button type="button" class="sd-btn sm" id="iCaps">'+t_('selCaps')+'</button></div>':'')+'<div class="sd-acts"><button type="button" class="sd-btn sm" id="iGo">'+t_('goto')+'</button><button type="button" class="sd-btn sm" id="iDup">'+t_('dup')+'</button><button type="button" class="sd-btn sm" id="iDel">'+t_('del')+'</button></div>';
     if($('iTrk'))$('iTrk').addEventListener('change',function(e){snap();c.trk=e.target.checked?1:0;trkKey='';if(!e.target.checked)place($('c'+c.u),c);save();});
-    var setIm=function(d){snap();if(d)c.img=imgPut(d);else delete c.img;imgPrune();renderClip(c);drawTL();insp();save();};
+    var setIm=function(d){snap();if(d){c.img=imgPut(d);c.imgS={sc:100,ox:0,oy:0,bg:0};}else{delete c.img;delete c.imgS;}delete c.imgC;imgPrune();renderClip(c);drawTL();insp();save();};
+    if($('iImC')){c.imgS=c.imgS||{sc:100,ox:0,oy:0,bg:0};var imPre=0;XImg.controls($('iImC'),c.imgS,function(k,end){if(k==='pre'){var n=Date.now();if(n-imPre>800)snap();imPre=n;return;}
+      if(k==='bg'){if(!end)return;imgCut(c).then(function(){renderClip(c);save();});return;}var e=$('c'+c.u);if(e)XImg.apply(e,imgUrl(c),c.imgS);if(end)save();});}
     if($('iIm'))$('iIm').addEventListener('click',function(){XImg.pick().then(setIm).catch(function(e){if(e&&e.message==='type')alertMsg(t_('imBad'));});});
     if($('iImL'))$('iImL').addEventListener('click',function(){setIm(XImg.logo());});
     if($('iImX'))$('iImX').addEventListener('click',function(){setIm(null);});
