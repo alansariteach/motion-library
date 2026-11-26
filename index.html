@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="مكتبة موشن فيها 1000 حركة بأسماء ثابتة ومعاينة حية، للمونتاج بالذكاء الاصطناعي. من Alansari.Tech">
-<meta name="theme-color" content="#0F5B66">
+<meta name="theme-color" content="#0A0A0B">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="مكتبة الموشن"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:title" content="مكتبة الموشن · Alansari.Tech">
 <meta property="og:description" content="1000 حركة موشن بالاسم والمعاينة، قل للذكاء الاصطناعي رقم الحركة وهو يطبقها.">
@@ -25,19 +25,13 @@
 /* Layout: "Gulf Sand" identity. Header with logo mark, socials and language switch; a teal hero card holding the recoloured logo;
    how-to + download; then a two-column bin: a sticky category sidebar (a drawer on phones) and a grid of motion clips. */
 :root{
-  --bg:#EFE6D8; --panel:#FBF7F0; --panel2:#F3EBDD; --line:#DCCDB6;
-  --fg:#1F2A2E; --muted:#625B4F; --acc:#0F5B66; --acc-ink:#F6EFE2; --acc2:#E3643F; --acc2-ink:#2A1007; --ok:#0F7A55;
-  --hero:#0F5B66; --hero-fg:#F6EFE2; --hero-dim:#CFE0DC; --hero-acc:#F3B79E;
-  /* preview monitors: deep sea in both themes */
-  --mon:#102E33; --mon2:#17393F; --mon-fg:#F6EFE2; --mon-dim:rgba(246,239,226,.55); --coral:#F07A50; --mint:#7FE0C8; --ink-on:#2A1007;
-  --f-ar:"Alexandria",system-ui,sans-serif; --f-mono:"Space Mono",ui-monospace,monospace;
+  --bg:#0A0A0B; --panel:#141416; --panel2:#1C1C1F; --line:#2B2B30;
+  --fg:#F2F2F3; --muted:#9C9CA4; --acc:#C8F53C; --acc-ink:#0A0A0B; --acc2:#C8F53C; --acc2-ink:#0A0A0B; --ok:#C8F53C;
+  --hero:#0A0A0B; --hero-fg:#F2F2F3; --hero-dim:#A6A6AE; --hero-acc:#C8F53C;
+  /* preview monitors: dark grey */
+  --mon:#121214; --mon2:#1B1B1E; --mon-fg:#F4F4F5; --mon-dim:rgba(244,244,245,.55); --coral:#C8F53C; --mint:#8FE3D0; --ink-on:#0A0A0B;
+  --f-ar:"Alexandria",system-ui,sans-serif; --f-mono:"Space Mono",ui-monospace,monospace; color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0E1B1D; --panel:#152629; --panel2:#1B2F33; --line:#27403F;
-  --fg:#EFE6D8; --muted:#A99F8E; --acc:#5FB8C2; --acc-ink:#0B1A1C; --acc2:#F07A50; --acc2-ink:#2A1007; --ok:#7FE0C8; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1B1D; --panel:#152629; --panel2:#1B2F33; --line:#27403F;
-  --fg:#EFE6D8; --muted:#A99F8E; --acc:#5FB8C2; --acc-ink:#0B1A1C; --acc2:#F07A50; --acc2-ink:#2A1007; --ok:#7FE0C8; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{background:var(--bg)}
@@ -888,7 +882,7 @@ button,a,input,label{touch-action:manipulation}
 @media (max-width:860px){.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.tabs button{padding:8px 4px!important;font-size:14px!important;justify-content:center;gap:4px}.tabs button small{display:none}.tabs .nb{position:absolute;top:-7px;inset-inline-end:-2px;font-size:9.5px;padding:0 5px}}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;position:relative}
-.tabs .nb{font-style:normal;font-size:10.5px;font-weight:800;background:var(--acc2);color:#fff;border-radius:999px;padding:1px 7px;line-height:1.5}
+.tabs .nb{font-style:normal;font-size:10.5px;font-weight:800;background:var(--acc2);color:var(--acc2-ink);border-radius:999px;padding:1px 7px;line-height:1.5}
 .tabs .nb:empty{display:none}
 .wnew{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;background:var(--panel2);border:1px dashed var(--acc2);border-radius:18px;padding:12px 16px;margin-bottom:-12px}
 .wnew p{margin:0;font-size:14.5px;flex:1 1 300px}
@@ -898,7 +892,7 @@ button,a,input,label{touch-action:manipulation}
 /* overlay buttons */
 .xov{position:absolute;top:15px;right:15px;z-index:12;display:flex;gap:5px;direction:ltr}
 .ovb{width:34px;height:34px;border-radius:50%;border:0;background:rgba(10,24,26,.72);color:#fff;font-size:16px;line-height:1;display:grid;place-items:center;padding:0;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.ovb.on{background:var(--acc2);color:#fff}
+.ovb.on{background:var(--acc2);color:var(--acc2-ink)}
 .ovb.fv.on{background:#fff;color:#E3643F}
 .ovb:disabled{opacity:.35}
 @media (hover:hover){.card .xov .tr,.xc .xov .ad,.card .xov .ad{opacity:.85}.card:hover .xov .ovb,.xc:hover .xov .ovb{opacity:1}}
@@ -907,7 +901,7 @@ button,a,input,label{touch-action:manipulation}
 .sxrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
 .sxc{font-family:var(--f-ar);font-size:11.5px;line-height:1.4;padding:4px 9px;border-radius:999px;border:1px dashed var(--acc2);background:transparent;color:var(--fg);font-weight:600;min-height:28px}
 .sxc b{font-family:var(--f-mono);color:var(--acc2);font-weight:700}
-.sxc.on{background:var(--acc2);color:#fff;border-style:solid}.sxc.on b{color:#fff}
+.sxc.on{background:var(--acc2);color:var(--acc2-ink);border-style:solid}.sxc.on b{color:#fff}
 /* generic extra views */
 .xv{display:flex;flex-direction:column;gap:16px}
 .xv[hidden]{display:none}
@@ -1065,7 +1059,7 @@ button.nchip{font-family:var(--f-ar);cursor:pointer}
 /* basket */
 .bkbar{position:fixed;z-index:80;left:50%;bottom:max(14px,env(safe-area-inset-bottom,0px));translate:-50% 0;display:flex;gap:8px;align-items:center;background:var(--fg);color:var(--bg);padding:7px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:calc(100vw - 24px)}
 .bkbar[hidden]{display:none}
-.bkbar .btn{min-height:42px;padding:8px 16px;font-size:14px;background:var(--acc2);color:#fff;white-space:nowrap}
+.bkbar .btn{min-height:42px;padding:8px 16px;font-size:14px;background:var(--acc2);color:var(--acc2-ink);white-space:nowrap}
 .bkn{border:0;background:transparent;color:inherit;font-weight:700;font-size:14px;padding:0 10px;min-height:42px;white-space:nowrap}
 .bkn b{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:999px;background:var(--bg);color:var(--fg);font-family:var(--f-mono);margin-inline-end:4px}
 .bkbar.bump{animation:bkb .35s ease-out}
@@ -1193,7 +1187,7 @@ body.hasbk .wrap{padding-bottom:110px}
 .xact{display:flex;gap:8px;flex-wrap:wrap}
 .hkc{font-family:var(--f-ar);letter-spacing:0}
 /* ===== round 3 ===== */
-.xins{min-height:40px;padding:8px 16px;font-size:14px;background:var(--acc2);color:#fff}
+.xins{min-height:40px;padding:8px 16px;font-size:14px;background:var(--acc2);color:var(--acc2-ink)}
 .insl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .insl li{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;background:var(--bg);border-radius:14px;padding:10px 12px;align-items:center}
 .insl .ik{font-size:12.5px;color:var(--acc2);font-weight:800;grid-row:span 2}
@@ -1242,7 +1236,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xgrp{display:flex;flex-wrap:wrap;gap:8px}
 .xgrp button{position:relative;border:1.5px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:10px 20px;font-family:var(--f-ar);font-weight:800;font-size:16px;min-height:46px;display:inline-flex;align-items:center;gap:6px}
 .xgrp button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.xgrp .nb{font-style:normal;font-size:10px;font-weight:800;background:var(--acc2);color:#fff;border-radius:999px;padding:1px 6px;line-height:1.5}
+.xgrp .nb{font-style:normal;font-size:10px;font-weight:800;background:var(--acc2);color:var(--acc2-ink);border-radius:999px;padding:1px 6px;line-height:1.5}
 .xgrp .nb:empty{display:none}
 .xsub{display:flex;flex-wrap:wrap;gap:6px;margin-top:-6px}
 .xsub[hidden]{display:none}
@@ -1265,7 +1259,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xgrp .xnum{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--bg);color:var(--fg);font-family:var(--f-mono);font-size:12px;font-weight:700;flex:0 0 auto;border:1px solid var(--line)}
 .xgrp button[aria-pressed="true"] .xnum{background:var(--bg);color:var(--fg)}
 .xgrp .xbr{order:-1;border-color:var(--acc2);background:color-mix(in srgb,var(--acc2) 10%,var(--panel));color:var(--fg);position:relative;border-radius:999px;padding:10px 20px;font-weight:800;font-size:16px;min-height:46px;display:inline-flex;align-items:center;gap:6px;border-width:1.5px;border-style:solid;font-family:var(--f-ar)}
-.xgrp .xbr .xnum{background:var(--acc2);color:#fff;border-color:var(--acc2)}
+.xgrp .xbr .xnum{background:var(--acc2);color:var(--acc2-ink);border-color:var(--acc2)}
 .xgrp .brok{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;color:#fff;font-size:12px}
 @media (max-width:860px){.xgrp{grid-template-columns:repeat(4,minmax(0,1fr))}.xgrp button,.xgrp .xbr{flex-direction:column;gap:2px;padding:6px 2px;font-size:13px;min-height:58px;border-radius:16px}.xgrp .xnum{width:18px;height:18px;font-size:10.5px}.xgrp .brok{position:absolute;top:-6px;inset-inline-start:-4px;width:18px;height:18px;font-size:11px}}
 /* ===== performance ===== */
@@ -1328,6 +1322,85 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 .xtxf .xtxf-h{margin:0;font-weight:700;font-size:13.5px}
 .xtxf input{width:100%;box-sizing:border-box;padding:9px 12px;border-radius:12px;border:1px solid var(--line,#d9cdb6);background:transparent;color:inherit;font:inherit;font-size:14px}
 
+/* ===== 2026-11-26 redesign: black + grey + one accent, calm first screen ===== */
+.sxc.on b{color:var(--acc2-ink)}
+.wrap{gap:20px;padding-block:0 56px}
+/* slim header */
+.top{position:sticky;top:0;z-index:40;flex-wrap:nowrap;padding:10px 0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand img{width:38px;height:38px;transform:none;box-shadow:none;background:var(--panel2);border-radius:10px}
+.brand b{font-size:15px;letter-spacing:.14em}
+.top .tools{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.top .soc{font-size:0;gap:0;padding:0;width:38px;height:38px;min-height:0;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:var(--muted)}
+.top .soc svg{width:17px;height:17px}
+.top .soc:hover{color:var(--acc);border-color:var(--acc)}
+.top .lang{border:1px solid var(--line);background:transparent}
+.xmenuB{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--fg);font-size:17px;display:grid;place-items:center;padding:0}
+.xmenuB[aria-expanded="true"]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.xmenu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;z-index:45;width:min(290px,92vw);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:8px;display:flex;flex-direction:column;gap:4px;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.xmenu .wnew.xbar{display:flex;flex-direction:column;align-items:stretch;gap:4px;margin:0}
+.xmenu .btn,.xmenu .xbr,.xmenu .xmi{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;width:100%;padding:11px 14px;border-radius:12px;font-family:var(--f-ar);font-weight:700;font-size:15px;color:var(--fg);min-height:44px}
+.xmenu .btn:hover,.xmenu .xbr:hover,.xmenu .xmi:hover{background:var(--panel2)}
+.xmenu .btn[hidden],.xmenu p{display:none!important}
+.xmenu .xnum,.xmenu .nb{display:none!important}
+/* hero: one message, two actions, three live examples */
+.hero{background:none;border-radius:0;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;overflow:visible;padding:34px 0 10px}
+.hero::before,.hero .logo-big,.hero .stats{display:none!important}
+.hero .txt{padding:0;gap:16px}
+.hero .eyebrow{color:var(--acc);letter-spacing:.16em;font-size:12px}
+.hero h1{font-size:clamp(34px,5.2vw,66px);line-height:1.12;color:var(--fg)}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero p{color:var(--hero-dim);font-size:18px;max-width:44ch;font-weight:400}
+.xcta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.xcta button{font-family:var(--f-ar);font-weight:800;font-size:16.5px;border-radius:14px;padding:13px 24px;min-height:52px;border:1.5px solid var(--line);background:var(--panel);color:var(--fg);transition:transform .15s,background .15s}
+.xcta button:hover{transform:translateY(-2px)}
+.xcta .pri{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.xhl{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:4px;font-size:13.5px;color:var(--muted)}
+.xhl b{color:var(--fg);font-family:var(--f-mono);font-weight:700}
+.xhl button{all:unset;cursor:pointer;color:var(--muted);text-decoration:underline;text-underline-offset:4px;font-size:13.5px}
+.xhl button:hover{color:var(--acc)}
+.xhv{display:flex;justify-content:center;align-items:center;gap:14px;min-width:0}
+.xhv .xph{flex:1 1 0;max-width:190px;aspect-ratio:9/16;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:var(--mon);box-shadow:0 20px 50px rgba(0,0,0,.5);position:relative;container-type:inline-size}
+.xhv .xph:nth-child(1){transform:translateY(18px) rotate(3deg)}
+.xhv .xph:nth-child(3){transform:translateY(18px) rotate(-3deg)}
+.xhv .xph .st{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
+/* tabs: one quiet row */
+.xgrp{gap:4px;border-bottom:1px solid var(--line);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;display:flex!important}
+.xgrp::-webkit-scrollbar{display:none}
+.xgrp button,.xgrp .xbr{flex:0 0 auto;flex-direction:row!important;border:0!important;background:none!important;color:var(--muted)!important;border-radius:0!important;padding:12px 16px!important;min-height:48px!important;font-size:16px!important;font-weight:700;border-bottom:2.5px solid transparent!important;margin-bottom:-1px}
+.xgrp button[aria-pressed="true"]{color:var(--fg)!important;border-bottom-color:var(--acc)!important}
+.xgrp .xnum,.xgrp .nb{display:none!important}
+.xgrp .xgst{color:var(--acc)!important}
+.xsub{margin-top:-8px}
+.xsub button{border-color:var(--line);color:var(--muted);background:var(--panel)}
+/* surfaces */
+.box,.xhow,.side,.card{background:var(--panel);border-color:var(--line)}
+.btn{border-radius:12px}
+#q,#q2,.fctl input{background:var(--panel);border:1px solid var(--line);color:var(--fg);border-radius:12px}
+#q2{flex:1;min-width:0;padding:10px 14px;font-family:var(--f-ar);font-size:15px;min-height:44px;display:none}
+footer{border-top:1px solid var(--line)}
+@media (max-width:860px){
+ .brand b{display:none}
+ .top .soc.ml,.top .soc.tg{display:none}
+ .hero{grid-template-columns:1fr;padding:22px 0 4px;gap:22px}
+ .hero h1{font-size:clamp(30px,9vw,44px)}
+ .hero p{font-size:15.5px}
+ .xcta button{flex:1 1 auto;padding:12px 16px;font-size:15.5px}
+ .xhv{gap:8px}.xhv .xph{border-radius:14px;max-width:none}
+ .xgrp{margin-inline:-16px;padding-inline:10px}
+ .xgrp button,.xgrp .xbr{padding:10px 13px!important;font-size:15px!important;min-height:44px!important}
+ #q2{display:block}
+ .bar{gap:8px}.bar .cur{display:none}
+}
+
+.xgrp [data-g="M"]{order:-2}.xgrp [data-g="ST"]{order:-1}
+.xhv .xph{background:linear-gradient(165deg,#2A2A30,#101012 70%);border-color:#3A3A41}
+/* cards: one accent only where it matters */
+.card .need .chip,.card .need button,.card .sxc{border-color:var(--line)!important;color:var(--muted)!important;background:transparent!important}
+.card .sxc b{color:var(--fg)!important}
+.card .ex,.card .exb{border-color:var(--line)!important;color:var(--fg)!important}
+
+.card .need>*{border-color:var(--line)!important;color:var(--muted)!important;background:transparent!important}
+
 /*XCSS-END*/</style>
 
 <div class="wrap" id="app">
@@ -1346,7 +1419,7 @@ body.hasbk .cmpbar{bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 66px)
 <section class="hero" id="top">
   <div class="txt">
     <div class="eyebrow mono">MOTION LIBRARY · 1000 MOTIONS</div>
-    <h1 data-i="h1">مكتبة الموشن</h1>
+    <h1 data-i="h1">1000 حركة موشن جاهزة لفيديوك</h1>
     <p data-i="lede">شوف كل حركة وهي تشتغل واعرف اسمها. ولمن تمنتج فيديو بالذكاء الاصطناعي، قل له رقم الحركة بس وهو يطبقها.</p>
     <div class="stats"><div><b>1000</b><span data-i="s1">حركة</span></div><div><b>14</b><span data-i="s2">أنواع</span></div><div><b>9:16</b><span data-i="s3">ريلز</span></div></div>
   </div>
@@ -2427,7 +2500,7 @@ M.forEach(function(m){if(!TX[m.id])TX[m.id]={ue:m.ue,sa:m.sa};});
 var CAT_EN={TXT:'Text In',EMP:'Emphasis',CAP:'Captions',TRN:'Transitions',CAM:'Camera',FX:'Effects',SOC:'Social',LGO:'Logos & Titles',PER:'Person FX',AUD:'Audio & Beat',SCR:'Screens & UI',TRK:'Tracking',D3:'3D',TIM:'Time FX'};
 var DUR_AR={'s':' ث'};
 var UI={
- ar:{h1:'مكتبة الموشن',lede:'شوف كل حركة وهي تشتغل واعرف اسمها. ولمن تمنتج فيديو بالذكاء الاصطناعي، قل له رقم الحركة بس وهو يطبقها.',s1:'حركة',s2:'أنواع',s3:'ريلز',
+ ar:{h1:'1000 حركة موشن جاهزة لفيديوك',lede:'اختار الحركة، غيّر الكلام والصورة، وركّبها على فيديوك من المتصفح. ببلاش.',s1:'حركة',s2:'أنواع',s3:'ريلز',
   howT:'شلون تستخدمها',how1:'حمّل ملف المكتبة. فيه شرح كامل لكل حركة.',how2:'ارفعه مرة وحدة في Project على Claude، أو ارفعه مع الفيديو.',how3:'قل له رقم الحركة ومتى تبيها، وهو يطبقها.',
   ex:'لمن أقول "غيّرت خلفيتي" طبّق <code>M-016</code> من إصبعي، وبعدها <code>M-038</code> فيها "Claude Opus 5.5".',
   vidT:'شاهد الطريقة بفيديو',fileT:'ثبّتها بالـ Plugin',fileD:'الـ Plugin فيه شرح كامل لكل الـ 1000 حركة وقائمة الخطوط، جاهز للذكاء الاصطناعي.',howD:'<p class="fintro">المكتبة فيها شرح كل الـ 1000 حركة وكل الخطوط، وهي للذكاء الاصطناعي. انت ما تحتاج تفتحها أو تقراها. بس سوّ كذا:</p><ol class="fsteps"><li><b>ضيف الـ Plugin</b> داخل Claude مرة وحدة (الطريقة بالمربع الثاني)، وكل تحديث يوصلك لحاله.</li><li><b>افتح محادثة جديدة</b> في Claude وارفع فيديوك.</li><li><b>اكتب الحركات بالرقم:</b><span class="fex">لمن أقول «تابعني» حط M-031، ولمن أقول «غيّرت خلفيتي» حط M-016</span></li></ol><p class="fnote">الخطوط نفس الشي: اكتب رقم الخط مثل FA-02 وClaude يطبقه.</p>',
@@ -2438,7 +2511,7 @@ var UI={
   types:'الأنواع',soon:'1000 حركة · 275 أساسية و725 نسخة',made:'صنع بواسطة',empty:'ما فيه حركة بهالاسم. جرّب كلمة ثانية.',all:'الكل',q:'ابحث: زوم، glitch، M-021',close:'إغلاق',
   cn:'⧉ الاسم',cp:'⧉ البرومبت',demo:'▶ شوف مثال حقيقي',demoV:function(b){return 'هذا مثال الحركة الأصلية '+b+'. النسخة نفس الحركة بتغيير بسيط.'},demoErr:'ما قدرت أحمّل المثال. تأكد من الاتصال وجرّب مرة ثانية.',copied:'انتسخ ✓',nocopy:'ما انتسخ',loop:'دورة',
   pr:function(m){return 'لمن أقول "[الجملة]" طبّق '+m.id+' '+m.en+' ('+m.ar+'): '+TX[m.id].sa+needPr(m,'ar');}},
- en:{h1:'Motion Library',lede:'Watch every motion play and learn its name. When you edit a video with AI, just tell it the motion number and it applies it.',s1:'motions',s2:'categories',s3:'Reels',
+ en:{h1:'1000 ready motions for your video',lede:'Pick a motion, change the words and the picture, and put it on your video in the browser. Free.',s1:'motions',s2:'categories',s3:'Reels',
   howT:'How to use it',how1:'Download the library file. It explains every motion in full.',how2:'Upload it once to a Claude Project, or attach it with your video.',how3:'Tell it the motion number and when you want it.',
   ex:'When I say "I changed my background", apply <code>M-016</code> from my finger, then <code>M-038</code> with "Claude Opus 5.5".',
   vidT:'Watch how it works',fileT:'Install the Plugin',fileD:'The Plugin carries a full spec for all 1000 motions plus the font list, ready for the AI.',howD:'<p class="fintro">The library describes all 1000 motions and every font. It is for the AI, so you do not need to open or read it. Just do this:</p><ol class="fsteps"><li><b>Add the Plugin</b> to Claude once (steps are in the second box) and every update reaches you automatically.</li><li><b>Start a new chat</b> in Claude and upload your video.</li><li><b>Name the motions by number:</b><span class="fex">When I say “follow me” add M-031, and when I say “I changed my background” add M-016</span></li></ol><p class="fnote">Fonts work the same way: type a font ID like FA-02 and Claude applies it.</p>',
@@ -4360,6 +4433,48 @@ buildJSON=function(){var o=JSON.parse(bJS());o.version='2.0';
   o.sounds=SXS.map(function(s){return {id:s.id,name_en:s.en,name_ar:s.ar,type:s.ty,url:XBASE+sxUrl(s),license:'CC0 1.0'};});
   return JSON.stringify(o,null,2);};
 window.buildMD=buildMD;window.buildJSON=buildJSON;
+})();
+
+/* ===== 2026-11-26 redesign: slim header with a menu, short hero with two actions and live examples, how-to moved down ===== */
+(function(){
+  var T={ar:{st:'🎬 افتح الاستوديو',lib:'تصفح الحركات',how:'📖 شلون أستخدمها؟',menu:'القائمة',q:'ابحث: زوم، كابشن، M-021',f1:'حركة',f2:'خط',f3:'صوت',free:'ببلاش · بدون تسجيل',ex:['٣ أسرار','لا تطوفك','تابعني']},
+         en:{st:'🎬 Open the Studio',lib:'Browse the motions',how:'📖 How do I use it?',menu:'Menu',q:'Search: zoom, caption, M-021',f1:'motions',f2:'fonts',f3:'sounds',free:'Free · no sign-up',ex:['3 secrets','Don\'t miss it','Follow me']}};
+  var t=function(){return T[lang==='en'?'en':'ar'];};
+  var top=document.querySelector('header.top'),tools=top.querySelector('.tools'),hero=document.querySelector('.hero'),how=document.getElementById('xhow');
+  /* menu */
+  top.style.position='sticky';
+  var mb=document.createElement('button');mb.type='button';mb.className='xmenuB';mb.id='xMenuB';mb.textContent='☰';mb.setAttribute('aria-expanded','false');tools.appendChild(mb);
+  var mp=document.createElement('div');mp.className='xmenu';mp.id='xMenu';mp.hidden=true;top.appendChild(mp);
+  var br=document.getElementById('brB');if(br)mp.appendChild(br);
+  var wn=document.querySelector('.wnew');if(wn)mp.appendChild(wn);
+  var hb=document.createElement('button');hb.type='button';hb.className='xmi';hb.id='xHowB';mp.appendChild(hb);
+  var shut=function(){mp.hidden=true;mb.setAttribute('aria-expanded','false');};
+  mb.addEventListener('click',function(e){e.stopPropagation();mp.hidden=!mp.hidden;mb.setAttribute('aria-expanded',String(!mp.hidden));});
+  document.addEventListener('click',function(e){if(!mp.hidden&&!mp.contains(e.target))shut();});
+  mp.addEventListener('click',function(e){if(e.target.closest('button'))setTimeout(shut,0);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')shut();});
+  /* how-to goes to the bottom of the page */
+  var ft=document.querySelector('footer');if(how&&ft)ft.before(how);
+  var goHow=function(){if(!how)return;how.open=true;how.scrollIntoView({behavior:'smooth',block:'start'});};
+  hb.addEventListener('click',goHow);
+  /* hero */
+  var txt=hero.querySelector('.txt'),cta=document.createElement('div');cta.className='xcta';cta.innerHTML='<button type="button" class="pri" id="xGoSt"></button><button type="button" id="xGoLib"></button>';txt.appendChild(cta);
+  var hl=document.createElement('div');hl.className='xhl';txt.appendChild(hl);
+  document.getElementById('xGoSt').addEventListener('click',function(){var b=document.querySelector('.xgrp [data-g="ST"]');if(b)b.click();try{goat('hero-studio','Hero studio');}catch(e){}});
+  document.getElementById('xGoLib').addEventListener('click',function(){var g=document.querySelector('.xgrp');window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});});
+  var hv=document.createElement('div');hv.className='xhv';hv.setAttribute('aria-hidden','true');hero.appendChild(hv);
+  var EX=['M-008','M-044','M-187'];
+  function drawEx(){hv.innerHTML='';EX.forEach(function(id,i){var m=M.find(function(x){return x.id===id;});if(!m)return;var ph=document.createElement('div');ph.className='xph';var st=document.createElement('div');st.className='st'+(m.vcls?' '+m.vcls:'');st.style.setProperty('--d',m.d||'2.8s');st.style.setProperty('--vf',m.vf||1);st.innerHTML=stageHTML(m);try{var fl=XTxt.fields(st);if(fl.length===1)XTxt.apply(st,{0:t().ex[i]});else if(id==='M-187'){var mp2={};mp2[fl.length-1]=t().ex[i];XTxt.apply(st,mp2);}}catch(e){}ph.appendChild(st);hv.appendChild(ph);});}
+  /* phones: a search box that is always in sight (the real one lives in the categories drawer) */
+  var bar=document.querySelector('#motionsView .bar'),q=document.getElementById('q'),q2=document.createElement('input');q2.type='search';q2.id='q2';q2.setAttribute('aria-label','search');if(bar&&q){bar.appendChild(q2);
+    q2.addEventListener('input',function(){q.value=q2.value;q.dispatchEvent(new Event('input',{bubbles:true}));});q.addEventListener('input',function(){if(q2.value!==q.value)q2.value=q.value;});}
+  function lab(){var x=t();document.getElementById('xGoSt').textContent=x.st;document.getElementById('xGoLib').textContent=x.lib;hb.textContent=x.how;mb.setAttribute('aria-label',x.menu);q2.placeholder=x.q;
+    var nf=(typeof FONTS!=='undefined'&&FONTS.length)||123;
+    hl.innerHTML='<span><b>1000</b> '+x.f1+'</span><span><b>'+nf+'</b> '+x.f2+'</span><span><b>28</b> '+x.f3+'</span><span>'+x.free+'</span><button type="button" id="xHow2">'+x.how+'</button>';
+    document.getElementById('xHow2').addEventListener('click',goHow);
+    var h=hero.querySelector('h1');if(h&&!h.querySelector('em'))h.innerHTML=h.textContent.replace(/^(\d+)/,'<em>$1</em>');
+    drawEx();}
+  lab();document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(lab,60);});});
 })();
 
 </script><!--XJS-END-->

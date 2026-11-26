@@ -971,3 +971,45 @@ buildJSON=function(){var o=JSON.parse(bJS());o.version='2.0';
   return JSON.stringify(o,null,2);};
 window.buildMD=buildMD;window.buildJSON=buildJSON;
 })();
+
+/* ===== 2026-11-26 redesign: slim header with a menu, short hero with two actions and live examples, how-to moved down ===== */
+(function(){
+  var T={ar:{st:'🎬 افتح الاستوديو',lib:'تصفح الحركات',how:'📖 شلون أستخدمها؟',menu:'القائمة',q:'ابحث: زوم، كابشن، M-021',f1:'حركة',f2:'خط',f3:'صوت',free:'ببلاش · بدون تسجيل',ex:['٣ أسرار','لا تطوفك','تابعني']},
+         en:{st:'🎬 Open the Studio',lib:'Browse the motions',how:'📖 How do I use it?',menu:'Menu',q:'Search: zoom, caption, M-021',f1:'motions',f2:'fonts',f3:'sounds',free:'Free · no sign-up',ex:['3 secrets','Don\'t miss it','Follow me']}};
+  var t=function(){return T[lang==='en'?'en':'ar'];};
+  var top=document.querySelector('header.top'),tools=top.querySelector('.tools'),hero=document.querySelector('.hero'),how=document.getElementById('xhow');
+  /* menu */
+  top.style.position='sticky';
+  var mb=document.createElement('button');mb.type='button';mb.className='xmenuB';mb.id='xMenuB';mb.textContent='☰';mb.setAttribute('aria-expanded','false');tools.appendChild(mb);
+  var mp=document.createElement('div');mp.className='xmenu';mp.id='xMenu';mp.hidden=true;top.appendChild(mp);
+  var br=document.getElementById('brB');if(br)mp.appendChild(br);
+  var wn=document.querySelector('.wnew');if(wn)mp.appendChild(wn);
+  var hb=document.createElement('button');hb.type='button';hb.className='xmi';hb.id='xHowB';mp.appendChild(hb);
+  var shut=function(){mp.hidden=true;mb.setAttribute('aria-expanded','false');};
+  mb.addEventListener('click',function(e){e.stopPropagation();mp.hidden=!mp.hidden;mb.setAttribute('aria-expanded',String(!mp.hidden));});
+  document.addEventListener('click',function(e){if(!mp.hidden&&!mp.contains(e.target))shut();});
+  mp.addEventListener('click',function(e){if(e.target.closest('button'))setTimeout(shut,0);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')shut();});
+  /* how-to goes to the bottom of the page */
+  var ft=document.querySelector('footer');if(how&&ft)ft.before(how);
+  var goHow=function(){if(!how)return;how.open=true;how.scrollIntoView({behavior:'smooth',block:'start'});};
+  hb.addEventListener('click',goHow);
+  /* hero */
+  var txt=hero.querySelector('.txt'),cta=document.createElement('div');cta.className='xcta';cta.innerHTML='<button type="button" class="pri" id="xGoSt"></button><button type="button" id="xGoLib"></button>';txt.appendChild(cta);
+  var hl=document.createElement('div');hl.className='xhl';txt.appendChild(hl);
+  document.getElementById('xGoSt').addEventListener('click',function(){var b=document.querySelector('.xgrp [data-g="ST"]');if(b)b.click();try{goat('hero-studio','Hero studio');}catch(e){}});
+  document.getElementById('xGoLib').addEventListener('click',function(){var g=document.querySelector('.xgrp');window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});});
+  var hv=document.createElement('div');hv.className='xhv';hv.setAttribute('aria-hidden','true');hero.appendChild(hv);
+  var EX=['M-008','M-044','M-187'];
+  function drawEx(){hv.innerHTML='';EX.forEach(function(id,i){var m=M.find(function(x){return x.id===id;});if(!m)return;var ph=document.createElement('div');ph.className='xph';var st=document.createElement('div');st.className='st'+(m.vcls?' '+m.vcls:'');st.style.setProperty('--d',m.d||'2.8s');st.style.setProperty('--vf',m.vf||1);st.innerHTML=stageHTML(m);try{var fl=XTxt.fields(st);if(fl.length===1)XTxt.apply(st,{0:t().ex[i]});else if(id==='M-187'){var mp2={};mp2[fl.length-1]=t().ex[i];XTxt.apply(st,mp2);}}catch(e){}ph.appendChild(st);hv.appendChild(ph);});}
+  /* phones: a search box that is always in sight (the real one lives in the categories drawer) */
+  var bar=document.querySelector('#motionsView .bar'),q=document.getElementById('q'),q2=document.createElement('input');q2.type='search';q2.id='q2';q2.setAttribute('aria-label','search');if(bar&&q){bar.appendChild(q2);
+    q2.addEventListener('input',function(){q.value=q2.value;q.dispatchEvent(new Event('input',{bubbles:true}));});q.addEventListener('input',function(){if(q2.value!==q.value)q2.value=q.value;});}
+  function lab(){var x=t();document.getElementById('xGoSt').textContent=x.st;document.getElementById('xGoLib').textContent=x.lib;hb.textContent=x.how;mb.setAttribute('aria-label',x.menu);q2.placeholder=x.q;
+    var nf=(typeof FONTS!=='undefined'&&FONTS.length)||123;
+    hl.innerHTML='<span><b>1000</b> '+x.f1+'</span><span><b>'+nf+'</b> '+x.f2+'</span><span><b>28</b> '+x.f3+'</span><span>'+x.free+'</span><button type="button" id="xHow2">'+x.how+'</button>';
+    document.getElementById('xHow2').addEventListener('click',goHow);
+    var h=hero.querySelector('h1');if(h&&!h.querySelector('em'))h.innerHTML=h.textContent.replace(/^(\d+)/,'<em>$1</em>');
+    drawEx();}
+  lab();document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(lab,60);});});
+})();
