@@ -1414,6 +1414,11 @@ footer{border-top:1px solid var(--line)}
 .xvr button{flex:1 1 auto;padding:5px 4px}
 @media (max-width:860px){.xvr button{font-size:11px;padding:5px 3px;flex:1 0 auto}}
 
+/* 2026-11-27: the Studio opens as a full-screen editor (its own top bar has the way back to the library) */
+body.xstudio-on{overflow:hidden}
+body.xstudio-on .xstv{position:fixed;inset:0;z-index:1500;margin:0;background:#0A0A0B}
+body.xstudio-on .xstv iframe{height:100dvh;min-height:0;border-radius:0;background:#0A0A0B}
+
 /*XCSS-END*/</style>
 
 <div class="wrap" id="app">

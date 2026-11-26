@@ -27,14 +27,14 @@
   <button type="button" class="sd-btn pri" id="exV" data-t="exV" data-nv>⬇ تصدير MP4</button>
  </header>
  <nav class="sd-rail" id="rail" aria-label="sections">
-  <button type="button" data-p="auto"><i>⚡</i><span data-t="pAuto">تلقائي</span></button>
-  <button type="button" data-p="vid" aria-pressed="true"><i>🎬</i><span data-t="pVid">الفيديو</span></button>
-  <button type="button" data-p="mot"><i>✨</i><span data-t="pMot">الحركات</span></button>
-  <button type="button" data-p="cap"><i>📝</i><span data-t="pCap">الكابشن</span></button>
-  <button type="button" data-p="trn"><i>⧉</i><span data-t="pTrn">انتقالات</span></button>
-  <button type="button" data-p="fx"><i>🪄</i><span data-t="pFx">تأثيرات</span></button>
-  <button type="button" data-p="snd"><i>🔊</i><span data-t="pSnd">أصوات</span></button>
-  <button type="button" data-p="logo"><i>🏷</i><span data-t="pLogo">الشعار</span></button>
+  <button type="button" data-p="auto"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M13 2 4 14h7l-1 8 9-12h-7z'/></svg></i><span data-t="pAuto">تلقائي</span></button>
+  <button type="button" data-p="vid" aria-pressed="true"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='2.5'/><path d='m10 9 5 3-5 3z'/></svg></i><span data-t="pVid">الفيديو</span></button>
+  <button type="button" data-p="mot"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z'/><path d='M19 15v5M16.5 17.5h5'/></svg></i><span data-t="pMot">الحركات</span></button>
+  <button type="button" data-p="cap"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='2.5'/><path d='M7 14.5h4M14 14.5h3M7 10.5h10'/></svg></i><span data-t="pCap">الكابشن</span></button>
+  <button type="button" data-p="trn"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M3 6.5 10.5 12 3 17.5zM21 6.5 13.5 12 21 17.5z'/></svg></i><span data-t="pTrn">انتقالات</span></button>
+  <button type="button" data-p="fx"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M4 20 15 9M13 7l4 4'/><path d='M19 2.5v4M17 4.5h4M7 3v3M5.5 4.5h3M20 13v3M18.5 14.5h3'/></svg></i><span data-t="pFx">تأثيرات</span></button>
+  <button type="button" data-p="snd"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M9 18V5.5l11-2V16'/><circle cx='6.5' cy='18' r='2.5'/><circle cx='17.5' cy='16' r='2.5'/></svg></i><span data-t="pSnd">أصوات</span></button>
+  <button type="button" data-p="logo"><i><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M3 11.5V4h7.5L21 14.5 13.5 22z'/><circle cx='7.5' cy='8.5' r='1.2'/></svg></i><span data-t="pLogo">الشعار</span></button>
  </nav>
  <aside class="sd-lib" id="pane" aria-label="library">
   <div class="sd-ph2"><h2 id="paneT">الفيديو</h2><button type="button" class="sd-pclose" id="paneX" aria-label="close">✕</button></div>
@@ -56,19 +56,19 @@
    <div class="sd-frame" id="frame"><video id="vid" playsinline preload="auto"></video><canvas id="fxc" class="sd-fxc" hidden></canvas><div class="sd-ovl" id="ovl"></div></div>
    <div class="sd-drop" id="drop" role="button" tabindex="0"><div><b data-t="drop">ارفع الفيديو</b><span data-t="dropS"></span><p id="dropQ" style="color:#FFC857;margin:12px 0 0;font-weight:700"></p><p id="dropR" style="color:#FFC857;margin:12px 0 0"></p><button type="button" class="sd-btn sm" id="newP" data-t="newP" hidden onclick="event.stopPropagation()">مشروع جديد</button></div></div>
   </div>
-  <div class="sd-ctl"><span class="sd-tc" id="tc">0:00.0 / 0:00.0</span><span class="sp"></span><button type="button" class="sd-play" id="play" data-nv>▶</button><span class="sp"></span><label><span data-t="vol">الصوت</span><input type="range" id="vol" min="0" max="1" step="0.05" value="1"></label></div>
+  <div class="sd-ctl"><span class="sd-tc" id="tc">0:00.0 / 0:00.0</span><span class="sp"></span><button type="button" class="sd-play" id="play" data-nv>▶</button><span class="sp"></span><label class="sd-vl"><span data-t="vol">الصوت</span><input type="range" id="vol" min="0" max="1" step="0.05" value="1"></label></div>
  </main>
  <aside class="sd-insp" aria-label="settings"><h2 data-t="insp">الإعدادات</h2><div id="insb"></div></aside>
  <section class="sd-tl" aria-label="timeline">
   <div class="sd-tlbar">
    <button type="button" class="sd-btn sm" id="cutB" data-nv>✂ قص هني</button>
    <button type="button" class="sd-btn sm" id="delB" disabled>🗑 احذف</button>
-   <button type="button" class="sd-btn sm" id="inH" data-t="inH" data-nv>⇤ البداية هني</button>
+   <i class="sd-sep"></i><button type="button" class="sd-btn sm" id="inH" data-t="inH" data-nv>⇤ البداية هني</button>
    <button type="button" class="sd-btn sm" id="outH" data-t="outH" data-nv>النهاية هني ⇥</button>
-   <button type="button" class="sd-btn sm" id="silB" data-t="silB" data-nv>✂️ قص السكتات</button>
-   <button type="button" class="sd-btn sm" id="selAllB" data-t="selAll" data-nv>☑️ حدد الكل</button><button type="button" class="sd-btn sm" id="selCapB" data-t="selCaps" data-nv hidden>📝 حدد كل الكابشن</button>
+   <i class="sd-sep"></i><button type="button" class="sd-btn sm" id="silB" data-t="silB" data-nv>✂️ قص السكتات</button>
+   <i class="sd-sep"></i><button type="button" class="sd-btn sm" id="selAllB" data-t="selAll" data-nv>☑️ حدد الكل</button><button type="button" class="sd-btn sm" id="selCapB" data-t="selCaps" data-nv hidden>📝 حدد كل الكابشن</button>
    <span class="sp"></span>
-   <label><span data-t="zoom">تكبير التايم لاين</span><input type="range" id="zoom" min="8" max="200" value="40"></label>
+   <label class="sd-zm"><span data-t="zoom">تكبير التايم لاين</span><input type="range" id="zoom" min="8" max="200" value="40"></label>
   </div>
   <div class="sd-tlw" id="tlw"><div class="sd-tlin" id="tlin"></div></div>
   <p class="sd-tip" data-t="tip"></p>
