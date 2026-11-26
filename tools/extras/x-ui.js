@@ -970,6 +970,7 @@ buildJSON=function(){var o=JSON.parse(bJS());o.version='2.0';
   o.sounds=SXS.map(function(s){return {id:s.id,name_en:s.en,name_ar:s.ar,type:s.ty,url:XBASE+sxUrl(s),license:'CC0 1.0'};});
   return JSON.stringify(o,null,2);};
 window.buildMD=buildMD;window.buildJSON=buildJSON;
+window.xUse=function(k){if(k!==undefined){ucur=k;ucRender();render();}return ucur;};window.xTogFav=togFav;
 })();
 
 /* ===== 2026-11-26 redesign: slim header with a menu, short hero with two actions and live examples, how-to moved down ===== */
@@ -1019,7 +1020,7 @@ window.buildMD=buildMD;window.buildJSON=buildJSON;
   var FAM={},ORD=[],SEL={};
   cards.forEach(function(o){var b=o.m.base||o.m.id;if(!FAM[b]){FAM[b]=[];ORD.push(b);}FAM[b].push(o);});
   var NB=ORD.length;
-  function lbl(m){if(!m.base)return lang==='ar'?'الأساسية':'Original';return lang==='ar'?String(m.ar).split(' · ').pop():(m.vlab||String(m.en).split(' · ').pop());}
+  function lbl(m){if(!m.base)return lang==='ar'?'عادي':'Basic';return lang==='ar'?String(m.ar).split(' · ').pop():(m.vlab||String(m.en).split(' · ').pop());}
   function pills(){ORD.forEach(function(b){var f=FAM[b];if(f.length<2)return;f.forEach(function(o){var row=o.el.querySelector('.xvr');
       if(!row){row=document.createElement('div');row.className='xvr';row.setAttribute('role','group');var meta=o.el.querySelector('.meta');meta.insertBefore(row,meta.firstChild);
         f.forEach(function(x){var bt=document.createElement('button');bt.type='button';bt.dataset.v=x.m.id;bt.setAttribute('aria-pressed',String(x===o));row.appendChild(bt);
@@ -1037,3 +1038,9 @@ window.buildMD=buildMD;window.buildJSON=buildJSON;
   pills();render();
   document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(pills,80);});});
 })();
+
+/* use-case chips were removed at the owner's request (2026-11-27); favourites stay reachable from the menu */
+(function(){var mp=document.getElementById('xMenu');if(!mp)return;var b=document.createElement('button');b.type='button';b.className='xmi';b.id='xFavB';mp.insertBefore(b,mp.firstChild);
+  var lab=function(){var on=xUse()==='fav';b.textContent=lang==='ar'?(on?'↩ كل الحركات':'♥ المفضلة'):(on?'↩ All motions':'♥ Favourites');};
+  b.addEventListener('click',function(){showTab('M');xUse(xUse()==='fav'?'ALL':'fav');lab();var g=document.querySelector('.xgrp');window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});});
+  lab();document.querySelectorAll('.lang button').forEach(function(x){x.addEventListener('click',function(){setTimeout(lab,60);});});})();
