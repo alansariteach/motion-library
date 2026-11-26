@@ -523,3 +523,12 @@ footer{border-top:1px solid var(--line)}
 
 .card .need>*{border-color:var(--line)!important;color:var(--muted)!important;background:transparent!important}
 .xhv .xlgi{display:none!important}
+/* versions of one motion, on its card */
+.xvr{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 8px;padding:3px;background:var(--panel2);border-radius:10px}
+.xvr::-webkit-scrollbar{display:none}
+.xvr button{flex:1 0 auto;border:0;background:none;color:var(--muted);font-family:var(--f-ar);font-weight:700;font-size:12px;padding:5px 8px;border-radius:8px;min-height:30px;white-space:nowrap}
+.xvr button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.card .vof{display:none}
+.card .need{display:none}
+.card .use{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.xvr{gap:2px}.xvr button{flex:1 1 0;min-width:0;padding:5px 2px;font-size:11.5px}

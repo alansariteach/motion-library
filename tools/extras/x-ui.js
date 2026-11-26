@@ -1013,3 +1013,27 @@ window.buildMD=buildMD;window.buildJSON=buildJSON;
     drawEx();}
   lab();document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(lab,60);});});
 })();
+
+/* ===== 2026-11-26 families: one card per base motion; its versions (fast, slow, gold, boxed) are pills on the card ===== */
+(function(){
+  var FAM={},ORD=[],SEL={};
+  cards.forEach(function(o){var b=o.m.base||o.m.id;if(!FAM[b]){FAM[b]=[];ORD.push(b);}FAM[b].push(o);});
+  var NB=ORD.length;
+  function lbl(m){if(!m.base)return lang==='ar'?'الأساسية':'Original';return lang==='ar'?String(m.ar).split(' · ').pop():(m.vlab||String(m.en).split(' · ').pop());}
+  function pills(){ORD.forEach(function(b){var f=FAM[b];if(f.length<2)return;f.forEach(function(o){var row=o.el.querySelector('.xvr');
+      if(!row){row=document.createElement('div');row.className='xvr';row.setAttribute('role','group');var meta=o.el.querySelector('.meta');meta.insertBefore(row,meta.firstChild);
+        f.forEach(function(x){var bt=document.createElement('button');bt.type='button';bt.dataset.v=x.m.id;bt.setAttribute('aria-pressed',String(x===o));row.appendChild(bt);
+          bt.addEventListener('click',function(){if(x===o)return;SEL[b]=x.m.id;render();try{x.el.querySelector('.xvr [aria-pressed="true"]').focus({preventScroll:true});}catch(e){}});});}
+      [].forEach.call(row.children,function(bt,i){bt.textContent=lbl(f[i].m);});
+      row.setAttribute('aria-label',lang==='ar'?'أنواع الحركة':'Versions');});});}
+  var r1=render;
+  render=function(){r1();var t=q.value.trim().toUpperCase(),n=0;
+    ORD.forEach(function(b){var f=FAM[b],pass=f.filter(function(o){return !o.el.hidden;});if(!pass.length)return;n++;
+      var ex=t&&f.filter(function(o){return o.m.id.toUpperCase()===t;})[0],show=ex||(SEL[b]&&f.filter(function(o){return o.m.id===SEL[b];})[0])||pass.filter(function(o){return !o.m.base;})[0]||pass[0];
+      f.forEach(function(o){o.el.hidden=o!==show;});});
+    document.getElementById('catCount').textContent=n+' / '+NB;document.getElementById('curLbl').textContent=catName(cur)+' · '+n;document.getElementById('empty').hidden=n>0;};
+  /* category counts = base motions */
+  document.querySelectorAll('#cats .cat').forEach(function(bt){var k=bt.dataset.k,n=ORD.filter(function(b){return k==='ALL'||FAM[b][0].m.c===k;}).length,e=bt.querySelector('.n');if(e)e.textContent=n;});
+  pills();render();
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(pills,80);});});
+})();

@@ -97,7 +97,7 @@ var PAR='.logo,.icn,.heart,.pin,.mic,.lnk,.srch,.send,.tcard';
 function marks(){var a=[];try{[STAR,HEART,PLANE,MIC].forEach(function(x){if(typeof x==='string')a.push(x);});}catch(e){}return a;}
 /* the svg shapes in a drawn motion that can take a picture (decorations like circles, underlines and sparkles stay) */
 function targets(root){var mk=marks();return [].slice.call(root.querySelectorAll('svg')).filter(function(s){if(s.closest('.ph,.vtag,.sd-foot'))return false;var p=s.parentElement;
-  if(s.classList.contains('sig'))return true;
+  if(s.classList.contains('sig')||(s.classList.contains('xchip')&&!s.closest('.spk,.csr')))return true;
   if(p&&p.matches&&p.matches(PAR)&&!s.closest('.spk,.csr'))return true;var ph=s.querySelector('path'),d=ph&&ph.getAttribute('d');return !!d&&!s.closest('.spk,.csr')&&mk.some(function(x){return x.indexOf('d="'+d+'"')>-1;});});}
 /* boxes drawn with CSS that stand for a picture: profile photo, phone/laptop/window screen, carousel and coin faces… (keep:1 = the words on it stay) */
 var SLOTS=[['.av .fc'],['.phone .sc'],['.lap .scr2'],['.win .bd'],['.phn2'],['.car>i'],['.coin>div'],['.cv>b'],['.lay>i'],['.tcard2',1]];

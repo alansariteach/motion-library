@@ -1401,6 +1401,15 @@ footer{border-top:1px solid var(--line)}
 
 .card .need>*{border-color:var(--line)!important;color:var(--muted)!important;background:transparent!important}
 .xhv .xlgi{display:none!important}
+/* versions of one motion, on its card */
+.xvr{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 0 8px;padding:3px;background:var(--panel2);border-radius:10px}
+.xvr::-webkit-scrollbar{display:none}
+.xvr button{flex:1 0 auto;border:0;background:none;color:var(--muted);font-family:var(--f-ar);font-weight:700;font-size:12px;padding:5px 8px;border-radius:8px;min-height:30px;white-space:nowrap}
+.xvr button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.card .vof{display:none}
+.card .need{display:none}
+.card .use{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.xvr{gap:2px}.xvr button{flex:1 1 0;min-width:0;padding:5px 2px;font-size:11.5px}
 
 /*XCSS-END*/</style>
 
@@ -1491,7 +1500,7 @@ footer{border-top:1px solid var(--line)}
 <div class="exm" id="exm" hidden role="dialog" aria-modal="true"><div class="exbox"><button class="exx" id="exx" type="button" aria-label="Close">✕</button><video id="exv" playsinline muted loop controls preload="none"></video><div class="exc" id="exc"></div></div></div>
 
 <script>
-var STAR='<svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 4l7 31 27-17-17 27 31 5-31 5 17 27-27-17-7 31-7-31-27 17 17-27-31-5 31-5-17-27 27 17z"/></svg>';
+var STAR='<svg class="xchip" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g><g fill="#C8F53C"><rect x="29.5" y="3" width="5" height="13" rx="1.5"/><rect x="47.5" y="3" width="5" height="13" rx="1.5"/><rect x="65.5" y="3" width="5" height="13" rx="1.5"/><rect x="29.5" y="84" width="5" height="13" rx="1.5"/><rect x="47.5" y="84" width="5" height="13" rx="1.5"/><rect x="65.5" y="84" width="5" height="13" rx="1.5"/><rect x="3" y="29.5" width="13" height="5" rx="1.5"/><rect x="3" y="47.5" width="13" height="5" rx="1.5"/><rect x="3" y="65.5" width="13" height="5" rx="1.5"/><rect x="84" y="29.5" width="13" height="5" rx="1.5"/><rect x="84" y="47.5" width="13" height="5" rx="1.5"/><rect x="84" y="65.5" width="13" height="5" rx="1.5"/></g><rect x="14" y="14" width="72" height="72" rx="8" fill="#0A0A0B"/><rect x="19" y="19" width="62" height="62" rx="5" fill="none" stroke="#C8F53C" stroke-width="0.8" opacity="0.55"/><polygon points="50,25 71,76 61,76 50,47 39,76 29,76" fill="#FFFFFF"/><polyline points="43,64 74,64 74,50 86,50" fill="none" stroke="#C8F53C" stroke-width="4.2" stroke-linejoin="round"/><circle cx="43" cy="64" r="3.6" fill="#C8F53C"/></g></svg>';
 var HEART='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.3 2.3 4.5 6 4.5c2.2 0 3.5 1.2 4.2 2.3h3.6c.7-1.1 2-2.3 4.2-2.3 3.7 0 5.6 3.8 4 7.2C19.5 16.4 12 21 12 21z"/></svg>';
 var PLANE='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 11.5 22 3l-6.5 18-3.8-7.2L2 11.5z"/></svg>';
 function scene(c,extra){return '<div class="scene '+(c||'')+'"><i class="lamp"></i>'+(extra||'')+'</div><i class="pp"></i>';}
@@ -3402,7 +3411,7 @@ var PAR='.logo,.icn,.heart,.pin,.mic,.lnk,.srch,.send,.tcard';
 function marks(){var a=[];try{[STAR,HEART,PLANE,MIC].forEach(function(x){if(typeof x==='string')a.push(x);});}catch(e){}return a;}
 /* the svg shapes in a drawn motion that can take a picture (decorations like circles, underlines and sparkles stay) */
 function targets(root){var mk=marks();return [].slice.call(root.querySelectorAll('svg')).filter(function(s){if(s.closest('.ph,.vtag,.sd-foot'))return false;var p=s.parentElement;
-  if(s.classList.contains('sig'))return true;
+  if(s.classList.contains('sig')||(s.classList.contains('xchip')&&!s.closest('.spk,.csr')))return true;
   if(p&&p.matches&&p.matches(PAR)&&!s.closest('.spk,.csr'))return true;var ph=s.querySelector('path'),d=ph&&ph.getAttribute('d');return !!d&&!s.closest('.spk,.csr')&&mk.some(function(x){return x.indexOf('d="'+d+'"')>-1;});});}
 /* boxes drawn with CSS that stand for a picture: profile photo, phone/laptop/window screen, carousel and coin faces… (keep:1 = the words on it stay) */
 var SLOTS=[['.av .fc'],['.phone .sc'],['.lap .scr2'],['.win .bd'],['.phn2'],['.car>i'],['.coin>div'],['.cv>b'],['.lay>i'],['.tcard2',1]];
@@ -4476,6 +4485,30 @@ window.buildMD=buildMD;window.buildJSON=buildJSON;
     var h=hero.querySelector('h1');if(h&&!h.querySelector('em'))h.innerHTML=h.textContent.replace(/^(\d+)/,'<em>$1</em>');
     drawEx();}
   lab();document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(lab,60);});});
+})();
+
+/* ===== 2026-11-26 families: one card per base motion; its versions (fast, slow, gold, boxed) are pills on the card ===== */
+(function(){
+  var FAM={},ORD=[],SEL={};
+  cards.forEach(function(o){var b=o.m.base||o.m.id;if(!FAM[b]){FAM[b]=[];ORD.push(b);}FAM[b].push(o);});
+  var NB=ORD.length;
+  function lbl(m){if(!m.base)return lang==='ar'?'الأساسية':'Original';return lang==='ar'?String(m.ar).split(' · ').pop():(m.vlab||String(m.en).split(' · ').pop());}
+  function pills(){ORD.forEach(function(b){var f=FAM[b];if(f.length<2)return;f.forEach(function(o){var row=o.el.querySelector('.xvr');
+      if(!row){row=document.createElement('div');row.className='xvr';row.setAttribute('role','group');var meta=o.el.querySelector('.meta');meta.insertBefore(row,meta.firstChild);
+        f.forEach(function(x){var bt=document.createElement('button');bt.type='button';bt.dataset.v=x.m.id;bt.setAttribute('aria-pressed',String(x===o));row.appendChild(bt);
+          bt.addEventListener('click',function(){if(x===o)return;SEL[b]=x.m.id;render();try{x.el.querySelector('.xvr [aria-pressed="true"]').focus({preventScroll:true});}catch(e){}});});}
+      [].forEach.call(row.children,function(bt,i){bt.textContent=lbl(f[i].m);});
+      row.setAttribute('aria-label',lang==='ar'?'أنواع الحركة':'Versions');});});}
+  var r1=render;
+  render=function(){r1();var t=q.value.trim().toUpperCase(),n=0;
+    ORD.forEach(function(b){var f=FAM[b],pass=f.filter(function(o){return !o.el.hidden;});if(!pass.length)return;n++;
+      var ex=t&&f.filter(function(o){return o.m.id.toUpperCase()===t;})[0],show=ex||(SEL[b]&&f.filter(function(o){return o.m.id===SEL[b];})[0])||pass.filter(function(o){return !o.m.base;})[0]||pass[0];
+      f.forEach(function(o){o.el.hidden=o!==show;});});
+    document.getElementById('catCount').textContent=n+' / '+NB;document.getElementById('curLbl').textContent=catName(cur)+' · '+n;document.getElementById('empty').hidden=n>0;};
+  /* category counts = base motions */
+  document.querySelectorAll('#cats .cat').forEach(function(bt){var k=bt.dataset.k,n=ORD.filter(function(b){return k==='ALL'||FAM[b][0].m.c===k;}).length,e=bt.querySelector('.n');if(e)e.textContent=n;});
+  pills();render();
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(pills,80);});});
 })();
 
 </script><!--XJS-END-->
